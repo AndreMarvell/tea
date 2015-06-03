@@ -1,0 +1,11 @@
+<i id="view" class="fa fa-thumbs-up pointer{% if isViewer %} color is-viewer {% endif %}"></i> <span id="nb-views">{{ Thread.numViews}}</span>
+<script type="text/javascript">
+        $(window).bind("load", function() {
+            $.post('{{path('andre_marvell_social_view_action')}}',               
+                {id: '{{ Thread.id}}'}, 
+                function(response){
+                    $('#nb-views').html(response);
+                    $( "#view" ).toggleClass( "color is-viewer" );
+                }, "json");
+         });
+</script>

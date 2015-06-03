@@ -1,0 +1,9 @@
+/vendor/
+/nbproject/
+/app/logs/
+/app/cache/
+/web/bundles/
+/web/uploads/
+
+# Fichier de Configuration
+/app/config/parameters.yml

@@ -1,0 +1,51 @@
+services:
+#    tea_campus_common.example:
+#        class: TeaCampus\CommonBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    tea.admin.video:
+        class: TeaCampus\CommonBundle\Admin\VideoAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Video, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Video}
+
+    tea.admin.projet:
+        class: TeaCampus\CommonBundle\Admin\ProjetAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Projet, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Projet}
+
+    tea.admin.cv:
+        class: TeaCampus\CommonBundle\Admin\CVAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\CV, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CV}
+
+    tea.admin.concours:
+        class: TeaCampus\CommonBundle\Admin\ConcoursAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Concours, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Concours}
+
+    tea.admin.partner:
+        class: TeaCampus\CommonBundle\Admin\PartnerAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Partner, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Partner}
+
+    tea.admin.advert:
+        class: TeaCampus\CommonBundle\Admin\AdvertAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Advert, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Advert}
+
+    tea.admin.testimony:
+        class: TeaCampus\CommonBundle\Admin\TestimonyAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Testimony, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Testimony}
+
+    tea.admin.event:
+        class: TeaCampus\CommonBundle\Admin\EventAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Event, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Event}

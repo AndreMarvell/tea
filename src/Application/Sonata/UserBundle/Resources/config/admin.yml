@@ -1,0 +1,11 @@
+services:
+    sonata.user.admin.badge:
+        class: Application\Sonata\UserBundle\Admin\BadgeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Utilisateur", label: "Badge" }
+        arguments:
+            - ~
+            - Application\Sonata\UserBundle\Entity\Badge
+            - ~
+        calls:
+            - [ setTranslationDomain, [ApplicationSonataUserBundle]]

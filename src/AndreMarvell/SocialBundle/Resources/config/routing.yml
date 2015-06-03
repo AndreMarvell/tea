@@ -1,0 +1,17 @@
+andre_marvell_social_like_action:
+    path:     /asynchrone/like/
+    defaults: { _controller: AndreMarvellSocialBundle:Like:like }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+andre_marvell_social_like_index:
+    path:     /like
+    defaults: { _controller: AndreMarvellSocialBundle:Like:index }
+    
+andre_marvell_social_like_action:
+    path:     /asynchrone/view/
+    defaults: { _controller: AndreMarvellSocialBundle:View:view }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+andre_marvell_social_view_index:
+    path:     /view
+    defaults: { _controller: AndreMarvellSocialBundle:View:index }

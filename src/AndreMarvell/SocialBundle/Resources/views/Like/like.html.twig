@@ -1,0 +1,14 @@
+<i id="like" class="fa fa-thumbs-up pointer{% if isLiker %} color is-liker {% endif %}"></i> <span id="nb-likes">{{ Thread.numLikes}}</span>
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('#like').on('click', function(e){
+                e.preventDefault();
+                $.post('{{path('andre_marvell_social_like_action')}}',               
+                {id: '{{ Thread.id}}'}, 
+                function(response){
+                    $('#nb-likes').html(response);
+                    $( "#like" ).toggleClass( "color is-liker" );
+                }, "json");
+            });
+         });
+</script>

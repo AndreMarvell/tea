@@ -1,0 +1,4 @@
+services:
+#    andre_marvell_social.example:
+#        class: AndreMarvell\SocialBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

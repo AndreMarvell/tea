@@ -1,0 +1,3 @@
+tea_campus_common_homepage:
+    path:     /
+    defaults: { _controller: TeaCampusCommonBundle:Default:index }
