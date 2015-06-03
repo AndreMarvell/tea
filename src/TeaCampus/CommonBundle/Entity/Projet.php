@@ -95,6 +95,7 @@ class Projet
     public function createThread(){
         $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("projet".$this->id);
         $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("projet".$this->id);
+        $this->date = new \DateTime();
     }
 
 

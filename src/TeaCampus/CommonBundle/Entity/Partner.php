@@ -40,6 +40,8 @@ class Partner
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+    
+    
 
 
     /**
