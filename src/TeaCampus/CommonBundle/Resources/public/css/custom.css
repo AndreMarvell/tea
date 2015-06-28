@@ -1,0 +1,141 @@
+
+/* 
+    Created on : 24 juin 2015, 17:16:55
+    Author     : Marvell
+*/
+
+.media-list.notifications{
+    background-color: white;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px;
+    color: rgb(106, 116, 134);
+}
+
+.menu-block nav ul li a{
+    padding: 0px;
+    display: block;
+    color: #7e848e !important;
+    background: url(../images/nav-arrow.png) 90% center no-repeat;
+}
+
+.menu-block nav ul li a:hover{
+    font-weight: bold;
+    color: #7e848e !important;
+}
+
+.tea-block h5{
+    padding-left: 50px !important;
+}
+
+footer{
+    font-size: 12px;
+}
+.tea-block p{
+    text-align: justify;
+}
+
+.footer-logo{
+    position: absolute;
+    top: 38px;
+}
+
+#last-tweet ul  ul {
+    margin: 0;
+    padding: 0;
+}
+#last-tweet ul  li {
+    list-style: none;
+    clear: both;
+}
+#last-tweet ul  li img, #last-tweet ul  li .tweets_txt {
+    float: left;
+    margin-bottom: 10px;
+}
+#last-tweet ul  li img {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    width: 30px;
+    position: relative;
+    left: 16px;
+    bottom: 42px;
+
+}
+
+#last-tweet ul  li .tweets_txt span {
+    font-style: italic;
+    color: #666;
+    display: block;
+}
+
+.right-border{
+    border-right: 1px dotted #c5c5c7;
+}
+
+.section-header.no-home{
+    margin: 0 auto;
+}
+
+.section-header.no-home .subline{
+    margin: 0 auto;
+}
+
+.section-header.no-home .subhead{
+    margin: 0 auto 30px;
+    
+}
+
+.tags li a span.label{
+    font-size: 90%;
+}
+
+.tags li a span.label:hover{
+    background-color: #27AE60 !important;
+    text-decoration: none;
+}
+
+.tags li a:hover, .tags li a:visited{
+    text-decoration: none;
+}
+
+.fos_comment_comment_show{
+      margin: 20px auto;
+}
+
+.fos_comment_comment_metas .avatar img {
+  height: 50px;
+  width: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.fos_comment_comment_metas .comment-info h5 {
+  padding-top: 16px;
+  font-weight: bold;
+  color: #2a2d32;
+  margin: 0;
+  font-size: 14px;
+}
+
+.fos_comment_comment_metas .comment-info {
+  border-bottom: 1px dotted #d0d2d7;
+  min-height: 50px;
+  margin-bottom: 10px;
+  
+}
+
+.fos_comment_comment_body p {
+  margin: 0 0 0.74em;
+  padding: 8px;
+  background-color: rgb(247, 247, 247);;
+  border-radius: 2px;
+  font-size: 12px;
+  color: rgb(90, 90, 90);
+}
+
+.fos_comment_comment_metas div.comment-info.clearfix ul.list-inline.pull-right span{
+    cursor: pointer;
+}

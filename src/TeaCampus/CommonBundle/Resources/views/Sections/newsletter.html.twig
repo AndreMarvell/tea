@@ -1,0 +1,26 @@
+<section class="wrap-subscribe blog"{# style="margin-top: 180px;"#}>
+    <div class="top-block-icon">
+        <i class="icon-envelope"></i>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; -webkit-animation-duration: 2s; animation-name: fadeInUp; -webkit-animation-name: fadeInUp;">
+                <h4>{{ 'footer.newsletter.title'|trans({}, 'messages') }}</h4>
+                <p>{{ 'footer.newsletter.message'|trans({}, 'messages') }}</p>
+            </div>
+        </div>
+        <div class="row wow fadeInUp animated" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; -webkit-animation-duration: 2s; animation-name: fadeInUp; -webkit-animation-name: fadeInUp;">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="subscribe">
+                    <form class="form-inline clearfix">
+                        <input type="email" class="form-control pull-left" placeholder="{{ 'footer.newsletter.placeholder'|trans({}, 'messages') }}">
+                        <button type="submit" class="btn btn-primary btn-round pull-right hidden-xs">{{ 'footer.newsletter.button'|trans({}, 'messages') }}</button>
+                        <button type="submit" class="btn btn-primary btn-round-small pull-right visible-xs-block">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </button>
+                    </form>
+                </div>        
+            </div>
+        </div>
+    </div>
+</section>

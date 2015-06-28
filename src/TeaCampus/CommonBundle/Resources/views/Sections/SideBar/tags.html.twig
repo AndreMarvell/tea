@@ -1,0 +1,15 @@
+<div class="tags">
+    <h5><i class="fa fa-tags"></i>{{title}}</h5>
+    <ul class="clearfix">
+        {% for tag in tags %}
+        <li>
+            <a href="{{ url(path, { 'tag': tag.slug } ) }}">
+                <span class="label {%if loop.index is odd%}label-info{%else%}label-danger{%endif%}">{{ tag.name }}</span>
+            </a>
+        </li>
+        {%else%}
+        <li></li>
+        {%endfor%}
+
+    </ul>
+</div>

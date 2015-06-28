@@ -1,0 +1,115 @@
+
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% set newsletter = true %} 
+{% block title %}{{ post.title }} - {{ parent() }}{% endblock %}
+
+
+{% block main_content %}
+    <section class="wrap-blog-content blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column post-column">
+                        <div class="row">
+                            <!--breadcrumbs-->
+                            {% block sonata_page_breadcrumb %}
+                                <nav class="breadcrumbs">
+                                    {{ sonata_block_render_event('breadcrumb', { 'context': 'news_post', 'post': post, 'current_uri': app.request.requestUri }) }}
+                                </nav>
+                            {% endblock %}
+                        </div>
+                        <div class="post-header row clearfix">
+                            <div class="col-md-2">
+                                <div class="avatar">
+                                    {%if post.author is not null%}
+                                        {% thumbnail post.author.avatar, 'square' with{'alt':post.author.username } %}
+                                    {%else%}
+                                        {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                        <img src="{{ asset_url }}">
+                                        {% endimage %}
+                                    {%endif%}
+                                </div>
+                            </div>
+                            <div class="col-md-10 wrap-post-info">
+                                <div class="post-info clearfix">
+                                    <h5 class="pull-left">{%if post.author is not null%}{{post.author.username}}{%endif%}</h5>
+                                    <ul class="list-inline pull-right">
+                                        <li><i class="fa fa-calendar"></i>{{post.publicationDateStart|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" post-content">
+                            <p>{{post.abstract|raw}}</p>
+                            {% thumbnail post.image, 'wide' with{'class':'img-responsive',  'alt':post.title,   'title':post.title } %}
+                            {{ post.content | raw }}
+                        </div>
+
+                        <!-- meta -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="share" >
+                                    {{'share.title'|trans({},'messages')}}:
+                                    
+                                    <ul class="copyright-links">
+                                        <li style="margin-top: -10px">{{ facebookButton() }}</li>
+                                        <li style="margin-top: 2px">{{ googleplusButton() }}</li>
+                                        <li style="margin-top: -10px">{{ twitterButton() }}</li>
+                                        <li style="margin-top: -10px">{{ linkedinButton() }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tags" >
+                                    Tags:
+                                    <ul class="list-tags clearfix">
+                                        {% for tag in post.tags %}
+                                            <li><a href="{{ url('sonata_news_tag', { 'tag': tag.slug } ) }}">{{ tag.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                    
+                        {% include 'AndreMarvellSocialBundle:Comment:disqus.html.twig' with {'subline': 'news.comment.subline'| trans({},'messages'), 'disqus_id' :  'tea-news-'~ post.id, 'disqus_title' : post.title} %}
+                        
+                        {#<h4 style="text-align: center;text-transform: uppercase;">{{'comment.need_connexion'|trans({},'messages')}}</h4>#}
+                        {#{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'news' ~ post.id} %}#}
+                        
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- search -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news_search.html.twig') }}
+                        <!-- tags -->
+                        {%if tags is defined%}
+                            {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}
+                        {%endif%}
+                        <!-- popuar posts -->
+                        {%if mostRead is defined%}
+                            {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
+                        {%endif%}
+
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            
+        });
+            
+    </script>
+{% endblock %}
+
+{% endspaceless %}
+
+
+
+
+
+

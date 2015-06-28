@@ -1,0 +1,78 @@
+
+tea:
+    name: Todays Entrepreneurs For Africa
+
+menu:
+    home: Accueil
+    projects: Projets
+    videos: Vidéos
+    forum: Forum
+    profil: 
+        title: Profil
+        account: Mon compte
+        projects: Mes projets
+        videos: Mes vidéos
+        messages: Mes Messages
+        disconnect: Se déconnecter
+    notifications: 
+        title: Notifications
+        no_notifications: Aucune notification disponible
+    blog:
+        title: Actualités
+        all: Toutes l'actualité
+        une: À la une
+    about:
+        title: À Propos
+        who: Qui suis-je?
+        what: Objectifs
+        partners: Partenaires
+    search: Tapez votre recherche
+    
+register:
+    or: Ou
+    facebook: Inscrivez vous avec Facebook
+    already_member: Vous avez déjà un compte ? Identifiez vous
+    
+footer:
+    newsletter:
+        title: Inscrivez vous à la Newsletter
+        message: Restez informé ! Dès maintenant et en un clic, inscrivez-vous gratuitement à notre newsletter et recevez en exclusivité des informations sur les derniers projets ajoutés, les dernières vidéos et actualités en avant-première !
+        button: Souscrire
+        placeholder: Saisissez votre email
+    menu:
+        title: Voir aussi
+        mentions: Mentions Légales
+        about: À Propos
+        faq: FAQ
+        forum: Forum
+    contact:
+        text: Besoin d'aide? Contactez nous!
+    tea:
+        text: Tea est un mouvement créé pour permettre à un public très large de s'informer et de s'autoformer sur l'entrepreuneuriat et plus particulièrement en Afrique.
+        
+news:
+    home:
+        last: Les dernières actualités
+        title: Notre blog
+    list:
+        title: Toute l'actualité
+    search:
+        title: Recherche actualités
+        subhead: Résultat(s) trouvé(s)
+    comment:
+        title: Votre commentaire
+        subline: Cet article vous a plu ? Donnez votre avis.
+        
+aside:
+    news:
+        search: Recherchez un article
+        last_title: Les dernières actus
+        most: Les plus lues
+    tags:
+        title: Tags
+        
+share:
+    title: Partager
+        
+comment:
+    need_connexion: Vous devez être connecté pour laisser un commentaire

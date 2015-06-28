@@ -1,13 +1,152 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{% spaceless %}<!DOCTYPE html>
+<html  {{ sonata_seo_html_attributes() }}>
+    <head {{ sonata_seo_head_attributes() }}>
+        <title>
+            {% block title %}
+                {{ 'tea.name'|trans }}
+            {% endblock %}
+        </title>
+        {{ sonata_seo_metadatas() }}
+        {{ sonata_seo_link_canonical() }}
+        {{ sonata_seo_lang_alternates() }}
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        {% stylesheets 'bundles/teacampuscommon/css/master.css'
+                       'bundles/bmatznerfontawesome/css/font-awesome.min.css'
+            filter='cssrewrite' 
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/android-icon-192x192.png'  output="images/favicon/favicon192.png" %}        
+        <link rel="icon" type="image/x-icon" sizes="192x192" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/favicon-32x32.png'  output="images/favicon/favicon32.png" %}        
+        <link rel="icon" type="image/x-icon" sizes="32x32" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/favicon-96x96.png'  output="images/favicon/favicon96.png" %}        
+        <link rel="icon" type="image/x-icon" sizes="96x96" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/favicon-16x16.png'  output="images/favicon/favicon16.png" %}        
+        <link rel="icon" type="image/x-icon" sizes="16x16" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-57x57.png'  output="images/favicon/apple/favicon57.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="57x57" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-60x60.png'  output="images/favicon/apple/favicon60.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="60x60" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-72x72.png'  output="images/favicon/apple/favicon72.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="72x72" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-76x76.png'  output="images/favicon/apple/favicon76.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="76x76" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-114x114.png'  output="images/favicon/apple/favicon114.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="114x114" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-120x120.png'  output="images/favicon/apple/favicon120.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="120x120" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-144x144.png'  output="images/favicon/apple/favicon144.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="144x144" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-152x152.png'  output="images/favicon/apple/favicon152.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="152x152" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        {% image '@TeaCampusCommonBundle/Resources/public/images/favicon/apple-icon-180x180.png'  output="images/favicon/apple/favicon180.png" %}        
+        <link rel="icon" type="apple-touch-icon" sizes="180x180" href="{{ asset_url }}" />
+        {% endimage %}
+
+        {% block stylesheets %} 
+        
+        {% endblock %}
+        
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body id="home" data-offset="80" data-target=".navbar" data-spy="scroll">
+        
+        <div id="page-preloader"><span class="spinner"></span></div>
+        
+        <!-- Navigation -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        {% block header %} 
+            {{ include('TeaCampusCommonBundle:Sections:header.html.twig')}}
+        {% endblock %}
+        <!--/.header -->
+        
+        {% block main_content %}
+
+        {%endblock%}
+            
+        <!-- Footer - Tabs -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        {% block footer %}
+            {{ include('TeaCampusCommonBundle:Sections:footer.html.twig')}}
+        {% endblock %}
+            
+            
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        {% javascripts  '@TeaCampusCommonBundle/Resources/public/js/jquery-1.11.1.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/bootstrap.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/jquery.mb.YTPlayer.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/isotope.pkgd.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/owl.carousel.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/magnific-popup.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/jquery.scrollTo.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/jquery.ui.effect.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/contact.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/modernizr.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/jquery.waypoints.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/fancybox/jquery.fancybox.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/wow.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/tweecool.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+        <script>
+            new WOW().init();
+            $(document).ready(function() {
+                $('#last-tweet').tweecool({
+                    username : 'TEAfrica2015'
+                });
+                
+            });
+        </script>
+        {% block scripts %}
+            
+        {% endblock %}
+        
+        
+        {% javascripts  '@TeaCampusCommonBundle/Resources/public/js/jquery.easypiechart.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/TweenMax.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/highcharts.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/Chart.min.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/custom.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+        
+        {{ include('TeaCampusCommonBundle:Google:analytics.html.twig') }}
+		
     </body>
-</html>
+</html>{% endspaceless %}

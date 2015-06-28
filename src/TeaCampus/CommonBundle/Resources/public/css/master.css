@@ -1,0 +1,32 @@
+
+
+
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+-------------------------------------------------------------------*/
+
+/* Fonts css */
+
+@import "http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900";
+@import "simple-line-icons.css";
+
+/* Basic css */
+
+@import "bootstrap.css";
+@import "maincss.css";
+@import "custom.css";
+@import "magnific-popup.css";
+
+
+@import "jquery-ui.css";
+@import "animate.css";
+
+/* Additional css */
+
+@import "owl.carousel.css";
+@import "jquery.fancybox.css";
+@import "owl.transitions.css";
+
+
+

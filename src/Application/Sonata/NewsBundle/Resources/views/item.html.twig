@@ -1,0 +1,26 @@
+<div class="post">
+    <div class="post-heading">
+        <a class="post-image" href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">
+            {% thumbnail post.image, 'big' with{'class':'img-responsive',  'alt':post.title } %}
+        </a>
+    </div>
+    <div class="post-body">
+        <a class="post-avatar" href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">
+            {%if post.author is not null%}
+                {% thumbnail post.author.avatar, 'square' with{'alt':post.author.username } %}
+            {%else%}
+                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                <img src="{{ asset_url }}">
+                {% endimage %}
+            {%endif%}
+        </a>
+        <ul class="list-inline">
+            {%if post.author is not null%}
+            <li><i class="fa fa-user"></i>{{post.author.username}}</li>
+            {%endif%}
+            <li><i class="fa fa-calendar"></i>{{post.publicationDateStart|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
+        </ul>
+        <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}"><h5>{{ post.title }}</h5></a>
+        <p>{{ post.abstract|striptags|slice(0, 150) ~ '...'}}</p>
+    </div>
+</div>

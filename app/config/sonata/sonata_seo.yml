@@ -1,0 +1,40 @@
+sonata_seo:
+    #default:          sonata.seo.page.default
+    #encoding:         UTF-8
+    page:
+        title:            Today's Entrepreneurs in Africa
+        metas:
+            name:
+                keywords:             afrique entrepreneuriat partenaires formation video 
+                description:          TEA Campus
+                robots:               index, follow
+                viewport:             width=device-width
+                google:               notranslate
+                #google-site-verification:             k39-3fYTKm6nnt9NZco-Sg-9RaLq-CVr7MJW8nOIrf8
+
+            property:
+                # Facebook application settings
+                #'fb:app_id':          XXXXXX
+                #'fb:admins':          admin1, admin2
+
+                # Open Graph information
+                # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
+                'og:site_name':       Tea-campus.com
+                #'og:description':     Consultez l'actualité aéroportuaire et les informations sur les vols à l'arrivée et au départ de Brazzaville et Pointe-Noire
+                'og:image':           website
+                #'og:image':           
+
+            http-equiv:
+                'Content-Type':         text/html; charset=utf-8
+                'Content-script-type':  text/javascript
+                'Content-style-type':   text/css
+                'Content-language':     %locale%
+                #'X-Ua-Compatible':      IE=EmulateIE7
+
+            charset:
+                UTF-8:    ''
+
+        head:
+            'xmlns':              http://www.w3.org/1999/xhtml
+            'xmlns:og':           http://opengraphprotocol.org/schema/
+            #'xmlns:fb':           "http://www.facebook.com/2008/fbml"

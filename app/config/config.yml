@@ -8,6 +8,11 @@ imports:
     - { resource: sonata/sonata_news.yml }
     - { resource: sonata/sonata_media.yml }
     - { resource: sonata/sonata_admin.yml }
+    - { resource: sonata/sonata_seo.yml }
+    # FOS Bundles
+    - { resource: FOS/fos_comment.yml }
+    # Assetic
+    - { resource: assetic.yml }
 
 framework:
     #esi:             ~
@@ -30,7 +35,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
-    translator: { fallback: %locale% }
+    translator: ~
 
 # Twig Configuration
 twig:
@@ -78,6 +83,8 @@ doctrine:
                     SonataUserBundle: ~
                     TeaCampusCommonBundle: ~
                     FOSUserBundle: ~
+                    FOSCommentBundle: ~
+                    ApplicationFOSCommentBundle: ~
                     ApplicationSonataUserBundle: ~
                     ApplicationSonataMediaBundle: ~
                     ApplicationSonataNewsBundle: ~
@@ -100,7 +107,7 @@ knp_paginator:
         sort_direction_name: direction # sort direction query parameter name
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
-        pagination: KnpPaginatorBundle:Pagination:pagination.html.twig     # sliding pagination controls template
+        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
 sonata_user:
@@ -162,6 +169,43 @@ sonata_block:
         sonata.block.service.text:
         sonata.news.block.recent_posts:
         # Your other blocks
+
         
 parameters:
     sonata.user.admin.user.class: Application\Sonata\UserBundle\Admin\UserAdmin
+    sonata.news.admin.post.class: Application\Sonata\NewsBundle\Admin\PostAdmin
+
+
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "TEAfrica2015"
+            tag:            "teacampus"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:            
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links: 
+        facebook:           "https://www.facebook.com/pages/Todays-Entrepreneurs-in-Africa/986084074734919"
+        #googleplus:         "https://plus.google.com/105931415830389032796"
+        twitter:            "https://twitter.com/TEAfrica2015"
+    theme:                  'default' # optional

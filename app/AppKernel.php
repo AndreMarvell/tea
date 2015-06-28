@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             
             new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
             new Bmatzner\ModernizrBundle\BmatznerModernizrBundle(),
-            new Twitter\BootstrapBundle\TwitterBootstrapBundle(),
             
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             
@@ -30,6 +29,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
             
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
@@ -50,9 +51,13 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             
+            new Application\FOS\CommentBundle\ApplicationFOSCommentBundle(),
+            
             new JMS\SerializerBundle\JMSSerializerBundle(),
             
             new AndreMarvell\SocialBundle\AndreMarvellSocialBundle(),
+            
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

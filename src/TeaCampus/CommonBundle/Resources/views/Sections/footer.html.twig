@@ -1,0 +1,73 @@
+{%if newsletter is defined and newsletter %}{{ include( 'TeaCampusCommonBundle:Sections:newsletter.html.twig') }}{%endif%}
+<footer class="footer">
+    <!-- Contacts One -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+    <section class="contacts">
+        <div class="container">
+            <div class="row text-left">
+                <div class="col-md-3">
+                    <article class="tea-block bottom-border">
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/logo-sign2.png'  output="images/ico/logo.jpg" %}
+                            <img class="footer-logo" src="{{ asset_url }}" width="40" height="44" alt="TeaCampus logo"/>
+                            {% endimage %}
+                        <h5 class="offset">{{ 'tea.name'|trans({}, 'messages') }}</h5>
+                        <p>{{ 'footer.tea.text'|trans({}, 'messages') }}<p>
+                    </article>
+                </div>
+                <div class="col-md-3">
+                    <article class="menu-block bottom-border">
+                        <h5 class="offset">{{ 'footer.menu.title'|trans({}, 'messages') }} <i class="fa fa-list-alt pull-right"></i></h5>
+                        <nav>
+                            <ul class="nav nav-pills nav-stacked offset left-border right-border">
+                                <li><a href="{{path('tea_about')}}">{{ 'footer.menu.about'|trans({}, 'messages') }}</a></li>
+                                <li><a href="#">{{ 'footer.menu.faq'|trans({}, 'messages') }}</a></li>
+                                <li><a href="#">{{ 'footer.menu.forum'|trans({}, 'messages') }}</a></li>
+                                <li><a href="#">{{ 'footer.menu.mentions'|trans({}, 'messages') }}</a></li>
+                            </ul>
+                        </nav>
+                    </article>
+                </div>
+                <div class="col-md-3">
+                    <article class="twitter-block bottom-border">
+                        <h5 class="">Twitter <i class="fa fa-twitter-square pull-right"></i></h5>
+                        <div id="last-tweet" class="twitter-wrap">
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-3">
+                    <article class="contacts-block bottom-border">
+                        <h5 class="offset">Contacts</h5>					
+                        <ul class="left-border offset">
+                            <li><p><i class="fa fa-link"></i><a href="{{path('tea_contacts')}}">{{ 'footer.contact.text'|trans({}, 'messages') }}</a> </p></li>
+                            <li><p><i class="fa fa-map-marker"></i>Troyes, FRANCE</p></li>
+                            <li><p><i class="fa fa-phone"></i></p></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Copyright One-->
+    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+    <section class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy;2015 TEA-Campus. Tous droits reservés | <a href="http://nanocreatives.com" target="_blank" style="color:#348D84">NanoCreatives.com</a></p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="copyright-links list-inline">
+                        <li><a href="https://www.facebook.com/pages/Todays-Entrepreneurs-in-Africa/986084074734919"><i class="fa fa-facebook fa-lg"></i></a></li>
+                        <li><a href="https://twitter.com/TEAfrica2015"><i class="fa fa-twitter fa-lg"></i></a></li>
+                        {#<li><a href="#fakelink"><i class="fa fa-youtube-play fa-lg"></i></a></li>
+                        <li><a href="#fakelink"><i class="fa fa-google-plus fa-lg"></i></a></li>
+                        <li><a href="#fakelink"><i class="fa fa-instagram fa-lg"></i></a></li>#}
+                    </ul>			
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>

@@ -1,0 +1,81 @@
+
+{% extends "::base.html.twig" %}
+
+{% spaceless %}
+{% set newsletter = true %} 
+{% block title %}
+    {{ 'news.list.title'|trans }} | {{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+    <section class="wrap-blog-content blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        <div class="row">
+                            <!--breadcrumbs-->
+                            {% block sonata_page_breadcrumb %}
+                                <div class="breadcrumbs">
+                                    {{ sonata_block_render_event('breadcrumb', { 'context': 'news_archive', 'collection': collection, 'tag': tag, 'current_uri': app.request.requestUri }) }}
+                                </div>
+                            {% endblock %}
+                        </div>
+                        <header class="section-header no-home">
+                            <h2>
+                                {%if tag is defined and tag != false %}
+                                    "&nbsp;{{tag}}&nbsp;" 
+                                {%elseif collection is defined and collection  != false%}
+                                    "&nbsp;{{collection}}&nbsp;" 
+                                {%else%}
+                                    {{ 'news.list.title'|trans({},'messages') }}
+                                {%endif%}
+                                
+                            </h2>
+                            <p class="subhead">{{ pager.getResults()|length }} article(s)</p>
+                        </header>
+                        {% for post in pager.getResults() %}
+                            <!-- Post Item -->
+                            <div class="col-md-6">
+                                {{ include( 'ApplicationSonataNewsBundle::item.html.twig', {'post':post}) }}
+                            </div>
+                            {%if loop.index is even%}
+                                <div class="clear"></div>
+                            {%endif%}
+                        {%else%}
+                            <div>{{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}</div>
+                        {%endfor%}
+
+
+                        <div class="text-center col-md-12">
+                            <ul class="pagination">
+                                <li{% if pager.page == pager.lastPage %} class="unavailable"{% endif %}>
+                                    <a href="{{ url(route, route_parameters|merge({'page': pager.nextpage})) }}" title="{{ 'link_previous_page'|trans({}, 'SonataNewsBundle') }}">
+                                        {{ 'link_previous_page'|trans({}, 'SonataNewsBundle') }}
+                                    </a>
+                                <li{% if pager.page == pager.firstPage %} class="unavailable"{% endif %}>
+                                    <a href="{{ url(route, route_parameters|merge({'page': pager.previouspage})) }}" title="{{ 'link_next_page'|trans({}, 'SonataNewsBundle') }}">
+                                        {{ 'link_next_page'|trans({}, 'SonataNewsBundle') }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- search -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news_search.html.twig') }}
+                        <!-- tags -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}
+                        <!-- popuar posts -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
+
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% endspaceless %}
+
+
+

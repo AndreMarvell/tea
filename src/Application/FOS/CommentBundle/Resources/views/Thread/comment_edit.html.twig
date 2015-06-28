@@ -1,0 +1,27 @@
+<div class="fos_comment_comment_form_holder wrap-comment-form">
+    <form class="fos_comment_comment_edit_form" class="form-horizontal" action="{{ url('fos_comment_put_thread_comments', {'id': comment.thread.id, 'commentId': comment.id}) }}" method="POST">
+
+        {% block fos_comment_form_fields %}
+            {{ form_errors(form) }}
+            {{ form_errors(form.body) }}
+            <div class="row form-group">
+                <div class="col-md-12">
+                    {{ form_widget(form.body, { 'attr': {'placeholder': 'news.comment.title'|trans({},'messages'), 'class':'form-control'} }) }}
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+        {% endblock %}
+
+        <div class="fos_comment_submit row form-group">
+            <div class="col-md-6">
+            <button type="button" class="btn btn-danger  btn-xs fos_comment_comment_edit_cancel">{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_cancel{% endtrans %}</button>
+            &nbsp;
+            {% block fos_comment_form_submit %}
+                <input type="submit" class="btn btn-primary  btn-xs" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_submit{% endtrans %}" />
+            {% endblock %}
+            </div>
+        </div>
+        <input type="hidden" name="_method" value="PUT">
+
+    </form>
+</div>

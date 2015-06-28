@@ -49,3 +49,9 @@ media:
 news:
     resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
     prefix: /news
+    
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html }

@@ -1,0 +1,88 @@
+
+{% block fos_comment_comment %}
+<div id="fos_comment_{{ comment.id }}" class="fos_comment_comment_show fos_comment_comment_depth_{{ depth }}" {% if parent is defined and parent is not null %}data-parent="{{ parent.id }}"{% endif %}>
+
+    <div class="fos_comment_comment_metas">
+        <div class="col-md-1">
+            <div class="avatar">
+                {%if comment.author is not null and comment.author.avatar is not null%}
+                    {% thumbnail comment.author.avatar, 'square' with{'alt':comment.authorName , 'title':comment.authorName } %}
+                {%else%}
+                    {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                    <img src="{{ asset_url }}">
+                    {% endimage %}
+                {%endif%}
+            </div>
+        </div>
+        <div class="col-md-11" style="padding-right:0">
+            <div class="comment-info clearfix">
+                {% block fos_comment_comment_metas %}
+                    {% block fos_comment_comment_metas_authorline %}
+                        <h5 class="pull-left">
+                            <span class="fos_comment_comment_authorname">
+                                {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
+                                    {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
+                                {% else %}
+                                    {{ comment.authorName }}
+                                {% endif %}
+                            </span>
+                        </h5>
+                    {% endblock fos_comment_comment_metas_authorline %}
+                    <ul class="list-inline pull-right">
+                        <li>
+                            <i class="fa fa-calendar"></i>&nbsp;{{ comment.createdAt | format_date }}&nbsp;
+                            <i class="fa fa-clock-o"></i>&nbsp;{{ comment.createdAt | date('H:i') }}
+                        </li>
+                        {% block fos_comment_comment_metas_edit %}
+                            {% if fos_comment_can_edit_comment(comment) %}
+                            <li>
+                                <span data-container="#fos_comment_comment_body_{{ comment.id }}" data-url="{{ url("fos_comment_edit_thread_comment", {"id": comment.thread.id, "commentId": comment.id}) }}" class="btn btn-primary btn-xs fos_comment_comment_edit_show_form">
+                                    <i class="fa fa-pencil"></i>
+                                </span>
+                            <li>
+                            {% endif %}
+                        {% endblock fos_comment_comment_metas_edit %}
+                        </li>
+                        {% block fos_comment_comment_metas_delete %}
+                            {% if fos_comment_can_delete_comment(comment) %}
+                                {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
+                                    {# undelete #}
+                                    <li>
+                                        <span data-url="{{ url("fos_comment_remove_thread_comment", {"id": comment.thread.id, "commentId": comment.id, "value": constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_VISIBLE') }) }}" class="btn btn-danger  btn-xs fos_comment_comment_remove">
+                                            <i class="fa fa-recycle"></i>
+                                        </span>
+                                    </li>
+                                {% else %}
+                                    {# delete #}
+                                    <li>
+                                        <span data-url="{{ url("fos_comment_remove_thread_comment", {"id": comment.thread.id, "commentId": comment.id, "value":  constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')}) }}" class="btn btn-danger  btn-xs fos_comment_comment_remove">
+                                            <i class="fa fa-trash"></i>
+                                        </span>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endblock fos_comment_comment_metas_delete %}
+                        <li>
+                    </ul>
+                {% endblock fos_comment_comment_metas %}
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div id="fos_comment_comment_body_{{ comment.id }}" class="col-md-offset-1 fos_comment_comment_body clearfix">
+        {% block fos_comment_comment_body %}
+         <p>{% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
+                {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
+            {% else %}
+                {% if comment is fos_comment_raw %}
+                    {{ comment.rawBody | raw }}
+                {% else %}
+                    {{ comment.body | nl2br }}
+                {% endif %}
+            {% endif %}</p>
+        {% endblock fos_comment_comment_body %}
+    </div>
+</div>
+{% endblock fos_comment_comment %}

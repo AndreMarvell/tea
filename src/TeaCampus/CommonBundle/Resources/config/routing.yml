@@ -1,3 +1,23 @@
-tea_campus_common_homepage:
+tea_homepage:
     path:     /
     defaults: { _controller: TeaCampusCommonBundle:Default:index }
+    
+tea_about:
+    path:     /about
+    defaults: { _controller: TeaCampusCommonBundle:Default:about }
+    
+tea_videos:
+    path:     /videos
+    defaults: { _controller: TeaCampusCommonBundle:Default:videos }
+    
+tea_projects:
+    path:     /projects
+    defaults: { _controller: TeaCampusCommonBundle:Default:projects }
+    
+tea_forum:
+    path:     /forum
+    defaults: { _controller: TeaCampusCommonBundle:Default:forum }
+    
+tea_contacts:
+    path:     /contacts
+    defaults: { _controller: TeaCampusCommonBundle:Default:contact }

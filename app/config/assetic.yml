@@ -1,0 +1,12 @@
+
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    read_from:      %kernel.root_dir%/../web
+    write_to:       %kernel.root_dir%/../web
+    bundles:        [TeaCampusCommonBundle, ApplicationSonataNewsBundle, FOSCommentBundle, SonataNewsBundle, ApplicationFOSCommentBundle] # disable bundles parsing
+
+    filters:
+        cssrewrite: ~
+        yui_js:  { jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar" }
+        yui_css: { jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar" }

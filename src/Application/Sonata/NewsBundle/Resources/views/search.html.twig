@@ -1,0 +1,60 @@
+
+{% extends "::base.html.twig" %}
+
+{% spaceless %}
+{% set newsletter = true %} 
+{% block title %}
+    {{ 'news.search.title'|trans }} | {{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+    <section class="wrap-blog-content blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        <div class="form-group search has-feedback wow fadeInUp animated" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; -webkit-animation-duration: 2s; animation-name: fadeInUp; -webkit-animation-name: fadeInUp;">
+                            <form method="POST" action="{{path('sonata_news_search')}}">
+                                <input name="search" value="{{search}}" class="form-control " placeholder="{{'aside.news.search' | trans({},'messages')}}">
+                                <i class="fa fa-search fa-lg form-control-feedback"></i>
+                            </form>
+                        </div>
+                        <header class="section-header no-home">
+                            <h2>{{ 'news.search.title'|trans({},'messages') }}</h2>
+                            <p class="subhead">{{ pagination|length }} {{ 'news.search.subhead'|trans({},'messages') }}</p>
+                        </header>
+                        
+                        {% for post in pagination %}
+                        <!-- Post Item -->
+                        {{ include( 'ApplicationSonataNewsBundle::item.html.twig', {'post':post}) }}
+                            {%if loop.index is even%}
+                                <div class="clear"></div>
+                            {%endif%}
+                        {%else%}
+                            <div>{{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}</div>
+                        {%endfor%}
+
+
+                        <div class="text-center col-md-12">
+                            <ul class="pagination">
+                                {{ knp_pagination_render(pagination) }}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        
+                        <!-- tags -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}
+                        <!-- popuar posts -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
+
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% endspaceless %}
+
+
+

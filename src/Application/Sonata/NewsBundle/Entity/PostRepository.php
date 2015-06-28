@@ -25,5 +25,35 @@ use Sonata\NewsBundle\Entity\BasePostRepository;
  */
 class PostRepository extends BasePostRepository
 {
-
+    
+        
+    public function findLastNews($limit=5) {
+ 
+        $query = $this->createQueryBuilder('p');
+        $query->where('p.enabled = true ');
+        $query->orderBy('p.createdAt','DESC');
+        $query->setMaxResults($limit);
+        
+        return $query->getQuery()->getResult();
+    }
+    
+    public function findMostRead() {
+ 
+        $query = $this->createQueryBuilder('p');
+        $query->where('p.enabled = true ');
+        $query->orderBy('p.commentsCount','DESC');
+        $query->setMaxResults(5);
+        
+        return $query->getQuery()->getResult();
+    }
+    
+    public function search($search) {
+ 
+        $query = $this->createQueryBuilder('p');
+        $query->where('p.enabled = true ');
+        $query->andWhere($query->expr()->like('p.title',':search'));
+        $query->setParameter('search', '%'.$search.'%');
+        
+        return $query->getQuery()->getResult();
+    }
 }

@@ -1,0 +1,60 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% set newsletter = true %}    
+{% block main_content %}
+    
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="home-header dark">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-sm-6 col-xs-10">
+                        <h2 class="wow fadeInUp"  data-wow-delay="1s" data-wow-duration="1.5s">Sed all new viverra enim in velit lorem</h2>
+                        <p class="large wow fadeInUp" data-wow-delay="1.8s" data-wow-duration="1.5s">Sed condimentum ante ac quam varius pretium. Nunc ornare laoreet augue et elementum. Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et.</p>
+                        <!--				<a class="btn btn-primary btn-short">Get srarted now</a>
+                                                        <a class="btn btn-warning btn-short">Discover More</a>				-->
+                        <div class="row wow fadeInUp"  data-wow-delay="2.6s" data-wow-duration="1.5s">
+                            <div class="col-md-5">
+                                <a class="btn btn-primary btn-short">Get srarted now</a></div>
+                            <div class="col-md-5">
+                                <a class="btn btn-warning btn-short">Discover More</a></div>  
+                        </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+
+        <!-- Home - Blog -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="blog" id="blog">
+            <a class="striped-icon divider scroll" href="#blog">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <header class="section-header">
+                            <p class="subhead">{{ 'news.home.title'|trans({},'messages') }}</p>
+                            <h2>{{ 'news.home.last'|trans({},'messages') }}</h2>
+                        </header>	
+                    </div>
+                </div><!--row-->
+                <div class="row">
+                    {% for post in lastNews %}
+                        <!-- Post Item -->
+                        <div class="col-md-4">
+                            {{ include( 'ApplicationSonataNewsBundle::home_item.html.twig', {'post':post}) }}
+                        </div>
+                    {%endfor%}
+
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+
+{% endblock %}
+
+{% block scripts %}
+                
+{% endblock %}
+
+{% endspaceless %}

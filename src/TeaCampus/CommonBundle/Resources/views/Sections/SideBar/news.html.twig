@@ -1,0 +1,19 @@
+<div class="popular-posts">
+    <h5><i class="fa {{icon}}"></i>{{title}}</h5>
+    <ul class="clearfix">
+        {% for post in articles %}
+        <li>
+            <div class="avatar pull-left">
+                {% thumbnail post.image, 'square' with{'width':'50px', 'height':'50px', 'alt':post.title } %}
+            </div>
+            <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}" class="title">{{post.title}}</a>
+            <ul class="list-inline clearfix">
+                <li><i class="fa fa-user"></i>{%if post.author is null%}TEA{%else%}{{post.author.username}}{%endif%}</li>
+                <li><i class="fa fa-calendar"></i>{{post.publicationDateStart|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
+            </ul>
+        </li>
+        {%else%}
+            <li>{{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}</li>
+        {%endfor%}
+    </ul>
+</div>
