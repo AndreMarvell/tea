@@ -190,9 +190,9 @@ $(document).ready(function() {
     /* <!-- =============================================== -->  */
     $(window).scroll(function() {
         if ($(this).scrollTop() > 15) {
-            $('nav.tea_homepage').addClass("navbar-alt")
+            $('nav.nav_animated').addClass("navbar-alt")
         } else {
-            $('nav.tea_homepage').removeClass("navbar-alt")
+            $('nav.nav_animated').removeClass("navbar-alt")
         }
     });
     if ($(window).width() < 769) {

@@ -622,6 +622,10 @@ label {
 .nav-tabs-two.nav-tab-inverse  >  li.active  >  a:focus {
     color: white;
 }
+
+.profil-tabs .nav-tabs-two.nav-tab-inverse  >  li.active  >  a{
+    background-color: rgb(39, 174, 96);
+}
 .nav-tabs-vertical {
     display: inline-block;
 }
@@ -3093,19 +3097,31 @@ section.team .team-description p {
 }
 
 .about-me-header {
-    min-height: 700px;
-    background: url(../images/placehold/1920x700.gif) top center no-repeat;
+    min-height: 450px;
+    background: url(../images/blurred.jpg) top center no-repeat;
     background-size: cover;
-    text-align: left;
+    text-align: right;
+    padding-top: 170px;
 }
 .about-me-header h1 {
-    padding-top: 300px;
     color: #ffffff;
     font-size: 60px;
     font-weight: 300;
     margin-bottom: 25px;
     text-transform: capitalize;
     font-family: "Raleway",sans-serif;
+}
+.about-me-header .avatar {
+    margin-bottom: 25px;
+    text-align: left;
+    border-left: 1px solid whitesmoke;
+    padding-left: 20px;
+}
+.about-me-header .avatar img{
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    border:1px solid white;
 }
 .about-me-header .path {
     color: #ffffff;
@@ -3114,6 +3130,7 @@ section.team .team-description p {
     text-transform: uppercase;
     font-weight: bold;
     font-family: "Raleway",sans-serif;
+    max-width: 300px;
 }
 
 .section-info {
@@ -3654,14 +3671,19 @@ body {
     color: #27ae60;
 }
 
+ .profil-tabs {
+    text-align: center;
+    min-height: 750px;
+}
+
 .contact-footer {
     padding: 180px 0 0;
     text-align: center;
 }
-.contact-footer .container-tabs {
+.contact-footer .container-tabs, .profil-tabs .container-tabs {
     padding-bottom: 80px;
 }
-.contact-footer .nav {
+.contact-footer .nav, .profil-tabs .nav {
     display: inline-block;
 }
 .contact-footer .nav-tabs-two li:not(.active) a {

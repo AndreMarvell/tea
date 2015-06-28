@@ -1,0 +1,32 @@
+profile:
+    title: Mon profil
+    member_since: Membre depuis le 
+    
+edit:
+    title: Modifier votre profil
+    
+tabs: 
+    projects:
+        title: Mes Projets
+    messages:
+        title: Mes Messages
+    videos:
+        title: Mes Vidéos
+    infos:
+        title: Mes Infos
+        
+label:
+    username: Nom d'utilisateur
+    email: Adresse e-mail
+    name: Nom et Prénom
+    adress: Adresse
+    country: Pays
+    website: Site Internet
+    phone: N° Telephone
+    sex: Sexe
+    statut: Statut
+    last_connexion: Dernière Visite
+    member_since: Membre depuis
+    role: Rôle
+    
+    

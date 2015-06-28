@@ -49,38 +49,18 @@ class Video
     protected $video;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\ClassificationBundle\Entity\Tag", cascade={"persist"})
+     */
+    private $tags;
+    
+    /**
     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
     * @ORM\JoinColumn(nullable=true)
     */
     private $author;
     
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $like;
-    
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $view;
-    
     function __construct() {
         $this->date = new \DateTime();
-    }
-
-    
-    /**
-     * Creer les thread
-     *
-     * @return void 
-     */
-    public function createThread(){
-        $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("video".$this->id);
-        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("video".$this->id);
     }
     
     
@@ -266,5 +246,39 @@ class Video
     public function getView()
     {
         return $this->view;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Application\Sonata\ClassificationBundle\Entity\Tag $tag
+     *
+     * @return Video
+     */
+    public function addTag(\Application\Sonata\ClassificationBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Application\Sonata\ClassificationBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Application\Sonata\ClassificationBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

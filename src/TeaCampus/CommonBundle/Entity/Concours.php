@@ -65,22 +65,6 @@ class Concours
     * @ORM\JoinColumn(nullable=true)
     */
     private $participants;
-    
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $like;
-    
-    /**
-     * Creer les thread
-     *
-     * @return void 
-     */
-    public function createThread(){
-        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("concours".$this->id);
-    }
 
 
     /**

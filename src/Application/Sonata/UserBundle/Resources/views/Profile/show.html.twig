@@ -1,0 +1,180 @@
+{% extends "::base.html.twig" %}
+{% trans_default_domain "ApplicationSonataUserBundle" %}
+{% spaceless %}
+{% set wearesocial = true %} 
+{% block title %}
+    {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+        <section class="about-me-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                        <h1 class="title">
+                            {%if app.user.firstname is not null and app.user.lastname is not null%}
+                                {{app.user.firstname ~ ' ' ~ app.user.lastname}}
+                            {%else%}
+                                {{app.user.username}}
+                            {%endif%}
+                        </h1>
+                        <div class="path pull-right">
+                            {%if app.user.biography is not null%}
+                                {{app.user.biography}}
+                            {%else%}
+                                {{ 'profile.member_since'| trans({},'messages') }}&nbsp;
+                                {{app.user.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                        <div class="avatar">
+                            {% if app.user.avatar is not null %}
+                                {% thumbnail app.user.avatar, 'square' with{} %}
+                            {% else %}
+                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                <img src="{{ asset_url }}">
+                                {% endimage %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section> 
+        <!-- Profil - Tabs -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section  class="profil-tabs wrap-contacts">
+            <div class="container container-tabs">
+                <div class="anchor-icon"><i class="fa fa-user"></i></div>
+                <!-- Nav tabs -->
+                <ul id="user-profil-tabs" class="nav  nav-tabs-alt nav-tabs-two nav-tab-inverse" role="tablist">
+                    <li role="presentation" class="active"><a href="#infos" aria-controls="infos" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;{{ 'tabs.infos.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab"><i class="fa fa-play-circle"></i>&nbsp;&nbsp;{{ 'tabs.videos.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation"><a href="#projets" aria-controls="projets" role="tab" data-toggle="tab"><i class="fa fa-file-o"></i>&nbsp;&nbsp;{{ 'tabs.projects.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;{{ 'tabs.messages.title'| trans({},'messages') }}</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <!--  Info -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane active" id="infos">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="footer-header">	
+                                    <h2>{{ 'tabs.infos.title'| trans({},'messages') }}</h2>
+                                </div>
+                            </div>				
+                        </div><!--row-->
+                        <div class="row tabpanel-content">
+                            <div class="row col-md-10 col-md-offset-1">
+                                <div class="col-md-6 panel-body">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <ul class="list-unstyled list-info">
+                                                <li><i class="fa fa-user"></i><span class="infos-label">{{ 'label.username'|trans({},'messages') }}</span><span class="infos-value">{{app.user.username}}</span></li>
+                                                <li><i class="fa fa-user-plus"></i><span class="infos-label">{{ 'label.name'|trans({},'messages') }}</span><span class="infos-value">{{app.user.firstname ~ ' ' ~ app.user.lastname}}</span></li>
+                                                <li><i class="fa fa-envelope-o"></i><span class="infos-label">{{ 'label.email'|trans({},'messages') }}</span><span class="infos-value">{{app.user.email}}</span></li>
+                                                <li><i class="fa fa-phone"></i><span class="infos-label">{{ 'label.phone'|trans({},'messages') }}</span><span class="infos-value">{{app.user.phone}}</span></li>
+                                                <li><i class="fa fa-flag"></i><span class="infos-label">{{ 'label.country'|trans({},'messages') }}</span><span class="infos-value">{{app.user.locale}}</span></li>
+                                                <li>
+                                                    <i class="fa fa-venus-mars"></i>
+                                                    <span class="infos-label">{{ 'label.sex'|trans({},'messages') }}</span>
+                                                    <span class="infos-value">
+                                                        {% if app.user.gender is not null and app.user.gender == 'm'%}
+                                                            Homme
+                                                        {%elseif app.user.gender is not null and app.user.gender == 'f'%}
+                                                            Femme
+                                                        {%endif%}
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 panel-body left-border">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <ul class="list-unstyled list-info">
+                                                <li><i class="fa fa-user-secret"></i><span class="infos-label">{{ 'label.role'|trans({},'messages') }}</span><span class="infos-value"></span></li>
+                                                <li><i class="fa fa-child"></i><span class="infos-label">{{ 'label.member_since'|trans({},'messages') }}</span><span class="infos-value">{{app.user.createdAt|format_date('MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</span></li>
+                                                <li><i class="fa fa-history"></i><span class="infos-label">{{ 'label.last_connexion'|trans({},'messages') }}</span><span class="infos-value">{{app.user.lastLogin|format_date('dd MMMM Y à H', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} h</span></li>
+                                                <li><i class="fa fa-heartbeat"></i><span class="infos-label">{{ 'label.statut'|trans({},'messages') }}</span><span class="infos-value label {%if app.user.locked%}label-danger{%else%}label-primary{%endif%}">&nbsp;{%if app.user.locked%}Bloqué{%else%}Actif{%endif%}&nbsp;</span></li>
+                                                <li><i class="fa fa-globe"></i><span class="infos-label">{{ 'label.website'|trans({},'messages') }}</span><span class="infos-value">{{app.user.website}}</span></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>	
+                                <div class="col-md-12 align-center">
+                                    <button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;{{ 'edit.title'|trans({},'messages') }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--tabpanel-->
+
+                    <!-- Mes videos -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane" id="videos">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="footer-header">	
+                                    <h2>{{ 'tabs.videos.title'| trans({},'messages') }}</h2>
+                                </div>	
+                            </div>				
+                        </div><!--row-->
+                        <div class="row tabpanel-content">
+                            
+                        </div>
+                    </div><!--tabpanel-->
+                    
+                    <!-- Mes projets -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane" id="projets">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="footer-header">	
+                                    <h2>{{ 'tabs.projects.title'| trans({},'messages') }}</h2>
+                                </div>	
+                            </div>				
+                        </div><!--row-->
+                        <div class="row tabpanel-content">
+                            
+                        </div>
+                    </div><!--tabpanel-->
+                    
+                    <!-- Messages -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="footer-header">	
+                                    <h2>{{ 'tabs.messages.title'| trans({},'messages') }}</h2>
+                                </div>	
+                            </div>				
+                        </div><!--row-->
+                        <div class="row tabpanel-content">
+                            
+                        </div>
+                    </div><!--tabpanel-->
+
+                </div><!--tab-content-->
+
+            </div><!--container-->
+
+
+
+        </section>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            
+        });
+            
+    </script>
+{% endblock %}
+{% endspaceless %}

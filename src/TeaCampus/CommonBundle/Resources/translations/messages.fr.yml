@@ -34,6 +34,9 @@ register:
     already_member: Vous avez déjà un compte ? Identifiez vous
     
 footer:
+    social:
+        title: Suivez nous sur les réseaux sociaux
+        message: Chez TEA, nous aimons communiquer, c’est pourquoi nous sommes présents sur les réseaux sociaux, pour vous aider et vous informer de nos dernières nouveautés.
     newsletter:
         title: Inscrivez vous à la Newsletter
         message: Restez informé ! Dès maintenant et en un clic, inscrivez-vous gratuitement à notre newsletter et recevez en exclusivité des informations sur les derniers projets ajoutés, les dernières vidéos et actualités en avant-première !

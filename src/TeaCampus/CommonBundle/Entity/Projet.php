@@ -73,32 +73,11 @@ class Projet
     */
     private $shareWith;
     
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $like;
-    
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $view;
-    
     /**
-     * Creer les thread
-     *
-     * @return void 
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\ClassificationBundle\Entity\Tag", cascade={"persist"})
      */
-    public function createThread(){
-        $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("projet".$this->id);
-        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("projet".$this->id);
-        $this->date = new \DateTime();
-    }
-
-
+    private $tags;
+    
     /**
      * Get id
      *
@@ -187,6 +166,8 @@ class Projet
     {
         $this->files = new \Doctrine\Common\Collections\ArrayCollection();
         $this->shareWith = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = new \DateTime();
+        
     }
 
     /**
@@ -379,5 +360,39 @@ class Projet
     public function getView()
     {
         return $this->view;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Application\Sonata\ClassificationBundle\Entity\Tag $tag
+     *
+     * @return Projet
+     */
+    public function addTag(\Application\Sonata\ClassificationBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Application\Sonata\ClassificationBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Application\Sonata\ClassificationBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

@@ -4,6 +4,10 @@
     Author     : Marvell
 */
 
+.align-center{
+    text-align: center;
+}
+
 .media-list.notifications{
     background-color: white;
     font-size: 14px;
@@ -139,3 +143,44 @@ footer{
 .fos_comment_comment_metas div.comment-info.clearfix ul.list-inline.pull-right span{
     cursor: pointer;
 }
+
+
+/*******  Profil   *******/
+
+.tab-content .tabpanel-content{
+    text-align: left;
+    font-size: 15px;
+}
+
+.tab-content .tabpanel-content .list-info li span.infos-label,
+.tab-content .tabpanel-content .list-info li span.infos-value,
+.tab-content .tabpanel-content .list-info li i.fa
+{
+  display: inline-block;
+}
+
+.tab-content .tabpanel-content .list-info li:before, .tab-content .tabpanel-content .list-info li:after {
+  content: " ";
+  display: table;
+}
+
+.tab-content .tabpanel-content .list-info li:after {
+  clear: both;
+}
+
+.tab-content .tabpanel-content .list-info li span.infos-label {
+  width: 140px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.tab-content .tabpanel-content .list-info li i.fa {
+    width: 50px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-right: 1px solid #ddd;
+  color: black;
+}
+
+

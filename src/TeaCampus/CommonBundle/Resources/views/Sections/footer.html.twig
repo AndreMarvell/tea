@@ -1,4 +1,8 @@
-{%if newsletter is defined and newsletter %}{{ include( 'TeaCampusCommonBundle:Sections:newsletter.html.twig') }}{%endif%}
+{%if newsletter is defined and newsletter %}
+    {{ include( 'TeaCampusCommonBundle:Sections:Footer/newsletter.html.twig') }}
+{%elseif wearesocial is defined and wearesocial%}
+    {{ include( 'TeaCampusCommonBundle:Sections:Footer/wearesocial.html.twig') }}
+{%endif%}
 <footer class="footer">
     <!-- Contacts One -->
     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
