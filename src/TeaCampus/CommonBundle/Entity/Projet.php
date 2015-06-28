@@ -78,6 +78,30 @@ class Projet
      */
     private $tags;
     
+    /** 
+     *
+     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $like;
+    
+    /** 
+     *
+     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $view;
+    
+    /**
+     * Creer les thread
+     *
+     * @return void 
+     */
+    public function createThread(){
+        $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("projet".$this->id);
+        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("projet".$this->id);
+    }
+    
     /**
      * Get id
      *

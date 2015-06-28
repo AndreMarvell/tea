@@ -59,12 +59,33 @@ class Video
     */
     private $author;
     
+    /** 
+     *
+     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $like;
+    
+    /** 
+     *
+     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $view;
+    
+    /**
+     * Creer les thread
+     *
+     * @return void 
+     */
+    public function createThread(){
+        $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("video".$this->id);
+        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("video".$this->id);
+    }
+    
     function __construct() {
         $this->date = new \DateTime();
     }
-    
-    
-
 
     /**
      * Get id
