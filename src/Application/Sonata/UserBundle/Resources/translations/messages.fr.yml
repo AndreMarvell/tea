@@ -29,4 +29,8 @@ label:
     member_since: Membre depuis
     role: Rôle
     
+project:
+    add:
+        title: Ajouter un nouveau projet
+    
     

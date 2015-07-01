@@ -79,3 +79,48 @@ share:
         
 comment:
     need_connexion: Vous devez être connecté pour laisser un commentaire
+    
+project:
+    form:
+        title: Le titre de votre projet ?
+        description: En quoi consite ce projet ?
+        private: Voulez vous que le projet soit privé ?
+        media: Une illustration du projet ?
+        media_choice: Choisir une image
+        begin: Quand espérez-vous démarrez votre projet ?
+        created: Quand est né le projet ?
+        why: Pourquoi cette idée de projet pourrait marcher ?
+        country: Région / Pays cible ?
+        founder: Qui sont les fondateurs du projet
+        founder_placeholder: (Si ce n'est pas vous ou si vous n'êtes pas seul)
+        status: À quelle étape se trouve le projet 
+        status_placeholder: (Idée, Financement, Lancement imminent)
+        business_model: Quel est votre Business Model ?
+        business_placeholder: Comment comptez-vous gagner de l'argent avec ce projet ?
+        share: Avec qui voulez-vous partager le projet (Inserez les adresse mails ou laissez vide si le projet est public)
+        tags: Ajouter des tags à ce projet (séparé par une virgule)
+        language: Dans quelle langue est écrit ce projet ?
+        next: Question suivante
+        previous: Question précédente
+        or_press: ou appuyer sur 
+        or : ou
+        submit: Soumettre
+    add:
+        title: Ajouter un nouveau projet
+    other:
+        no_project_found: Aucun projet trouvé
+        not_enabled: Pas activé
+        enabled: Activé
+        private: Privé
+        public: Public
+        title: Projet
+    delete:
+        title: Supprimer le projet
+        sure: Êtes vous sure de vouloir supprimer ce projet?
+        yes: Oui
+        no: Non
+        error: Désolé, une erreur s'est produite lors de la suppression
+        
+        
+        
+        

@@ -50,8 +50,12 @@ class ConcoursAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('start')
-            ->add('end')
+            ->add('start', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
+            ->add('end', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
             ->add('organiser')
             ->add('image', 'sonata_type_model_list', array('required' => false), array(
                 'link_parameters' => array(

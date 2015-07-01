@@ -111,11 +111,14 @@
                         '@TeaCampusCommonBundle/Resources/public/js/jquery.scrollTo.min.js'
                         '@TeaCampusCommonBundle/Resources/public/js/jquery.ui.effect.min.js'
                         '@TeaCampusCommonBundle/Resources/public/js/contact.js'
-                        '@TeaCampusCommonBundle/Resources/public/js/modernizr.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/modernizr.custom.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/classie.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/stepsForm.js'
                         '@TeaCampusCommonBundle/Resources/public/js/jquery.waypoints.min.js'
                         '@TeaCampusCommonBundle/Resources/public/js/fancybox/jquery.fancybox.js'
                         '@TeaCampusCommonBundle/Resources/public/js/wow.min.js'
                         '@TeaCampusCommonBundle/Resources/public/js/tweecool.js'
+                        '@TeaCampusCommonBundle/Resources/public/js/dropzone.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
@@ -128,7 +131,6 @@
                 $('#last-tweet').tweecool({
                     username : 'TEAfrica2015'
                 });
-                
             });
         </script>
         {% block scripts %}

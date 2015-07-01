@@ -33,6 +33,26 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+.mfp-small-dialog{
+  background: white;
+  padding: 20px 30px;
+  text-align: left;
+  max-width: 400px;
+  margin: 40px auto;
+  position: relative;
+}
+.mfp-small-dialog h1{
+  font-size: 25px;
+}
+
+.mfp-small-dialog p{
+    margin: 10px 0;
+}
+
+.mfp-small-dialog a.btn{
+    margin-right: 5px; 
+}
+
 .mfp-container:before {
   content: '';
   display: inline-block;
@@ -106,7 +126,7 @@
 button.mfp-close, button.mfp-arrow {
   overflow: visible;
   cursor: pointer;
-  background: transparent;
+  background: rgb(40, 173, 98);
   border: 0;
   -webkit-appearance: none;
   display: block;

@@ -34,6 +34,13 @@ class Video
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=255, nullable=false)
+     */
+    private $language;
 
     /**
      * @var \DateTime
@@ -41,6 +48,13 @@ class Video
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    private $enabled = false;
     
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
@@ -301,5 +315,53 @@ class Video
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Video
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return Video
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

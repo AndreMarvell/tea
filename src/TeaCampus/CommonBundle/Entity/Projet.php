@@ -31,9 +31,72 @@ class Projet
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=false)
      */
     private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="why_can_work", type="text", nullable=true)
+     */
+    private $whyCanWork;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="business_model", type="text", nullable=true)
+     */
+    private $businessModel;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="target_country", type="string", length=255, nullable=true)
+     */
+    private $targetCountry;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=255, nullable=false)
+     */
+    private $status;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="founder", type="string", length=255, nullable=true)
+     */
+    private $founder;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=255, nullable=false)
+     */
+    private $language;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="project_of_the_week", type="boolean")
+     */
+    private $projectOfTheWeek = false;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="project_of_the_month", type="boolean")
+     */
+    private $projectOfTheMonth = false;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="selection", type="boolean")
+     */
+    private $selectionOfTea = false;
     
     /**
      * @var \DateTime
@@ -41,6 +104,27 @@ class Projet
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="begin", type="datetime")
+     */
+    private $beginAt;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $createdAt;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    private $enabled = false;
 
     /**
      * @var boolean
@@ -91,6 +175,8 @@ class Projet
      * @ORM\JoinColumn(nullable=true)
      */
     private $view;
+    
+    
     
     /**
      * Creer les thread
@@ -418,5 +504,293 @@ class Projet
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set whyCanWork
+     *
+     * @param string $whyCanWork
+     *
+     * @return Projet
+     */
+    public function setWhyCanWork($whyCanWork)
+    {
+        $this->whyCanWork = $whyCanWork;
+
+        return $this;
+    }
+
+    /**
+     * Get whyCanWork
+     *
+     * @return string
+     */
+    public function getWhyCanWork()
+    {
+        return $this->whyCanWork;
+    }
+
+    /**
+     * Set businessModel
+     *
+     * @param string $businessModel
+     *
+     * @return Projet
+     */
+    public function setBusinessModel($businessModel)
+    {
+        $this->businessModel = $businessModel;
+
+        return $this;
+    }
+
+    /**
+     * Get businessModel
+     *
+     * @return string
+     */
+    public function getBusinessModel()
+    {
+        return $this->businessModel;
+    }
+
+    /**
+     * Set targetCountry
+     *
+     * @param string $targetCountry
+     *
+     * @return Projet
+     */
+    public function setTargetCountry($targetCountry)
+    {
+        $this->targetCountry = $targetCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get targetCountry
+     *
+     * @return string
+     */
+    public function getTargetCountry()
+    {
+        return $this->targetCountry;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Projet
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set founder
+     *
+     * @param string $founder
+     *
+     * @return Projet
+     */
+    public function setFounder($founder)
+    {
+        $this->founder = $founder;
+
+        return $this;
+    }
+
+    /**
+     * Get founder
+     *
+     * @return string
+     */
+    public function getFounder()
+    {
+        return $this->founder;
+    }
+
+    /**
+     * Set beginAt
+     *
+     * @param \DateTime $beginAt
+     *
+     * @return Projet
+     */
+    public function setBeginAt($beginAt)
+    {
+        $this->beginAt = $beginAt;
+
+        return $this;
+    }
+
+    /**
+     * Get beginAt
+     *
+     * @return \DateTime
+     */
+    public function getBeginAt()
+    {
+        return $this->beginAt;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Projet
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Projet
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return Projet
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set projectOfTheWeek
+     *
+     * @param boolean $projectOfTheWeek
+     *
+     * @return Projet
+     */
+    public function setProjectOfTheWeek($projectOfTheWeek)
+    {
+        $this->projectOfTheWeek = $projectOfTheWeek;
+
+        return $this;
+    }
+
+    /**
+     * Get projectOfTheWeek
+     *
+     * @return boolean
+     */
+    public function getProjectOfTheWeek()
+    {
+        return $this->projectOfTheWeek;
+    }
+
+    /**
+     * Set projectOfTheMonth
+     *
+     * @param boolean $projectOfTheMonth
+     *
+     * @return Projet
+     */
+    public function setProjectOfTheMonth($projectOfTheMonth)
+    {
+        $this->projectOfTheMonth = $projectOfTheMonth;
+
+        return $this;
+    }
+
+    /**
+     * Get projectOfTheMonth
+     *
+     * @return boolean
+     */
+    public function getProjectOfTheMonth()
+    {
+        return $this->projectOfTheMonth;
+    }
+
+    /**
+     * Set selectionOfTea
+     *
+     * @param boolean $selectionOfTea
+     *
+     * @return Projet
+     */
+    public function setSelectionOfTea($selectionOfTea)
+    {
+        $this->selectionOfTea = $selectionOfTea;
+
+        return $this;
+    }
+
+    /**
+     * Get selectionOfTea
+     *
+     * @return boolean
+     */
+    public function getSelectionOfTea()
+    {
+        return $this->selectionOfTea;
     }
 }

@@ -137,11 +137,20 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
                                     <h2>{{ 'tabs.projects.title'| trans({},'messages') }}</h2>
-                                </div>	
+                                </div>
+                                <div class="col-md-12 align-center">
+                                    <a class="btn btn-primary btn-xs ajax-popup-link" href="{{path('tea_projects_add')}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{ 'project.add.title'|trans({},'messages') }}</a>
+                                </div>
                             </div>				
                         </div><!--row-->
-                        <div class="row tabpanel-content">
-                            
+                        <div class="row tabpanel-content" id="project-list">
+                            <ul class="content-list center-block">
+                                {% for projet in projects %}
+                                    {{ include( 'TeaCampusCommonBundle:Projet:profile_list_item.html.twig', {'projet':projet}) }}
+                                {%else%}
+                                    <li>{{ 'project.other.no_project_found'|trans({}, 'messages') }}</li>
+                                {%endfor%}
+                            </ul>
                         </div>
                     </div><!--tabpanel-->
                     
@@ -171,6 +180,44 @@
 
 {% block scripts %}
     <script>
+        $('.ajax-popup-link').magnificPopup({
+            closeBtnInside:true,
+            midClick: true,
+            type: 'ajax'
+        });
+        
+        $('.ajax-delete').magnificPopup({
+            type: 'inline',
+            modal: true
+        });
+        $(document).on('click', 'a.delete-button', function (e) {
+            e.preventDefault();
+            var li = $(this).attr('data-li');
+            $.ajax({
+                url: $(this).attr('href'),
+                dataType: "json",
+                data : { id: $(this).attr('data-id')},
+                type: 'POST'
+            })
+            .done(function (data) {
+                $.magnificPopup.close();
+                if(data['success']){
+                    $("#"+li).fadeOut(700, function(){ $(this).remove();});
+                }else{
+                    alert("{{ 'projet.delete.error'| trans({},'messages') }}");
+                }
+                
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            });
+        });
+          
+        $(document).on('click', '.popup-modal-dismiss', function (e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+        });
+          
         $(document).ready(function() {
             
         });

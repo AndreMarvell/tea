@@ -1,0 +1,69 @@
+
+            <!-- Post Item -->
+            <li id="projet-{{projet.id}}">
+                <div class="project-thumbs">
+                    {%if projet.media is not null%}
+                        {% thumbnail projet.media, 'square' with{'alt':projet.title,'title':projet.title } %}
+                    {%else%}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                        <img src="{{ asset_url }}">
+                        {% endimage %}
+                        <span>{{ 'project.other.title'|trans({}, 'messages') }}</span>
+                    {%endif%}
+                </div>
+                <div class="project-content">
+                    <div class="project-infos clearfix">
+                        <div class="pull-left">
+                          <time class="label" datetime="{{projet.date|format_date('Y-M-d')}}">{{projet.date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</time>
+                        </div>
+                        <div class="pull-right">
+                          {%if projet.enabled %}
+                              <span class="label label-primary">{{ 'project.other.enabled'|trans({}, 'messages') }}</span>
+                          {% else %}
+                               <span class="label label-danger">{{ 'project.other.not_enabled'|trans({}, 'messages') }}</span>
+                          {% endif %}
+                          {%if projet.private %}
+                              &nbsp;<span class="label label-warning">{{ 'project.other.private'|trans({}, 'messages') }}</span>
+                          {% else %}
+                               &nbsp;<span class="label label-info">{{ 'project.other.public'|trans({}, 'messages') }}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <h2 class="project-title">
+                        <a href="{{ path('tea_projects_show', { 'id': projet.id } ) }}">
+                            {%if  projet.description|length < 80%}
+                                {{projet.title}}
+                            {%else%}
+                                {{ projet.title|striptags|slice(0, 80) ~ '...'}}
+                            {%endif%}
+                        </a>
+                    </h2>
+                    
+                    
+                    <p class="project-description">{{ projet.description|striptags|slice(0, 150) ~ '...'}}</p>
+                    
+                    <div class="project-metas">
+                        <div class="project-edit pull-right">
+                            <a class="btn btn-primary btn-xs" href="{{ path('tea_projects_show', { 'id': projet.id } ) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-primary btn-xs" href="{{ path('tea_projects_edit', { 'id': projet.id } ) }}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-{{projet.id}}"><i class="fa fa-trash"></i></a>
+                            <div id="delete-modal-{{projet.id}}" class="mfp-hide mfp-small-dialog">
+                                <h1>{{ 'project.delete.title'|trans({}, 'messages') }}</h1>
+                                <p>{{ 'project.delete.sure'|trans({}, 'messages') }}</p>
+                                <p>
+                                    <a class="btn btn-xs btn-primary popup-modal-dismiss" href="#">{{ 'project.delete.no'|trans({}, 'messages') }}</a>
+                                    <a class="btn btn-xs btn-danger delete-button" data-li="projet-{{projet.id}}" data-id="{{projet.id}}" href="{{ path('tea_projects_delete') }}">{{ 'project.delete.yes'|trans({}, 'messages') }}</a>&nbsp;
+                                </p>
+                                <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                            </div>
+                        </div>
+                        <div class="project-tags pull-left">
+                            {% for tag in projet.tags %}
+                                <a href="{{ path('tea_projects_tag', { 'tag': tag.slug } ) }}"><span class="label {%if loop.index is odd%}label-success{%else%}label-danger{%endif%}">{{ tag.name }}</span></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+              </li>
+              
+    

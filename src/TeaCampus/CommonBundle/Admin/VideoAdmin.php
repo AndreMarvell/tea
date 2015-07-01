@@ -49,7 +49,6 @@ class VideoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
             ->add('title')
             ->add('description')
             ->add('author')
@@ -59,7 +58,14 @@ class VideoAdmin extends Admin
                     'hide_context' => true
                 )
             ))
-            ->add('date')
+            ->add('date', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
+            ->add('tags', 'sonata_type_model_autocomplete', array(
+                'property' => 'name',
+                'multiple' => 'true'
+            ))
+                
         ;
     }
 

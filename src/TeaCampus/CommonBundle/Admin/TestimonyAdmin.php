@@ -49,7 +49,9 @@ class TestimonyAdmin extends Admin
         $formMapper
             ->add('testimony')
             ->add('author')
-            ->add('date')
+            ->add('date', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
         ;
     }
 

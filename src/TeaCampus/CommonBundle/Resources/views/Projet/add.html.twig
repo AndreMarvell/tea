@@ -1,0 +1,147 @@
+        <section  class="wrap-contacts container">
+            <div class="container">
+                <div class="anchor-icon"><i class="fa fa-plus"></i></div>
+                <div class="center-block">
+                    <form name="tea_projet" method="post" action="{{path('tea_projects_add')}}" class="simform" id="project-form" enctype="multipart/form-data">
+                        <div class="simform-inner">
+                            {{ form_errors(form) }}
+                            <ol class="questions">
+                                <li>
+                                    <span><label>{{ 'project.form.title'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.title) }}
+                                </li>
+                                <li>
+                                    <span><label>{{ 'project.form.description'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.description) }}
+                                </li>
+                                <li>
+                                    <span><label>{{ 'project.form.why'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.whyCanWork) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.country'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.targetCountry) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.business_model'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.businessModel,{'attr': {'placeholder': 'project.form.business_placeholder'|trans({},'messages')}}) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.status'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.status,{'attr': {'placeholder': 'project.form.status_placeholder'|trans({},'messages')}} ) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.founder'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.founder,{'attr': {'placeholder': 'project.form.founder_placeholder'|trans({},'messages')}} ) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.created'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.createdAt) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.begin'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.beginAt) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.private'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.private) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.language'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.language) }}
+                                </li>
+
+                                <li>
+                                    <span><label>{{ 'project.form.media'|trans({},'messages') }}</label></span>
+                                    <input id="uploadFile" class="center-block" placeholder="{{ 'project.form.media_choice'|trans({},'messages') }}" disabled="disabled" />
+                                    <div class="fileUpload btn btn-success btn-sm">
+                                        <span>{{ 'project.form.media_choice'|trans({},'messages') }}</span>
+                                        {{ form_widget(form.media.binaryContent,{'attr': {'class': 'upload'}} ) }}
+                                    </div>
+                                </li>
+
+                                {#<li>
+                                    <span><label>{{ 'project.form.share'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.shareWith) }}
+                                </li>#}
+
+                                <li>
+                                    <span><label>{{ 'project.form.tags'|trans({},'messages') }}</label></span>
+                                    {{ form_widget(form.tags) }}
+                                </li>
+                            </ol>
+                            <button class="submit" type="submit">{{ 'project.form.submit'|trans({},'messages') }}</button>
+                            <div class="controls">
+                                    <div class="progress"></div>
+                                    <span class="number">
+                                            <span class="number-current"></span>
+                                            <span class="number-total"></span>
+                                    </span>
+                                    <span class="error-message"></span>
+                                    <button class="btn btn-primary btn-sm next">{{ 'project.form.next'|trans({},'messages') }}&nbsp;<i class="fa fa-chevron-right"></i> </button>
+                                    <button class="btn btn-primary btn-sm previous"><i class="fa fa-chevron-left">&nbsp;</i> {{ 'project.form.previous'|trans({},'messages') }}</button>
+                            </div>
+                        </div>
+                        <span class="final-message"></span>
+                    </form>{#{{ form_end(form) }}#}
+                </div>
+            </div>
+        </section>
+
+{% block scripts %}
+    <script>
+            var theForm = document.getElementById( 'project-form' );
+            var stpfrm  = new stepsForm( theForm, {
+                    onSubmit : function( form ) {
+                        
+                            // hide form
+                            classie.addClass( form.querySelector( '.simform-inner' ), 'hide' );
+                            var messageEl = form.querySelector( '.final-message' );
+                            messageEl.innerHTML = 'Votre projet est en cours de traitement.<br><i class="fa fa-spin fa-spinner fa-2x"></i><br>';
+                            classie.addClass( messageEl, 'show' );
+                            
+                            $.ajax({
+                                type: 'POST',
+                                url: '{{path('tea_projects_add')}}',
+                                data: new FormData(form),
+                                enctype: 'multipart/form-data',
+                                processData: false,  // tell jQuery not to process the data
+                                contentType: false   // tell jQuery not to set contentType
+                            })
+                            .done(function (data) {
+                                $.magnificPopup.close();
+                                $('#project-list ul').prepend(data['content']).fadeIn(1000);
+                            })
+                            .fail(function (jqXHR, textStatus, errorThrown) {
+                                if (typeof jqXHR.responseJSON !== 'undefined') {
+                                    console.log(jqXHR.responseJSON.message);
+                                } else {
+                                    console.log(errorThrown);
+                                }
+                                
+                                classie.removeClass( messageEl, 'show' );
+                                messageEl.innerHTML = 'Désolé, une erreur s\'est produite lors de l\'ajout du projet.<br><i class="fa fa-spin fa-exclamation-triangle fa-2x" style="color:rgb(174,25,25)"></i><br> Veuillez recommencer ultérieurement';
+                                classie.addClass( messageEl, 'show' );
+
+                            });
+                            
+                            
+                    }
+            });
+        document.getElementById("tea_projet_media_binaryContent").onchange = function () {
+            document.getElementById("uploadFile").value = this.value;
+        };
+        $(document).ready(function() {
+            
+        });
+    </script>
+                
+{% endblock %}

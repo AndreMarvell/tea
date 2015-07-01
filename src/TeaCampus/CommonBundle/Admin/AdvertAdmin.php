@@ -57,8 +57,12 @@ class AdvertAdmin extends Admin
                         )
                     ))
             ->add('partner')
-            ->add('start')
-            ->add('end')
+            ->add('start', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
+            ->add('end', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
         ;
     }
 

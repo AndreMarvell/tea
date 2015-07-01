@@ -59,6 +59,9 @@ class EventAdmin extends Admin
             ->add('rules')
             ->add('adresse')
             ->add('longitude')
+            ->add('date', 'genemu_jquerydate', array(
+                'widget' => 'single_text'
+            ))
             ->add('latitude')
             ->add('image', 'sonata_type_model_list', array('required' => false), array(
                 'link_parameters' => array(

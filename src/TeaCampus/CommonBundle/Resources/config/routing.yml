@@ -1,19 +1,70 @@
+
+##############################
+###### Pour la HomePage#######
+##############################
+
 tea_homepage:
     path:     /
     defaults: { _controller: TeaCampusCommonBundle:Default:index }
-    
+
+##############################
+###### Pour A Propos   #######
+##############################
+
 tea_about:
     path:     /about
     defaults: { _controller: TeaCampusCommonBundle:Default:about }
     
+##############################
+###### Pour les videos #######
+##############################
+
 tea_videos:
     path:     /videos
     defaults: { _controller: TeaCampusCommonBundle:Default:videos }
-    
+
+##############################
+###### Pour les projets ######
+##############################
+
 tea_projects:
     path:     /projects
-    defaults: { _controller: TeaCampusCommonBundle:Default:projects }
+    defaults: { _controller: TeaCampusCommonBundle:Projet:index }
     
+tea_projects_list:
+    path:     /projects/all
+    defaults: { _controller: TeaCampusCommonBundle:Projet:list }
+    
+tea_projects_show:
+    path:     /projects/{id}
+    defaults: { _controller: TeaCampusCommonBundle:Projet:show }
+    requirements:
+        id:  \d+
+    
+tea_projects_add:
+    path:     /projects/add
+    defaults: { _controller: TeaCampusCommonBundle:Projet:add }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_projects_edit:
+    path:     /projects/edit/{id}
+    defaults: { _controller: TeaCampusCommonBundle:Projet:edit }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_projects_delete:
+    path:     /projects/delete/
+    defaults: { _controller: TeaCampusCommonBundle:Projet:delete }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_projects_tag:
+    path:     /projects/tag/{tag}
+    defaults: { _controller: TeaCampusCommonBundle:Projet:tag }
+    
+    
+##############################
+######      Autres     #######
+##############################
+
 tea_forum:
     path:     /forum
     defaults: { _controller: TeaCampusCommonBundle:Default:forum }

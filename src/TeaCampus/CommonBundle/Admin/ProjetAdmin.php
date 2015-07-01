@@ -18,8 +18,10 @@ class ProjetAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title')
-            ->add('description')
+            ->add('targetCountry')
+            ->add('enabled')
             ->add('private')
+            ->add('date')
         ;
     }
 
@@ -29,17 +31,12 @@ class ProjetAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('title')
-            ->add('description')
+            ->addIdentifier('id')
+            ->addIdentifier('title')
+            ->add('enabled')
             ->add('private')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+            ->add('author')
+            ->add('date')
         ;
     }
 
@@ -49,36 +46,52 @@ class ProjetAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('title')
-            ->add('description')
-            ->add('private')
-            ->add('media', 'sonata_type_model_list', array('required' => false), array(
-                'link_parameters' => array(
-                    'context' => 'projet',
-                    'hide_context' => true
-                )
-            ))
-            ->add('author')
-            ->add('files')
-            ->add('shareWith', 'sonata_type_model_autocomplete', array(
-                'property' => 'email',
-                'multiple' => 'true'
-            ))
-            ->add('date')
+            ->tab('Informations Générales')
+                ->with('Information', array(
+                        'class' => 'col-md-8'
+                    ))
+                        ->add('title')
+                        ->add('author')
+                        ->add('founder')
+                        ->add('description')
+                        ->add('whyCanWork')
+                        ->add('businessModel')
+                        ->add('targetCountry')
+                        ->add('media', 'sonata_type_model_list', array('required' => false), array(
+                            'link_parameters' => array(
+                                'context' => 'projet',
+                                'hide_context' => true
+                            )
+                        ))
+                        ->add('shareWith', 'sonata_type_model_autocomplete', array(
+                            'property' => 'email',
+                            'multiple' => 'true'
+                        ))
+                ->end()
+                ->with('Stats', array(
+                        'class' => 'col-md-4'
+                    ))
+                        ->add('status')
+                        ->add('enabled')
+                        ->add('private')
+                        ->add('beginAt', 'genemu_jquerydate', array(
+                            'widget' => 'single_text'
+                        ))
+                        ->add('createdAt', 'genemu_jquerydate', array(
+                            'widget' => 'single_text'
+                        ))
+                        ->add('date', 'date', array(
+                            'widget' => 'single_text'
+                        ))
+                        ->add('tags', 'sonata_type_model_autocomplete', array(
+                            'property' => 'name',
+                            'multiple' => 'true'
+                        ))
+                
+                ->end()
+            ->end()
         ;
     }
 
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
-            ->add('title')
-            ->add('description')
-            ->add('private')
-        ;
-    }
+    
 }
