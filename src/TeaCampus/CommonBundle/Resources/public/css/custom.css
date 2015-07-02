@@ -88,7 +88,7 @@ footer{
 
 .section-header.no-home .subhead{
     margin: 0 auto 30px;
-    
+
 }
 
 .tags li a span.label{
@@ -105,39 +105,39 @@ footer{
 }
 
 .fos_comment_comment_show{
-      margin: 20px auto;
+    margin: 20px auto;
 }
 
 .fos_comment_comment_metas .avatar img {
-  height: 50px;
-  width: 50px;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .fos_comment_comment_metas .comment-info h5 {
-  padding-top: 16px;
-  font-weight: bold;
-  color: #2a2d32;
-  margin: 0;
-  font-size: 14px;
+    padding-top: 16px;
+    font-weight: bold;
+    color: #2a2d32;
+    margin: 0;
+    font-size: 14px;
 }
 
 .fos_comment_comment_metas .comment-info {
-  border-bottom: 1px dotted #d0d2d7;
-  min-height: 50px;
-  margin-bottom: 10px;
-  
+    border-bottom: 1px dotted #d0d2d7;
+    min-height: 50px;
+    margin-bottom: 10px;
+
 }
 
 .fos_comment_comment_body p {
-  margin: 0 0 0.74em;
-  padding: 8px;
-  background-color: rgb(247, 247, 247);;
-  border-radius: 2px;
-  font-size: 12px;
-  color: rgb(90, 90, 90);
+    margin: 0 0 0.74em;
+    padding: 8px;
+    background-color: rgb(247, 247, 247);;
+    border-radius: 2px;
+    font-size: 12px;
+    color: rgb(90, 90, 90);
 }
 
 .fos_comment_comment_metas div.comment-info.clearfix ul.list-inline.pull-right span{
@@ -156,31 +156,31 @@ footer{
 .tab-content .tabpanel-content .list-info li span.infos-value,
 .tab-content .tabpanel-content .list-info li i.fa
 {
-  display: inline-block;
+    display: inline-block;
 }
 
 .tab-content .tabpanel-content .list-info li:before, .tab-content .tabpanel-content .list-info li:after {
-  content: " ";
-  display: table;
+    content: " ";
+    display: table;
 }
 
 .tab-content .tabpanel-content .list-info li:after {
-  clear: both;
+    clear: both;
 }
 
 .tab-content .tabpanel-content .list-info li span.infos-label {
-  width: 140px;
-  font-weight: 700;
-  margin-left: 10px;
+    width: 140px;
+    font-weight: 700;
+    margin-left: 10px;
 }
 
 .tab-content .tabpanel-content .list-info li i.fa {
     width: 50px;
-  margin-right: 10px;
-  text-align: center;
-  font-size: 16px;
-  border-right: 1px solid #ddd;
-  color: black;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-right: 1px solid #ddd;
+    color: black;
 }
 
 /***************************/
@@ -194,79 +194,117 @@ ul.content-list{
 }
 
 ul.content-list li {
-  list-style: none;
-  float: left;
-  width: 100%;
-  margin: 0 0 30px;
-  position: relative;
-  padding-left: 160px;
+    list-style: none;
+    /* float: left; */
+    width: 100%;
+    margin: 0 0 30px;
+    position: relative;
+    padding: 20px;
+    line-height: 17px;
+    background: #fff;
 }
 
 ul.content-list .project-thumbs{
-  float: left;
-  width: 150px;
-  height: 150px;
-  border: 4px solid #EDEDED;
-  position: absolute;
-  top: 0;
-  left: 0;
+
+    /* float: left; */
+    /* max-width: 150px; */
+    width: 15%;
+    /* max-height: 150px; */
+    border: 4px solid #EDEDED;
+    border-radius: 10px;
+    position: relative; 
+    /* top: 0; */
+    /* left: 0; */
+    display: inline-block;
 }
 
 
 
 ul.content-list .project-thumbs img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 5%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
 }
 
 ul.content-list .project-thumbs span {
-   position: absolute; 
-   top: 50px; 
-   left: 0; 
-   width: 100%; 
+    position: absolute; 
+    top: 50px; 
+    left: 0; 
+    width: 100%; 
     color: white; 
-   font: bold 24px/45px Helvetica, Sans-Serif; 
-   letter-spacing: -1px;  
-   background: rgb(0, 0, 0); /* fallback color */
-   background: rgba(0, 0, 0, 0.7);
-   padding: 0 10px; 
-   font-size: 20px;
-   text-align: center;
+    font: bold 24px/45px Helvetica, Sans-Serif; 
+    letter-spacing: -1px;  
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0 10px; 
+    font-size: 20px;
+    text-align: center;
 }
 
 
 
 ul.content-list .project-content{
-  padding: 15px;
-  float: left;
-  position: relative;
-  background: #fff;
-  min-height: 90px;
-  width: 98%
+    padding: 0 0 0 30px;
+    /* float: left; */
+    /* position: relative; */
+    /* background: #fff; */
+    /* min-height: 90px; */
+    /* width: 98%; */
+    display: inline-block;
+    width: 85%;
+    vertical-align: top;
 }
 
 ul.content-list .project-content .project-infos time{
-  background-color: rgb(51, 115, 168);
-  color: white;
+    background-color: rgb(51, 115, 168);
+    color: white;
 }
 
 ul.content-list .project-content p{
-  margin-bottom: 1em;
-  line-height: 20px;
+    margin-bottom: 1em;
+    line-height: 20px;
 }
 
 ul.content-list .project-content .project-metas a{
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 ul.content-list .project-content h2 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 38px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 38px;
 }
 
 ul.content-list .project-content h2 a {
-  color: #3B475A;
+    color: #3B475A;
+}
+
+
+@media screen and (max-width: 990px) {
+    about-me-header{
+
+        padding-top: 105px;
+        padding-bottom: 30px;
+    }
+    .about-me-header h1{
+        text-align: center;
+    }
+    .about-me-header .path{
+        float: none!important;
+        margin: auto;
+        text-align: center;
+    }
+    .about-me-header .avatar{
+
+        text-align: center;
+        border: none;
+        margin-top: 20px;
+        padding: 0;
+
+    }
+    .about-me-header .avatar img{
+        width: 100px;
+        height: 100px;
+    }
 }
