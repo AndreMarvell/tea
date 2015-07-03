@@ -9,6 +9,40 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProjetController extends Controller
 {
+    public function indexAction()
+    {
+        $em                  = $this->getDoctrine()->getManager();
+        $projetRepo          = $em->getRepository('TeaCampusCommonBundle:Projet');
+        $idselectedProjet    = $projetRepo->getSelectedProjet();
+        $idProjectOfTheMonth = $projetRepo->getProjectOfTheMonth();
+        $idProjectOfTheWeek  = $projetRepo->getProjectOfTheWeek();
+        $tags                = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('projet');
+        $mostRead       = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
+        
+        $selectedProjet      = $projetRepo->findOneById($idselectedProjet);
+        $projetofthemonth    = $projetRepo->findOneById($idProjectOfTheMonth);
+        $projetoftheweek     = $projetRepo->findOneById($idProjectOfTheWeek);
+        
+        $query               = $em->createQuery(
+                                    'SELECT p FROM TeaCampusCommonBundle:Projet p
+                                    WHERE p.private = false
+                                    ORDER BY p.date DESC'
+                                    );
+        $query->setMaxResults(4);
+        $latestProject = $query->getResult();
+        
+        
+        
+        return $this->render('TeaCampusCommonBundle:Projet:index.html.twig',
+                            array('selectionOftea'=>$selectedProjet,
+                                  'projectofthemonth'=>$projetofthemonth,
+                                  'latestproject' =>$latestProject,
+                                  'tags' =>$tags,
+                                  'mostRead' => $mostRead,
+                                  'projectoftheweek'=>$projetoftheweek));
+        
+        
+    }
     public function addAction()
     {
         
@@ -76,5 +110,17 @@ class ProjetController extends Controller
 
         return $response;
         
+    }
+    
+    public function listAction()
+    {
+        return $this->render('TeaCampusCommonBundle:Projet:list.html.twig');
+         
+    }
+    
+    public function searchAction()
+    {
+        return $this->render('TeaCampusCommonBundle:Projet:list.html.twig');
+         
     }
 }

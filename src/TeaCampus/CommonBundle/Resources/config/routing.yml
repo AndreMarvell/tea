@@ -44,7 +44,7 @@ tea_projects_show:
 tea_projects_add:
     path:     /projects/add
     defaults: { _controller: TeaCampusCommonBundle:Projet:add }
-    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+#    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
     
 tea_projects_edit:
     path:     /projects/edit/{id}
@@ -60,6 +60,10 @@ tea_projects_tag:
     path:     /projects/tag/{tag}
     defaults: { _controller: TeaCampusCommonBundle:Projet:tag }
     
+tea_projects_search:
+    path: /projects/search/
+    defaults: { _controller: TeaCampusCommonBundle:Projet:search }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
     
 ##############################
 ######      Autres     #######

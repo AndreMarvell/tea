@@ -1,0 +1,157 @@
+{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% trans_default_domain "ApplicationSonataUserBundle" %}
+{% spaceless %}
+    {% set wearesocial = true %} 
+    {% block title %}
+        {{ 'menu.projects'| trans({},'messages') }} - {{ parent() }}
+    {% endblock %}
+
+    {% block main_content %}  
+        {{ include( 'TeaCampusCommonBundle:Projet:Parts/intro.html.twig') }}
+        <section class="wrap-blog-content blog wrap-contacts">
+            <div class="container">
+                <div class="anchor-icon"><i class="fa fa-user"></i></div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        <div class="row">
+                            <!--breadcrumbs-->
+                            {% block sonata_page_breadcrumb %}
+                                <div class="breadcrumbs">
+                                    <ol class="breadcrumb">
+                                        <li class=""><a href="">{{ 'menu.home'|trans({}, 'messages') }}</a><div class="sonata_breadcrumb"></div></li>
+                                        <li class=""><a href="">{{ 'menu.projects'|trans({}, 'messages') }}</a><div class="sonata_breadcrumb"></div></li>
+                                    </ol>
+                                </div>
+                            {% endblock %}
+                        </div>
+                        <header class="section-header no-home">
+                            <h2>
+                                {{ 'project.show.other'|trans({},'messages') }}                    
+                            </h2>
+                            <p class="subhead"></p>
+                        </header>
+                        <div class="text-center col-md-12">
+                            <div class="row">
+                                {# items projetofthemonth #}
+                                {% if projectofthemonth is not null %}
+                                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                        <div class="box clearfix">
+                                            <div class="box-heading">
+                                                <h4 style="text-align : left">{{projectofthemonth.title}}</h4>
+                                                <div class="striped-icon-large">
+                                                    <span aria-hidden="true" class="icon-graduation"></span>
+                                                </div>
+                                            </div>
+                                                <p>
+                                                    {%if  projectofthemonth.description|length < 105%}
+                                                        {{projectofthemonth.description}}
+                                                    {%else%}
+                                                        {{projectofthemonth.description|striptags|slice(0, 105) ~ '...'}}
+                                                    {%endif%}
+                                                </p>
+                                            <a href="#" class="btn btn-primary btn-sm pull-left">Details</a>
+                                            <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>
+                                        </div>
+                                    </div> 
+                                {% else %}
+                                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                        <div class="box clearfix">
+                                            <h5> {{ 'project.show.no_project_of_the_month_defined'|trans({},'messages') }} </h5>
+                                        </div>
+                                    </div> 
+                                {% endif %} 
+                                {# End items#}
+
+                                {# items projetoftheweek #}
+                                {% if projectoftheweek is not null %}
+                                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                        <div class="box clearfix">
+                                            <div class="box-heading">
+                                                <h4 style="text-align : left">{{projectoftheweek.title}}</h4>
+                                                <div class="striped-icon-large">
+                                                    <span aria-hidden="true" class="icon-graduation"></span>
+                                                </div>
+                                            </div>
+                                                <p>
+                                                    {%if projectoftheweek.description|length < 105%}
+                                                        {{projectoftheweek.description}}
+                                                    {%else%}
+                                                        {{projectoftheweek.description|striptags|slice(0, 105) ~ '...'}}
+                                                    {%endif%}
+                                                </p>
+                                            <a href="#" class="btn btn-primary btn-sm pull-left">Details</a>
+                                            <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>
+                                        </div>
+                                    </div> 
+                                {% else %}
+                                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                        <div class="box clearfix">
+                                            <h5> {{ 'project.show.no_project_of_the_week_defined'|trans({},'messages') }} </h5>
+                                        </div>
+                                    </div> 
+                                {% endif %} 
+                                {# End items#}
+                            </div>
+                        </div>
+                        <header class="section-header no-home">
+                            <h2>
+                                {{ 'project.show.latest_project'|trans({},'messages') }}                    
+                            </h2>
+                            <p class="subhead"></p>
+                        </header> 
+                        <div class="text-center col-md-12">
+                            <div class="row">
+
+                                {# items latestProject #}
+                                {% if latestproject is not null %}
+                                    {% for project in latestproject %}
+                                        <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                            <div class="box clearfix">
+                                                <div class="box-heading">
+                                                    <h4>{{project.title}}</h4>
+                                                    <div class="striped-icon-large">
+                                                        <span aria-hidden="true" class="icon-graduation"></span>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    {%if  project.description|length < 105%}
+                                                        {{project.description}}
+                                                    {%else%}
+                                                        {{project.description|striptags|slice(0, 105) ~ '...'}}
+                                                    {%endif%}
+                                                </p>
+                                                <a href="#" class="btn btn-primary btn-sm pull-left">Details</a>
+                                                <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>
+                                            </div>
+                                        </div> 
+                                    {% endfor%}
+                                {% else %}
+                                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                        <div class="box clearfix">
+                                            <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
+                                        </div>
+                                    </div> 
+                                {% endif %} 
+                                {# End items#}
+                            </div>
+                        </div>    
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- search -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects_search.html.twig') }}
+                        <!-- tags -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}                        
+                        <!-- popuar projects -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
+
+                    </div>
+                </div>
+            </div>
+        </section>                   
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+{% endspaceless %}

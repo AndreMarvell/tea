@@ -1,0 +1,89 @@
+{# empty Twig template #}
+<section class="about-me-header" style="min-height: 550px;text-align: left">
+    <div class="container">	
+        <div class="row">
+            <div>
+                <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;" class="col-md-7 col-lg-7 col-sm-12 wow fadeInUp animated" data-wow-duration="2s">
+
+                    {%if selectionOftea.media is not null%}
+                        {% thumbnail selectionOftea.media, 'big' with{'alt':selectionOftea.title,'title':selectionOftea.title, 'class':"img-responsive img-thumbnail" } %}
+                    {%else%}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                        <img src="{{ asset_url }}">
+                        {% endimage %}
+                    {%endif%}
+
+                </div>
+                <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 ">
+                            <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;color: #fff" class="wrap-decription wow fadeInUp animated" data-wow-duration="2s">
+                                <h4 style="color: #fff">{{selectionOftea.title}}</h4>
+                            </div>
+                            <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;color: #fff" class="wrap-decription wow fadeInUp animated" data-wow-duration="2s">
+                                <h5 style="color: #fff">{{ 'project.show.description'|trans({}, 'messages') }} :</h5>
+                                <p>
+                                    {%if  selectionOftea.description|length < 105%}
+                                        {{selectionOftea.description}}
+                                    {%else%}
+                                        {{ selectionOftea.description|striptags|slice(0, 105) ~ '...'}}
+                                    {%endif%}
+                                </p>
+                            </div>
+                        </div>
+                        <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;color: #fff" class="col-lg-12 col-md-12 wow fadeInUp animated" data-wow-duration="2s">
+                            <div class="wrap-info">
+                                <h5 style="color: #fff">{{ 'project.show.another'|trans({}, 'messages') }} :</h5>
+                                <div class="row ">
+                                    <div class="col-md-12 clearfix">
+                                        <div class="type-info pull-left">
+                                            <i class="fa fa-user"></i>
+                                            {{ 'project.show.created_by'|trans({}, 'messages') }} :
+                                        </div>
+                                        <div class="info pull-right text-right">
+                                            <p class="no-margin">{{selectionOftea.founder}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 clearfix">
+                                        <div class="type-info pull-left">
+                                            <i class="fa fa-calendar"></i>
+                                            {{ 'project.show.created_at'|trans({}, 'messages') }} : 
+                                        </div>
+                                        <div class="info pull-right text-right">
+                                            <p class="no-margin">{{selectionOftea.createdAt|date("m/d/Y")}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 clearfix">
+                                        <div class="type-info pull-left">
+                                            <i class="fa fa-bar-chart"></i>
+                                            {{ 'project.show.target_country'|trans({}, 'messages') }} : 
+                                        </div>
+                                        <div class="info pull-right text-right">
+                                            <p class="no-margin">{{selectionOftea.getTargetCountry()}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-share">
+                                        <div class="type-info pull-left">
+                                            <h5 style="color:#fff;margin-top: 6px;margin-bottom: 6px">{{ 'project.show.share'|trans({}, 'messages') }} :</h5>
+                                        </div>
+                                        <ul class="copyright-links pull-right list-inline">
+                                            <li><a href="#fakelink"><i class="fa fa-facebook fa-lg"></i></a></li>
+                                            <li><a href="#fakelink"><i class="fa fa-twitter fa-lg"></i></a></li>
+                                            <li><a href="#fakelink"><i class="fa fa-youtube-play fa-lg"></i></a></li>
+                                            <li><a href="#fakelink"><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                            <li><a href="#fakelink"><i class="fa fa-instagram fa-lg"></i></a></li>
+                                            <li><a href="#fakelink"><i class="fa fa-vk"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!--row-->
+                </div>
+            </div>
+
+        </div><!--row-->
+    </div><!--container-->
+</section> 

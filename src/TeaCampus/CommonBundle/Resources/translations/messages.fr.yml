@@ -73,6 +73,9 @@ aside:
         most: Les plus lues
     tags:
         title: Tags
+    projects:
+        search: Rechercherz un projet
+        most: Les plus lues
         
 share:
     title: Partager
@@ -120,7 +123,16 @@ project:
         yes: Oui
         no: Non
         error: Désolé, une erreur s'est produite lors de la suppression
-        
-        
-        
-        
+    show:
+        title: Titre du projet
+        description: Description du projet
+        another: Autres information du projet
+        created_by: Crée par
+        created_at: Mise en ligne le 
+        target_country: Pays ciblé
+        share: Partager via
+        other: Autres projets À suivre
+        no_project_of_the_month_defined: Le projet du mois n'est pas encore définit
+        no_project_of_the_week_defined: Le projet de la semaine n'est pas encore définit
+        latest_project: Voir également les derniers Projets mise en ligne
+        no_project: Il n'existe aucun projet
