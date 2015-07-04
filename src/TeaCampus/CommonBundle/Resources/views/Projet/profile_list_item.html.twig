@@ -45,7 +45,7 @@
                     <div class="project-metas">
                         <div class="project-edit pull-right">
                             <a class="btn btn-primary btn-xs" href="{{ path('tea_projects_show', { 'id': projet.id } ) }}"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-primary btn-xs" href="{{ path('tea_projects_edit', { 'id': projet.id } ) }}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-primary btn-xs ajax-popup-link" href="{{ path('tea_projects_edit', { 'id': projet.id } ) }}"><i class="fa fa-pencil"></i></a>
                             <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-{{projet.id}}"><i class="fa fa-trash"></i></a>
                             <div id="delete-modal-{{projet.id}}" class="mfp-hide mfp-small-dialog">
                                 <h1>{{ 'project.delete.title'|trans({}, 'messages') }}</h1>

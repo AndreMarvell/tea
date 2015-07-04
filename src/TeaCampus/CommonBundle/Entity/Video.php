@@ -58,7 +58,7 @@ class Video
     
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist","remove"}, fetch="LAZY")
      */
     protected $video;
     
@@ -75,14 +75,14 @@ class Video
     
     /** 
      *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $like;
     
     /** 
      *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $view;

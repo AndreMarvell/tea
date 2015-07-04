@@ -146,4 +146,36 @@ class ProjetController extends Controller
                                   'randomproject'=>$newArray));
          
     }
+    
+    public function editAction($id)
+    {
+        
+        $em         = $this->getDoctrine()->getManager();
+        $context    = $em->getRepository('ApplicationSonataClassificationBundle:Context')->find('projet');
+        $project    = $em->getRepository('TeaCampusCommonBundle:Projet')->find($id);
+        
+        $project    = (is_null($project))? new Projet() : $project;
+        $form       = $this->createForm(new ProjetType($em, $context), $project);
+        
+        $form->handleRequest($this->getRequest());        
+        if ($form->isValid()) {
+            
+            $projet     = $form->getData();
+                        
+            $em->persist($projet);
+            $em->flush();
+            
+            $html = $this->container->get('templating')->render('TeaCampusCommonBundle:Projet:profile_list_item.html.twig', array('projet' => $projet));
+            $response = new Response();
+            $response->setContent(json_encode(array("success"=>true,"content"=>$html)));
+            $response -> headers -> set('Content-Type', 'application/json');
+            
+            return $response;
+            
+            
+        }
+        
+        return $this->render('TeaCampusCommonBundle:Projet:edit.html.twig', array('form' => $form->createView()));
+        
+    }
 }

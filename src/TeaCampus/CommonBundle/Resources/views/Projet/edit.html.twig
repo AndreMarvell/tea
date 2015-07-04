@@ -1,8 +1,8 @@
         <section  class="wrap-contacts container">
             <div class="container">
-                <div class="anchor-icon"><i class="fa fa-plus"></i></div>
+                <div class="anchor-icon"><i class="fa fa-pencil"></i></div>
                 <div class="center-block">
-                    <form name="tea_projet" method="post" action="{{path('tea_projects_add')}}" class="simform" id="project-form" enctype="multipart/form-data">
+                    <form name="tea_projet" method="post" action="{{path('tea_projects_edit', { 'id': form.vars.value.id } )}}" class="simform" id="project-form" enctype="multipart/form-data">
                         <div class="simform-inner">
                             {{ form_errors(form) }}
                             <ol class="questions">
@@ -61,7 +61,10 @@
 
                                 <li>
                                     <span><label>{{ 'project.form.media'|trans({},'messages') }}</label></span>
-                                    <input id="uploadFile" class="center-block" placeholder="{{ 'project.form.media_choice'|trans({},'messages') }}" disabled="disabled" />
+                                    <div class="row" style="text-align: center">
+                                        {% thumbnail form.vars.value.media, 'admin' with {'style':'border:3px solid rgb(181, 181, 181)'} %}
+                                    </div>
+                                    <input id="uploadFile" class="center-block" value="{{form.vars.value.media.name}}" disabled="disabled" />
                                     <div class="fileUpload btn btn-success btn-sm">
                                         <span>{{ 'project.form.media_choice'|trans({},'messages') }}</span>
                                         {{ form_widget(form.media.binaryContent,{'attr': {'class': 'upload'}} ) }}
@@ -113,7 +116,7 @@
                             
                             $.ajax({
                                 type: 'POST',
-                                url: '{{path('tea_projects_add')}}',
+                                url: '{{path('tea_projects_edit', { 'id': form.vars.value.id } )}}',
                                 data: new FormData(form),
                                 enctype: 'multipart/form-data',
                                 processData: false,  // tell jQuery not to process the data

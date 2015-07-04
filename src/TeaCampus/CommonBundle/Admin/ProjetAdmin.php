@@ -72,6 +72,10 @@ class ProjetAdmin extends Admin
                         'class' => 'col-md-4'
                     ))
                         ->add('status')
+                        ->add('selectionOfTea')
+                        ->add('projectOfTheWeek')
+                        ->add('projectOfTheMonth')
+                        ->add('private')
                         ->add('enabled')
                         ->add('private')
                         ->add('beginAt', 'genemu_jquerydate', array(

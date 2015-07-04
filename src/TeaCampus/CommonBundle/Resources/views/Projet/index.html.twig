@@ -7,8 +7,10 @@
         {{ 'menu.projects'| trans({},'messages') }} - {{ parent() }}
     {% endblock %}
 
-    {% block main_content %}  
-        {{ include( 'TeaCampusCommonBundle:Projet:Parts/intro.html.twig') }}
+    {% block main_content %}
+        {% if selectionOftea is not null %}
+            {{ include( 'TeaCampusCommonBundle:Projet:Parts/intro.html.twig') }}
+        {% endif %}
         <section class="wrap-blog-content blog wrap-contacts">
             <div class="container">
                 <div class="anchor-icon"><i class="fa fa-user"></i></div>

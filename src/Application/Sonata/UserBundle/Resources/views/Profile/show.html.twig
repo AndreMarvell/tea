@@ -6,6 +6,12 @@
     {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %} 
+    {% stylesheets 'bundles/teacampuscommon/css/bootstrap-tagsinput.css' filter='cssrewrite'%}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block main_content %}
         <section class="about-me-header">
             <div class="container">	
@@ -68,50 +74,7 @@
                             </div>				
                         </div><!--row-->
                         <div class="row tabpanel-content">
-                            <div class="row col-md-10 col-md-offset-1">
-                                <div class="col-md-6 panel-body">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <ul class="list-unstyled list-info">
-                                                <li><i class="fa fa-user"></i><span class="infos-label">{{ 'label.username'|trans({},'messages') }}</span><span class="infos-value">{{app.user.username}}</span></li>
-                                                <li><i class="fa fa-user-plus"></i><span class="infos-label">{{ 'label.name'|trans({},'messages') }}</span><span class="infos-value">{{app.user.firstname ~ ' ' ~ app.user.lastname}}</span></li>
-                                                <li><i class="fa fa-envelope-o"></i><span class="infos-label">{{ 'label.email'|trans({},'messages') }}</span><span class="infos-value">{{app.user.email}}</span></li>
-                                                <li><i class="fa fa-phone"></i><span class="infos-label">{{ 'label.phone'|trans({},'messages') }}</span><span class="infos-value">{{app.user.phone}}</span></li>
-                                                <li><i class="fa fa-flag"></i><span class="infos-label">{{ 'label.country'|trans({},'messages') }}</span><span class="infos-value">{{app.user.locale}}</span></li>
-                                                <li>
-                                                    <i class="fa fa-venus-mars"></i>
-                                                    <span class="infos-label">{{ 'label.sex'|trans({},'messages') }}</span>
-                                                    <span class="infos-value">
-                                                        {% if app.user.gender is not null and app.user.gender == 'm'%}
-                                                            Homme
-                                                        {%elseif app.user.gender is not null and app.user.gender == 'f'%}
-                                                            Femme
-                                                        {%endif%}
-                                                    </span>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 panel-body left-border">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <ul class="list-unstyled list-info">
-                                                <li><i class="fa fa-user-secret"></i><span class="infos-label">{{ 'label.role'|trans({},'messages') }}</span><span class="infos-value"></span></li>
-                                                <li><i class="fa fa-child"></i><span class="infos-label">{{ 'label.member_since'|trans({},'messages') }}</span><span class="infos-value">{{app.user.createdAt|format_date('MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</span></li>
-                                                <li><i class="fa fa-history"></i><span class="infos-label">{{ 'label.last_connexion'|trans({},'messages') }}</span><span class="infos-value">{{app.user.lastLogin|format_date('dd MMMM Y à H', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} h</span></li>
-                                                <li><i class="fa fa-heartbeat"></i><span class="infos-label">{{ 'label.statut'|trans({},'messages') }}</span><span class="infos-value label {%if app.user.locked%}label-danger{%else%}label-primary{%endif%}">&nbsp;{%if app.user.locked%}Bloqué{%else%}Actif{%endif%}&nbsp;</span></li>
-                                                <li><i class="fa fa-globe"></i><span class="infos-label">{{ 'label.website'|trans({},'messages') }}</span><span class="infos-value">{{app.user.website}}</span></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                </div>	
-                                <div class="col-md-12 align-center">
-                                    <button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;{{ 'edit.title'|trans({},'messages') }}</button>
-                                </div>
-                            </div>
+                            {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/infos.html.twig') }}
                         </div>
                     </div><!--tabpanel-->
 
@@ -144,13 +107,7 @@
                             </div>				
                         </div><!--row-->
                         <div class="row tabpanel-content" id="project-list">
-                            <ul class="content-list center-block">
-                                {% for projet in projects %}
-                                    {{ include( 'TeaCampusCommonBundle:Projet:profile_list_item.html.twig', {'projet':projet}) }}
-                                {%else%}
-                                    <li>{{ 'project.other.no_project_found'|trans({}, 'messages') }}</li>
-                                {%endfor%}
-                            </ul>
+                            {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/projects.html.twig') }}
                         </div>
                     </div><!--tabpanel-->
                     
@@ -179,6 +136,7 @@
 {% endblock %}
 
 {% block scripts %}
+    
     <script>
         $('.ajax-popup-link').magnificPopup({
             closeBtnInside:true,

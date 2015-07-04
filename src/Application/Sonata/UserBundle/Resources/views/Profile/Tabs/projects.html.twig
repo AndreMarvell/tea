@@ -1,0 +1,7 @@
+<ul class="content-list center-block">
+    {% for projet in projects %}
+        {{ include( 'TeaCampusCommonBundle:Projet:profile_list_item.html.twig', {'projet':projet}) }}
+    {%else%}
+        <li>{{ 'project.other.no_project_found'|trans({}, 'messages') }}</li>
+    {%endfor%}
+</ul>

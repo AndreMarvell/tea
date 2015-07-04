@@ -42,13 +42,13 @@ class TagsDataTransformer implements DataTransformerInterface
             return "";
         }
         
-        $slugs = array();
+        $names = array();
         
         foreach ($tags as $tag){
-           $slugs[] = $tag->getSlug(); 
+           $names[] = $tag->getName(); 
         }
 
-        return implode(', ', $slugs);
+        return implode(', ', $names);
     }
 
     /**
@@ -70,7 +70,7 @@ class TagsDataTransformer implements DataTransformerInterface
         $tags = new \Doctrine\Common\Collections\ArrayCollection();
         
         foreach ($names as $name){
-            $tag = $this->om->getRepository($this->entityRepository)->findOneBy(array('name'=>$name,'context'=>$this->context));
+            $tag = $this->om->getRepository($this->entityRepository)->findOneBy(array('name'=>ucfirst($name),'context'=>$this->context));
             if(!is_null($tag)){
                $tags[] = $tag; 
             }else{
