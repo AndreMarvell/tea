@@ -1,1 +1,97 @@
 {# created By SAMIE MEHEZA #}
+
+{% extends "::base.html.twig" %}
+
+{% spaceless %}
+    {% set newsletter = true %} 
+    {% block title %}
+        {{ 'project.list.title'|trans }} | {{ parent() }}
+    {% endblock %}
+
+    {% block main_content %}
+        <section class="wrap-blog-content blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        <div class="row">
+                            <!--breadcrumbs-->
+                            {% block sonata_page_breadcrumb %}
+                                <div class="breadcrumbs">
+                                    <ol class="breadcrumb">
+                                        <li class=""><a href="">{{ 'menu.home'|trans({}, 'messages') }}</a><div class="sonata_breadcrumb"></div></li>
+                                        <li class=""><a href="">{{ 'menu.projects'|trans({}, 'messages') }}</a><div class="sonata_breadcrumb"></div></li>
+                                    </ol>
+                                </div>
+                            {% endblock %}
+                        </div>
+                        <header class="section-header no-home">
+                            <h2>
+                                {%if tag is defined and tag != false %}
+                                    "&nbsp;{{tag}}&nbsp;" 
+                                {%elseif collection is defined and collection  != false%}
+                                    "&nbsp;{{collection}}&nbsp;" 
+                                {%else%}
+                                    {{ 'project.list.title'|trans({},'messages') }}
+                                {%endif%}                       
+                            </h2>
+                            <p class="subhead"> {{ pagination.getTotalItemCount }} Projet(s)</p>
+                        </header>
+                        <div class="row tri" style="margin-left: 20px;margin-bottom: 20px">
+                            <h5><i class="fa fa-sort"></i>
+                                {{ 'project.show.sort_by'|trans({},'messages') }} :   
+                                {{ knp_pagination_sortable(pagination, '   Titre ', 'a.title') }}  | 
+                                {{ knp_pagination_sortable(pagination, '   Date de publication ', 'a.date') }}  
+                            </h5>
+                        </div>
+                        {% for project in pagination %}
+                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                <div class="box clearfix">
+                                    <div class="box-heading">
+                                        <h4>{{project.title}}</h4>
+                                        <div class="striped-icon-large">
+                                            <span aria-hidden="true" class="icon-graduation"></span>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        {%if  project.description|length < 43%}
+                                            {{project.description}}
+                                        {%else%}
+                                            {{project.description|striptags|slice(0, 43) ~ '...'}}
+                                        {%endif%}
+                                    </p>
+                                    <a href="{{ path('tea_projects_show',{'id':project.id}) }}" class="btn btn-primary btn-sm pull-left">Details</a>
+                                    {#                                                <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>#}
+                                </div>
+                            </div>
+                        {%else%}
+                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                <div class="box clearfix">
+                                    <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
+                                </div>
+                            </div> 
+                        {%endfor%}
+                        <div class="text-center col-md-12">
+                            <div class="quicklinks">
+                                <h5> {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }} </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- search -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects_search.html.twig') }}
+                        <!-- tags -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}                        
+                        <!-- popuar projects -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+{% endspaceless %}
+
+
+

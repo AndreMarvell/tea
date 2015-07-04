@@ -139,6 +139,10 @@ project:
         BM: Business Model
         why: Le projet pourrait marcher car
         state: Status
-        
+        show_all: Parcourir tous les projets
+        show_all_title: Nous invitons à découvrir le catalogue de tous les projets mise en ligne
+        sort_by: Trié par 
+    list:
+        title: Tous Les projets
     error:
         no_project_with_this_id : Ooops Impossible de trouver ce projet 
