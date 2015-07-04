@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TeaCampus\CommonBundle\Entity\Projet;
 use TeaCampus\CommonBundle\Form\ProjetType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProjetController extends Controller
 {
@@ -112,12 +113,29 @@ class ProjetController extends Controller
         
     }
     
-    public function listAction()
+   public function listAction(Request $request)
     {
-        return $this->render('TeaCampusCommonBundle:Projet:list.html.twig');
+        $em                  = $this->getDoctrine()->getManager();
+        $projetRepo          = $em->getRepository('TeaCampusCommonBundle:Projet');
+        $tags                = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('projet');
+        $mostRead            = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
+        $dql        = "SELECT a FROM TeaCampusCommonBundle:Projet a WHERE a.private = false ORDER BY a.date DESC";
+        $query      = $em->createQuery($dql);
+        
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1)/* page number */, 2/* limit per page */
+        );
+        
+        
+        return $this->render('TeaCampusCommonBundle:Projet:list.html.twig',
+                            array(
+                                  'tags' =>$tags,
+                                  'mostRead' => $mostRead,
+                                  'pagination' => $pagination));
          
     }
-    
+   
     public function searchAction()
     {
         return $this->render('TeaCampusCommonBundle:Projet:list.html.twig');
