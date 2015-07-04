@@ -3,13 +3,13 @@
     <div class="container">	
         <div class="row">
             <div>
-                <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;" class="col-md-7 col-lg-7 col-sm-12 wow fadeInUp animated" data-wow-duration="2s">
+                <div style="margin-bottom: 20px; visibility: visible; animation-duration: 2s; animation-name: fadeInUp;" class="col-md-7 col-lg-7 col-sm-12 wow fadeInUp animated" data-wow-duration="2s">
 
                     {%if selectionOftea.media is not null%}
                         {% thumbnail selectionOftea.media, 'big' with{'alt':selectionOftea.title,'title':selectionOftea.title, 'class':"img-responsive img-thumbnail" } %}
                     {%else%}
                         {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
-                        <img src="{{ asset_url }}">
+                        <img  src="{{ asset_url }}">
                         {% endimage %}
                     {%endif%}
 
@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 ">
                             <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;color: #fff" class="wrap-decription wow fadeInUp animated" data-wow-duration="2s">
-                                <h4 style="color: #fff">{{selectionOftea.title}}</h4>
+                                <a href="{{ path('tea_projects_show',{'id':selectionOftea.id}) }}"><h4 style="color: #fff">{{selectionOftea.title}}</h4></a>
                             </div>
                             <div style="visibility: visible; animation-duration: 2s; animation-name: fadeInUp;color: #fff" class="wrap-decription wow fadeInUp animated" data-wow-duration="2s">
                                 <h5 style="color: #fff">{{ 'project.show.description'|trans({}, 'messages') }} :</h5>

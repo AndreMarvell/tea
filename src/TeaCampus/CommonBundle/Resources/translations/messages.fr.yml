@@ -126,7 +126,7 @@ project:
     show:
         title: Titre du projet
         description: Description du projet
-        another: Autres information du projet
+        another: Autres informations du projet
         created_by: Crée par
         created_at: Mise en ligne le 
         target_country: Pays ciblé
@@ -136,3 +136,9 @@ project:
         no_project_of_the_week_defined: Le projet de la semaine n'est pas encore définit
         latest_project: Voir également les derniers Projets mise en ligne
         no_project: Il n'existe aucun projet
+        BM: Business Model
+        why: Le projet pourrait marcher car
+        state: Status
+        
+    error:
+        no_project_with_this_id : Ooops Impossible de trouver ce projet 

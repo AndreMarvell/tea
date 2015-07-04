@@ -123,4 +123,27 @@ class ProjetController extends Controller
         return $this->render('TeaCampusCommonBundle:Projet:list.html.twig');
          
     }
+    
+     public function showAction($id)
+    {
+        $em              = $this->getDoctrine()->getManager();
+        $projetRepo      = $em->getRepository('TeaCampusCommonBundle:Projet');
+        $projet          = $projetRepo->findOneById($id);
+        
+        $query               = $em->createQuery(
+                                   'SELECT p FROM TeaCampusCommonBundle:Projet p
+                                    WHERE p.private = false
+                                    ORDER BY p.date DESC'
+                                    );
+            
+        $randomProject = $query->getResult();
+        shuffle($randomProject);
+        
+        $newArray = array_splice($randomProject, 0, 6);
+        
+        return $this->render('TeaCampusCommonBundle:Projet:show.html.twig',
+                            array('project'=>$projet,
+                                  'randomproject'=>$newArray));
+         
+    }
 }

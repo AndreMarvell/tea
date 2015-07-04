@@ -50,8 +50,8 @@
                                                         {{projectofthemonth.description|striptags|slice(0, 105) ~ '...'}}
                                                     {%endif%}
                                                 </p>
-                                            <a href="#" class="btn btn-primary btn-sm pull-left">Details</a>
-                                            <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>
+                                            <a href="{{ path('tea_projects_show',{'id':projectofthemonth.id}) }}" class="btn btn-primary btn-sm pull-left">Details</a>
+{#                                            <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>#}
                                         </div>
                                     </div> 
                                 {% else %}
@@ -74,14 +74,14 @@
                                                 </div>
                                             </div>
                                                 <p>
-                                                    {%if projectoftheweek.description|length < 105%}
+                                                    {%if projectoftheweek.description|length < 43%}
                                                         {{projectoftheweek.description}}
                                                     {%else%}
-                                                        {{projectoftheweek.description|striptags|slice(0, 105) ~ '...'}}
+                                                        {{projectoftheweek.description|striptags|slice(0, 43) ~ '...'}}
                                                     {%endif%}
                                                 </p>
-                                            <a href="#" class="btn btn-primary btn-sm pull-left">Details</a>
-                                            <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>
+                                            <a href="{{ path('tea_projects_show',{'id':projectoftheweek.id}) }}" class="btn btn-primary btn-sm pull-left">Details</a>
+{#                                            <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>#}
                                         </div>
                                     </div> 
                                 {% else %}
@@ -115,14 +115,14 @@
                                                     </div>
                                                 </div>
                                                 <p>
-                                                    {%if  project.description|length < 105%}
+                                                    {%if  project.description|length < 43%}
                                                         {{project.description}}
                                                     {%else%}
-                                                        {{project.description|striptags|slice(0, 105) ~ '...'}}
+                                                        {{project.description|striptags|slice(0, 43) ~ '...'}}
                                                     {%endif%}
                                                 </p>
-                                                <a href="#" class="btn btn-primary btn-sm pull-left">Details</a>
-                                                <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>
+                                                <a href="{{ path('tea_projects_show',{'id':project.id}) }}" class="btn btn-primary btn-sm pull-left">Details</a>
+{#                                                <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>#}
                                             </div>
                                         </div> 
                                     {% endfor%}
