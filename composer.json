@@ -41,7 +41,8 @@
         "sonata-project/media-bundle": "dev-master",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/news-bundle": "dev-master",
-        "suncat/mobile-detect-bundle": "0.10.*"
+        "suncat/mobile-detect-bundle": "0.10.*",
+        "friendsofsymfony/message-bundle": "^1.2"
         
     },
     "require-dev": {

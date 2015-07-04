@@ -84,7 +84,9 @@ doctrine:
                     TeaCampusCommonBundle: ~
                     FOSUserBundle: ~
                     FOSCommentBundle: ~
+                    FOSMessageBundle: ~
                     ApplicationFOSCommentBundle: ~
+                    ApplicationFOSMessageBundle: ~
                     ApplicationSonataUserBundle: ~
                     ApplicationSonataMediaBundle: ~
                     ApplicationSonataNewsBundle: ~
@@ -209,3 +211,37 @@ nomaya_social:
         #googleplus:         "https://plus.google.com/105931415830389032796"
         twitter:            "https://twitter.com/TEAfrica2015"
     theme:                  'default' # optional
+
+fos_message:
+    db_driver: orm
+    thread_class:         Application\FOS\MessageBundle\Entity\Thread
+    message_class:        Application\FOS\MessageBundle\Entity\Message
+    message_manager:      fos_message.message_manager.default
+    thread_manager:       fos_message.thread_manager.default
+    sender:               fos_message.sender.default
+    composer:             fos_message.composer.default
+    provider:             fos_message.provider.default
+    participant_provider:  fos_message.participant_provider.default
+    authorizer:           fos_message.authorizer.default
+    message_reader:       fos_message.message_reader.default
+    thread_reader:        fos_message.thread_reader.default
+    deleter:              fos_message.deleter.default
+    spam_detector:        fos_message.noop_spam_detector
+    twig_extension:       fos_message.twig_extension.default
+    user_transformer:     fos_user.user_to_username_transformer
+    search:
+        query_factory:        fos_message.search_query_factory.default
+        finder:               fos_message.search_finder.default
+        query_parameter:      q
+    new_thread_form:
+        factory:              fos_message.new_thread_form.factory.default
+        type:                 fos_message.new_thread_form.type.default
+        handler:              fos_message.new_thread_form.handler.default
+        name:                 message
+        model:                FOS\MessageBundle\FormModel\NewThreadMessage
+    reply_form:
+        factory:              fos_message.reply_form.factory.default
+        type:                 fos_message.reply_form.type.default
+        handler:              fos_message.reply_form.handler.default
+        name:                 message
+        model:                FOS\MessageBundle\FormModel\ReplyMessage

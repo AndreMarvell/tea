@@ -10,7 +10,7 @@
  */
 
 namespace Application\Sonata\UserBundle\Entity;
-
+use FOS\MessageBundle\Model\ParticipantInterface;
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 
 /**
@@ -21,7 +21,7 @@ use Sonata\UserBundle\Entity\BaseUser as BaseUser;
  *
  * @author <yourname> <youremail>
  */
-class User extends BaseUser
+class User extends BaseUser implements ParticipantInterface
 {
     /**
      * @var integer $id
