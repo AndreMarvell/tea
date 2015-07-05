@@ -146,3 +146,11 @@ project:
         title: Tous Les projets
     error:
         no_project_with_this_id : Ooops Impossible de trouver ce projet 
+
+message:
+    delete:
+        title: Supprimer la conversation
+        sure: Êtes vous sure de vouloir supprimer la conversation?
+        yes: Oui
+        no: Non
+        error: Désolé, une erreur s'est produite lors de la suppression

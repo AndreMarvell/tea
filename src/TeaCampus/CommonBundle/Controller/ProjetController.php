@@ -124,7 +124,7 @@ class ProjetController extends Controller
         
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1)/* page number */, 2/* limit per page */
+                $query, $request->query->get('page', 1)/* page number */, 8/* limit per page */
         );
         
         
