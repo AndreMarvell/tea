@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
             
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
@@ -56,7 +57,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             
             new AndreMarvell\SocialBundle\AndreMarvellSocialBundle(),
-            
+            new Application\FOS\MessageBundle\ApplicationFOSMessageBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
         );
 

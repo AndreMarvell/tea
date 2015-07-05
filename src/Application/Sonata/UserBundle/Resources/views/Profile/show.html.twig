@@ -1,18 +1,18 @@
 {% extends "::base.html.twig" %}
 {% trans_default_domain "ApplicationSonataUserBundle" %}
 {% spaceless %}
-{% set wearesocial = true %} 
-{% block title %}
-    {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
-{% endblock %}
+    {% set wearesocial = true %} 
+    {% block title %}
+        {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
+    {% endblock %}
 
-{% block stylesheets %} 
-    {% stylesheets 'bundles/teacampuscommon/css/bootstrap-tagsinput.css' filter='cssrewrite'%}
+    {% block stylesheets %} 
+        {% stylesheets 'bundles/teacampuscommon/css/bootstrap-tagsinput.css' filter='cssrewrite'%}
         <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock %}
+        {% endstylesheets %}
+    {% endblock %}
 
-{% block main_content %}
+    {% block main_content %}
         <section class="about-me-header">
             <div class="container">	
                 <div class="row">
@@ -89,10 +89,10 @@
                             </div>				
                         </div><!--row-->
                         <div class="row tabpanel-content">
-                            
+
                         </div>
                     </div><!--tabpanel-->
-                    
+
                     <!-- Mes projets -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
                     <div role="tabpanel" class="tab-pane" id="projets">
@@ -110,7 +110,7 @@
                             {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/projects.html.twig') }}
                         </div>
                     </div><!--tabpanel-->
-                    
+
                     <!-- Messages -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
                     <div role="tabpanel" class="tab-pane" id="messages">
@@ -121,29 +121,27 @@
                                 </div>	
                             </div>				
                         </div><!--row-->
-                        <div class="row tabpanel-content">
-                            
-                        </div>
-                    </div><!--tabpanel-->
+                        {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/message.html.twig') }}
+                </div><!--tabpanel-->
 
-                </div><!--tab-content-->
+            </div><!--tab-content-->
 
-            </div><!--container-->
+        </div><!--container-->
 
 
 
-        </section>
+    </section>
 {% endblock %}
 
 {% block scripts %}
-    
+
     <script>
         $('.ajax-popup-link').magnificPopup({
-            closeBtnInside:true,
+            closeBtnInside: true,
             midClick: true,
             type: 'ajax'
         });
-        
+
         $('.ajax-delete').magnificPopup({
             type: 'inline',
             modal: true
@@ -154,32 +152,34 @@
             $.ajax({
                 url: $(this).attr('href'),
                 dataType: "json",
-                data : { id: $(this).attr('data-id')},
+                data: {id: $(this).attr('data-id')},
                 type: 'POST'
             })
-            .done(function (data) {
-                $.magnificPopup.close();
-                if(data['success']){
-                    $("#"+li).fadeOut(700, function(){ $(this).remove();});
-                }else{
-                    alert("{{ 'projet.delete.error'| trans({},'messages') }}");
-                }
-                
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            });
+                    .done(function (data) {
+                        $.magnificPopup.close();
+                        if (data['success']) {
+                            $("#" + li).fadeOut(700, function () {
+                                $(this).remove();
+                            });
+                        } else {
+                            alert("{{ 'projet.delete.error'| trans({},'messages') }}");
+                        }
+
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    });
         });
-          
+
         $(document).on('click', '.popup-modal-dismiss', function (e) {
             e.preventDefault();
             $.magnificPopup.close();
         });
-          
-        $(document).ready(function() {
-            
+
+        $(document).ready(function () {
+
         });
-            
+
     </script>
 {% endblock %}
 {% endspaceless %}

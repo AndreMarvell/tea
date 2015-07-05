@@ -15,6 +15,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\UserBundle\Model\UserInterface;
 use Sonata\UserBundle\Controller\ProfileFOSUser1Controller as BaseController;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use FOS\MessageBundle\Provider\ProviderInterface;
 
 /**
  * This class is inspired from the FOS Profile Controller, except :
@@ -36,9 +39,25 @@ class ProfileFOSUser1Controller extends BaseController
         }
         
         $projects = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Projet")->findBy(array('author'=>$user),array('date' => 'DESC'));;
+        $provider = $this->container->get('fos_message.provider');
+        $threads = $provider->getInboxThreads();
+        $threads_send = $provider->getSentThreads();
+        
+        $form = $this->container->get('fos_message.new_thread_form.factory')->create();
+        $formHandler = $this->container->get('fos_message.new_thread_form.handler');
 
+        if ($message = $formHandler->process($form)) {
+            return new RedirectResponse($this->container->get('router')->generate('fos_message_thread_view', array(
+                'threadId' => $message->getThread()->getId()
+            )));
+        }
+        
         return $this->render('SonataUserBundle:Profile:show.html.twig', array(
             'user'   => $user,
+            'threads' => $threads,
+            'threads_send' => $threads_send,
+            'form' => $form->createView(),
+            'data' => $form->getData(),
             'projects' => $projects,
             'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
         ));

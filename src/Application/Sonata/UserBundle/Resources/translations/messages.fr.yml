@@ -15,6 +15,10 @@ tabs:
     infos:
         title: Mes Infos
         
+form:
+    recipe: Destinataire
+    subject: Sujet
+    body: Message
 label:
     username: Nom d'utilisateur
     email: Adresse e-mail
