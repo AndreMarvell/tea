@@ -1,13 +1,119 @@
-{% extends 'FOSMessageBundle::layout.html.twig' %}
+{% extends "::base.html.twig" %}
+{% trans_default_domain "ApplicationFOSMessageBundle" %}
+{% spaceless %}
+    {% set wearesocial = true %} 
+    {% block title %}
+        {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
+    {% endblock %}
 
-{% block fos_message_content %}
+    {% block stylesheets %} 
+        {% stylesheets 'bundles/teacampuscommon/css/bootstrap-tagsinput.css' filter='cssrewrite'%}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
+    {% block main_content %}
+        <section class="about-me-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                        <h1 class="title">
+                            {%if app.user.firstname is not null and app.user.lastname is not null%}
+                                {{app.user.firstname ~ ' ' ~ app.user.lastname}}
+                            {%else%}
+                                {{app.user.username}}
+                            {%endif%}
+                        </h1>
+                        <div class="path pull-right">
+                            {%if app.user.biography is not null%}
+                                {{app.user.biography}}
+                            {%else%}
+                                {{ 'profile.member_since'| trans({},'messages') }}&nbsp;
+                                {{app.user.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                        <div class="avatar">
+                            {% if app.user.avatar is not null %}
+                                {% thumbnail app.user.avatar, 'square' with{} %}
+                            {% else %}
+                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                <img src="{{ asset_url }}">
+                                {% endimage %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section> 
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="footer-header">
 
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
+                    <h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
 
-    <input type="submit" />
-</form>
+                    <form action="{{ url('fos_message_thread_new') }}" method="post">
+                        {{ form_widget(form) }}
 
-{% endblock %}
+                        <input type="submit" />
+                    </form>
+
+
+                </div>	
+            </div>				
+        </div><!--row-->
+
+
+    {% endblock %}
+
+    {% block scripts %}
+
+        <script>
+            $('.ajax-popup-link').magnificPopup({
+                closeBtnInside: true,
+                midClick: true,
+                type: 'ajax'
+            });
+
+            $('.ajax-delete').magnificPopup({
+                type: 'inline',
+                modal: true
+            });
+            $(document).on('click', 'a.delete-button', function (e) {
+                e.preventDefault();
+                var li = $(this).attr('data-li');
+                $.ajax({
+                    url: $(this).attr('href'),
+                    dataType: "json",
+                    data: {id: $(this).attr('data-id')},
+                    type: 'POST'
+                })
+                        .done(function (data) {
+                            $.magnificPopup.close();
+                            if (data['success']) {
+                                $("#" + li).fadeOut(700, function () {
+                                    $(this).remove();
+                                });
+                            } else {
+                                alert("{{ 'projet.delete.error'| trans({},'messages') }}");
+                            }
+
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        });
+            });
+
+            $(document).on('click', '.popup-modal-dismiss', function (e) {
+                e.preventDefault();
+                $.magnificPopup.close();
+            });
+
+            $(document).ready(function () {
+
+            });
+
+        </script>
+    {% endblock %}
+{% endspaceless %}

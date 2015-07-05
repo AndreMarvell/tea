@@ -59,9 +59,9 @@
                         <form action="{{ url('fos_message_thread_new') }}" method="post">
                         {{ form_start(form) }}
                         {{ form_errors(form) }}
-                          <div style="margin-bottom: 10px">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','class':'form-control'} }) }}</div>
-                          <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.subject'|trans({},'messages'), 'type': 'text','class':'form-control'} }) }}</div>
-                          <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control'} }) }}</div>
+                          <div style="margin-bottom: 10px">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
+                          <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.subject'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
+                          <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control','style':'background-color:#fff'} }) }}</div>
                           <input class="contact_button button btn btn-primary btn-block" style="margin-bottom: 10px" type="submit" />
                         {{ form_end(form) }}
                        </form>

@@ -154,3 +154,7 @@ message:
         yes: Oui
         no: Non
         error: Désolé, une erreur s'est produite lors de la suppression
+    show:
+        subject: Sujet
+        by : Par
+        you : Vous

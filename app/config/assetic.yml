@@ -4,7 +4,7 @@ assetic:
     use_controller: false
     read_from:      %kernel.root_dir%/../web
     write_to:       %kernel.root_dir%/../web
-    bundles:        [TeaCampusCommonBundle, ApplicationSonataNewsBundle, SonataUserBundle, FOSCommentBundle, SonataNewsBundle, ApplicationFOSCommentBundle] # disable bundles parsing
+    bundles:        [TeaCampusCommonBundle, ApplicationSonataNewsBundle, ApplicationFOSMessageBundle, FOSMessageBundle, SonataUserBundle, FOSCommentBundle, SonataNewsBundle, ApplicationFOSCommentBundle] # disable bundles parsing
 
     filters:
         cssrewrite: ~
