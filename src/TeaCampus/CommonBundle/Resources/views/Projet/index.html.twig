@@ -96,11 +96,11 @@
                                 {# End items#}
                             </div>
                         </div>
-                        <header class="section-header no-home">
-                            <h2>
-                                {{ 'project.show.latest_project'|trans({},'messages') }}                    
-                            </h2>
-                            <p class="subhead"></p>
+                        <header class="section-header">
+                            <h4 class="text-center">
+                                {{ 'project.show.latest_project_title'|trans({},'messages') }}                    
+                            </h4>
+                                <p style="font-size: 20px">{{ 'project.show.latest_project'|trans({},'messages') }}</p>
                         </header> 
                         <div class="text-center col-md-12">
                             <div class="row">
@@ -139,11 +139,13 @@
                             </div>
                         </div>  
                         <header class="section-header no-home">
-                            <h2>
+                            <h4 class="text-center">
                                 {{ 'project.show.show_all_title'|trans({},'messages') }}                    
-                            </h2>
-                            <p class="subhead"></p>
+                            </h4>
+                            <p style="font-size: 20px">{{ 'project.show.show_all_subtitle'|trans({},'messages') }}</p>
                         </header>
+                            
+                            
                         <div class="col-md-12 align-center">
                             <a href="{{path('tea_projects_list')}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;{{ 'project.show.show_all'|trans({},'messages') }}</a>
                         </div>
