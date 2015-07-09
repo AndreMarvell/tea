@@ -127,8 +127,11 @@ project:
         title: Titre du projet
         description: Description du projet
         another: Autres informations du projet
+        publiated_by: Mise en ligne par
         created_by: Crée par
-        created_at: Mise en ligne le 
+        date: Mise en ligne le 
+        begin_at: Date de mise en service
+        created_at: Date de création
         target_country: Pays ciblé
         share: Partager via
         other: Autres projets À suivre
@@ -148,6 +151,8 @@ project:
         title: Tous Les projets
     error:
         no_project_with_this_id : Ooops Impossible de trouver ce projet 
+    comment:
+        subline: Ce projet vous a plu ? Donnez votre avis.
 
 message:
     delete:
