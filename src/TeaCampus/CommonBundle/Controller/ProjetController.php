@@ -27,6 +27,7 @@ class ProjetController extends Controller
         $query               = $em->createQuery(
                                     'SELECT p FROM TeaCampusCommonBundle:Projet p
                                     WHERE p.private = false
+                                    AND p.enabled = true
                                     ORDER BY p.date DESC'
                                     );
         $query->setMaxResults(4);
@@ -119,7 +120,7 @@ class ProjetController extends Controller
         $projetRepo          = $em->getRepository('TeaCampusCommonBundle:Projet');
         $tags                = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('projet');
         $mostRead            = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
-        $dql        = "SELECT a FROM TeaCampusCommonBundle:Projet a WHERE a.private = false ORDER BY a.date DESC";
+        $dql        = "SELECT a FROM TeaCampusCommonBundle:Projet a WHERE a.private = false AND a.enabled = true ORDER BY a.date DESC";
         $query      = $em->createQuery($dql);
         
         $paginator  = $this->get('knp_paginator');

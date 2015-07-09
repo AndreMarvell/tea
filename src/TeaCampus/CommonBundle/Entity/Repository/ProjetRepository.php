@@ -13,7 +13,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     
     public function getSelectedProjet() {
         $query = $this->createQueryBuilder('a');
-        $query->where('a.selectionOfTea =  true ');
+        $query->where('a.selectionOfTea =  true ');       
+        $query->andWhere('a.enabled = true');
         $query->andWhere('a.private = false');
         return $query->getQuery()->getResult();
     }
@@ -21,6 +22,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     public function getProjectOfTheMonth() {
         $query = $this->createQueryBuilder('a');
         $query->where('a.projectOfTheMonth =  true ');
+        $query->andWhere('a.enabled = true');
         $query->andWhere('a.private = false');
         return $query->getQuery()->getResult();
     }
@@ -28,6 +30,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     public function getProjectOfTheWeek() {
         $query = $this->createQueryBuilder('a');
         $query->where('a.projectOfTheWeek =  true ');
+        $query->andWhere('a.enabled = true');
         $query->andWhere('a.private = false');
         return $query->getQuery()->getResult();
     }
@@ -36,6 +39,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
  
         $query = $this->createQueryBuilder('p');
         $query->where('p.private = false ');
+        $query->andWhere('p.enabled = true');
         $query->orderBy('p.date','DESC');
         $query->setMaxResults(5);
         
