@@ -136,8 +136,8 @@ project:
         no_project_of_the_week_defined: Le projet de la semaine n'est pas encore définit
         latest_project: Voir également les derniers Projets mise en ligne
         no_project: Il n'existe aucun projet
-        BM: Business Model
-        why: Le projet pourrait marcher car
+        BM: Comment ce projet compte-il générer des revenus ?
+        why: Pourquoi le projet pourrait-il marché ?
         state: Status
         show_all: Parcourir tous les projets
         show_all_title: Nous invitons à découvrir le catalogue de tous les projets mise en ligne
