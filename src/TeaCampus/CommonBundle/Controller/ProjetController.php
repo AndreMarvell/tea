@@ -158,7 +158,7 @@ class ProjetController extends Controller
         $randomProject = $query->getResult();
         shuffle($randomProject);
         
-        $newArray = array_splice($randomProject, 0, 6);
+        $newArray = array_splice($randomProject, 0, 3);
         
         return $this->render('TeaCampusCommonBundle:Projet:show.html.twig',
                             array('project'=>$projet,

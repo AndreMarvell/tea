@@ -139,7 +139,7 @@ project:
         no_project: Il n'existe aucun projet
         BM: Comment ce projet compte-il générer des revenus ?
         why: Pourquoi le projet pourrait-il marché ?
-        state: Status
+        state: À qu'elle étape se situe le projet
         show_all: Parcourir tous les projets
         show_all_title: Tous les projets
         show_all_subtitle: Nous invitons à découvrir le catalogue de tous les projets mise en ligne
