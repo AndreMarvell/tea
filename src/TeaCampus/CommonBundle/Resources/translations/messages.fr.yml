@@ -82,7 +82,11 @@ share:
         
 comment:
     need_connexion: Vous devez être connecté pour laisser un commentaire
-    
+
+video:
+    other:
+        no_video_found: Aucune vidéo trouvée    
+        
 project:
     form:
         title: Le titre de votre projet ?

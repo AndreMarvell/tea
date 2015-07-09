@@ -629,6 +629,11 @@ label {
 .nav-tabs-vertical {
     display: inline-block;
 }
+.profile-message .nav-tabs-vertical  >  li {
+    padding: 15px 15px 15px 0;
+    text-align: left; 
+    border-right: 2px solid #e8e9ed;
+}
 .nav-tabs-vertical  >  li {
     padding: 15px 130px 15px 0;
     border-right: 2px solid #e8e9ed;
@@ -4179,7 +4184,7 @@ body {
 .wrap-gallery-item .wrap-info .type-info {
     font-weight: bold;
     color: #2a2d32;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 .wrap-gallery-item .wrap-info .type-info h5 {
     padding-top: 5px;

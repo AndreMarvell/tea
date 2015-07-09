@@ -1,79 +1,61 @@
 {#Created By SAMIE MEHEZA#}
-
-<section  class="profil-tabs wrap-contacts">
-    <div class="container container-tabs">
-        <!-- Nav tabs -->
-        <ul id="user-profil-tabs" class="nav  nav-tabs-alt nav-tabs-two nav-tab-inverse" role="tablist">
-            <li role="presentation" class="active"><a href="#reception" aria-controls="reception" role="tab" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
-            <li role="presentation"><a href="#sent" aria-controls="sent" role="tab" data-toggle="tab"><i class="fa fa-upload"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
-            <li role="presentation"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a></li>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-
-            <!--  Info -->
-            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-            <div role="tabpanel" class="tab-pane active" id="reception">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="footer-header">	
-                            <h2>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>
-                        </div>
-                    </div>				
-                </div><!--row-->
-                <div class="row tabpanel-content">
-                    {% include 'ApplicationFOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+<section class="wrap-tabs">
+    <div class="container">
+        <div class="row" >
+            <div class="row-same-height">
+                <div class="col-md-3 col-sm-height profile-message">			
+                    <!-- Nav tabs -->
+                    <ul class="nav-tabs-vertical hidden-xs" role="tablist">
+                        <li role="presentation" class="active"><a href="#message_received" aria-controls="message_received" role="tab" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
+                        <li role="presentation"><a href="#sent_message" aria-controls="sent_message" role="tab" data-toggle="tab"><i class="fa fa-upload"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
+                        <li role="presentation"><a href="#new_message" aria-controls="new_message" role="tab" data-toggle="tab"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a></li>
+                    </ul>
+                    <ul class="nav  nav-tabs-alt nav-tabs-two visible-xs-block" role="tablist">
+                        <li role="presentation" class="active"><a href="#reception" aria-controls="reception" role="tab" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
+                        <li role="presentation"><a href="#sent" aria-controls="sent" role="tab" data-toggle="tab"><i class="fa fa-upload"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
+                        <li role="presentation"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a></li>
+                    </ul>
                 </div>
-            </div><!--tabpanel-->
+                <div class="col-md-9 col-sm-height">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
 
-            <!-- Mes videos -->
-            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-            <div role="tabpanel" class="tab-pane" id="sent">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="footer-header">	
-                            <h2>{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</h2>
-                        </div>	
-                    </div>				
-                </div><!--row-->
-                <div class="row tabpanel-content">
-                    {% include 'ApplicationFOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads_send} %}
-                </div>
-            </div><!--tabpanel-->
+                        <div role="tabpanel" class="tab-pane tab-pane-vertical active" id="message_received">
+                            <div class="row">
+                                <div class="row-same-height">
+                                    {% include 'ApplicationFOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+                                </div><!--row same height-->
+                            </div><!--row-->
+                        </div><!--tabpanel-->
 
-            <!-- Mes projets -->
-            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-            <div role="tabpanel" class="tab-pane" id="new">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="footer-header">	
-                            <h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
-                        </div>
-                    </div>				
-                </div><!--row-->
-                <div class="row tabpanel-content">
+                        <div role="tabpanel" class="tab-pane tab-pane-vertical " id="sent_message">
+                            <div class="row">
+                                <div class="row-same-height">
+                                    {% include 'ApplicationFOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads_send} %}
+                                </div><!--row same height-->
+                            </div><!--row-->
+                        </div><!--tabpanel-->
 
-                    <div class="col-sm-6 col-sm-offset-3 contact-form">
-                        <div id="response"></div>
-                        <form action="{{ url('fos_message_thread_new') }}" method="post">
-                        {{ form_start(form) }}
-                        {{ form_errors(form) }}
-                          <div style="margin-bottom: 10px">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                          <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.subject'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                          <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                          <input class="contact_button button btn btn-primary btn-block" style="margin-bottom: 10px" type="submit" />
-                        {{ form_end(form) }}
-                       </form>
-                    </div>
+                        <div role="tabpanel" class="tab-pane tab-pane-vertical " id="new_message">
+                            <div class="row">
+                                <div class="row-same-height">
+                                    <div id="response"></div>
+                                    <form action="{{ url('fos_message_thread_new') }}" method="post">
+                                    {{ form_start(form) }}
+                                    {{ form_errors(form) }}
+                                      <div style="margin-bottom: 10px">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
+                                      <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.subject'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
+                                      <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control','style':'background-color:#fff'} }) }}</div>
+                                      <input class="contact_button button btn btn-primary btn-block" style="margin-bottom: 10px" type="submit" />
+                                    {{ form_end(form) }}
+                                   </form>
+                                </div><!--row same height-->
+                            </div><!--row-->
+                        </div><!--tabpanel-->
 
-                </div>
-            </div><!--tabpanel-->
-
-        </div><!--tab-content-->
-
-    </div><!--container-->
-
-
-
+                    </div><!--tab-content-->
+                </div><!--col-->			
+            </div><!--row same height-->
+        </div><!--row-->
+    </div><!-- container -->
 </section>

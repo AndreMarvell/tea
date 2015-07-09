@@ -38,10 +38,11 @@ class ProfileFOSUser1Controller extends BaseController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         
-        $projects = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Projet")->findBy(array('author'=>$user),array('date' => 'DESC'));;
-        $provider = $this->container->get('fos_message.provider');
-        $threads = $provider->getInboxThreads();
-        $threads_send = $provider->getSentThreads();
+        $videos         = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Video")->findBy(array('author'=>$user),array('date' => 'DESC'));;
+        $projects       = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Projet")->findBy(array('author'=>$user),array('date' => 'DESC'));;
+        $provider       = $this->container->get('fos_message.provider');
+        $threads        = $provider->getInboxThreads();
+        $threads_send   = $provider->getSentThreads();
         
         $form = $this->container->get('fos_message.new_thread_form.factory')->create();
         $formHandler = $this->container->get('fos_message.new_thread_form.handler');
@@ -59,6 +60,7 @@ class ProfileFOSUser1Controller extends BaseController
             'form' => $form->createView(),
             'data' => $form->getData(),
             'projects' => $projects,
+            'videos' => $videos,
             'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
         ));
     }

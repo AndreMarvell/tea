@@ -20,6 +20,9 @@ class ProjetAdmin extends Admin
             ->add('title')
             ->add('targetCountry')
             ->add('enabled')
+            ->add('selectionOfTea')
+            ->add('projectOfTheWeek')
+            ->add('projectOfTheMonth')
             ->add('private')
             ->add('date')
         ;

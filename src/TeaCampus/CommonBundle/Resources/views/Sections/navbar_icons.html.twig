@@ -6,7 +6,9 @@
             {% if app.user.avatar is not null %}
                 {% thumbnail app.user.avatar, 'square' with{'width':'32px','height':'32px','style':'border-radius:50%;border:1px solid white'} %}
             {% else %}
-                <i class="fa fa-user"></i>
+                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                <img src="{{ asset_url }}" width='32px' height='32px' style="border-radius:50%;border:1px solid white">
+                {% endimage %}
             {% endif %}
         </a>
     {% else %}
