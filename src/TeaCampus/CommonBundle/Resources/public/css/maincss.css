@@ -1307,7 +1307,7 @@ section.divider.striped-icon {
     z-index: 1;
 }
 .home-header {
-    background-image: url('../images/graph-home.svg'), url('http://africa-facts.org/wp-content/uploads/2015/01/african-kids.jpg');
+    background-image: url('../images/graph-home.svg'), url('../images/blurred.jpg');
     background-position: center top, center top;
     background-repeat: no-repeat;
     background-size: cover, cover;

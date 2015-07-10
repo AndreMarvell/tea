@@ -10,3 +10,5 @@
 /web/js/
 /web/css/
 /web/images/
+/app/config/deploy.rb
+/app/config/preprod.rb
