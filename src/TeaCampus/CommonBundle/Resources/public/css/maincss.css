@@ -5638,6 +5638,27 @@ body {
 .wrap-user-control .wrap-login-signup .tab-content .signup-content .signup-facebook .fa {
     color: #fff;
 }
+
+.wrap-user-control .wrap-login-signup .tab-content .signup-content .signup-google {
+    background: #d34836;
+    display: block;
+    font-size: 14px;
+    line-height: 35px;
+    height: 35px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: normal;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.wrap-user-control .wrap-login-signup .tab-content .signup-content .signup-google:hover {
+    background: rgb(181, 43, 25);
+}
+.wrap-user-control .wrap-login-signup .tab-content .signup-content .signup-google .fa {
+    color: #fff;
+}
+
 .wrap-user-control .wrap-login-signup .tab-content .signup-content .or-sep {
     display: block;
     position: relative;

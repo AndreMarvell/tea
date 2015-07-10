@@ -1,10 +1,19 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{#<h5>{{ 'link_register'|trans({}, 'SonataUserBundle') }} </h5>#}
-<a href="#" class="signup-facebook">
-    <i class="fa fa-facebook-square">&nbsp;&nbsp;</i>
-    {{ 'register.facebook'|trans({}, 'messages') }}
-</a>
+<div class="row">
+    <div class="col-md-6">
+        <a href="{{path('hwi_oauth_service_redirect',{'service':'facebook'})}}" class="signup-facebook">
+            <i class="fa fa-facebook-square">&nbsp;&nbsp;</i>
+            Facebook
+        </a>
+    </div>
+    <div class="col-md-6">
+        <a href="{{path('hwi_oauth_service_redirect',{'service':'google'})}}" class="signup-google">
+            <i class="fa fa-google-plus-square">&nbsp;&nbsp;</i>
+            Google
+        </a>
+    </div>
+</div>
 <span class="or-sep">{{ 'register.or'|trans({}, 'messages') }}</span>
 <div style="margin-bottom: 20px;">
     <span>

@@ -4,6 +4,21 @@
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
+<div class="row">
+    <div class="col-md-6">
+        <a href="{{path('hwi_oauth_service_redirect',{'service':'facebook'})}}" class="signup-facebook">
+            <i class="fa fa-facebook-square">&nbsp;&nbsp;</i>
+            Facebook
+        </a>
+    </div>
+    <div class="col-md-6">
+        <a href="{{path('hwi_oauth_service_redirect',{'service':'google'})}}" class="signup-google">
+            <i class="fa fa-google-plus-square">&nbsp;&nbsp;</i>
+            Google
+        </a>
+    </div>
+</div>
+<span class="or-sep">{{ 'register.or'|trans({}, 'messages') }}</span>
 {#<h5>{{ 'link_login'|trans({}, 'SonataUserBundle') }}</h5>#}
 <form class="form" action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />

@@ -42,7 +42,9 @@
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/news-bundle": "dev-master",
         "suncat/mobile-detect-bundle": "0.10.*",
-        "friendsofsymfony/message-bundle": "^1.2"
+        "friendsofsymfony/message-bundle": "^1.2",
+        
+         "hwi/oauth-bundle": "0.4.*@dev"
         
     },
     "require-dev": {

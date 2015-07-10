@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5880c293f33453d66e23f5501e0fa54b",
+    "hash": "f4796051e379073331f3a15391373734",
     "packages": [
         {
             "name": "bmatzner/fontawesome-bundle",
@@ -1517,6 +1517,123 @@
                 "form"
             ],
             "time": "2014-12-14 14:10:42"
+        },
+        {
+            "name": "hwi/oauth-bundle",
+            "version": "dev-master",
+            "target-dir": "HWI/Bundle/OAuthBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hwi/HWIOAuthBundle.git",
+                "reference": "d7caff8257d7b5807f2f56d03d7bddca6484265b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/d7caff8257d7b5807f2f56d03d7bddca6484265b",
+                "reference": "d7caff8257d7b5807f2f56d03d7bddca6484265b",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/buzz": "~0.7",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/options-resolver": "~2.1",
+                "symfony/security-bundle": "~2.1",
+                "symfony/yaml": "~2.3"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.3",
+                "symfony/property-access": "~2.5",
+                "symfony/twig-bundle": "~2.1",
+                "symfony/validator": "~2.1"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "to use Doctrine user provider",
+                "friendsofsymfony/user-bundle": "to connect FOSUB with this bundle",
+                "symfony/property-access": "to use FOSUB integration with this bundle",
+                "symfony/twig-bundle": "to use the Twig hwi_oauth_* functions"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "HWI\\Bundle\\OAuthBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
+                },
+                {
+                    "name": "Joseph Bielawski",
+                    "email": "stloyd@gmail.com"
+                },
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "Geoffrey Bachelet",
+                    "email": "geoffrey.bachelet@gmail.com"
+                }
+            ],
+            "description": "Support for authenticating users using both OAuth1.0a and OAuth2 in Symfony2.",
+            "homepage": "http://github.com/hwi/HWIOAuthBundle",
+            "keywords": [
+                "37signals",
+                "Authentication",
+                "amazon",
+                "bitbucket",
+                "bitly",
+                "box",
+                "dailymotion",
+                "deviantart",
+                "disqus",
+                "dropbox",
+                "eventbrite",
+                "facebook",
+                "firewall",
+                "flickr",
+                "foursquare",
+                "github",
+                "google",
+                "hubic",
+                "instagram",
+                "jira",
+                "linkedin",
+                "mail.ru",
+                "oauth",
+                "oauth1",
+                "oauth2",
+                "odnoklassniki",
+                "qq",
+                "salesforce",
+                "security",
+                "sensio connect",
+                "sina weibo",
+                "spotify",
+                "stack exchange",
+                "stereomood",
+                "trello",
+                "twitch",
+                "twitter",
+                "vkontakte",
+                "wechat",
+                "windows live",
+                "wordpress",
+                "yahoo",
+                "yandex"
+            ],
+            "time": "2015-06-09 12:27:24"
         },
         {
             "name": "imagine/imagine",
@@ -3040,12 +3157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "ad76edb5e13f98f50f1d704fae6ce573aa82ccd8"
+                "reference": "12fc8df1b8a2c41b262c41469895eeec3a3dafda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/ad76edb5e13f98f50f1d704fae6ce573aa82ccd8",
-                "reference": "ad76edb5e13f98f50f1d704fae6ce573aa82ccd8",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/12fc8df1b8a2c41b262c41469895eeec3a3dafda",
+                "reference": "12fc8df1b8a2c41b262c41469895eeec3a3dafda",
                 "shasum": ""
             },
             "require": {
@@ -3119,7 +3236,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2015-07-03 10:10:09"
+            "time": "2015-07-09 11:48:07"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3253,12 +3370,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataClassificationBundle.git",
-                "reference": "10d7eb442922dd84b609fd6bf09a3ce106c441e4"
+                "reference": "f0a60006ec676df2ecde09ac9667d14411f0b726"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/10d7eb442922dd84b609fd6bf09a3ce106c441e4",
-                "reference": "10d7eb442922dd84b609fd6bf09a3ce106c441e4",
+                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/f0a60006ec676df2ecde09ac9667d14411f0b726",
+                "reference": "f0a60006ec676df2ecde09ac9667d14411f0b726",
                 "shasum": ""
             },
             "require": {
@@ -3311,7 +3428,7 @@
                 "tag",
                 "taxonomy"
             ],
-            "time": "2015-06-26 10:19:44"
+            "time": "2015-07-07 10:54:43"
         },
         {
             "name": "sonata-project/core-bundle",
@@ -3388,12 +3505,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "f3be409a041083c852af160bdbf2225461f4c69b"
+                "reference": "fec0147e99b3db467152d148126e2f894c9369a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/f3be409a041083c852af160bdbf2225461f4c69b",
-                "reference": "f3be409a041083c852af160bdbf2225461f4c69b",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/fec0147e99b3db467152d148126e2f894c9369a2",
+                "reference": "fec0147e99b3db467152d148126e2f894c9369a2",
                 "shasum": ""
             },
             "require": {
@@ -3437,7 +3554,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2015-06-26 10:13:20"
+            "time": "2015-07-07 10:54:34"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -3494,12 +3611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "071236bac32480df2dddccb8d12409a67008c0ff"
+                "reference": "2cd709777b571f7f7e294ad4575f38955e6da963"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/071236bac32480df2dddccb8d12409a67008c0ff",
-                "reference": "071236bac32480df2dddccb8d12409a67008c0ff",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/2cd709777b571f7f7e294ad4575f38955e6da963",
+                "reference": "2cd709777b571f7f7e294ad4575f38955e6da963",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +3676,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2015-06-26 10:05:38"
+            "time": "2015-07-07 10:56:05"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -3567,12 +3684,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataEasyExtendsBundle.git",
-                "reference": "b54f22787f540409713d78f095f6c3d51a6d428e"
+                "reference": "55deba66bd34397812a3d749b8796a56eabea831"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/b54f22787f540409713d78f095f6c3d51a6d428e",
-                "reference": "b54f22787f540409713d78f095f6c3d51a6d428e",
+                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/55deba66bd34397812a3d749b8796a56eabea831",
+                "reference": "55deba66bd34397812a3d749b8796a56eabea831",
                 "shasum": ""
             },
             "require": {
@@ -3618,7 +3735,7 @@
                 "Easy Extends",
                 "sonata"
             ],
-            "time": "2015-06-26 10:24:29"
+            "time": "2015-07-07 10:55:06"
         },
         {
             "name": "sonata-project/exporter",
@@ -3689,12 +3806,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataFormatterBundle.git",
-                "reference": "177e72a798fc8ef3aeeec88a0e1a18a3760502d7"
+                "reference": "0a3a911c12f0cc9772c7bf1bb17be98afb6ed114"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataFormatterBundle/zipball/177e72a798fc8ef3aeeec88a0e1a18a3760502d7",
-                "reference": "177e72a798fc8ef3aeeec88a0e1a18a3760502d7",
+                "url": "https://api.github.com/repos/sonata-project/SonataFormatterBundle/zipball/0a3a911c12f0cc9772c7bf1bb17be98afb6ed114",
+                "reference": "0a3a911c12f0cc9772c7bf1bb17be98afb6ed114",
                 "shasum": ""
             },
             "require": {
@@ -3747,7 +3864,7 @@
                 "markitup",
                 "sonata"
             ],
-            "time": "2015-06-26 10:29:52"
+            "time": "2015-07-07 10:55:47"
         },
         {
             "name": "sonata-project/google-authenticator",
@@ -3805,12 +3922,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "b02f2983f6056366db47939ef615a23091c9b05a"
+                "reference": "d1ce9cf2f4945a6a3a947202bb5dcdbbde3b4a35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/b02f2983f6056366db47939ef615a23091c9b05a",
-                "reference": "b02f2983f6056366db47939ef615a23091c9b05a",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/d1ce9cf2f4945a6a3a947202bb5dcdbbde3b4a35",
+                "reference": "d1ce9cf2f4945a6a3a947202bb5dcdbbde3b4a35",
                 "shasum": ""
             },
             "require": {
@@ -3860,7 +3977,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-06-26 10:21:05"
+            "time": "2015-07-07 10:54:54"
         },
         {
             "name": "sonata-project/media-bundle",
@@ -3868,12 +3985,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "2b32d558d7381f360ab72526fc3d7e4570e10531"
+                "reference": "b1ac849f876736d93a023d33ade924a96479653b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/2b32d558d7381f360ab72526fc3d7e4570e10531",
-                "reference": "2b32d558d7381f360ab72526fc3d7e4570e10531",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/b1ac849f876736d93a023d33ade924a96479653b",
+                "reference": "b1ac849f876736d93a023d33ade924a96479653b",
                 "shasum": ""
             },
             "require": {
@@ -3952,7 +4069,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2015-06-29 12:04:32"
+            "time": "2015-07-10 14:22:51"
         },
         {
             "name": "sonata-project/news-bundle",
@@ -3960,12 +4077,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataNewsBundle.git",
-                "reference": "d6ef6ba9be1912cc239cae2be9c214e20803224c"
+                "reference": "1a7660702efbea08575ce1a2486e7f146643572b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataNewsBundle/zipball/d6ef6ba9be1912cc239cae2be9c214e20803224c",
-                "reference": "d6ef6ba9be1912cc239cae2be9c214e20803224c",
+                "url": "https://api.github.com/repos/sonata-project/SonataNewsBundle/zipball/1a7660702efbea08575ce1a2486e7f146643572b",
+                "reference": "1a7660702efbea08575ce1a2486e7f146643572b",
                 "shasum": ""
             },
             "require": {
@@ -4030,7 +4147,7 @@
                 "post",
                 "sonata"
             ],
-            "time": "2015-06-26 10:17:18"
+            "time": "2015-07-07 10:56:43"
         },
         {
             "name": "sonata-project/notification-bundle",
@@ -4177,12 +4294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "46b11dc64a19012d5099bdc72541abe5ca1eb3fa"
+                "reference": "098fb0063301503754346495599ac67106f47118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/46b11dc64a19012d5099bdc72541abe5ca1eb3fa",
-                "reference": "46b11dc64a19012d5099bdc72541abe5ca1eb3fa",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/098fb0063301503754346495599ac67106f47118",
+                "reference": "098fb0063301503754346495599ac67106f47118",
                 "shasum": ""
             },
             "require": {
@@ -4247,7 +4364,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2015-06-29 14:26:34"
+            "time": "2015-07-10 07:36:34"
         },
         {
             "name": "suncat/mobile-detect-bundle",
@@ -4910,7 +5027,8 @@
         "sonata-project/classification-bundle": 20,
         "sonata-project/media-bundle": 20,
         "sonata-project/user-bundle": 20,
-        "sonata-project/news-bundle": 20
+        "sonata-project/news-bundle": 20,
+        "hwi/oauth-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -16,6 +16,21 @@
                             <p class="subhead">{{ 'login.subhead'| trans({},'messages') }}</p>
                             <h2>{{ 'login.title'| trans({},'messages') }}</h2>
                         </header>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{path('hwi_oauth_service_redirect',{'service':'facebook'})}}" class="signup-facebook">
+                                    <i class="fa fa-facebook-square">&nbsp;&nbsp;</i>
+                                    Facebook
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{path('hwi_oauth_service_redirect',{'service':'google'})}}" class="signup-google">
+                                    <i class="fa fa-google-plus-square">&nbsp;&nbsp;</i>
+                                    Google
+                                </a>
+                            </div>
+                        </div>
+                        <span class="or-sep">{{ 'register.or'|trans({}, 'messages') }}</span>
                         {% block fos_user_content %}
                         {% if error %}
                             {% if error.messageKey is defined %}

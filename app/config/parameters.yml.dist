@@ -26,3 +26,8 @@ parameters:
     # Other parameters
     unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
     uri_media: /uploads/media
+    facebook_app_id: ThisStringIsNotSoSecretChangeIt
+    facebook_app_secret: ThisStringIsNotSoSecretChangeIt
+    google_app_id: ThisStringIsNotSoSecretChangeIt
+    google_app_secret: ThisStringIsNotSoSecretChangeIt
+    oauth_user_provider.class: Application\Sonata\UserBundle\Security\Core\User\FOSUBUserProvider

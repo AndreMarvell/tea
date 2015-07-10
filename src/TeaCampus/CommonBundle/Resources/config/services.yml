@@ -49,3 +49,8 @@ services:
         arguments: [~, TeaCampus\CommonBundle\Entity\Event, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Event}
+            
+    tea.image_downloader:
+        class: TeaCampus\CommonBundle\Services\ImageDownloader
+        arguments:
+            container: "@service_container"
