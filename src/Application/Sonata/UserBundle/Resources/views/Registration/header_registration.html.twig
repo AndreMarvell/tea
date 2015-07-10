@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{#<h5>{{ 'link_register'|trans({}, 'SonataUserBundle') }} </h5>#}
+<a href="#" class="signup-facebook">
+    <i class="fa fa-facebook-square">&nbsp;&nbsp;</i>
+    {{ 'register.facebook'|trans({}, 'messages') }}
+</a>
+<span class="or-sep">{{ 'register.or'|trans({}, 'messages') }}</span>
+<div style="margin-bottom: 20px;">
+    <span>
+        {{ 'register.self_register_text'|trans({}, 'messages') }}
+    </span>
+</div>
+<a style="margin-bottom: 20px;" href="{{ path('fos_user_registration_register') }}" class="btn btn-sm btn-primary">{{ 'link_register'|trans({}, 'SonataUserBundle') }}</a>
+
+   

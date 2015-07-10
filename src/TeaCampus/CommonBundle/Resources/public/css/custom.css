@@ -183,6 +183,68 @@ footer{
     color: black;
 }
 
+/**********************************************/
+/*******  StandAlone Login & Register   *******/
+/**********************************************/
+
+.home-header.login-register{
+  background-image: url('../images/blurred.jpg');    
+}
+.standalone-login{
+    padding: 20px 50px;
+    background-color: rgb(42, 45, 50);
+    margin-bottom: 100px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.standalone-login span.forgot a{
+    padding: 20px;
+}
+.standalone-login span.forgot a:hover{
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.standalone-login .section-header{
+    margin:0;
+}
+.standalone-login .section-header h2{
+    color: white;
+}
+
+.standalone-login input.submit-button{
+  background: #27ae60;
+  box-shadow: none;
+  color: white;
+  padding: 10px;
+}
+
+.standalone-login .or-sep{
+      display: block;
+  position: relative;
+  font-size: 14px;
+  color: #7e848e;
+  margin-bottom: 15px;
+}
+
+
+.standalone-login .signup-facebook{
+  background: #3b5796;
+  display: block;
+  font-size: 14px;
+  line-height: 35px;
+  height: 35px;
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: normal;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+
 /***************************/
 /*******    List Profil   *******/
 /***************************/

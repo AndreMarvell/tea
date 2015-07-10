@@ -80,7 +80,13 @@
     </head>
     <body id="home" data-offset="80" data-target=".navbar" data-spy="scroll">
         
-        <div id="page-preloader"><span class="spinner"></span></div>
+        <div id="page-preloader">
+            {% image '@TeaCampusCommonBundle/Resources/public/images/logos/logo-w.png'  output="images/ico/logo-w.jpg" %}
+            <img class="inverse-logo hidden-xs" src="{{ asset_url }}" alt="TeaCampus logo"  width="50px"/>
+            {% endimage %}
+            <span class="spinner">
+            </span>
+        </div>
         
         <!-- Navigation -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->

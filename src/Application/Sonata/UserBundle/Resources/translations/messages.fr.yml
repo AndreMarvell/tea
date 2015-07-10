@@ -36,5 +36,14 @@ label:
 project:
     add:
         title: Ajouter un nouveau projet
+        
+login:
+    subhead: Votre compte
+    title: S'identifier
+    
+register:
+    subhead: Votre compte
+    title: S'inscrire
+    self_register_text: Inscrivez-vous directement
     
     

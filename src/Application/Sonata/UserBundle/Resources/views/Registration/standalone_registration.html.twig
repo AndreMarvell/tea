@@ -1,0 +1,70 @@
+{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% spaceless %}
+    {% set wearesocial = true %} 
+    {% block title %}
+        {{ 'link_register'|trans({}, 'SonataUserBundle') }} - {{ parent() }}
+    {% endblock %}
+
+    {% block main_content %}
+        <section class="home-header login-register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 standalone-login">
+                        <header class="section-header">
+                            <p class="subhead">{{ 'register.subhead'| trans({},'messages') }}</p>
+                            <h2>{{ 'register.title'| trans({},'messages') }}</h2>
+                        </header>
+                        <a href="#" class="signup-facebook">
+                            <i class="fa fa-facebook-square">&nbsp;&nbsp;</i>
+                            {{ 'register.facebook'|trans({}, 'messages') }}
+                        </a>
+                        <span class="or-sep">{{ 'register.or'|trans({}, 'messages') }}</span>
+                        <form class="form" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-horizontal">
+                            
+                            {% if not form.username.vars.valid %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ form_errors(form.username) }}
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                {{ form_widget(form.username, { 'attr': {'placeholder': 'form.username'|trans({},'FOSUserBundle'), 'class':'form-control'} }) }}
+                            </div>
+                            {% if not form.email.vars.valid %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ form_errors(form.email) }}
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                {{ form_widget(form.email, { 'attr': {'placeholder': 'form.email'|trans({},'FOSUserBundle'), 'class':'form-control'} }) }}
+                            </div>
+                            {% if not form.plainPassword.vars.valid %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ form_errors(form.plainPassword.first) }}
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'form.password'|trans({},'FOSUserBundle'), 'class':'form-control'} }) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'form.password_confirmation'|trans({},'FOSUserBundle'), 'class':'form-control'} }) }}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="submit-button form-control" />
+                           </div>
+                           {{form_rest(form)}}
+                            {#<p>{{ 'register.already_member'|trans({}, 'messages') }}</p>#}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>                   
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+{% endspaceless %}
