@@ -44,7 +44,7 @@ class Like
     
     
     /**
-     * @ORM\prePersist
+     * @ORM\PrePersist
      */
     public function increase()
     {
@@ -52,7 +52,7 @@ class Like
     }
 
     /**
-     * @ORM\preRemove
+     * @ORM\PreRemove
      */
     public function decrease()
     {

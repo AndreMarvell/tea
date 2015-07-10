@@ -52,7 +52,7 @@ class Rate
     
     
     /**
-     * @ORM\prePersist
+     * @ORM\PrePersist
      */
     public function increase()
     {
@@ -61,7 +61,7 @@ class Rate
     }
 
     /**
-     * @ORM\preRemove
+     * @ORM\PreRemove
      */
     public function decrease()
     {

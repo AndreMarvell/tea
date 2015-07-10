@@ -52,7 +52,7 @@ class View
     
     
     /**
-     * @ORM\prePersist
+     * @ORM\PrePersist
      */
     public function increase()
     {
@@ -60,7 +60,7 @@ class View
     }
 
     /**
-     * @ORM\preRemove
+     * @ORM\PreRemove
      */
     public function decrease()
     {
