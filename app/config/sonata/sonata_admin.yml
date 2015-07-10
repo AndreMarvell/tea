@@ -16,7 +16,7 @@ sonata_admin:
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
 
     title:      TeaCampus
-    title_logo: bundles/teacampuscommon/images/logo.png
+    title_logo: bundles/teacampuscommon/images/logos/logo.png
     options:
         html5_validate: false # does not use html5 validation
         pager_links: 5 # pager max links to display
@@ -49,7 +49,7 @@ sonata_admin:
             sonata.admin.group.content:
                 label:           Général
                 label_catalogue: TeaCampusCommonBundle
-                icon:            '<i class="fa fa-infos"></i>'
+                icon:            '<i class="fa fa-keyboard-o"></i>'
                 items:
                     - tea.admin.video
                     - tea.admin.projet
