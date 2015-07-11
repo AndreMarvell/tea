@@ -54,3 +54,21 @@ services:
         class: TeaCampus\CommonBundle\Services\ImageDownloader
         arguments:
             container: "@service_container"
+
+    tea.admin.history:
+        class: TeaCampus\CommonBundle\Admin\HistoryAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\History, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: History}
+
+    tea.admin.faq:
+        class: TeaCampus\CommonBundle\Admin\FaqAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Faq, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Faq}
+
+    tea.admin.service:
+        class: TeaCampus\CommonBundle\Admin\ServiceAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\Service, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Service}

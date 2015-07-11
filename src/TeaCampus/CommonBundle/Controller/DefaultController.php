@@ -15,4 +15,30 @@ class DefaultController extends Controller
             'lastNews' => $lastNews
         ));
     }
+    
+    public function aboutAction()
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $locale         = $this->get('request')->getLocale();
+        $histories      = $em->getRepository('TeaCampusCommonBundle:History')->findBy(array('locale'=>$locale), array('date' => 'ASC'));
+        $partners       = $em->getRepository('TeaCampusCommonBundle:Partner')->findBy(array(), array('position' => 'ASC'));
+        $services       = $em->getRepository('TeaCampusCommonBundle:Service')->findBy(array('locale'=>$locale), array('position' => 'ASC'));
+        
+        return $this->render('TeaCampusCommonBundle:Home:about.html.twig', array(
+            'histories' => $histories,
+            'partners' => $partners,
+            'services' => $services,
+        ));
+    }
+    
+    public function faqAction()
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $locale         = $this->get('request')->getLocale();
+        $faqs           = $em->getRepository('TeaCampusCommonBundle:Faq')->findBy(array('locale'=>$locale), array('position' => 'ASC'));
+        
+        return $this->render('TeaCampusCommonBundle:Home:faq.html.twig', array(
+            'faqs' => $faqs,
+        ));
+    }
 }

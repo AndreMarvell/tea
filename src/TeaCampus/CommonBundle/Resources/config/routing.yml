@@ -15,6 +15,10 @@ tea_about:
     path:     /about
     defaults: { _controller: TeaCampusCommonBundle:Default:about }
     
+tea_faq:
+    path:     /faq
+    defaults: { _controller: TeaCampusCommonBundle:Default:faq }
+    
 ##############################
 ###### Pour les videos #######
 ##############################

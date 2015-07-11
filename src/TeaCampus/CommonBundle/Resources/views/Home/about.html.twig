@@ -1,0 +1,151 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% block title %}
+    {{ 'about.title'| trans({},'messages') }} - {{ parent() }}
+{% endblock %}    
+{% block main_content %}
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-12">
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/logos/logo-w.png'  output="images/ico/logo-about.jpg" %}
+                        <img src="{{ asset_url }}" alt="TeaCampus logo"  width="100px"/>
+                        {% endimage %}
+                        <br>
+                        <h1 class="title">
+                            {{ 'about.title'| trans({},'messages') }}
+                        </h1>
+                        <div class="path"></div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        
+        <section class="team" id="team">
+            <a class="striped-icon divider scroll" href="#team">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-6" id="who">
+                        <div class="team-description" >
+                            <h3>{{ 'about.description.whoweare.title'| trans({},'messages') }}</h3>
+                            <p>{{ 'about.description.whoweare.par1'| trans({},'messages') }}</p>
+                            <p>{{ 'about.description.whoweare.par2'| trans({},'messages') }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="what">
+                        <div class="team-description">
+                            <h3>{{ 'about.description.whatwedo.title'| trans({},'messages') }}</h3>
+                            <p>{{ 'about.description.whatwedo.par1'| trans({},'messages') }}</p>
+                            <p>{{ 'about.description.whatwedo.par2'| trans({},'messages') }}</p>
+                        </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        <!-- About -  Timeline -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-timeline" id="history">
+            <div class="container">
+                <div class="row top-row">
+                    <div class="col-md-12">
+                        <div class="time-title" id="timel">{{ 'about.history.title'| trans({},'messages') }}<br />
+                            <div class="round-ico"></div>
+                        </div>
+                    </div>
+                </div>
+                {% for history in histories %}
+                    {%if loop.index is odd%}
+                        <div class="row left-row">
+                            <div class="round-ico little"></div>
+                            <div class="col-md-6 col-sm-6 time-item">
+                                <div class="date">{{history.date|format_date('MMMM Y', app.request.locale, 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</div>
+                                <div class="title">{{history.title}}</div>
+                                <div class="text">{{history.text}}</div>
+                            </div>
+                        </div>
+                    {%else%}
+                        <div class="row right-row">
+                            <div class="round-ico big"></div>
+                            <div class="col-md-6 col-sm-6"></div>
+                            <div class="col-md-6 col-sm-6 time-item">
+                                <div class="date">{{history.date|format_date('MMMM Y', app.request.locale, 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</div>
+                                <div class="title">{{history.title}}</div>
+                                <div class="text">{{history.text}}</div>
+                            </div>
+                        </div>
+                    {%endif%}
+                {%endfor%}
+                <div class="plus">
+                    <span class="plus-ico">+</span>
+                </div>
+            </div>
+        </section>
+                        
+        
+        <!--  About - Services -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-services" id="services" style="padding: 0;">
+            <div class="container">
+                <header class="section-header" >
+                    <p class="subhead">{{ 'about.services.subhead'| trans({},'messages') }}</p>
+                    <h2>{{ 'about.services.title'| trans({},'messages') }}</h2>
+                    <p class="large">{{ 'about.services.text'| trans({},'messages') }}</p>
+                </header>
+                <div class="row">
+                    {% for service in services %}
+                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 service-item">
+                        <div class="service-icon pull-left">
+                            <span class="{{service.icon}}"></span>
+                        </div>
+                        <div class="service-text pull-right">
+                            <div class="text-title">{{service.title}}</div>  
+                            {{service.text}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        <!-- Partners -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-service-nav" id="partners" style="padding: 0 0 50px;border-top: 1px solid #e7e8ec; background: #f9f9fa;">
+            <div class="container">
+                <!-- section header -->
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <header class="section-header" >
+                            <p class="subhead">{{ 'about.partners.subhead'| trans({},'messages') }}</p>
+                            <h2>{{ 'about.partners.title'| trans({},'messages') }}</h2>
+                            <p class="large">{{ 'about.partners.text'| trans({},'messages') }}</p>
+                        </header>	
+                    </div>
+                </div>
+                <!-- section content -->
+                <div class="row list-nav">
+                    {% for partner in partners %}
+                    <div class="col-md-3 col-sm-6 col-xs-6 list-wrap">
+                        <a class="scroll" target="_blank" href="{{partner.link}}">
+                            <div class="nav-item">
+                                {% thumbnail partner.image, 'small' with{'alt':partner.name, 'title':partner.name } %}
+                                <div class="text">{{partner.name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                    {%endfor%}
+
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block scripts %}
+                
+{% endblock %}
+
+{% endspaceless %}

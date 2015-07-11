@@ -118,7 +118,7 @@ sonata_media:
 
             formats:
                 small: { width: 48, height: 48 , quality: 95}
-                big:   { height: 80 , quality: 95}
+                big:   { width: 80 , quality: 95}
                 square: { width: 100, height: 100, quality: 90}
                 
                 

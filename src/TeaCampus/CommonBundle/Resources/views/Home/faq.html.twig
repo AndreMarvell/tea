@@ -1,0 +1,95 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% block title %}
+    {{ 'faq.title'| trans({},'messages') }} - {{ parent() }}
+{% endblock %}    
+{% block main_content %}
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/faq.png'  output="images/ico/faq.png" %}
+                        <img src="{{ asset_url }}" alt="TeaCampus FAQ"  width="100px"/>
+                        {% endimage %}
+                        <br>
+                        <h1 class="title">
+                            {{ 'faq.title'| trans({},'messages') }}
+                        </h1>
+                        <div class="path"></div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        
+        <!-- Questions -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-questions">
+            <div class="info-icon">
+                <i class="icon-info"></i>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ 'faq.title'| trans({},'messages') }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+                        <div id="accordion-two" role="tablist" aria-multiselectable="true">			
+                            <div class="panel panel-default panel-alt-one"  >	
+                                {% for faq in faqs %}
+                                    {%if loop.first %}
+                                        <div class="panel-heading active " role="tab" id="heading{{loop.index}}">
+                                            <h6 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion-two" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
+                                                    <i class="fa fa-minus-circle pull-right"></i>		
+                                                    {{faq.question}}
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse{{loop.index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{loop.index}}">
+                                            <div class="panel-body">
+                                                {{faq.answer}}
+                                            </div>
+                                        </div>
+                                    {%else%}
+                                        <div class="panel-heading" role="tab" id="heading{{loop.index}}">
+                                            <h6 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion-two" href="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+                                                    <i class="fa fa-plus-circle pull-right"></i>	
+                                                    {{faq.question}}
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index}}">
+                                            <div class="panel-body">
+                                                {{faq.answer}}
+                                            </div>
+                                        </div>
+                                    {%endif%}
+                                {%endfor%}
+		  
+                            </div><!--panel-->
+                        </div><!--accordion-->								
+                    </div><!--col-->
+                </div> <!--row-->
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center wrap-ask">
+                        <h3>{{ 'faq.noanswer'| trans({},'messages') }}</h3>
+                        <p class="large">{{ 'faq.contact'| trans({},'messages') }}</p>
+                        <a href="{{path('tea_contacts')}}" class="btn btn-primary">{{ 'faq.ask'| trans({},'messages') }}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block scripts %}
+                
+{% endblock %}
+
+{% endspaceless %}

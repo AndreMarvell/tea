@@ -59,6 +59,9 @@ sonata_admin:
                     - tea.admin.partner
                     - tea.admin.testimony
                     - tea.admin.event
+                    - tea.admin.faq
+                    - tea.admin.history
+                    - tea.admin.service
                     
             sonata.admin.group.news:
                 label:           Actualité

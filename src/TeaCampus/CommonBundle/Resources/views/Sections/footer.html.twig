@@ -24,9 +24,9 @@
                         <nav>
                             <ul class="nav nav-pills nav-stacked offset left-border right-border">
                                 <li><a href="{{path('tea_about')}}">{{ 'footer.menu.about'|trans({}, 'messages') }}</a></li>
-                                <li><a href="#">{{ 'footer.menu.faq'|trans({}, 'messages') }}</a></li>
-                                <li><a href="#">{{ 'footer.menu.forum'|trans({}, 'messages') }}</a></li>
-                                <li><a href="#">{{ 'footer.menu.mentions'|trans({}, 'messages') }}</a></li>
+                                <li><a href="{{path('tea_faq')}}">{{ 'footer.menu.faq'|trans({}, 'messages') }}</a></li>
+                                {#<li><a href="#">{{ 'footer.menu.forum'|trans({}, 'messages') }}</a></li>
+                                #}<li><a href="#">{{ 'footer.menu.mentions'|trans({}, 'messages') }}</a></li>
                             </ul>
                         </nav>
                     </article>
@@ -44,7 +44,7 @@
                         <ul class="left-border offset">
                             <li><p><i class="fa fa-link"></i><a href="{{path('tea_contacts')}}">{{ 'footer.contact.text'|trans({}, 'messages') }}</a> </p></li>
                             <li><p><i class="fa fa-map-marker"></i>Troyes, FRANCE</p></li>
-                            <li><p><i class="fa fa-phone"></i></p></li>
+                            {#<li><p><i class="fa fa-phone"></i></p></li>#}
                         </ul>
                     </article>
                 </div>

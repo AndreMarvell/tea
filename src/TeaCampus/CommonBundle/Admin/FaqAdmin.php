@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PartnerAdmin extends Admin
+class FaqAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,8 +17,8 @@ class PartnerAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
-            ->add('description')
+            ->add('question')
+            ->add('locale')
         ;
     }
 
@@ -28,17 +28,9 @@ class PartnerAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('name')
-            ->add('description')
+            ->addIdentifier('id')
+            ->add('question')
             ->add('position')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
         ;
     }
 
@@ -48,16 +40,10 @@ class PartnerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('description')
-            ->add('image', 'sonata_type_model_list', array('required' => false), array(
-                'link_parameters' => array(
-                    'context' => 'partenaire',
-                    'hide_context' => true
-                )
-            ))
-            ->add('link')
+            ->add('question')
+            ->add('answer')
             ->add('position')
+            ->add('locale','language')
         ;
     }
 
@@ -68,8 +54,8 @@ class PartnerAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('name')
-            ->add('description')
+            ->add('question')
+            ->add('answer')
         ;
     }
 }

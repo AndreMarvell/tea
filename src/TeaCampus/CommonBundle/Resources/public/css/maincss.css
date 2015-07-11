@@ -2672,7 +2672,7 @@ a h5:hover {
 
 /* Services */
 .wrap-services {
-    padding: 130px 0 60px 0;
+    padding: 100px 0 130px 0;
 }
 .wrap-services .service-icon {
     font-size: 32px;
@@ -3105,6 +3105,7 @@ section.team .team-description h3 {
 
 section.team .team-description p {
     font-size: 14px;
+    text-align: justify;
 }
 
 /* End Team */
@@ -3851,9 +3852,9 @@ body {
 }
 
 .about-header {
-    padding-top: 300px;
-    height: 700px;
-    background: url(../images/placehold/1920x700.gif) center no-repeat;
+    padding-top: 200px;
+    height: 500px;
+    background: url(../images/blurred.jpg) center no-repeat;
     background-size: cover;
     text-align: center;
     position: relative;

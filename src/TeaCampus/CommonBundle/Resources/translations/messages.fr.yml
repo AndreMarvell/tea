@@ -26,6 +26,8 @@ menu:
         who: Qui suis-je?
         what: Objectifs
         partners: Partenaires
+        history: Notre Histoires
+        services: Nos Services
     search: Tapez votre recherche
     
 register:
@@ -169,3 +171,37 @@ message:
         subject: Sujet
         by : Par
         you : Vous
+        
+about:
+    title: Qu'est ce que TEA ?
+    
+    description:
+        whoweare:
+            title: Qui Suis Je ?
+            par1: Tea est un mouvement créé pour permettre à un public très large de s'informer et de s'autoformer sur l'entrepreuneuriat et plus particulièrement en Afrique.
+            par2: TEA est un projet porté par un noyau d’étudiants de la Commuté Troyenne. Il a été initié afin de sensibiliser les personnes sur l’entrepreneuriat en Afrique et à impulser les jeunes de tous les horizons à construire et/ou à mener à terme leur projet d’entrepreneuriat en direction de l’Afrique. À travers ce projet, l’ATECAP voudrait offrir à une multitude de jeunes une formation gratuite donnant des pistes sur l’entrepreneuriat en Afrique.
+        whatwedo:
+            title: Mes Objectifs ?
+            par1: L’objectif principal de TEA est de créer un environnement accessible rassemblant des personnes autour de problématiques sur l’entrepreneuriat en Afrique. Le public visé étant des étudiants, des enseignants, des élèves, jeunes entrepreneurs, entreprises, organismes sociaux, investisseurs, et toute personne désireuse de s’informer sur l’entrepreneuriat.
+            par2: Il s’agirait de  créer un engouement  autour de l’entrepreneuriat en Afrique, en mettant sur pied un espace d’échange et en constituant des programmes didactiques destinés à former.
+                
+    history:
+        title: Notre histoire
+        subhead: Découvrez toute notre histoire
+        
+    partners:
+        title: Nos Partenaires
+        subhead: Ils nous accompagnent et nous guident dans cette aventure
+        text: Avec l'ensemble de nos partenaires régionaux, nationaux et internationaux, nous pouvons consolider votre projet de développement , faciliter vos démarches, et vous proposer les initiatives les plus adaptés à vos besoins.
+    
+    services:
+        title: Nos Services
+        subhead: Ce que nous sommes en mesure de vous offrir
+        text: Nous sommes en mesure de vous offrir une gamme complète de services – audits, analyses, conseils et formations. Nous cherchons à vous accompagner le plus loin possible dans votre marche entrepreuneuriale.
+
+faq:
+    title: Foire aux Questions
+    text: Obtenez les réponses aux questions les plus fréquemment posées sur TeaCampus
+    noanswer: Pas de réponse ?
+    contact: Vous ne trouvez pas de réponse à votre question ? Pas de panique, contactez-nous et nous nous efforcerons de donner suite à votre demande.
+    ask: Poser une question
