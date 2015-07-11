@@ -39,6 +39,11 @@
                         </div>
                     </li>
                     
+                    
+                    <li class="{%if 'formations' in currentPath%}active{%endif%}"><a href="{{path('tea_formations')}}" title="{{ 'menu.formations'|trans({},'messages') }}">{{ 'menu.formations'|trans({},'messages') }}</a></li>
+
+                    <li class="{%if 'projects' in currentPath%}active{%endif%}"><a href="{{path('tea_projects')}}" title="{{ 'menu.projects'|trans({},'messages') }}">{{ 'menu.projects'|trans({},'messages') }}</a></li>
+                    
                     <li class="{%if 'news' in currentPath%}active{%endif%}">
                         <a href="{{path('sonata_news_archive')}}" title="{{ 'menu.blog.title'|trans({},'messages') }}">{{ 'menu.blog.title'|trans({},'messages') }}</a>
                         <div class=" wrap-inside-nav">
@@ -50,13 +55,6 @@
                             </div>
                         </div>
                     </li>
-                    
-                    <li class="{%if 'videos' in currentPath%}active{%endif%}"><a href="{{path('tea_videos')}}" title="{{ 'menu.videos'|trans({},'messages') }}">{{ 'menu.videos'|trans({},'messages') }}</a></li>
-
-                    <li class="{%if 'projects' in currentPath%}active{%endif%}"><a href="{{path('tea_projects')}}" title="{{ 'menu.projects'|trans({},'messages') }}">{{ 'menu.projects'|trans({},'messages') }}</a></li>
-
-{#                    <li><a href="{{path('tea_forum')}}" title="{{ 'menu.forum'|trans({},'messages') }}">{{ 'menu.forum'|trans({},'messages') }}</a></li>
-#}                    
                 </ul>
             </div>
         </div>

@@ -19,13 +19,25 @@ tea_faq:
     path:     /faq
     defaults: { _controller: TeaCampusCommonBundle:Default:faq }
     
-##############################
-###### Pour les videos #######
-##############################
+############################################
+###### Pour les videos de formations #######
+############################################
 
-tea_videos:
-    path:     /videos
-    defaults: { _controller: TeaCampusCommonBundle:Default:videos }
+tea_formations:
+    path:     /formations
+    defaults: { _controller: TeaCampusCommonBundle:Formation:index }
+    
+tea_formations_subject:
+    path:     /formations/{subject}
+    defaults: { _controller: TeaCampusCommonBundle:Formation:subject }
+    
+tea_formations_chapter:
+    path:     /formations/{subject}/{chapter}
+    defaults: { _controller: TeaCampusCommonBundle:Formation:chapter }
+    
+tea_formations_videos:
+    path:     /formations/{subject}/{chapter}/videos/{id}
+    defaults: { _controller: TeaCampusCommonBundle:Formation:video }
 
 ##############################
 ###### Pour les projets ######

@@ -27,6 +27,12 @@ class Category extends BaseCategory
      * @var integer $id
      */
     protected $id;
+    
+    /**
+     * @var string
+     *
+     */
+    private $locale = 'fr';
 
     /**
      * Get id
@@ -36,5 +42,36 @@ class Category extends BaseCategory
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return Category
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }
