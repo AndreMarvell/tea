@@ -155,6 +155,7 @@ class ProjetController extends Controller
             $query               = $em->createQuery(
                                    'SELECT p FROM TeaCampusCommonBundle:Projet p
                                     WHERE p.private = false
+                                    AND p.enabled = true
                                     ORDER BY p.date DESC'
                                     );
             

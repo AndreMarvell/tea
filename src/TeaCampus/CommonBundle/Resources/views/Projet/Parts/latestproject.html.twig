@@ -1,0 +1,55 @@
+{# empty Twig template #}
+<header class="section-header" style="margin: 0px 0px 0px 0px">
+    <h4 class="text-center">
+        {{ 'project.show.latest_project_title'|trans({},'messages') }}                    
+    </h4>
+    <p style="font-size: 20px">{{ 'project.show.latest_project'|trans({},'messages') }}</p>
+</header> 
+<div class="text-center col-md-12">
+    <div class ="wrap-features">
+        <div class="container">
+            <div class="row">
+                {# items latestProject #}
+                {% if latestproject is not null %}
+                    {% for project in latestproject %}
+                        <a href="{{ path('tea_projects_show',{'id':project.id}) }}">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
+                            <div class="wrap-feature-item">
+                                <div class="feature-item">
+                                    <div class="front face">
+                                        <div class="ico ">
+                                            {% thumbnail project.media, 'square' with{'width':'107px', 'height':'107px', 'alt':project.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}
+                                        </div>
+                                        <div class="title">{{project.title}}</div>
+                                        <div class="number">{{project.getTargetCountry()|country}}</div>
+                                    </div>
+                                    <div class="back face center">
+                                        <div class="ico ">{% thumbnail project.media, 'square' with{'width':'40px', 'height':'40px', 'alt':project.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}</i></div>
+                                        <div class="title">{{project.title}}</div>
+                                        <div class="text">
+                                            <p style="text-align: justify">
+                                                {%if  project.description|length < 105%}
+                                                    {{project.description}}
+                                                {%else%}
+                                                    {{project.description|striptags|slice(0, 105) ~ '...'}}
+                                                {%endif%}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    {% endfor%}
+                {% else %}
+                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                        <div class="box clearfix">
+                            <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
+                        </div>
+                    </div> 
+                {% endif %} 
+                {# End items#}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{# empty Twig template #}
+{% if projectofthemonth is not null %}
+    <a href="{{ path('tea_projects_show',{'id':projectofthemonth.id}) }}">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
+        <div class="wrap-feature-item">
+            <div class="feature-item">
+                <div class="front face">
+                    <div class="ico ">
+                      {% thumbnail projectofthemonth.media, 'square' with{'width':'107px', 'height':'107px', 'alt':projectofthemonth.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}
+                    </div>
+                    <div class="title">{{projectofthemonth.title}}</div>
+                    <div class="number">{{projectofthemonth.getTargetCountry()|country}}</div>
+                </div>
+                <div class="back face center">
+                    <div class="ico ">{% thumbnail projectofthemonth.media, 'square' with{'width':'40px', 'height':'40px', 'alt':projectofthemonth.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}
+                    </div>
+                    <div class="title">{{projectofthemonth.title}}</div>
+                    <div class="text">
+                        <p style="text-align: justify">
+                            {%if  projectofthemonth.description|length < 105%}
+                                {{projectofthemonth.description}}
+                            {%else%}
+                                {{projectofthemonth.description|striptags|slice(0, 105) ~ '...'}}
+                            {%endif%}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </a>
+{% else %}
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
+        <div class="wrap-feature-item">
+            <div class="feature-item">
+                <div class="front face">
+                    <div class="title">{{ 'project.show.no_project_of_the_month_defined'|trans({},'messages') }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %} 

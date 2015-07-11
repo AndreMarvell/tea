@@ -14,173 +14,173 @@
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
 
 
-            <section class="gallery-single-header" style="padding-top: 100px">
-                <div class="container">	
-                    <div class="row">
-                        <div class="path breadcrumbs">{{ 'menu.home'| trans({},'messages') }} / {{ 'menu.projects'| trans({},'messages') }} / {{project.title}}</div>
+        <section class="gallery-single-header" style="padding-top: 100px">
+            <div class="container">	
+                <div class="row">
+                    <div class="path breadcrumbs">{{ 'menu.home'| trans({},'messages') }} / {{ 'menu.projects'| trans({},'messages') }} / {{project.title}}</div>
 
-                        <div class="col-md-12 text-left wow fadeIn" data-wow-duration="2s" >
-                            <h3 class="title">
-                                {{project.title}}
-                            </h3>
+                    <div class="col-md-12 text-left wow fadeIn" data-wow-duration="2s" >
+                        <h3 class="title">
+                            {{project.title}}
+                        </h3>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+
+
+        <!-- Gallery single 2 - Gallery item -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-gallery-item gallery-single-2">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-7 col-lg-7 col-sm-12 wow fadeInUp" data-wow-duration="2s">
+                        {%if project.media is not null%}
+                            {% thumbnail project.media, 'big' with{'alt':project.title,'title':project.title, 'class':"img-responsive img-thumbnail" } %}
+                        {%else%}
+                            {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                            <img src="{{ asset_url }}">
+                            {% endimage %}
+                        {%endif%}
+                        <div style="margin-top:20px">
+                            <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
+                                <h5>{{ 'project.show.description'|trans({}, 'messages') }}</h5>
+                                <p style="text-align: justify">{{project.description}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
+                                <h5>{{ 'project.show.why'|trans({}, 'messages') }}</h5>
+                                <p style="text-align: justify">{{project.whyCanWork}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
+                                <h5>{{ 'project.show.BM'|trans({}, 'messages') }}</h5>
+                                <p style="text-align: justify">{{project.businessModel}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
+                                <h5>{{ 'project.show.state'|trans({}, 'messages') }}</h5>
+                                <p style="text-align: justify">{{project.status}}</p>
+                            </div>
+                        </div>
+                        {% include 'AndreMarvellSocialBundle:Comment:disqus.html.twig' with {'subline': 'project.comment.subline'| trans({},'messages'), 'disqus_id' : 'project-'~project.id, 'disqus_title' : project.title} %}
+
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                                <div class="wrap-info">
+                                    <h5>{{ 'project.show.another'|trans({}, 'messages') }} :</h5>
+                                    <div class="row ">
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-users"></i>
+                                                {{ 'project.show.created_by'|trans({}, 'messages') }} :
+                                            </div>
+                                            <div class="info pull-right text-right">
+                                                <p class="no-margin">{{project.founder}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-calendar"></i>
+                                                {{ 'project.show.created_at'|trans({}, 'messages') }} : 
+                                            </div>
+                                            <div class="info pull-right text-right">
+                                                <p class="no-margin">{{project.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} 
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-calendar"></i>
+                                                {{ 'project.show.begin_at'|trans({}, 'messages') }} :
+                                            </div>
+                                            <div class="info pull-right text-right">
+                                                <p class="no-margin">
+                                                    {{project.beginAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} 
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-globe"></i>
+                                                {{ 'project.show.target_country'|trans({}, 'messages') }} :
+                                            </div>
+                                            <div class="info pull-right text-right">
+                                                <p>{{project.getTargetCountry()|country}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-calendar-o"></i>
+                                                {{ 'project.show.date'|trans({}, 'messages') }} :
+                                            </div>
+                                            <div class="info pull-right text-right">
+                                                <p class="no-margin">
+                                                    {{project.date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-user"></i>
+                                                {{ 'project.show.publiated_by'|trans({}, 'messages') }} :
+                                            </div>
+                                            <div class="info pull-right text-right">
+                                                <p class="no-margin">
+                                                    {%if project.author.firstname is not null and project.author.lastname is not null%}
+                                                        {{project.author.firstname ~ ' ' ~ project.author.lastname}}
+                                                    {%else%}
+                                                        {{project.author.username}}
+                                                    {%endif%}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 clearfix">
+                                            <div class="type-info pull-left">
+                                                <i class="fa fa-tags"></i>
+                                                {{ 'aside.tags.title'|trans({}, 'messages') }} :
+                                            </div>
+                                            <div class="project-tags pull-left">
+
+                                                {% for tag in project.tags %}
+                                                    <a href="{{ path('tea_projects_tag', { 'tag': tag.slug } ) }}">
+                                                        <span style="margin-left:3px" class="label {%if loop.index is odd%}label-success{%else%}label-danger{%endif%}">{{ tag.name }}</span>
+                                                    </a>
+                                                {%else%}
+                                                {%endfor%}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-share">
+                                            <div class="type-info pull-left">
+                                                <h5>{{ 'project.show.share'|trans({}, 'messages') }}</h5>
+                                            </div>
+                                            <ul class="copyright-links pull-right list-inline">
+                                                <li><a href="#fakelink"><i class="fa fa-facebook fa-lg"></i></a></li>
+                                                <li><a href="#fakelink"><i class="fa fa-twitter fa-lg"></i></a></li>
+                                                <li><a href="#fakelink"><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!--row-->
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12" style="margin-top: 20px">
+                        <div class="row wrap-features">
+                            {{ include( 'TeaCampusCommonBundle:Projet:Parts/randomprojects.html.twig') }} 
                         </div>
                     </div><!--row-->
                 </div><!--container-->
-            </section>
 
-
-            <!-- Gallery single 2 - Gallery item -->
-            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-            <section class="wrap-gallery-item gallery-single-2">
-                <div class="container">	
-                    <div class="row">
-                        <div class="col-md-7 col-lg-7 col-sm-12 wow fadeInUp" data-wow-duration="2s">
-                            {%if project.media is not null%}
-                                {% thumbnail project.media, 'big' with{'alt':project.title,'title':project.title, 'class':"img-responsive img-thumbnail" } %}
-                            {%else%}
-                                {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
-                                <img src="{{ asset_url }}">
-                                {% endimage %}
-                            {%endif%}
-                            <div style="margin-top:20px">
-                                <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
-                                    <h5>{{ 'project.show.description'|trans({}, 'messages') }}</h5>
-                                    <p style="text-align: justify">{{project.description}}</p>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
-                                    <h5>{{ 'project.show.why'|trans({}, 'messages') }}</h5>
-                                    <p style="text-align: justify">{{project.whyCanWork}}</p>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
-                                    <h5>{{ 'project.show.BM'|trans({}, 'messages') }}</h5>
-                                    <p style="text-align: justify">{{project.businessModel}}</p>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
-                                    <h5>{{ 'project.show.state'|trans({}, 'messages') }}</h5>
-                                    <p style="text-align: justify">{{project.status}}</p>
-                                </div>
-                            </div>
-                            {% include 'AndreMarvellSocialBundle:Comment:disqus.html.twig' with {'subline': 'project.comment.subline'| trans({},'messages'), 'disqus_id' : 'project-'~project.id, 'disqus_title' : project.title} %}
-              
-                        </div>
-                        <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-duration="2s" >
-                                    <div class="wrap-info">
-                                        <h5>{{ 'project.show.another'|trans({}, 'messages') }} :</h5>
-                                        <div class="row ">
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-users"></i>
-                                                    {{ 'project.show.created_by'|trans({}, 'messages') }} :
-                                                </div>
-                                                <div class="info pull-right text-right">
-                                                    <p class="no-margin">{{project.founder}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-calendar"></i>
-                                                    {{ 'project.show.created_at'|trans({}, 'messages') }} : 
-                                                </div>
-                                                <div class="info pull-right text-right">
-                                                    <p class="no-margin">{{project.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} 
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-calendar"></i>
-                                                    {{ 'project.show.begin_at'|trans({}, 'messages') }} :
-                                                </div>
-                                                <div class="info pull-right text-right">
-                                                    <p class="no-margin">
-                                                        {{project.beginAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} 
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-globe"></i>
-                                                    {{ 'project.show.target_country'|trans({}, 'messages') }} :
-                                                </div>
-                                                <div class="info pull-right text-right">
-                                                    <p>{{project.getTargetCountry()|country}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-calendar-o"></i>
-                                                    {{ 'project.show.date'|trans({}, 'messages') }} :
-                                                </div>
-                                                <div class="info pull-right text-right">
-                                                    <p class="no-margin">
-                                                        {{project.date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-user"></i>
-                                                    {{ 'project.show.publiated_by'|trans({}, 'messages') }} :
-                                                </div>
-                                                <div class="info pull-right text-right">
-                                                    <p class="no-margin">
-                                                        {%if project.author.firstname is not null and project.author.lastname is not null%}
-                                                            {{project.author.firstname ~ ' ' ~ project.author.lastname}}
-                                                        {%else%}
-                                                            {{project.author.username}}
-                                                        {%endif%}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 clearfix">
-                                                <div class="type-info pull-left">
-                                                    <i class="fa fa-tags"></i>
-                                                    {{ 'aside.tags.title'|trans({}, 'messages') }} :
-                                                </div>
-                                                <div class="project-tags pull-left">
-
-                                                    {% for tag in project.tags %}
-                                                        <a href="{{ path('tea_projects_tag', { 'tag': tag.slug } ) }}">
-                                                            <span style="margin-left:3px" class="label {%if loop.index is odd%}label-success{%else%}label-danger{%endif%}">{{ tag.name }}</span>
-                                                        </a>
-                                                    {%else%}
-                                                    {%endfor%}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 col-share">
-                                                <div class="type-info pull-left">
-                                                    <h5>{{ 'project.show.share'|trans({}, 'messages') }}</h5>
-                                                </div>
-                                                <ul class="copyright-links pull-right list-inline">
-                                                    <li><a href="#fakelink"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                                    <li><a href="#fakelink"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                                    <li><a href="#fakelink"><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                                </ul>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!--row-->
-                        </div>
-                        <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12" style="margin-top: 20px">
-                            <div class="row">
-                                {{ include( 'TeaCampusCommonBundle:Projet:Parts/randomprojects.html.twig') }}
-                            </div>
-                        </div><!--row-->
-                    </div><!--container-->
-                    
-            </section>
+        </section>
     {% endblock %}
 
     {% block scripts %}

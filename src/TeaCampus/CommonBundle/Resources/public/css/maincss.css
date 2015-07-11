@@ -876,9 +876,9 @@ label {
     background: transparent;
 }
 .navbar-alt .navbar-nav.with-border  >  li.active  > a{
-/*    background-color: rgb(91, 179, 128);
-    color: white;
-    padding: 35px 10px;*/
+    /*    background-color: rgb(91, 179, 128);
+        color: white;
+        padding: 35px 10px;*/
 }
 .navbar-alt .navbar-nav.with-border  >  .active  >  a {
     color: #2b2e33;
@@ -911,16 +911,16 @@ label {
 }
 
 .navbar-nav.nav-icons ul.inside-nav-list li{
-   display: block;
+    display: block;
 }
 
 .navbar-nav.nav-icons ul.inside-nav-list li a{
-   font-size: 14px;
-   text-align: left;
+    font-size: 14px;
+    text-align: left;
 }
 
 .navbar-nav.nav-icons ul.inside-nav-list li a i{
-   margin-right: 5px;
+    margin-right: 5px;
 }
 
 .navbar-nav.nav-icons li a {
@@ -1128,18 +1128,18 @@ label {
 }
 @media (min-width: 992px) {
     .contacts .twitter-block .twitter-wrap::before {
-/*        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        font-size: inherit;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        content: "\f099";
-        position: absolute;
-        bottom: -25px;
-        right: -9px;
-        color: #28ad62;
-        font-size: 30px;*/
+        /*        display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                content: "\f099";
+                position: absolute;
+                bottom: -25px;
+                right: -9px;
+                color: #28ad62;
+                font-size: 30px;*/
     }
 }
 .contacts .twitter-block h5 a {
@@ -2371,7 +2371,7 @@ section.divider.striped-icon {
     border-top-right-radius: 3px;
 }
 .blog .post .post-heading .post-image:hover {
-/*    background: #27ae60;*/
+    /*    background: #27ae60;*/
 }
 .blog .post .post-heading .post-image:hover img {
     opacity: 0.7;
@@ -2393,8 +2393,8 @@ section.divider.striped-icon {
     border-top: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-/*    margin-top: -30px;
-    background-color: white !important;*/
+    /*    margin-top: -30px;
+        background-color: white !important;*/
 }
 a h5:hover {
     color: #27ae60;
@@ -3159,17 +3159,17 @@ section.team .team-description p {
 }
 
 .wrap-features {
-    min-height: 700px;
-    padding: 100px 0;
-    background: url(../images/placehold/1920x1080.gif) center no-repeat;
+    /*min-height: 700px;*/
+    /*padding: 100px 0;*/
+    /*background: url(../images/placehold/1920x1080.gif) center no-repeat;*/
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
 .wrap-features:before {
-    background: rgba(40, 173, 98, 0.7);
-    content: "";
+    /*background: rgba(40, 173, 98, 0.7);*/
+    /*content: "";*/
     height: 100%;
     position: absolute;
     top: 0;
@@ -3190,6 +3190,11 @@ section.team .team-description p {
     -ms-transform: rotateY(-180deg);
 }
 .wrap-features .wrap-feature-item .feature-item {
+    border: 1px solid #e7e8ec;
+    border-top: 2px solid #27ae60;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     width: 100%;
     height: 286px;
     transform-style: preserve-3d;
@@ -3229,7 +3234,7 @@ section.team .team-description p {
     box-shadow: none;
 }
 .wrap-features .wrap-feature-item .feature-item .ico {
-    padding-top: 17px;
+    padding-top: 0px;
     width: 120px;
     height: 120px;
     border: 5px solid #f3f3f5;
@@ -3689,7 +3694,7 @@ body {
     color: #27ae60;
 }
 
- .profil-tabs {
+.profil-tabs {
     text-align: center;
     min-height: 750px;
 }

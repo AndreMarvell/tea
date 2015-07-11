@@ -43,24 +43,41 @@
                                 {{ knp_pagination_sortable(pagination, '   Date de publication ', 'a.date') }}  
                             </h5>
                         </div>
-                        {% for project in pagination %}
-                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
-                                <div class="box clearfix">
-                                    <div class="box-heading">
-                                        <h4>{{project.title}}</h4>
-                                        <div class="striped-icon-large">
-                                            <span aria-hidden="true" class="icon-graduation"></span>
+                        <div class="text-center col-md-12">
+                            <div class ="wrap-features">
+                                <div class="container">
+                                    <div class="row">
+                                        {% for project in pagination %}
+                                            <a href="{{ path('tea_projects_show',{'id':project.id}) }}">
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
+                                                    <div class="wrap-feature-item">
+                                                        <div class="feature-item">
+                                                            <div class="front face">
+                                                                <div class="ico ">
+                                                                    {% thumbnail project.media, 'square' with{'width':'107px', 'height':'107px', 'alt':project.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}
+                                                                </div>
+                                                                <div class="title">{{project.title}}</div>
+                                                                <div class="number">{{project.getTargetCountry()|country}}</div>
+                                                            </div>
+                                                            <div class="back face center">
+                                                                <div class="ico ">{% thumbnail project.media, 'square' with{'width':'40px', 'height':'40px', 'alt':project.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}</i></div>
+                                                                <div class="title">{{project.title}}</div>
+                                                                <div class="text">
+                                                                    <p style="text-align: justify">
+                                                                        {%if  project.description|length < 105%}
+                                                                            {{project.description}}
+                                                                        {%else%}
+                                                                            {{project.description|striptags|slice(0, 105) ~ '...'}}
+                                                                        {%endif%}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
-                                    <p>
-                                        {%if  project.description|length < 43%}
-                                            {{project.description}}
-                                        {%else%}
-                                            {{project.description|striptags|slice(0, 43) ~ '...'}}
-                                        {%endif%}
-                                    </p>
-                                    <a href="{{ path('tea_projects_show',{'id':project.id}) }}" class="btn btn-primary btn-sm pull-left">Details</a>
-                                    {#                                                <a href="#" class="pull-right settings"><i class="fa  fa-cog"></i></a>#}
                                 </div>
                             </div>
                         {%else%}
