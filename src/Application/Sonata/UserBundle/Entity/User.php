@@ -37,6 +37,12 @@ class User extends BaseUser implements ParticipantInterface
     protected $google_id;
 
     protected $google_access_token;
+    
+    protected $passwordUpdated = true;
+    
+    protected $profileUpdated = false;
+    
+    protected $teacher = false;
 
     /**
      * Get id
@@ -205,5 +211,77 @@ class User extends BaseUser implements ParticipantInterface
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Set passwordUpdated
+     *
+     * @param boolean $passwordUpdated
+     *
+     * @return User
+     */
+    public function setPasswordUpdated($passwordUpdated)
+    {
+        $this->passwordUpdated = $passwordUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get passwordUpdated
+     *
+     * @return boolean
+     */
+    public function getPasswordUpdated()
+    {
+        return $this->passwordUpdated;
+    }
+
+    /**
+     * Set profileUpdated
+     *
+     * @param boolean $profileUpdated
+     *
+     * @return User
+     */
+    public function setProfileUpdated($profileUpdated)
+    {
+        $this->profileUpdated = $profileUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get profileUpdated
+     *
+     * @return boolean
+     */
+    public function getProfileUpdated()
+    {
+        return $this->profileUpdated;
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param boolean $teacher
+     *
+     * @return User
+     */
+    public function setTeacher($teacher)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher
+     *
+     * @return boolean
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }

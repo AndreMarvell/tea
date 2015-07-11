@@ -4,6 +4,8 @@ profile:
     
 edit:
     title: Modifier votre profil
+    authentification:
+        title: Modifiers les infos de connexions
     
 tabs: 
     projects:

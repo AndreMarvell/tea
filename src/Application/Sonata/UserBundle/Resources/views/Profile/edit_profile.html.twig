@@ -1,0 +1,27 @@
+{% set currentPath = app.request.get('_route') %}
+{% if 'user_profile_edit' in currentPath  %}
+    {% include 'ApplicationSonataUserBundle:Profile:standalone_edit_profile.html.twig' %}    
+{%else%}
+<section  class="wrap-contacts container">
+    <div class="container">
+        <div class="anchor-icon"><i class="fa fa-user"></i></div>
+        <div class="center-block">    
+            {{ form_errors(form) }}
+            {% form_theme form _self %}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal profile-edit-forms">
+                        {{ form_widget(form) }}
+                        <div class="form-actions">
+                            <button type="submit" name="submit"  class="btn btn-primary pull-right">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+{%endif%}

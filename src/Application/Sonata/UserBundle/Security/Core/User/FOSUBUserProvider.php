@@ -73,6 +73,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setFirstName($response->getFirstName());
             $user->setLastName($response->getLastName());
             $user->setEmail($response->getEmail());
+            $user->setPasswordUpdated(false);
             if($service=="google"){
                 $user->setAvatar($this->downloader->downloadFile(
                         $response->getProfilePicture(),

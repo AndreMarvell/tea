@@ -13,7 +13,10 @@
         <field name="facebook_access_token" type="string" column="facebook_access_token" length="255" nullable="true"/>
         <field name="google_id" type="string" column="google_id" length="255" nullable="true"/>
         <field name="google_access_token" type="string" column="google_access_token" length="255" nullable="true"/>
-        
+        <field name="passwordUpdated" type="boolean" column="password_updated" nullable="false"/>
+        <field name="profileUpdated" type="boolean" column="profile_updated" nullable="false"/>
+        <field name="teacher" type="boolean" column="teacher" nullable="false"/>
+
         <many-to-many field="badges" target-entity="Application\Sonata\UserBundle\Entity\Badge">
             <cascade>
                 <cascade-persist/>

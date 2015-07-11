@@ -183,6 +183,10 @@ footer{
     color: black;
 }
 
+.profile-edit-forms label{
+    width: 200px;
+}
+
 /**********************************************/
 /*******  StandAlone Login & Register   *******/
 /**********************************************/
