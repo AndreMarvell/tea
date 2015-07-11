@@ -11,7 +11,11 @@
         <section class="home-header login-register">
             <div class="container">
                 <div class="row">
-                    <div class="center-block">    
+                    <div class="center-block standalone-profile-edit">   
+                        <header class="section-header">
+                            <p class="subhead">{{ 'register.subhead'| trans({},'messages') }}</p>
+                            <h2>{{ 'edit.title'|trans({}, 'messages') }}</h2>
+                        </header>
                         {{ form_errors(form) }}
                         {% form_theme form _self %}
                         <div class="panel panel-info">

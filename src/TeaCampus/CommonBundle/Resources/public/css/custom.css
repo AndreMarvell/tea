@@ -211,10 +211,10 @@ footer{
     font-weight: bold;
 }
 
-.standalone-login .section-header{
+.standalone-login .section-header, .standalone-profile-edit .section-header{
     margin:0;
 }
-.standalone-login .section-header h2{
+.standalone-login .section-header h2, .standalone-profile-edit .section-header h2{
     color: white;
 }
 
