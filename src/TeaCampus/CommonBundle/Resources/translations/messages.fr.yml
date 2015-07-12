@@ -176,6 +176,7 @@ message:
         by : Par
         you : Vous
         new: Nouveau message
+    error: Désolé, une erreur s'est produite lors de l'envoi du message
         
 about:
     title: Qu'est ce que TEA ?

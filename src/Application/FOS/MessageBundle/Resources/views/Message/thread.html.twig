@@ -5,50 +5,16 @@
                 <h3>{{ 'message.show.subject'| trans({},'messages') }} : {{ thread.subject }}</h3>
             </div>
         </div>
-        <div class="row" >
+        <div class="row" id="messageContainer">
             {% for message in thread.messages %}
-                <div class="list-comments col-md-offset-1 col-md-9 col-sm-12 col-xs-12" >
-                    <ul class="row">
-                        <li style="visibility: visible">
-                            <div class="col-md-1">
-                                <div class="avatar">
-                                    <a href="{{path('fos_user_profile_show')}}">
-                                        {% if message.sender.avatar is not null %}
-                                            {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
-                                        {% else %}
-                                            {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                                            <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
-                                            {% endimage %}
-                                        {% endif %}
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-11">
-                                <div class="comment-info clearfix">
-                                    <h5 class="pull-left">
-                                        {% if app.user.username == message.sender %}
-                                            {{ 'message.show.you'| trans({},'messages') }}
-                                        {% else%}
-                                            {{ 'message.show.by'| trans({},'messages') }} : {{message.sender}}
-                                        {% endif %}
-                                    </h5>
-                                    <ul class="list-inline pull-right">
-                                        <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
-                                        
-                                    </ul>
-                                </div>
-                                <p>{{ message.body }} </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                {{ include( 'ApplicationFOSMessageBundle:Message:message_line.html.twig', {'message':message}) }}
             {% endfor %}
         </div> <!--row-->
-
-        <div class="row">
+        
+        <div class="row text-center">
             <div class="col-md-offset-1 col-md-9 col-sm-12 col-xs-12">
-                <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
-                <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+                <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %} &nbsp; <i style="display: none;" id="messageLoader" class="fa fa-spin fa-spinner"></i></h3>
+                <form action="{{ url('fos_message_thread_view_ajax', {'threadId': thread.id}) }}" method="post" id="replyMessage">
                     {{ form_start(form) }}
                     {{ form_errors(form) }}
 
@@ -61,3 +27,34 @@
         </div>
     </div>
 </section>
+{% block messageScripts %}
+    <script>
+        $('#replyMessage').on('submit', function(e) {
+            e.preventDefault();
+            $('#messageLoader').show();
+            $.ajax({
+                url: $(this).attr('action'),
+                dataType: "json",
+                data: $(this).serialize(),
+                type: 'POST'
+            })
+            .done(function (data) {
+                if (data['success']) {
+                    $('#messageContainer').append(data['content']);
+                    $("textarea#message_body").val('').focus();
+                } else {
+                    alert("{{ 'message.error'| trans({},'messages') }}");
+                }
+                $('#messageLoader').hide();
+
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                alert("{{ 'message.error'| trans({},'messages') }}");
+                console.log(textStatus, errorThrown);
+            });
+            
+        });
+        
+    </script>
+        
+{% endblock %}

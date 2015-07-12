@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class MessageController extends BaseController
 {
 
-    public function threaAction($threadId)
+    public function threadAction($threadId)
     {
         $thread = $this->getProvider()->getThread($threadId);
         $form = $this->container->get('fos_message.reply_form.factory')->create($thread);
@@ -28,6 +28,29 @@ class MessageController extends BaseController
             'form' => $form->createView(),
             'thread' => $thread
         ));
+    }
+    
+    public function threadAjaxAction($threadId)
+    {
+        $thread = $this->getProvider()->getThread($threadId);
+        $form = $this->container->get('fos_message.reply_form.factory')->create($thread);
+        $formHandler = $this->container->get('fos_message.reply_form.handler');
+
+        if ($message = $formHandler->process($form)) {
+            return new RedirectResponse($this->container->get('router')->generate('fos_message_thread_view_ajax', array(
+                'threadId' => $message->getThread()->getId()
+            )));
+        }
+        
+        $lastMessage = $thread->getMessages()->last();
+
+        $html = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:message_line.html.twig', array('message' => $lastMessage));
+        $response = new Response();
+        $response->setContent(json_encode(array("success" => true, "content" => $html)));
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
+
     }
     
     /**

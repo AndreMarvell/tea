@@ -58,7 +58,7 @@ fos_comment_api:
     
 fos_message:
     resource: "@FOSMessageBundle/Resources/config/routing.xml"
-    prefix: /optional_routing_prefix
+    prefix: /messages
     
 #HWIOAuthBundle routes
 hwi_oauth_security:
