@@ -67,9 +67,6 @@
                         <!-- popuar projects -->
                         {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
 
-                        {%if AmostRead is defined%}
-                            {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':AmostRead, 'icon':'fa-flash'}) }}
-                        {%endif%}
                     </div>
                 </div>
             </div>

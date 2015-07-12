@@ -18,7 +18,7 @@ class ProjetController extends Controller {
         $idProjectOfTheWeek = $projetRepo->getProjectOfTheWeek();
         $tags = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('projet');
         $mostRead = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
-        $AmostRead = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
+
         $selectedProjet = $projetRepo->findOneById($idselectedProjet);
         $projetofthemonth = $projetRepo->findOneById($idProjectOfTheMonth);
         $projetoftheweek = $projetRepo->findOneById($idProjectOfTheWeek);
@@ -111,6 +111,7 @@ class ProjetController extends Controller {
         $mostRead = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
         $dql = "SELECT a FROM TeaCampusCommonBundle:Projet a WHERE a.private = false AND a.enabled = true ORDER BY a.date DESC";
         $query = $em->createQuery($dql);
+        $AmostRead = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1)/* page number */, 8/* limit per page */
@@ -120,6 +121,7 @@ class ProjetController extends Controller {
         return $this->render('TeaCampusCommonBundle:Projet:list.html.twig', array(
                     'tags' => $tags,
                     'mostRead' => $mostRead,
+                    'AmostRead' => $AmostRead,
                     'pagination' => $pagination));
     }
 
