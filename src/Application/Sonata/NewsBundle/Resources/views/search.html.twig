@@ -42,12 +42,9 @@
                     </div>
 
                     <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- Navbar -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/index.html.twig', {'type':'news'}) }}
                         
-                        <!-- tags -->
-                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}
-                        <!-- popuar posts -->
-                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
-
                     </div>
                 </div>
             </div>

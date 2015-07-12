@@ -35,7 +35,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
     }
     
-    public function findMostRead() {
+    public function findPopular() {
  
         $query = $this->createQueryBuilder('p');
         $query->where('p.private = false ');

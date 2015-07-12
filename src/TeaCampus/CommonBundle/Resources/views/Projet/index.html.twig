@@ -13,7 +13,7 @@
         {% endif %}
         <section class="wrap-blog-content blog wrap-contacts" style="margin-top: 0px">
             <div class="container">
-                <div class="anchor-icon"><i class="fa fa-user"></i></div>
+                <div class="anchor-icon"><i class="fa fa-book"></i></div>
                 <div class="row">
                     <div class="col-lg-8 col-md-8 left-column">
                         <div class="row">
@@ -60,13 +60,9 @@
                     </div>
 
                     <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
-                        <!-- search -->
-                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects_search.html.twig') }}
-                        <!-- tags -->
-                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}                        
-                        <!-- popuar projects -->
-                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':mostRead, 'icon':'fa-flash'}) }}
-
+                        <!-- Navbar -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/index.html.twig', {'type':'projects'}) }}
+                        
                     </div>
                 </div>
             </div>

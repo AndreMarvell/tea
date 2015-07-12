@@ -1,0 +1,66 @@
+{%if type == 'news' %}     
+
+    <!-- search -->
+    {{ include( 'TeaCampusCommonBundle:Sections:SideBar/search.html.twig', {'search_placeholder':'aside.news.search'|trans({},'messages'), 'search_link':'sonata_news_search'}) }}
+    <!-- tags -->
+    {%if tags is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'sonata_news_tag'}) }}                        
+    {%endif%}
+    <!-- popuar posts -->
+    {%if popularPosts is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':popularPosts, 'icon':'fa-newspaper-o'}) }}
+    {%endif%}
+    <!-- popular videos -->
+    {%if popularVideos is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/videos.html.twig', {'title':'aside.videos.most'|trans({},'messages'), 'articles':popularVideos, 'icon':'fa-play-circle'}) }}
+    {%endif%}
+    <!-- popuar projects -->
+    {%if popularProjects is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':popularProjects, 'icon':'fa-book'}) }}
+    {%endif%}
+
+{%elseif type == 'projects' %}
+
+    <!-- search -->
+    {{ include( 'TeaCampusCommonBundle:Sections:SideBar/search.html.twig', {'search_placeholder':'aside.projects.search'|trans({},'messages'), 'search_link':'tea_projects_search'}) }}
+    <!-- tags -->
+    {%if tags is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'tea_projects_tag'}) }}                        
+    {%endif%}
+    <!-- popuar projects -->
+    {%if popularProjects is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':popularProjects, 'icon':'fa-book'}) }}
+    {%endif%}
+    <!-- popular videos -->
+    {%if popularVideos is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/videos.html.twig', {'title':'aside.videos.most'|trans({},'messages'), 'articles':popularVideos, 'icon':'fa-play-circle'}) }}
+    {%endif%}
+    <!-- popuar posts -->
+    {%if popularPosts is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':popularPosts, 'icon':'fa-newspaper-o'}) }}
+    {%endif%}
+
+
+
+{%elseif type == 'videos' %}
+
+    <!-- search -->
+    {{ include( 'TeaCampusCommonBundle:Sections:SideBar/search.html.twig', {'search_placeholder':'aside.videos.search'|trans({},'messages'), 'search_link':'tea_formations_search'}) }}
+    <!-- tags -->
+    {%if tags is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'tea_formations_tag'}) }}                        
+    {%endif%}
+    <!-- popular videos -->
+    {%if popularVideos is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/videos.html.twig', {'title':'aside.videos.most'|trans({},'messages'), 'articles':popularVideos, 'icon':'fa-play-circle'}) }}
+    {%endif%}
+    <!-- popuar projects -->
+    {%if popularProjects is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/projects.html.twig', {'title':'aside.projects.most'|trans({},'messages'), 'articles':popularProjects, 'icon':'fa-book'}) }}
+    {%endif%}
+    <!-- popuar posts -->
+    {%if popularPosts is defined%}
+        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/news.html.twig', {'title':'aside.news.most'|trans({},'messages'), 'articles':popularPosts, 'icon':'fa-newspaper-o'}) }}
+    {%endif%}
+
+{%endif%}

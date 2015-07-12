@@ -22,9 +22,11 @@ class PostController extends BaseController
      */
     public function renderArchive(array $criteria = array(), array $parameters = array())
     {
-        $em             = $this->getDoctrine()->getManager();
-        $mostRead       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
-        $tags           = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('news');
+        $em                 = $this->getDoctrine()->getManager();
+        $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+        $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+        $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
         
         $pager = $this->getPostManager()->getPager(
             $criteria,
@@ -37,8 +39,10 @@ class PostController extends BaseController
             'collection'       => false,
             'route'            => $this->getRequest()->get('_route'),
             'route_parameters' => $this->getRequest()->get('_route_params'),
-            'mostRead'         => $mostRead,
-            'tags'         => $tags
+            'popularPosts'     => $popularPosts,
+            'popularProjects'  => $popularProjects,
+            'popularVideos'    => $popularVideos,
+            'tags'             => $tags
         ), $parameters);
         
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
@@ -59,9 +63,11 @@ class PostController extends BaseController
     
     public function searchAction(Request $request) {
         
-        $em             = $this->getDoctrine()->getManager();
-        $mostRead       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
-        $tags           = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('news');
+        $em                 = $this->getDoctrine()->getManager();
+        $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+        $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+        $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
         
         
         if ($request->getMethod() == "POST") {
@@ -76,8 +82,10 @@ class PostController extends BaseController
                     $posts, $request->query->get('page', 1)/* page number */, 10/* limit per page */
                 );
                 return $this->render('ApplicationSonataNewsBundle::search.html.twig', array(
-                    'mostRead'  => $mostRead,
-                    'tags'      => $tags,
+                    'popularPosts'     => $popularPosts,
+                    'popularProjects'  => $popularProjects,
+                    'popularVideos'    => $popularVideos,
+                    'tags'             => $tags,
                     'pagination'=> $pagination,
                     'search'    => $search
                 ));
@@ -97,9 +105,11 @@ class PostController extends BaseController
      */
     public function viewAction($permalink)
     {
-        $em             = $this->getDoctrine()->getManager();
-        $mostRead       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
-        $tags           = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('news');
+        $em                 = $this->getDoctrine()->getManager();
+        $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+        $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+        $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
         
         $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
         if (!$post || !$post->isPublic()) {
@@ -121,8 +131,10 @@ class PostController extends BaseController
             'post' => $post,
             'form' => false,
             'blog' => $this->get('sonata.news.blog'),
-            'mostRead'  => $mostRead,
-            'tags'      => $tags,
+            'popularPosts'     => $popularPosts,
+            'popularProjects'  => $popularProjects,
+            'popularVideos'    => $popularVideos,
+            'tags'             => $tags
         ));
     }
     

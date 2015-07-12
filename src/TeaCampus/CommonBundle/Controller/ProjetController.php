@@ -16,9 +16,11 @@ class ProjetController extends Controller {
         $idselectedProjet = $projetRepo->getSelectedProjet();
         $idProjectOfTheMonth = $projetRepo->getProjectOfTheMonth();
         $idProjectOfTheWeek = $projetRepo->getProjectOfTheWeek();
-        $tags = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('projet');
-        $mostRead = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
-
+        $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+        $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+        $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+        
         $selectedProjet = $projetRepo->findOneById($idselectedProjet);
         $projetofthemonth = $projetRepo->findOneById($idProjectOfTheMonth);
         $projetoftheweek = $projetRepo->findOneById($idProjectOfTheWeek);
@@ -37,8 +39,10 @@ class ProjetController extends Controller {
         return $this->render('TeaCampusCommonBundle:Projet:index.html.twig', array('selectionOftea' => $selectedProjet,
                     'projectofthemonth' => $projetofthemonth,
                     'latestproject' => $latestProject,
-                    'tags' => $tags,
-                    'mostRead' => $mostRead,
+                    'popularPosts'     => $popularPosts,
+                    'popularProjects'  => $popularProjects,
+                    'popularVideos'    => $popularVideos,
+                    'tags'             => $tags,
                     'projectoftheweek' => $projetoftheweek));
     }
 
@@ -107,11 +111,12 @@ class ProjetController extends Controller {
     public function listAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $projetRepo = $em->getRepository('TeaCampusCommonBundle:Projet');
-        $tags = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('projet');
-        $mostRead = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
+        $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+        $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+        $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
         $dql = "SELECT a FROM TeaCampusCommonBundle:Projet a WHERE a.private = false AND a.enabled = true ORDER BY a.date DESC";
         $query = $em->createQuery($dql);
-        $AmostRead = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1)/* page number */, 8/* limit per page */
@@ -119,9 +124,10 @@ class ProjetController extends Controller {
 
 
         return $this->render('TeaCampusCommonBundle:Projet:list.html.twig', array(
-                    'tags' => $tags,
-                    'mostRead' => $mostRead,
-                    'AmostRead' => $AmostRead,
+                    'popularPosts'     => $popularPosts,
+                    'popularProjects'  => $popularProjects,
+                    'popularVideos'    => $popularVideos,
+                    'tags'             => $tags,
                     'pagination' => $pagination));
     }
 

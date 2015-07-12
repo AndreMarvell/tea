@@ -1,8 +1,13 @@
 
 {% set currentPath = app.request.get('_route') %}
+{%if currentPath == 'tea_projects' or currentPath == 'tea_homepage' or currentPath == 'tea_about' or currentPath == 'tea_faq' or 'profil' in currentPath or 'user' in currentPath or 'formation' in currentPath %}
+    {% set navClass = 'nav_animated' %}
+{%else%}
+    {% set navClass = 'navbar-alt' %}
+{%endif%}
 
 <header class="header">
-    <nav id="nav" class="navbar navbar-default navbar-fixed-top {%if currentPath == 'tea_projects' or currentPath == 'tea_homepage' or currentPath == 'tea_about' or currentPath == 'tea_faq' or 'profil' in currentPath or 'user' in currentPath %}nav_animated{%else%}navbar-alt{%endif%}" role="navigation">
+    <nav id="nav" class="navbar navbar-default navbar-fixed-top {{navClass}}" role="navigation">
         <div class="container relative-nav-container">
             <a class="toggle-button visible-xs-block" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-navicon"></i>

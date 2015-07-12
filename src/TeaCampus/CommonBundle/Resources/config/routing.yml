@@ -35,9 +35,17 @@ tea_formations_chapter:
     path:     /formations/{subject}/{chapter}
     defaults: { _controller: TeaCampusCommonBundle:Formation:chapter }
     
-tea_formations_videos:
+tea_formations_show:
     path:     /formations/{subject}/{chapter}/videos/{id}
     defaults: { _controller: TeaCampusCommonBundle:Formation:video }
+    
+tea_formations_search:
+    path:     /formations/search
+    defaults: { _controller: TeaCampusCommonBundle:Formation:search }
+    
+tea_formations_tag:
+    path:     /formations/tag/{tag}
+    defaults: { _controller: TeaCampusCommonBundle:Formation:tag }
 
 ##############################
 ###### Pour les projets ######
@@ -79,7 +87,6 @@ tea_projects_tag:
 tea_projects_search:
     path: /projects/search/
     defaults: { _controller: TeaCampusCommonBundle:Projet:search }
-    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
     
 ##############################
 ######      Autres     #######
