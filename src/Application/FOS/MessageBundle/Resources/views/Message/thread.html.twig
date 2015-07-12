@@ -1,158 +1,63 @@
-{% extends "::base.html.twig" %}
-{% trans_default_domain "ApplicationFOSMessageBundle" %}
-{% spaceless %}
-    {% set wearesocial = true %} 
-    {% block title %}
-        {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
-    {% endblock %}
-
-    {% block stylesheets %} 
-        {% stylesheets 'bundles/teacampuscommon/css/bootstrap-tagsinput.css' filter='cssrewrite'%}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {% endblock %}
-
-    {% block main_content %}
-        <section class="about-me-header">
-            <div class="container">	
-                <div class="row">
-                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
-                        <h1 class="title">
-                            {%if app.user.firstname is not null and app.user.lastname is not null%}
-                                {{app.user.firstname ~ ' ' ~ app.user.lastname}}
-                            {%else%}
-                                {{app.user.username}}
-                            {%endif%}
-                        </h1>
-                        <div class="path pull-right">
-                            {%if app.user.biography is not null%}
-                                {{app.user.biography}}
-                            {%else%}
-                                {{ 'profile.member_since'| trans({},'messages') }}&nbsp;
-                                {{app.user.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}
-                            {%endif%}
-                        </div>
-                    </div>
-                    <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
-                        <div class="avatar">
-                            {% if app.user.avatar is not null %}
-                                {% thumbnail app.user.avatar, 'square' with{} %}
-                            {% else %}
-                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                                <img src="{{ asset_url }}">
-                                {% endimage %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div><!--row-->
-            </div><!--container-->
-        </section> 
-        <section class="wrap-questions">
-            <div class="info-icon">
-                <i class="icon-info"></i>
+<section class="wrap-questions" style="max-width: 80%;margin-left: auto;margin-right: auto;">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+                <h3>{{ 'message.show.subject'| trans({},'messages') }} : {{ thread.subject }}</h3>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
-                        <h4>{{ 'message.show.subject'| trans({},'messages') }} : {{ thread.subject }}</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
-                        <div id="accordion-two" role="tablist" aria-multiselectable="true">			
-                            <div class="panel panel-default panel-alt-one"  >	
-                                {% for message in thread.messages %}
-                                <div class="panel-heading" role="tab" id="heading{{message.id}}">
-                                    <h6 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion-two" href="#collapse{{message.id}}" aria-expanded="false" aria-controls="collapseSix">
-                                            <i class="fa fa-plus-circle pull-right"></i>
-                                            <div style="float:left">
-                                                {% if app.user.username == message.sender %}
-                                                    {{ 'message.show.you'| trans({},'messages') }}
-                                                {% else%}
-                                                    {{ 'message.show.by'| trans({},'messages') }} : {{message.sender}}
-                                                {% endif %}
-                                            </div>
-                                            <div style="float:right"> {{message.createdAt|date("d F Y")}}</div> 
-                                        </a>
-                                    </h6>
+        </div>
+        <div class="row" >
+            {% for message in thread.messages %}
+                <div class="list-comments col-md-offset-1 col-md-9 col-sm-12 col-xs-12" >
+                    <ul class="row">
+                        <li style="visibility: visible">
+                            <div class="col-md-1">
+                                <div class="avatar">
+                                    <a href="{{path('fos_user_profile_show')}}">
+                                        {% if message.sender.avatar is not null %}
+                                            {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
+                                        {% else %}
+                                            {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                            <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
+                                            {% endimage %}
+                                        {% endif %}
+                                    </a>
                                 </div>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="comment-info clearfix">
+                                    <h5 class="pull-left">
+                                        {% if app.user.username == message.sender %}
+                                            {{ 'message.show.you'| trans({},'messages') }}
+                                        {% else%}
+                                            {{ 'message.show.by'| trans({},'messages') }} : {{message.sender}}
+                                        {% endif %}
+                                    </h5>
+                                    <ul class="list-inline pull-right">
+                                        <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
                                         
-                                <div id="collapse{{message.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{message.id}}">
-                                    <div class="panel-body">
-                                       {{ message.body }} 
-                                    </div>
-                                </div>	
-                                {% endfor %}
-                            </div><!--panel-->
-                        </div><!--accordion-->								
-                    </div><!--col-->
-                </div> <!--row-->
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="2s">
-                        <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
-                        <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-                        {{ form_start(form) }}
-                        {{ form_errors(form) }}
-                        
-                        <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control', 'style':'background-color:#fff'} }) }}</div>
-            
-                        <input class ="btn btn-primary" type="submit" />
-                        {{ form_end(form) }}
-                    </form>
-                    </div>
+                                    </ul>
+                                </div>
+                                <p>{{ message.body }} </p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            {% endfor %}
+        </div> <!--row-->
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-9 col-sm-12 col-xs-12">
+                <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+                <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+
+                    <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control', 'style':'background-color:#fff'} }) }}</div>
+
+                    <input class ="btn btn-primary" type="submit" />
+                    {{ form_end(form) }}
+                </form>
             </div>
-        </section>
-    {% endblock %}
-
-    {% block scripts %}
-
-        <script>
-            $('.ajax-popup-link').magnificPopup({
-                closeBtnInside: true,
-                midClick: true,
-                type: 'ajax'
-            });
-
-            $('.ajax-delete').magnificPopup({
-                type: 'inline',
-                modal: true
-            });
-            $(document).on('click', 'a.delete-button', function (e) {
-                e.preventDefault();
-                var li = $(this).attr('data-li');
-                $.ajax({
-                    url: $(this).attr('href'),
-                    dataType: "json",
-                    data: {id: $(this).attr('data-id')},
-                    type: 'POST'
-                })
-                        .done(function (data) {
-                            $.magnificPopup.close();
-                            if (data['success']) {
-                                $("#" + li).fadeOut(700, function () {
-                                    $(this).remove();
-                                });
-                            } else {
-                                alert("{{ 'projet.delete.error'| trans({},'messages') }}");
-                            }
-
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus, errorThrown);
-                        });
-            });
-
-            $(document).on('click', '.popup-modal-dismiss', function (e) {
-                e.preventDefault();
-                $.magnificPopup.close();
-            });
-
-            $(document).ready(function () {
-
-            });
-
-        </script>
-    {% endblock %}
-{% endspaceless %}
+        </div>
+    </div>
+</section>

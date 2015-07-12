@@ -76,17 +76,18 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </div>
+                                        {%else%}
+                                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                                <div class="box clearfix">
+                                                    <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
+                                                </div>
+                                            </div> 
+                                        {%endfor%}
                                     </div>
                                 </div>
                             </div>
-                        {%else%}
-                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
-                                <div class="box clearfix">
-                                    <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
-                                </div>
-                            </div> 
-                        {%endfor%}
+                        </div>
+
                         <div class="text-center col-md-12">
                             <div class="quicklinks">
                                 <h5> {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }} </h5>

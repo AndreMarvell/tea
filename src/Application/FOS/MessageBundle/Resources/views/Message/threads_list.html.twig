@@ -1,53 +1,36 @@
-<table class="table table-bordered">
-
-    <thead>
-        <tr>
-            <th>{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</th>
-        </tr>
-    </thead>
-
+<table class="table">
     <tbody>
 
         {% if threads %}
             {% for thread in threads %}
                 {% if not fos_message_is_read(thread) %}
-                    <tr class="success">
+                    <tr style="background-color: #E7E7E7;">
                     {% else %}
                     <tr>
                     {% endif %}
 
-                    <td>
-                        ({{ thread.messages|length }})
-                        <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
-                            {{ thread.subject }}
+                    <td style="text-align: justify">
+                        <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" class="ajax-popup-link">
+                            ({{ thread.messages|length }})
+                            {%if thread.lastMessage.sender.firstname is not null and thread.lastMessage.sender.lastname is not null%}
+                                {{thread.lastMessage.sender.firstname ~ ' ' ~ thread.lastMessage.sender.lastname}}
+                            {%else%}
+                                {{thread.lastMessage.sender.username}}
+                            {%endif%}                    
                         </a>
+                    </td>
 
-                        {% if not fos_message_is_read(thread) %}
-                            ({% trans from 'FOSMessageBundle' %}new{% endtrans %})
-                        {% endif %}
-                    </td>
                     <td>
-                        {{ thread.createdBy }}
-                    </td>
-                    <td>
-                        {{ thread.createdAt|date("d/m/y") }}
-                    </td>
-                    <td>
-                        {{ thread.lastMessage.body | slice(0,35) }}
+                        <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" class="ajax-popup-link"> 
+                            <p style="text-align: justify"><b>{{ thread.subject }}</b> - {{ thread.lastMessage.body | slice(0,45) }}<p>
+                        </a>
                     </td>
                     <td>
                         {% if thread.lastMessage %}
-                            <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
+                            {#<a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
                                 →
-                            </a>
-                            {% trans with {'%date%': thread.lastMessage.createdAt|date("d/m/y")} from 'FOSMessageBundle' %}on{% endtrans %}
-
-                            {% trans with {'%sender%': thread.lastMessage.sender|e } from 'FOSMessageBundle' %}by{% endtrans %}
+                            </a>#}
+                            {% trans with {'%date%': thread.lastMessage.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))} from 'FOSMessageBundle' %}on{% endtrans %}
                         {% else %}
                             ----
                         {% endif %}
@@ -61,8 +44,6 @@
                             {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
                         {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
                     {% endif %}
-                    <a style="margin-right:4px" class="btn btn-primary btn-xs" href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}"><i class="fa fa-eye"></i></a>
-                    <a style="margin-right:4px" class="btn btn-primary btn-xs ajax-popup-link" href=""><i class="fa fa-reply-all"></i></a>
                     <a class="btn btn-danger btn-xs ajax-delete" href="#delete-modal-{{thread.id}}"><i class="fa fa-trash"></i></a>
                     <div id="delete-modal-{{thread.id}}" class="mfp-hide mfp-small-dialog">
                         <h1>{{ 'message.delete.title'|trans({}, 'messages') }}</h1>
@@ -78,6 +59,7 @@
 
                 {% endif %}
             </td>
+
         </tr>
     {% endfor %}
 {% else %}

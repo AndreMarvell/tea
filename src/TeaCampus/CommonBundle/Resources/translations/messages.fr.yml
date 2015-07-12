@@ -78,7 +78,7 @@ aside:
         title: Tags
     projects:
         search: Rechercherz un projet
-        most: Les plus lues
+        most: Projets populaires
         
 share:
     title: Partager
@@ -172,6 +172,7 @@ message:
         subject: Sujet
         by : Par
         you : Vous
+        new: Nouveau message
         
 about:
     title: Qu'est ce que TEA ?

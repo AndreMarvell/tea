@@ -630,7 +630,7 @@ label {
     display: inline-block;
 }
 .profile-message .nav-tabs-vertical  >  li {
-    padding: 15px 15px 15px 0;
+    padding: 0px 15px 15px 0;
     text-align: left; 
     border-right: 2px solid #e8e9ed;
 }
@@ -687,7 +687,7 @@ label {
 @media (min-width: 769px) {
     .col-sm-height {
         display: table-cell;
-        float: none !important;
+        /*float: none !important;*/
     }
 }
 @media (min-width: 992px) {
