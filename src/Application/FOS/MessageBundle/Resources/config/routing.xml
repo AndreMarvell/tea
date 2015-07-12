@@ -36,10 +36,12 @@
 
     <route id="fos_message_thread_view" pattern="/{threadId}">
         <default key="_controller">FOSMessageBundle:Message:thread</default>
+        <condition>request.headers.get('X-Requested-With') == 'XMLHttpRequest'</condition>
     </route>
     
     <route id="fos_message_thread_view_ajax" pattern="/ajax/{threadId}">
         <default key="_controller">FOSMessageBundle:Message:threadAjax</default>
+        <condition>request.headers.get('X-Requested-With') == 'XMLHttpRequest'</condition>
     </route>
 
 </routes>
