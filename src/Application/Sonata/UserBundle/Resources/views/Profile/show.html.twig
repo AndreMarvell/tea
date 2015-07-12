@@ -170,7 +170,31 @@
                         console.log(textStatus, errorThrown);
                     });
         });
+        $(document).on('click', 'a.delete-button', function (e) {
+            e.preventDefault();
+            var li = $(this).attr('data-li');
+            $.ajax({
+                url: $(this).attr('href'),
+                dataType: "json",
+                data: {id: $(this).attr('data-id')},
+                type: 'POST'
+            })
+                    .done(function (data) {
+                        $.magnificPopup.close();
+                        if (data['success']) {
+                            $("#" + li).fadeOut(700, function () {
+                                $(this).remove();
+                            });
+                        } else {
+                            alert("{{ 'projet.delete.error'| trans({},'messages') }}");
+                        }
 
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    });
+        });
+        
         $(document).on('click', '.popup-modal-dismiss', function (e) {
             e.preventDefault();
             $.magnificPopup.close();

@@ -38,7 +38,6 @@ class ProjetController extends Controller {
                     'projectofthemonth' => $projetofthemonth,
                     'latestproject' => $latestProject,
                     'tags' => $tags,
-                    'AmostRead' => $AmostRead,
                     'mostRead' => $mostRead,
                     'projectoftheweek' => $projetoftheweek));
     }

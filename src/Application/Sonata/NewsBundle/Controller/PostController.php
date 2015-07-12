@@ -25,7 +25,7 @@ class PostController extends BaseController
         $em             = $this->getDoctrine()->getManager();
         $mostRead       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findMostRead();
         $tags           = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findByContext('news');
-        $PmostRead = $em->getRepository('TeaCampusCommonBundle:Projet')->findMostRead();
+        
         $pager = $this->getPostManager()->getPager(
             $criteria,
             $this->getRequest()->get('page', 1)
@@ -37,7 +37,6 @@ class PostController extends BaseController
             'collection'       => false,
             'route'            => $this->getRequest()->get('_route'),
             'route_parameters' => $this->getRequest()->get('_route_params'),
-            'PmostRead'        => $PmostRead,
             'mostRead'         => $mostRead,
             'tags'         => $tags
         ), $parameters);
