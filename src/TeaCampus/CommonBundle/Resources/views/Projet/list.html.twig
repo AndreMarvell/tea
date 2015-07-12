@@ -43,13 +43,13 @@
                                 {{ knp_pagination_sortable(pagination, '   Date de publication ', 'a.date') }}  
                             </h5>
                         </div>
-                        <div class="text-center col-md-12">
+                        <div >
                             <div class ="wrap-features">
-                                <div class="container">
+                                <div class="container col-md-12">
                                     <div class="row">
                                         {% for project in pagination %}
                                             <a href="{{ path('tea_projects_show',{'id':project.id}) }}">
-                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
                                                     <div class="wrap-feature-item">
                                                         <div class="feature-item">
                                                             <div class="front face">
@@ -75,18 +75,18 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </a>{%else%}
+                                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                                <div class="box clearfix">
+                                                    <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
+                                                </div>
+                                            </div> 
+                                        {%endfor%}
                                     </div>
                                 </div>
                             </div>
-                        {%else%}
-                            <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
-                                <div class="box clearfix">
-                                    <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
-                                </div>
-                            </div> 
-                        {%endfor%}
+                        </div>
+
                         <div class="text-center col-md-12">
                             <div class="quicklinks">
                                 <h5> {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }} </h5>
@@ -97,7 +97,7 @@
                     <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
                         <!-- Navbar -->
                         {{ include( 'TeaCampusCommonBundle:Sections:SideBar/index.html.twig', {'type':'projects'}) }}
-                        
+
                     </div>
                 </div>
             </div>
