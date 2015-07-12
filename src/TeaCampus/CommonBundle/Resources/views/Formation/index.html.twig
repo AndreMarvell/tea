@@ -12,8 +12,8 @@
             <div class="container">	
                 <div class="row">
                     <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
-                        {% image '@TeaCampusCommonBundle/Resources/public/images/formation.png'  output="images/ico/faq.png" %}
-                        <img src="{{ asset_url }}" alt="TeaCampus FAQ"  width="100px"/>
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/formation.png'  output="images/ico/formation.png" %}
+                        <img src="{{ asset_url }}" alt="TeaCampus Formation"  width="100px"/>
                         {% endimage %}
                         <br>
                         <h1 class="title">{{ 'formation.title'| trans({},'messages') }}</h1>
@@ -34,12 +34,46 @@
                             <p>{{ 'formation.text'| trans({},'messages') }}</p>
                         </header>
                         <div class="text-center col-md-12">
-                            <div class ="wrap-features">
-                                <div class="container">
-                                    <div class="row">
-                                        
+                            <!-- Formation - Catégories -->
+                            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                            <div class="row" style="margin-top:50px;">
+                            {% for category in categories %}
+                                <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                                    {%if category.icon is not null%}
+                                    <div class="striped-icon-large" style="position:absolute;top:-20px;right:-10px;">
+                                        <span aria-hidden="true" class="">
+                                            <img src="{{ asset('bundles/teacampuscommon/images/formation/'~category.icon~'.png') }}" alt="TeaCampus {{category.name}}"  width="45px"/>
+                                        </span>
+                                    </div>
+                                    {%endif%}
+                                    <div class="box clearfix" style="padding: 22px 29px 28px 46px;text-align: left;">
+                                        <h5 style="min-height:50px;">{{category.name}}</h5>
+                                        <p>{{ 'formation.subject.nb_chapter'| trans({'%nb%':category.children|length},'messages') }}</p>
+                                        <a href="#formation-modal-{{category.id}}" class="btn btn-primary btn-xs pull-left popup-reveal">{{ 'formation.subject.discover'| trans({},'messages') }}</a>
+                                        <div id="formation-modal-{{category.id}}" class="mfp-hide mfp-small-dialog">
+                                            <h1 class="text-center">{{ category.name }}</h1>
+                                            <p class="subhead text-center">{{ 'formation.subject.nb_chapter'| trans({'%nb%':category.children|length},'messages') }}</p>
+                                            <div class="wrap-laptop" style="margin-top:50px">
+                                            {%for child in category.children%}
+                                                <div class="laptop-item">
+                                                    <div class="striped-icon-large">
+                                                        {%if child.icon is not null%}
+                                                        <span aria-hidden="true">
+                                                            <img src="{{ asset('bundles/teacampuscommon/images/formation/'~child.icon~'.png') }}" alt="TeaCampus {{category.name}}"  width="45px"/>
+                                                        </span>
+                                                        {%endif%}
+                                                    </div>
+                                                    <h5><a href="{{ path('tea_formations_chapter', {'subject':category.slug,'chapter':child.slug } ) }}">{{child.name}}</a></h5>
+                                                    <p>{%if child.description is not null%}{{child.description|striptags|slice(0, 50) ~ '...'}}{%else%}{{ 'formation.no_description'| trans({},'messages') }}{%endif%}</p>
+                                                </div>
+                                            {%endfor%}
+                                            <div class="text-center"><a class="btn btn-xs btn-primary popup-modal-dismiss" href="{{ path('tea_formations_subject', {'subject':category.slug } ) }}">{{ 'formation.subject.see_all'|trans({}, 'messages') }}</a></div>
+                                            </div>
+                                            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                                        </div>
                                     </div>
                                 </div>
+                            {%endfor%}
                             </div>
                         </div>
                                         
@@ -57,6 +91,12 @@
 {% endblock %}
 
 {% block scripts %}
+    <script>
+        $('.popup-reveal').magnificPopup({
+            type: 'inline',
+            modal: true
+        });
+    </script>
                 
 {% endblock %}
 

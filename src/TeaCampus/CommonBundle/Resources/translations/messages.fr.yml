@@ -215,3 +215,11 @@ formation:
     title: Vidéos de Formations
     subhead: Notre stratégie pour vous accompagner dans l'entrepreneuriat
     text: Pour franchir le cap du primo développement, l’entrepreneur a besoin d’asseoir sa fonction de dirigeant et bâtir sa stratégie. TeaCampus a imaginé une offre de formations pour aider le dirigeant d’une jeune entreprise ayant moins de 5 ans d’existence à devenir le moteur de la croissance de son entreprise.
+    no_description: Aucune description disponible
+    subject:
+        nb_chapter: %nb% chapitre(s)
+        discover: Découvrir
+        see_all: Toutes les videos de cette catégorie
+    chapter:
+        discover: Découvrir
+        nb_videos: %nb% vidéo(s)

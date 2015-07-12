@@ -11,12 +11,13 @@
     <entity
         name="Application\Sonata\ClassificationBundle\Entity\Category"
         table="classification__category"
-        repository-class="Application\Sonata\ClassificationBundle\Entity\PostRepository">
+        repository-class="Application\Sonata\ClassificationBundle\Entity\CategoryRepository">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
         <field name="locale" type="string" column="locale" length="10" nullable="true"/>
+        <field name="icon" type="string" column="icon" length="255" nullable="true"/>
 
     </entity>
 </doctrine-mapping>

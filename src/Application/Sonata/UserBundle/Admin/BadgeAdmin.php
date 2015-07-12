@@ -38,7 +38,7 @@ class BadgeAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('nom')
-            ->add($description)
+            ->add('description')
         ;
     }
 }    

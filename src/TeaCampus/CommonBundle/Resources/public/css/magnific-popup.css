@@ -41,6 +41,16 @@
   margin: 40px auto;
   position: relative;
 }
+
+.mfp-medium-dialog{
+  background: white;
+  padding: 20px 30px;
+  text-align: left;
+  max-width: 800px;
+  margin: 40px auto;
+  position: relative;
+}
+
 .mfp-small-dialog h1{
   font-size: 25px;
 }

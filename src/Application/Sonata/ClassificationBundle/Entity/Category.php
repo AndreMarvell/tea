@@ -33,6 +33,12 @@ class Category extends BaseCategory
      *
      */
     private $locale = 'fr';
+    
+    /**
+     * @var string
+     *
+     */
+    private $icon;
 
     /**
      * Get id
@@ -73,5 +79,29 @@ class Category extends BaseCategory
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * Set icon
+     *
+     * @param string $icon
+     *
+     * @return Category
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get icon
+     *
+     * @return string
+     */
+    public function getIcon()
+    {
+        return $this->icon;
     }
 }

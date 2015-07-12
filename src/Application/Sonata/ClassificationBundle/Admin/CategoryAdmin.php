@@ -16,7 +16,13 @@ class CategoryAdmin extends SonataCategoryAdmin
     {
         parent::configureFormFields($formMapper);
 
-        $formMapper->add('locale', 'language');
+        $formMapper
+            ->add('locale', 'language',array(
+                    'label'  => 'Locale',
+                ))
+            ->add('icon', null, array(
+                    'label'  => 'Icon',
+                ));
     }
     
 }
