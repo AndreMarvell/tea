@@ -6,12 +6,12 @@
         {% for video in articles %}
         <li>
             <div class="avatar pull-left">
-                {% thumbnail video.video, 'square' with{'width':'50px', 'height':'50px', 'alt':video.title } %}
+                {% thumbnail video.video, 'small' with{'width':'50px', 'height':'50px', 'alt':video.title } %}
             </div>
-            <a href="{{ path('tea_formations_show', { 'id': video.id, 'subject':'test','chapter':'test' } ) }}" class="title">{{video.title}}</a>
+            <a href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}" class="title">{{video.title}}</a>
             <ul class="list-inline clearfix">
                 <li><i class="fa fa-user"></i>{%if video.author is null%}TEA{%else%}{{video.author.username}}{%endif%}</li>
-                <li><i class="fa fa-calendar"></i>{{project.date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
+                <li><i class="fa fa-calendar"></i>{{video.date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
             
             </ul>
         </li>

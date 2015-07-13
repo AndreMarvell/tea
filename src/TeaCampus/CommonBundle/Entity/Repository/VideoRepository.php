@@ -18,5 +18,31 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
         $query->setMaxResults(5);
         
         return $query->getQuery()->getResult();
+    }
+    
+    public function findChapterVideos($id) {
+ 
+        $query = $this->createQueryBuilder('v');
+        $query->innerJoin('v.category', 'c')
+              ->where('v.enabled = true')
+              ->andWhere('c.id = :id')
+              ->setParameter('id', $id)
+              ->orderBy('v.date','DESC');
+        
+        return $query->getQuery()->getResult();
+    } 
+    
+    public function findSubjectVideos($id) {
+ 
+        $query = $this->createQueryBuilder('v');
+        $query->innerJoin('v.category', 'c')
+              ->innerJoin('c.parent', 'cp')
+              ->where('v.enabled = true')
+              ->andWhere('cp.id = :id')
+              ->setParameter('id', $id)
+              ->orderBy('v.date','DESC');
+        //$query->setMaxResults(5);
+        
+        return $query->getQuery()->getResult();
     } 
 }

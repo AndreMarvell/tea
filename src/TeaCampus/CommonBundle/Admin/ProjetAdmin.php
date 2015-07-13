@@ -60,6 +60,7 @@ class ProjetAdmin extends Admin
                         ->add('whyCanWork')
                         ->add('businessModel')
                         ->add('targetCountry')
+                        ->add('locale','language')
                         ->add('media', 'sonata_type_model_list', array('required' => false), array(
                             'link_parameters' => array(
                                 'context' => 'projet',

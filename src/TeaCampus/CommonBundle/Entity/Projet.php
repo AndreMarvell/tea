@@ -74,9 +74,9 @@ class Projet
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="string", length=255, nullable=false)
+     * @ORM\Column(name="locale", type="string", length=10, nullable=false)
      */
-    private $language;
+    private $locale = 'fr';
     
     /**
      * @var boolean
@@ -793,5 +793,29 @@ class Projet
     public function getSelectionOfTea()
     {
         return $this->selectionOfTea;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return Projet
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

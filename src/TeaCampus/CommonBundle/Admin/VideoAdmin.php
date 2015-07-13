@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Doctrine\ORM\EntityRepository;
 
 class VideoAdmin extends Admin
 {
@@ -20,6 +21,7 @@ class VideoAdmin extends Admin
             ->add('title')
             ->add('description')
             ->add('date')
+            ->add('enabled')
         ;
     }
 
@@ -29,17 +31,11 @@ class VideoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('title')
-            ->add('description')
+            ->addIdentifier('id')
+            ->addIdentifier('title')
+            ->add('locale')
             ->add('date')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+            ->add('enabled')
         ;
     }
 
@@ -65,6 +61,21 @@ class VideoAdmin extends Admin
                 'property' => 'name',
                 'multiple' => 'true'
             ))
+            ->add('category', 'entity', array(
+                'class' => 'Application\Sonata\ClassificationBundle\Entity\Category',
+                'query_builder' => function(EntityRepository $er ) {
+                    return $er->createQueryBuilder('c')
+                              ->join('c.context','co')
+                              ->leftJoin('c.children','ch')
+                              ->where('co.name  = :context')
+                              ->andWhere('ch.id IS NULL')
+                              ->setParameter('context', 'video')
+                              ->orderBy('c.name', 'ASC');
+                    },
+                'empty_value' => ''
+            ))
+            ->add('enabled')
+            ->add('locale','language')
                 
         ;
     }

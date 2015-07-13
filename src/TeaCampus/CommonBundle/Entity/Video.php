@@ -39,9 +39,9 @@ class Video
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="string", length=255, nullable=false)
+     * @ORM\Column(name="locale", type="string", length=10, nullable=false)
      */
-    private $language;
+    private $locale ='fr';
 
     /**
      * @var \DateTime
@@ -73,6 +73,12 @@ class Video
     * @ORM\JoinColumn(nullable=true)
     */
     private $author;
+    
+    /**
+     * @var \Application\Sonata\ClassificationBundle\Entity\Category
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\ClassificationBundle\Entity\Category", cascade={"persist"}, fetch="LAZY")
+     */
+    protected $category;
     
     /** 
      *
@@ -364,5 +370,53 @@ class Video
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Application\Sonata\ClassificationBundle\Entity\Category $category
+     *
+     * @return Video
+     */
+    public function setCategory(\Application\Sonata\ClassificationBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Application\Sonata\ClassificationBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return Video
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

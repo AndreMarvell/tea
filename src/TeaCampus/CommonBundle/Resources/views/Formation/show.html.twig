@@ -1,0 +1,62 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% block title %}
+    {{ video.title }} - {{ parent() }}
+{% endblock %}    
+{% block main_content %}
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header" style="height: auto;max-height: 880px;padding-top: 150px;padding-bottom: 50px;">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                        <div class="video-container">
+                            {% media video.video, 'wide'  %}
+                        </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        <section class="wrap-blog-content blog wrap-contacts" style="margin-top: 0px">
+            <div class="container">
+                <div class="anchor-icon"><i class="fa fa-graduation-cap"></i></div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        
+                        <div style="margin-top:20px">
+                            <div class="wrap-decription wow fadeInUp" data-wow-duration="2s" >
+                                <header class="section-header" style="margin:0;">
+                                    <p class="subhead">{{video.category.name}}</p>
+                                    <h4 class="text-center">{{video.title}}</h4>
+                                    <p style="text-align:justify">{%if video.description is not null%}{{video.description}}{%else%}{{ 'formation.no_description'| trans({},'messages') }}{%endif%}</p>
+                                </header>
+                            </div>
+                        </div>
+                        <div class="text-center col-md-12">
+                            <!-- Formation - Catégories -->
+                            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                            <div class="row" style="margin-top:50px;">
+                                {% include 'AndreMarvellSocialBundle:Comment:disqus.html.twig' with {'subline': 'video.comment.subline'| trans({},'messages'), 'disqus_id' : 'video-'~video.id, 'disqus_title' : video.title} %}
+                            </div>
+                        </div>
+                                        
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- Navbar -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/index.html.twig', {'type':'videos'}) }}
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+{% endblock %}
+
+{% block scripts %}
+                
+{% endblock %}
+
+{% endspaceless %}

@@ -91,7 +91,10 @@ comment:
 
 video:
     other:
-        no_video_found: Aucune vidéo trouvée    
+        no_video_found: Aucune vidéo trouvée   
+    comment:
+        title: Votre commentaire
+        subline: Cette vidéo vous a plu ? Donnez votre avis.
         
 project:
     form:
@@ -221,6 +224,8 @@ formation:
         nb_chapter: %nb% chapitre(s)
         discover: Découvrir
         see_all: Toutes les videos de cette catégorie
+        all: Tous
+        subhead: Leçons
     chapter:
         discover: Découvrir
         nb_videos: %nb% vidéo(s)

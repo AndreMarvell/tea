@@ -50,15 +50,7 @@
                     <li class="{%if 'projects' in currentPath%}active{%endif%}"><a href="{{path('tea_projects')}}" title="{{ 'menu.projects'|trans({},'messages') }}">{{ 'menu.projects'|trans({},'messages') }}</a></li>
                     
                     <li class="{%if 'news' in currentPath%}active{%endif%}">
-                        <a href="{{path('sonata_news_archive')}}" title="{{ 'menu.blog.title'|trans({},'messages') }}">{{ 'menu.blog.title'|trans({},'messages') }}</a>
-                        <div class=" wrap-inside-nav">
-                            <div class=" inside-col">
-                                <ul class="inside-nav">
-                                    <li><a href="{{path('sonata_news_archive')}}" title="{{ 'menu.blog.une'|trans({},'messages') }}">{{ 'menu.blog.une'|trans({},'messages') }}</a></li>
-                                    <li><a href="{{path('sonata_news_archive')}}" title="{{ 'menu.blog.all'|trans({},'messages') }}">{{ 'menu.blog.all'|trans({},'messages') }}</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        <a href="{{path('sonata_news_archive')}}" title="{{ 'menu.blog.title'|trans({},'messages') }}">{{ 'menu.blog.title'|trans({},'messages') }}</a>                      
                     </li>
                 </ul>
             </div>

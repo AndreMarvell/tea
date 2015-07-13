@@ -1722,7 +1722,7 @@ section.divider.striped-icon {
     }
 }
 .gallery .gallery-items {
-    width: 100%;
+/*    width: 100%;*/
 }
 .gallery .gallery-items figure {
     position: relative;
@@ -3286,7 +3286,7 @@ section.team .team-description p {
     margin-left: auto;
     margin-right: auto;
     max-width: 370px;
-    padding-bottom: 70px;
+    padding-bottom: 50px;
 }
 .wrap-works .post .post-heading {
     position: relative;
@@ -3295,7 +3295,7 @@ section.team .team-description p {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     display: block;
-    height: 230px;
+    max-height: 200px;
     overflow: hidden;
 }
 .wrap-works .post .post-heading .post-image img {
