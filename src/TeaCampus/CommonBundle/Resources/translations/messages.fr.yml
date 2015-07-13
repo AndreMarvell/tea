@@ -275,7 +275,9 @@ contact:
             error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
     map:
         title: Carte
-    
+ 
+mentions:
+    title: Mentions légales
 error:
     404:
         name: Erreur 404 - Page Introuvable

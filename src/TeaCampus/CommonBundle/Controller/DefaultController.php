@@ -47,5 +47,24 @@ class DefaultController extends Controller
         ));
     }
     
+    public function mentionsAction()
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $locale         = $this->get('request')->getLocale();
+        $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+        $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+        $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+        
+        return $this->render('TeaCampusCommonBundle:Home:mentions.html.twig', array(
+            'popularPosts'     => $popularPosts,
+            'popularProjects'  => $popularProjects,
+            'popularVideos'    => $popularVideos,
+            'tags'             => $tags,
+        ));
+        
+       
+    }
+    
     
 }

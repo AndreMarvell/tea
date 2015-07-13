@@ -1,0 +1,65 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% block title %}
+    {{ 'mentions.title'| trans({},'messages') }} - {{ parent() }}
+{% endblock %}    
+{% block main_content %}
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/mentionslegales.png'  output="images/ico/mentionslegales.png" %}
+                        <img src="{{ asset_url }}" alt="TeaCampus Mentions Légales"  width="100px"/>
+                        {% endimage %}
+                        <br>
+                        <h1 class="title">{{ 'mentions.title'| trans({},'messages') }}</h1>
+                        <div class="path"></div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        <section class="wrap-blog-content blog wrap-contacts" style="margin-top: 0px">
+            <div class="container">
+                <div class="anchor-icon"><i class="fa fa-gavel"></i></div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        
+                        {#<header class="section-header no-home">
+                            <p class="subhead">{{ 'formation.subhead'| trans({},'messages') }}</p>
+                            <h2>{{ 'formation.title'| trans({},'messages') }}</h2>
+                            <p>{{ 'formation.text'| trans({},'messages') }}</p>
+                        </header>#}
+                        <div class="text-center col-md-12">
+                            <!-- TEA - Mentions Légales -->
+                            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                            
+                        </div>
+                                        
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- Navbar -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/index.html.twig', {'type':'videos'}) }}
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('.popup-reveal').magnificPopup({
+            type: 'inline',
+            modal: true
+        });
+    </script>
+                
+{% endblock %}
+
+{% endspaceless %}
