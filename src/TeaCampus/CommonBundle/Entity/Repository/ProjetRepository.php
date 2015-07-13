@@ -45,4 +45,15 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         
         return $query->getQuery()->getResult();
     }
+    
+    public function findLast($limit=5) {
+ 
+        $query = $this->createQueryBuilder('p');
+        $query->where('p.enabled = true ');
+        $query->where('p.private = false ');
+        $query->orderBy('p.date','DESC');
+        $query->setMaxResults($limit);
+        
+        return $query->getQuery()->getResult();
+    }
 }

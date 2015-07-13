@@ -1,9 +1,9 @@
 {% extends "::base.html.twig" %}
 {% spaceless %}
-{% set newsletter = true %}    
+{% set wearesocial = true %}    
 {% block main_content %}
     
-<!-- Home - Header -->
+        <!-- Home - Header -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
         <section class="home-header dark">
             <div class="container">	
@@ -24,9 +24,38 @@
             </div><!--container-->
         </section>
 
+        
+        <!-- Home - Videos -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-works" id="formation" style="margin-bottom: 100px;margin-top: 50px;">
+            <a class="striped-icon divider scroll" href="#formation">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <header class="section-header">
+                            <p class="subhead">{{ 'video.home.title'|trans({},'messages') }}</p>
+                            <h2>{{ 'video.home.last'|trans({},'messages') }}</h2>
+                        </header>	
+                    </div>
+                </div><!--row-->
+                <div class="row">
+                  {% for video in lastVideos %}
+                    <div class="col-md-3" >
+                        {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
+                    </div>
+                {%endfor%}  
+
+                </div><!--row-->
+                <div class="row text-center">
+                    <a href="{{path('tea_formations')}}" class="btn btn-info">{{ 'video.home.all'|trans({},'messages') }}</a>
+                </div>
+            </div><!--container-->
+        </section>
         <!-- Home - Blog -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-        <section class="blog" id="blog">
+        <section class="blog" id="blog" style="margin-bottom: 50px;margin-top: 50px;">
             <a class="striped-icon divider scroll" href="#blog">
                 <i class="fa fa-chevron-down"></i>
             </a>
@@ -48,6 +77,45 @@
                     {%endfor%}
 
                 </div><!--row-->
+                <div class="row text-center">
+                    <a href="{{path('sonata_news_archive')}}" class="btn btn-info">{{ 'news.home.all'|trans({},'messages') }}</a>
+                </div>
+            </div><!--container-->
+        </section>
+        <!-- Home - Projects -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-features" id="projects" style="margin-bottom: 100px;">
+            <a class="striped-icon divider scroll" href="#projects">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <header class="section-header">
+                            <p class="subhead">{{ 'project.home.title'|trans({},'messages') }}</p>
+                            <h2>{{ 'project.home.last'|trans({},'messages') }}</h2>
+                        </header>	
+                    </div>
+                </div><!--row-->
+                <div class="row">
+                    {% for project in lastProjects %}
+                        <a href="{{ path('tea_projects_show',{'id':project.id}) }}">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+                                {{ include( 'TeaCampusCommonBundle:Projet:list_item.html.twig', {'project':project}) }}
+                            </div>
+                        </a>
+                    {%else%}
+                        <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
+                            <div class="box clearfix">
+                                <h5> {{ 'project.show.no_project'|trans({},'messages') }} </h5>
+                            </div>
+                        </div> 
+                    {%endfor%}
+
+                </div><!--row-->
+                <div class="row text-center">
+                    <a href="{{path('tea_projects')}}" class="btn btn-info">{{ 'project.home.all'|trans({},'messages') }}</a>
+                </div>
             </div><!--container-->
         </section>
 

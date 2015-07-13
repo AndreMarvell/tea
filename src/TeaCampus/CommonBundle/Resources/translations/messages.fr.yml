@@ -1,6 +1,6 @@
 
 tea:
-    name: Todays Entrepreneurs For Africa
+    name: Todays Entrepreneurs In Africa
 
 menu:
     home: Accueil
@@ -61,6 +61,7 @@ news:
     home:
         last: Les dernières actualités
         title: Notre blog
+        all: Voir tous les articles
     list:
         title: Toute l'actualité
     search:
@@ -91,6 +92,10 @@ comment:
     need_connexion: Vous devez être connecté pour laisser un commentaire
 
 video:
+    home:
+        last: Les dernières vidéos
+        title: Formation
+        all: Découvrir nos vidéos de formation
     other:
         no_video_found: Aucune vidéo trouvée   
     comment:
@@ -104,6 +109,10 @@ video:
         error: Désolé, une erreur s'est produite lors de la suppression
         
 project:
+    home:
+        last: Les dernières projets
+        title: Notre plateforme projet
+        all: Voir tous les projets
     form:
         title: Le titre de votre projet ?
         description: En quoi consite ce projet ?

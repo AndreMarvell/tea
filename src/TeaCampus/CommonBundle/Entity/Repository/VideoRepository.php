@@ -45,4 +45,14 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
         
         return $query->getQuery()->getResult();
     } 
+    
+    public function findLast($limit=5) {
+ 
+        $query = $this->createQueryBuilder('v');
+        $query->where('v.enabled = true ');
+        $query->orderBy('v.date','DESC');
+        $query->setMaxResults($limit);
+        
+        return $query->getQuery()->getResult();
+    }
 }

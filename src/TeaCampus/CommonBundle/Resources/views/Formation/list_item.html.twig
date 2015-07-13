@@ -1,0 +1,16 @@
+<div class="post">
+    <div class="post-heading">
+        <div class="post-image">
+            {% thumbnail video.video, 'big' with {'width':'100%','height':'auto','alt':video.title} %}
+            <div class="mask">
+                <div class="icons">
+                    <a href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}"><i class="fa fa-play-circle fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-body">
+        <h5>{{video.title}}</h5>
+        <p>{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p>
+    </div>
+</div>

@@ -10,9 +10,13 @@ class DefaultController extends Controller
     {
         $em             = $this->getDoctrine()->getManager();
         $lastNews       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findLastNews(3);
-        
+        $lastVideos     = $em->getRepository('TeaCampusCommonBundle:Video')->findLast(4);
+        $lastProjects   = $em->getRepository('TeaCampusCommonBundle:Projet')->findLast(4);
+
         return $this->render('TeaCampusCommonBundle:Home:index.html.twig', array(
-            'lastNews' => $lastNews
+            'lastNews' => $lastNews,
+            'lastVideos' => $lastVideos,
+            'lastProjects' => $lastProjects
         ));
     }
     

@@ -1,0 +1,24 @@
+<div class="wrap-feature-item">
+    <div class="feature-item">
+        <div class="front face">
+            <div class="ico ">
+                {% thumbnail project.media, 'square' with{'width':'107px', 'height':'107px', 'alt':project.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}
+            </div>
+            <h6>{{project.title}}</h6>
+            <div class="number">{{project.getTargetCountry()|country}}</div>
+        </div>
+        <div class="back face center">
+            <div class="ico ">{% thumbnail project.media, 'square' with{'width':'40px', 'height':'40px', 'alt':project.title,'style':'border-radius:50%;border:1px solid white;padding-top:2px' } %}</div>
+            <div class="title">{{project.title}}</div>
+            <div class="text">
+                <p style="text-align: justify">
+                    {%if  project.description|length < 105%}
+                        {{project.description}}
+                    {%else%}
+                        {{project.description|striptags|slice(0, 105) ~ '...'}}
+                    {%endif%}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
