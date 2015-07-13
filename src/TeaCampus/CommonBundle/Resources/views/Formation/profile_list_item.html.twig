@@ -1,0 +1,63 @@
+
+            <!-- Post Item -->
+            <li id="video-{{video.id}}">
+                <div class="project-thumbs">
+                    {%if video.video is not null%}
+                        {% thumbnail video.video, 'square' with{'alt':video.title,'title':video.title } %}
+                    {%else%}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                        <img src="{{ asset_url }}">
+                        {% endimage %}
+                        <span>{{ 'project.other.title'|trans({}, 'messages') }}</span>
+                    {%endif%}
+                </div>
+                <div class="project-content">
+                    <div class="project-infos clearfix">
+                        <div class="pull-left">
+                          <time class="label" datetime="{{video.date|format_date('Y-M-d')}}">{{video.date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</time>
+                        </div>
+                        <div class="pull-right">
+                          {%if video.enabled %}
+                              <span class="label label-primary">{{ 'project.other.enabled'|trans({}, 'messages') }}</span>
+                          {% else %}
+                               <span class="label label-danger">{{ 'project.other.not_enabled'|trans({}, 'messages') }}</span>
+                          {% endif %}
+                        </div>
+                    </div>
+                    <h2 class="project-title">
+                        <a href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}">
+                            {%if  video.description|length < 80%}
+                                {{video.title}}
+                            {%else%}
+                                {{ video.title|striptags|slice(0, 80) ~ '...'}}
+                            {%endif%}
+                        </a>
+                    </h2>
+                    
+                    
+                    <p class="project-description">{{ video.description|striptags|slice(0, 150) ~ '...'}}</p>
+                    
+                    <div class="project-metas">
+                        <div class="project-edit pull-right">
+                            <a class="btn btn-primary btn-xs" href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-{{video.id}}"><i class="fa fa-trash"></i></a>
+                            <div id="delete-modal-{{video.id}}" class="mfp-hide mfp-small-dialog">
+                                <h1>{{ 'video.delete.title'|trans({}, 'messages') }}</h1>
+                                <p>{{ 'video.delete.sure'|trans({}, 'messages') }}</p>
+                                <p>
+                                    <a class="btn btn-xs btn-primary popup-modal-dismiss" href="#">{{ 'video.delete.no'|trans({}, 'messages') }}</a>
+                                    <a class="btn btn-xs btn-danger delete-button" data-li="video-{{video.id}}" data-id="{{video.id}}" href="{{ path('tea_videos_delete') }}">{{ 'video.delete.yes'|trans({}, 'messages') }}</a>&nbsp;
+                                </p>
+                                <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                            </div>
+                        </div>
+                        <div class="project-tags pull-left">
+                            {% for tag in video.tags %}
+                                <a href="{{ path('tea_formations_tag', { 'tag': tag.slug } ) }}"><span class="label {%if loop.index is odd%}label-success{%else%}label-danger{%endif%}">{{ tag.name }}</span></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+              </li>
+              
+    

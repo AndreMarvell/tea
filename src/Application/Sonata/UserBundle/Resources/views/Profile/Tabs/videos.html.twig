@@ -1,6 +1,6 @@
 <ul class="content-list center-block">
     {% for video in videos %}
-        {{ include( 'TeaCampusCommonBundle:Video:profile_list_item.html.twig', {'video':video}) }}
+        {{ include( 'TeaCampusCommonBundle:Formation:profile_list_item.html.twig', {'video':video}) }}
     {%else%}
         <li>{{ 'video.other.no_video_found'|trans({}, 'messages') }}</li>
     {%endfor%}

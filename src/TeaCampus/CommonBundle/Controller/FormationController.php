@@ -110,5 +110,30 @@ class FormationController extends Controller
         }
          
     }
+    
+    public function deleteAction() {
+        $request    = $this->get('request');
+        $em         = $this->getDoctrine()->getManager();
+        $id         = $request->request->get('id');
+        $repository = $em->getRepository("TeaCampusCommonBundle:Video");
+        $video      = $repository->find($id);
+
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $success = false;
+        if (is_null($video) || $user->getId() !== $video->getAuthor()->getId()) {
+            throw new NotFoundHttpException("Désolé, la page que vous avez demandée semble introuvable !");
+        } else {
+            $success = true;
+            $em->remove($video);
+            $em->flush();
+        }
+
+        $response = new Response();
+        $response->setContent(json_encode(array("success" => $success)));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
    
 }

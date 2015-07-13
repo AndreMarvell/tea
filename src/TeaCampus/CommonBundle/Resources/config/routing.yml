@@ -46,6 +46,12 @@ tea_formations_search:
 tea_formations_tag:
     path:     /formations/tag/{tag}
     defaults: { _controller: TeaCampusCommonBundle:Formation:tag }
+    
+tea_videos_delete:
+    path:     /formations/videos/delete/
+    defaults: { _controller: TeaCampusCommonBundle:Formation:delete }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+ 
 
 ##############################
 ###### Pour les projets ######

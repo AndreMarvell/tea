@@ -95,6 +95,12 @@ video:
     comment:
         title: Votre commentaire
         subline: Cette vidéo vous a plu ? Donnez votre avis.
+    delete:
+        title: Supprimer la vidéo
+        sure: Êtes vous sure de vouloir supprimer cette vidéo?
+        yes: Oui
+        no: Non
+        error: Désolé, une erreur s'est produite lors de la suppression
         
 project:
     form:
