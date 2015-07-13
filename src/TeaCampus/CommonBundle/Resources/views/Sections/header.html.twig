@@ -1,6 +1,6 @@
 
 {% set currentPath = app.request.get('_route') %}
-{%if currentPath == 'tea_projects' or currentPath == 'tea_homepage' or currentPath == 'tea_about' or currentPath == 'tea_faq' or 'profil' in currentPath or 'user' in currentPath or 'formation' in currentPath or currentPath is null%}
+{%if currentPath == 'tea_projects' or currentPath == 'tea_homepage' or currentPath == 'tea_about' or currentPath == 'tea_faq' or 'profil' in currentPath or 'user' in currentPath or 'formation' in currentPath or 'tea_contact' in currentPath or currentPath is null%}
     {% set navClass = 'nav_animated' %}
 {%else%}
     {% set navClass = 'navbar-alt' %}

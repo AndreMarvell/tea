@@ -51,6 +51,7 @@ footer:
         about: À Propos
         faq: FAQ
         forum: Forum
+        contacts: Contacts
     contact:
         text: Besoin d'aide? Contactez nous!
     tea:
@@ -235,7 +236,37 @@ formation:
     chapter:
         discover: Découvrir
         nb_videos: %nb% vidéo(s)
-        
+
+contact:
+    title: Contactez-nous
+    loading: Envoi en cours...
+    send: Envoyer
+    sent: Votre message a bien été envoyé
+    new: Nouveau message
+    infos:
+        title: Informations Pratiques
+        adress: Adresse
+        phone: Téléphones
+        mail: E-Mail
+        text: Transmettez-nous toutes vos demandes et vos moindres interrogations
+    form:
+        title: Formulaire
+        error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
+        name:
+            placeholder: Nom
+            error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
+        mail:
+            placeholder: Email
+            error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
+        subject:
+            placeholder: Objet
+            error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
+        message:
+            placeholder: Votre message...
+            error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
+    map:
+        title: Carte
+    
 error:
     404:
         name: Erreur 404 - Page Introuvable

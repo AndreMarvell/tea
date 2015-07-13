@@ -1075,6 +1075,9 @@ label {
     z-index: 1;
     background-color: #2b2e33;
 }
+.blurred-map {
+    background: url('../images/blurred.jpg') center no-repeat ;
+}
 .dark-map::after {
     content: "";
     background: url('../images/map.png') center no-repeat ;

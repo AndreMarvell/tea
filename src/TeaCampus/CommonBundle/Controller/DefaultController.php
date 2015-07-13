@@ -16,6 +16,7 @@ class DefaultController extends Controller
         ));
     }
     
+    
     public function aboutAction()
     {
         $em             = $this->getDoctrine()->getManager();
@@ -41,4 +42,6 @@ class DefaultController extends Controller
             'faqs' => $faqs,
         ));
     }
+    
+    
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width">
+        <title>{% block title %}Contacts{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="http://cdn.foundation5.zurb.com/foundation.css" />
+        <style>
+            .from{
+                background: rgba(0,0,0,0.7);
+                color: white;
+                padding: 5px;
+                border-left: solid #00B39D 5px;
+            }
+            body>div.row{
+                padding:20px;
+            }
+            footer{
+                background: whitesmoke;
+                padding: 20px;
+                border-bottom:0;
+                border-left:0;
+                border-right:0;
+                border-top: solid #00B39D 1px;
+
+            }
+            footer .copyright{
+                text-align: center;
+                font-size: 0.8em;
+                color: gray;
+                font-weight: 300;
+            }
+            
+            .message{
+                min-height: 130px;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="from">
+                    {% block subject 'Message de ' ~ name %}
+            </div>
+
+            {% block body_html %}
+                <div class="message">
+                    <p>{{ message|nl2br }}</p>
+                </div>
+            {% endblock %}
+
+            {% block body_text %}
+            <footer>
+                <div class="copyright">© 2014–2015 En-avion.com, Inc. Tous droits reservés.</div>
+            </footer>    
+
+            {% endblock %}
+        </div>
+
+    </body>
+</html>
+

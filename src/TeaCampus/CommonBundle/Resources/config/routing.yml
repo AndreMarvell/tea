@@ -104,4 +104,13 @@ tea_forum:
     
 tea_contacts:
     path:     /contacts
-    defaults: { _controller: TeaCampusCommonBundle:Default:contact }
+    defaults: { _controller: TeaCampusCommonBundle:Contact:index }
+    
+tea_contacts_send:
+    path:     /contacts/send
+    defaults: { _controller: TeaCampusCommonBundle:Contact:send }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_mentions:
+    path:     /mentions-legales
+    defaults: { _controller: TeaCampusCommonBundle:Default:mentions }

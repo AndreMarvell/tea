@@ -1,0 +1,9 @@
+{% spaceless %}
+<p class="subline" style="color:white">{{ 'contact.sent'| trans({},'messages') }}<br></p>
+<div class="row">
+    <i class="fa fa-thumbs-up fa-4x" style="color:white">&nbsp;</i><br>
+</div>
+<div class="row">
+         <a href="{{ path('tea_contacts') }}" class="btn btn-primary btn-xs radius"><i class="fa fa-envelope-o">&nbsp;</i>{{ 'contact.new'| trans({},'messages') }}</a>
+</div>
+{% endspaceless %}
