@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% trans_default_domain "TeaCampusCommonBundle" %}   
+{% block title %}
+        {{ 'error.500.name'| trans({},'messages') }} - {{ parent() }}
+{% endblock %}
+{% block main_content %}
+        <!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header" style="min-height: 720px;">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                        <img src="{{ asset('bundles/teacampuscommon/images/500.png') }}" alt="TeaCampus 404"  width="250px"/>
+                        <p class="subhead">{{ 'error.500.title'| trans({},'messages') }}</p>
+                        <h4 style="color:white;">{{ 'error.500.subhead'| trans({},'messages') }}</h4>
+                        <div class="path">
+                            {{ 'error.500.text1'| trans({},'messages') }}<br>
+                            {{ 'error.500.text2'| trans({},'messages') }}<br>
+                            {{ 'error.500.text3'| trans({},'messages') }}
+                        </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        
+{% endblock %}
+
+{% endspaceless %}

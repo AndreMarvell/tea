@@ -247,5 +247,12 @@ error:
         title: Oups
         subhead: Désolé, le service est momentanément indisponible!
         text: Nous réalisons actuellement une opération de maintenance de notre site. Nous vous prions de bien vouloir nous excuser pour la gêne occasionnée.    
+    500:
+        name: Erreur 500 - Service Indisponible
+        title: Oups
+        subhead: Désolé, quelque chose ne va pas!
+        text1: S'il vous plaît vérifiez que l'URL saisie correspond bien à une page valide.
+        text2: Sinon n'hésitez pas à nous faire savoir ce que vous faisiez lorsque cette erreur est arrivée. 
+        text3: Nous allons y remédier dès que possible . Désolé pour la gêne occasionnée . 
     
         
