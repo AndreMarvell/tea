@@ -19,7 +19,6 @@
                     <div class="comment-info clearfix">
                         <h5 class="pull-left">
                             {{ 'message.show.you'| trans({},'messages') }}
-                       
                     </h5>
                     <ul class="list-inline pull-right">
                         <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
@@ -45,7 +44,11 @@
                    <div class="col-md-10" style="background-color: rgba(232, 143, 65, 0.2);">
                     <div class="comment-info clearfix">
                         <h5 class="pull-right">
-                            {{message.sender}}
+                            {%if message.sender.firstname is not null and message.sender.lastname is not null%}
+                                {{message.sender.firstname ~ ' ' ~ message.sender.lastname}}
+                            {%else%}
+                                {{message.sender.username}}
+                            {%endif%}
                         </h5>
                         <ul class="list-inline pull-left">
                             <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
