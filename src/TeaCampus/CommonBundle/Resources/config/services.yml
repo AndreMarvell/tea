@@ -72,3 +72,10 @@ services:
         arguments: [~, TeaCampus\CommonBundle\Entity\Service, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Service}
+            
+    tea.maintenance:
+        class: TeaCampus\CommonBundle\EventListener\MaintenanceListener
+        arguments:
+            container: "@service_container"
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

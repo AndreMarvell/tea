@@ -235,3 +235,17 @@ formation:
     chapter:
         discover: Découvrir
         nb_videos: %nb% vidéo(s)
+        
+error:
+    404:
+        name: Erreur 404 - Page Introuvable
+        title: Oups
+        subhead: Il me semble que vous vous êtes égarés
+        text: Désolé, la page que vous avez demandée semble introuvable !
+    503:
+        name: Erreur 503 - Service Indisponible
+        title: Oups
+        subhead: Désolé, le service est momentanément indisponible!
+        text: Nous réalisons actuellement une opération de maintenance de notre site. Nous vous prions de bien vouloir nous excuser pour la gêne occasionnée.    
+    
+        

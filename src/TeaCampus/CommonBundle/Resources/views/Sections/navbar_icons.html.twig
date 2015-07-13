@@ -1,76 +1,78 @@
 <ul class="nav navbar-nav navbar-right nav-icons wrap-user-control">
     <li><a id="search-open" href="#fakelink"><i class="fa fa-search"></i></a></li>
-    <li class="open-signup">
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="{{path('fos_user_profile_show')}}">
-            {% if app.user.avatar is not null %}
-                {% thumbnail app.user.avatar, 'square' with{'width':'32px','height':'32px','style':'border-radius:50%;border:1px solid white'} %}
-            {% else %}
-                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                <img src="{{ asset_url }}" width='32px' height='32px' style="border-radius:50%;border:1px solid white">
-                {% endimage %}
-            {% endif %}
-        </a>
-    {% else %}
-        <a href="{{path('fos_user_security_login')}}"><i class="fa fa-user"></i></a>
-    {% endif %}
-        <div class="wrap-login-signup">
-            <div role="tabpanel">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs-alt nav-tabs-one" role="tablist">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li role="presentation" class="active"><a  href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">{{ 'menu.profil.title'|trans({}, 'messages') }}</a></li>
-                        <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"><span class="badge">0</span>&nbsp;{{ 'menu.notifications.title'|trans({}, 'messages') }}</a></li>
-                    {%else%}
-                        <li role="presentation" class="active"><a  href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">{{ 'link_register'|trans({}, 'SonataUserBundle') }}</a></li>
-                        <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">{{ 'link_login'|trans({}, 'SonataUserBundle') }}</a></li>
-                    {%endif%}
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content"  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}style="padding:0;"{%endif%}>
-                    <div role="tabpanel" class="tab-pane active text-center" id="tab1">
-                        <div class="signup-content">
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <ul class="inside-nav-list">
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.account'|trans({}, 'messages') }}"><i class="fa fa-user-md"></i>&nbsp;{{ 'menu.profil.account'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.videos'|trans({}, 'messages') }}"><i class="fa fa-play-circle-o"></i>&nbsp;{{ 'menu.profil.videos'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.projects'|trans({}, 'messages') }}"><i class="fa fa-file"></i>&nbsp;{{ 'menu.profil.projects'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.messages'|trans({}, 'messages') }}"><i class="fa fa-envelope-o"></i>&nbsp;{{ 'menu.profil.messages'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_security_logout')}}" title="{{ 'menu.profil.disconnect'|trans({}, 'messages') }}"><i class="fa fa-sign-out"></i>&nbsp;{{ 'menu.profil.disconnect'|trans({}, 'messages') }}</a></li>
-                                    <li></li>
-                                </ul>
-                            {%else%}
-                                {% render (controller('FOSUserBundle:Registration:register')) %}
-                            {%endif%}
+    {%if app.user is not null%}
+        <li class="open-signup">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="{{path('fos_user_profile_show')}}">
+                {% if app.user.avatar is not null %}
+                    {% thumbnail app.user.avatar, 'square' with{'width':'32px','height':'32px','style':'border-radius:50%;border:1px solid white'} %}
+                {% else %}
+                    {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                    <img src="{{ asset_url }}" width='32px' height='32px' style="border-radius:50%;border:1px solid white">
+                    {% endimage %}
+                {% endif %}
+            </a>
+        {% else %}
+            <a href="{{path('fos_user_security_login')}}"><i class="fa fa-user"></i></a>
+        {% endif %}
+            <div class="wrap-login-signup">
+                <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs-alt nav-tabs-one" role="tablist">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li role="presentation" class="active"><a  href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">{{ 'menu.profil.title'|trans({}, 'messages') }}</a></li>
+                            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"><span class="badge">0</span>&nbsp;{{ 'menu.notifications.title'|trans({}, 'messages') }}</a></li>
+                        {%else%}
+                            <li role="presentation" class="active"><a  href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">{{ 'link_register'|trans({}, 'SonataUserBundle') }}</a></li>
+                            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">{{ 'link_login'|trans({}, 'SonataUserBundle') }}</a></li>
+                        {%endif%}
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content"  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}style="padding:0;"{%endif%}>
+                        <div role="tabpanel" class="tab-pane active text-center" id="tab1">
+                            <div class="signup-content">
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <ul class="inside-nav-list">
+                                        <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.account'|trans({}, 'messages') }}"><i class="fa fa-user-md"></i>&nbsp;{{ 'menu.profil.account'|trans({}, 'messages') }}</a></li>
+                                        <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.videos'|trans({}, 'messages') }}"><i class="fa fa-play-circle-o"></i>&nbsp;{{ 'menu.profil.videos'|trans({}, 'messages') }}</a></li>
+                                        <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.projects'|trans({}, 'messages') }}"><i class="fa fa-file"></i>&nbsp;{{ 'menu.profil.projects'|trans({}, 'messages') }}</a></li>
+                                        <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.messages'|trans({}, 'messages') }}"><i class="fa fa-envelope-o"></i>&nbsp;{{ 'menu.profil.messages'|trans({}, 'messages') }}</a></li>
+                                        <li><a href="{{path('fos_user_security_logout')}}" title="{{ 'menu.profil.disconnect'|trans({}, 'messages') }}"><i class="fa fa-sign-out"></i>&nbsp;{{ 'menu.profil.disconnect'|trans({}, 'messages') }}</a></li>
+                                        <li></li>
+                                    </ul>
+                                {%else%}
+                                    {% render (controller('FOSUserBundle:Registration:register')) %}
+                                {%endif%}
+                            </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tab2">
-                        <div class="signup-content">
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <ul class="media-list notifications">
-                                    {#<li class="media">
-                                      <div class="media-left">
-                                        <a href="#">
-                                          <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGUyNjE5NThlOCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0ZTI2MTk1OGU4Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40NjA5Mzc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="">
-                                        </a>
-                                      </div>
-                                      <div class="media-body">
-                                        <h4 class="media-heading">Media heading</h4>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                                      </div>
-                                    </li>#}
-                                    <li class="media no-notification">
-                                        {{ 'menu.notifications.no_notifications'|trans({}, 'messages') }}
-                                    </li>
-                                    <li></li>
-                                </ul>
-                            {%else%}
-                                {% render (controller('FOSUserBundle:Security:login')) %} 
-                            {%endif%}
+                        <div role="tabpanel" class="tab-pane" id="tab2">
+                            <div class="signup-content">
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <ul class="media-list notifications">
+                                        {#<li class="media">
+                                          <div class="media-left">
+                                            <a href="#">
+                                              <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGUyNjE5NThlOCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0ZTI2MTk1OGU4Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40NjA5Mzc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="">
+                                            </a>
+                                          </div>
+                                          <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                          </div>
+                                        </li>#}
+                                        <li class="media no-notification">
+                                            {{ 'menu.notifications.no_notifications'|trans({}, 'messages') }}
+                                        </li>
+                                        <li></li>
+                                    </ul>
+                                {%else%}
+                                    {% render (controller('FOSUserBundle:Security:login')) %} 
+                                {%endif%}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </li>
+        </li>
+    {%endif%}
 </ul>

@@ -31,3 +31,4 @@ parameters:
     google_app_id: ThisStringIsNotSoSecretChangeIt
     google_app_secret: ThisStringIsNotSoSecretChangeIt
     oauth_user_provider.class: Application\Sonata\UserBundle\Security\Core\User\FOSUBUserProvider
+    maintenance: true
