@@ -4,6 +4,7 @@ namespace Application\Sonata\NewsBundle\Controller;
 
 use Sonata\NewsBundle\Controller\PostController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends BaseController
 {

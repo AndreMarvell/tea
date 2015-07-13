@@ -7,6 +7,7 @@ use TeaCampus\CommonBundle\Entity\Projet;
 use TeaCampus\CommonBundle\Form\ProjetType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProjetController extends Controller {
 
