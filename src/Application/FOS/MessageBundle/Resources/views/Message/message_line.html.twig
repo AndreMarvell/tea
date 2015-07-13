@@ -1,27 +1,25 @@
 <div class="list-comments col-md-offset-1 col-md-9 col-sm-12 col-xs-12" >
     <ul class="row">
         <li style="visibility: visible">
-            <div class="col-md-1">
-                <div class="avatar">
-                    <a href="{{path('fos_user_profile_show')}}">
-                        {% if message.sender.avatar is not null %}
-                            {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
-                        {% else %}
-                            {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                            <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
-                            {% endimage %}
-                        {% endif %}
-                    </a>
+            {% if app.user.username == message.sender %}
+                <div class="col-md-1" style="margin-left: -15;margin-right: 15px">
+                    <div class="avatar">
+                        <a href="{{path('fos_user_profile_show')}}">
+                            {% if message.sender.avatar is not null %}
+                                {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
+                            {% else %}
+                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
+                                {% endimage %}
+                            {% endif %}
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-11">
-                <div class="comment-info clearfix">
-                    <h5 class="pull-left">
-                        {% if app.user.username == message.sender %}
+                <div class="col-md-10" style="background-color: rgba(40, 173, 98, 0.2);">
+                    <div class="comment-info clearfix">
+                        <h5 class="pull-left">
                             {{ 'message.show.you'| trans({},'messages') }}
-                        {% else%}
-                            {{ 'message.show.by'| trans({},'messages') }} : {{message.sender}}
-                        {% endif %}
+                       
                     </h5>
                     <ul class="list-inline pull-right">
                         <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
@@ -30,6 +28,34 @@
                 </div>
                 <p>{{ message.body }} </p>
             </div>
-        </li>
-    </ul>
-</div>
+            {% else%}
+                <div class="col-md-2 pull-right">
+                    <div class="avatar">
+                        <a href="{{path('fos_user_profile_show')}}">
+                            {% if message.sender.avatar is not null %}
+                                {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
+                            {% else %}
+                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
+                                {% endimage %}
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+                   <div class="col-md-10" style="background-color: rgba(232, 143, 65, 0.2);">
+                    <div class="comment-info clearfix">
+                        <h5 class="pull-right">
+                            {{message.sender}}
+                        </h5>
+                        <ul class="list-inline pull-left">
+                            <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
+
+                        </ul>
+                    </div>
+                    <p>{{ message.body }} </p>
+                </div>
+                {% endif %}
+                </li>
+
+            </ul>
+        </div>

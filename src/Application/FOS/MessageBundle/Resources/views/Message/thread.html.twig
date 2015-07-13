@@ -5,7 +5,7 @@
                 <h3>{{ 'message.show.subject'| trans({},'messages') }} : {{ thread.subject }}</h3>
             </div>
         </div>
-        <div class="row" id="messageContainer">
+            <div class="row" id="messageContainer" style="max-height: 300px;overflow: auto">
             {% for message in thread.messages %}
                 {{ include( 'ApplicationFOSMessageBundle:Message:message_line.html.twig', {'message':message}) }}
             {% endfor %}
