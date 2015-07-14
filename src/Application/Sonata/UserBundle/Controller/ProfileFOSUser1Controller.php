@@ -83,13 +83,16 @@ class ProfileFOSUser1Controller extends BaseController
             return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login')); 
         
         }
-        
+        $form = $this->container->get('fos_message.new_thread_form.factory')->create();
+        $formHandler = $this->container->get('fos_message.new_thread_form.handler');       
         $videos         = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Video")->findBy(array('author'=>$user, 'enabled'=>true),array('date' => 'DESC'));;
         $projects       = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Projet")->findBy(array('author'=>$user, 'enabled'=>true, 'private'=>false),array('date' => 'DESC'));;
         
         
         return $this->render('SonataUserBundle:Other:show.html.twig', array(
             'user'   => $user,
+            'form' => $form->createView(),
++           'data' => $form->getData(),
             'projects' => $projects,
             'videos' => $videos,
             'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
