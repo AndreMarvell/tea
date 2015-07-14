@@ -16,7 +16,15 @@ tabs:
         title: Mes Vidéos
     infos:
         title: Mes Infos
-        
+othertabs: 
+    projects:
+        title: Ses Projets
+    messages:
+        title: Mes Messages
+    videos:
+        title: Ses Vidéos
+    infos:
+        title: Ses Infos      
 form:
     recipe: Destinataire
     subject: Sujet

@@ -1,0 +1,15 @@
+<div class ="wrap-features">
+    <div class="container col-md-12">
+        <div class="row">
+            {% for projet in projects %}
+                <a href="{{ path('tea_projects_show',{'id':projet.id}) }}">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s" >
+                        {{ include( 'TeaCampusCommonBundle:Projet:list_item.html.twig', {'project':projet}) }}
+                    </div>
+                </a>
+            {%else%}
+                <li>{{ 'project.other.no_project_found'|trans({}, 'messages') }}</li>
+                {%endfor%}
+        </div>
+    </div>
+</div>

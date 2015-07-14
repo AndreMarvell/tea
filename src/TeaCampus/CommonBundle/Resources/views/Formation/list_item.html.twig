@@ -11,6 +11,6 @@
     </div>
     <div class="post-body">
         <h5>{{video.title}}</h5>
-        <p>{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p>
+        <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p>{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p></a>
     </div>
 </div>

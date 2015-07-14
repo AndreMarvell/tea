@@ -1,0 +1,41 @@
+<div class="row col-md-10 col-md-offset-1">
+    <div class="col-md-6 panel-body">
+        <div class="media">
+            <div class="media-body">
+                <ul class="list-unstyled list-info">
+                    <li><i class="fa fa-user"></i><span class="infos-label">{{ 'label.username'|trans({},'messages') }}</span><span class="infos-value">{{user.username}}</span></li>
+                    <li><i class="fa fa-user-plus"></i><span class="infos-label">{{ 'label.name'|trans({},'messages') }}</span><span class="infos-value">{{user.firstname ~ ' ' ~ user.lastname}}</span></li>
+                    <li><i class="fa fa-envelope-o"></i><span class="infos-label">{{ 'label.email'|trans({},'messages') }}</span><span class="infos-value">{{user.email}}</span></li>
+                    <li><i class="fa fa-phone"></i><span class="infos-label">{{ 'label.phone'|trans({},'messages') }}</span><span class="infos-value">{{user.phone}}</span></li>
+                    <li><i class="fa fa-flag"></i><span class="infos-label">{{ 'label.country'|trans({},'messages') }}</span><span class="infos-value">{{user.locale}}</span></li>
+                    <li>
+                        <i class="fa fa-venus-mars"></i>
+                        <span class="infos-label">{{ 'label.sex'|trans({},'messages') }}</span>
+                        <span class="infos-value">
+                            {% if user.gender is not null and user.gender == 'm'%}
+                                Homme
+                            {%elseif user.gender is not null and user.gender == 'f'%}
+                                Femme
+                            {%endif%}
+                        </span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 panel-body left-border">
+        <div class="media">
+            <div class="media-body">
+                <ul class="list-unstyled list-info">
+                    <li><i class="fa fa-user-secret"></i><span class="infos-label">{{ 'label.role'|trans({},'messages') }}</span><span class="infos-value"></span></li>
+                    <li><i class="fa fa-child"></i><span class="infos-label">{{ 'label.member_since'|trans({},'messages') }}</span><span class="infos-value">{{user.createdAt|format_date('MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</span></li>
+                    <li><i class="fa fa-history"></i><span class="infos-label">{{ 'label.last_connexion'|trans({},'messages') }}</span><span class="infos-value">{{user.lastLogin|format_date('dd MMMM Y à H', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} h</span></li>
+                    <li><i class="fa fa-heartbeat"></i><span class="infos-label">{{ 'label.statut'|trans({},'messages') }}</span><span class="infos-value label {%if user.locked%}label-danger{%else%}label-primary{%endif%}">&nbsp;{%if app.user.locked%}Bloqué{%else%}Actif{%endif%}&nbsp;</span></li>
+                    <li><i class="fa fa-globe"></i><span class="infos-label">{{ 'label.website'|trans({},'messages') }}</span><span class="infos-value">{{user.website}}</span></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>	
+</div>

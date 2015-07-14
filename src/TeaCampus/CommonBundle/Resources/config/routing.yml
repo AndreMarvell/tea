@@ -24,7 +24,7 @@ tea_search_index:
     defaults: { _controller: TeaCampusCommonBundle:Default:search }
     
 tea_user_profile:
-    path:     /users/{$id}
+    path:     /user/{id}
     defaults: { _controller: ApplicationSonataUserBundle:ProfileFOSUser1:other }
     
 ############################################
