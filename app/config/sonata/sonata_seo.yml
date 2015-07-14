@@ -7,7 +7,7 @@ sonata_seo:
             name:
                 keywords:             afrique entrepreneuriat partenaires formation video 
                 description:          TEA Campus
-                robots:               index, follow
+                robots:               %robots%
                 viewport:             width=device-width
                 google:               notranslate
                 #google-site-verification:             k39-3fYTKm6nnt9NZco-Sg-9RaLq-CVr7MJW8nOIrf8
@@ -19,7 +19,7 @@ sonata_seo:
 
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
-                'og:site_name':       Tea-campus.com
+                'og:site_name':       Teacampus.com
                 #'og:description':     Consultez l'actualité aéroportuaire et les informations sur les vols à l'arrivée et au départ de Brazzaville et Pointe-Noire
                 'og:image':           website
                 #'og:image':           

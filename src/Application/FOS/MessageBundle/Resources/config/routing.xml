@@ -22,6 +22,7 @@
 
     <route id="fos_message_thread_new" pattern="/new">
         <default key="_controller">FOSMessageBundle:Message:newThread</default>
+        <condition>request.headers.get('X-Requested-With') == 'XMLHttpRequest'</condition>
     </route>
 
     <route id="fos_message_thread_delete" pattern="/{threadId}/delete">
@@ -36,7 +37,7 @@
 
     <route id="fos_message_thread_view" pattern="/{threadId}">
         <default key="_controller">FOSMessageBundle:Message:thread</default>
-<!--        <condition>request.headers.get('X-Requested-With') == 'XMLHttpRequest'</condition>-->
+        <condition>request.headers.get('X-Requested-With') == 'XMLHttpRequest'</condition>
     </route>
     
     <route id="fos_message_thread_view_ajax" pattern="/ajax/{threadId}">
