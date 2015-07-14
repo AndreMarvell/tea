@@ -38,9 +38,8 @@
                         <div id="new_message" class="mfp-hide mfp-small-dialog">
                             <h1>{{ 'message.show.new'|trans({}, 'messages') }}</h1>
                             <div class="row">
-                                <div class="row-same-height">
-                                    <div id="response"></div>
-                                    <form action="{{ url('fos_message_thread_new') }}" method="post">
+                                <div class="row-same-height" id="message-form-container">
+                                    <form action="{{ url('fos_message_thread_new') }}" method="post" id="new-message-form">
                                         {{ form_start(form) }}
                                         {{ form_errors(form) }}
                                         <div style="margin-bottom: 10px">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>

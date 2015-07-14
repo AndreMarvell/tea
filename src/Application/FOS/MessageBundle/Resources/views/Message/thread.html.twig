@@ -40,6 +40,8 @@
             })
             .done(function (data) {
                 if (data['success']) {
+                    $('#received-message').html(data['received']);
+                    $('#send-message').html(data['sent']);
                     $('#messageContainer').append(data['content']);
                     $("textarea#message_body").val('').focus();
                 } else {

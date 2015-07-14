@@ -62,7 +62,7 @@
 
         <div class="navbar-search">
             <div class="container">
-                <form role="search">
+                <form role="search" action="{{path('tea_search_index')}}" method="POST">
                     <div class="input-group">
                         <input type="text" placeholder="{{ 'menu.search'|trans({},'messages') }}" class="form-control" autocomplete="off">
                         <span class="input-group-btn">

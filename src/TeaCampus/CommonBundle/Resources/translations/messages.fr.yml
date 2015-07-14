@@ -260,6 +260,7 @@ contact:
     send: Envoyer
     sent: Votre message a bien été envoyé
     new: Nouveau message
+    error: Une erreur s'est déclenchée lors de l'envoi du message
     infos:
         title: Informations Pratiques
         adress: Adresse

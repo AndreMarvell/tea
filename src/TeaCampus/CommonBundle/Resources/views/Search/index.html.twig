@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% block title %}
+    {{ subject.name }} - {{ parent() }}
+{% endblock %}    
+{% block main_content %}
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-8 wow fadeInUp" data-wow-duration="2s" >
+                        <header class="section-header" style="margin:0;color: white;">
+                            <p class="subhead">{{ 'formation.subject.subhead'| trans({},'messages') }}</p>
+                            <h2 style="color: white;">{{subject.name}}</h2>
+                            <p class="large">{%if subject.description is not null%}{{subject.description}}{%else%}{{ 'formation.no_description'| trans({},'messages') }}{%endif%}</p>
+                        </header>	
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-duration="2s" >
+                        {%if subject.icon is not null%}
+                            <img src="{{ asset('bundles/teacampuscommon/images/formation/'~subject.icon~'.png') }}" alt="TeaCampus {{subject.name}}"  width="150px"/>
+                        {%endif%}
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        <!-- Formation - Gallery -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="gallery wrap-contacts" id="gallery" style="margin-bottom:0">
+            <div class="container">
+                <div class="anchor-icon"><i class="fa fa-graduation-cap"></i></div>
+            </div><!--container-->
+
+            <div class="gallery-controls wow fadeInUp" data-wow-duration="2s" >
+                <div id="filters" class="btn-group">
+                    <button type="button" class="btn btn-info active"  data-filter="*">{{ 'formation.subject.all'| trans({},'messages') }}</button>
+                    {%for child in subject.children%}
+                    <button type="button" class="btn btn-info"  data-filter=".{{child.slug}}">{{child.name}}</button>
+                    {%endfor%}
+                </div>
+            </div>
+
+            <div id="gallery-items" class="gallery-items wow fadeInUp container wrap-works" data-wow-duration="2s" >
+                {%for video in videos%}
+                <div class="col-md-3 gallery-item {{video.category.slug}}">
+                        {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
+                </div>
+                {%else%}
+                    <div class="text-center col-md-12">{{ 'video.other.no_video_found'| trans({},'messages') }}</div>
+                {%endfor%}
+            </div>
+            <div class="gallery-load">
+                {#<button type="button" class="btn btn-info">Load more</button>#}
+            </div>
+        </section>
+        
+{% endblock %}
+
+{% endspaceless %}

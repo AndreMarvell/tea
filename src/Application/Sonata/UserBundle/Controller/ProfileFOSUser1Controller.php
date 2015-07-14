@@ -18,6 +18,7 @@ use Sonata\UserBundle\Controller\ProfileFOSUser1Controller as BaseController;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\MessageBundle\Provider\ProviderInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * This class is inspired from the FOS Profile Controller, except :
@@ -64,6 +65,39 @@ class ProfileFOSUser1Controller extends BaseController
             'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
         ));
     }
+    
+    /**
+     * @return Response
+     *
+     * @throws AccessDeniedException
+     */
+    public function otherAction($id)
+    {
+        $currentUser = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->getDoctrine()->getRepository("ApplicationSonataUserBundle:User")->find($id);
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new NotFoundHttpException('This user does not have access to this section.');
+        }elseif (is_object($currentUser) && $currentUser instanceof UserInterface && $user->getId()==$currentUser->getId()) {
+            return new RedirectResponse($this->container->get('router')->generate('fos_user_profile_show')); 
+        }
+        
+        $videos         = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Video")->findBy(array('author'=>$user, 'enabled'=>true),array('date' => 'DESC'));;
+        $projects       = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Projet")->findBy(array('author'=>$user, 'enabled'=>true, 'private'=>false),array('date' => 'DESC'));;
+        
+        
+        return $this->render('SonataUserBundle:Profile:other.html.twig', array(
+            'user'   => $user,
+            'threads' => $threads,
+            'threads_send' => $threads_send,
+            'form' => $form->createView(),
+            'data' => $form->getData(),
+            'projects' => $projects,
+            'videos' => $videos,
+            'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
+        ));
+    }
+    
+    
 
 
 }

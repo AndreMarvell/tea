@@ -32,9 +32,9 @@ class MessageController extends BaseController
     
     public function threadAjaxAction($threadId)
     {
-        $thread = $this->getProvider()->getThread($threadId);
-        $form = $this->container->get('fos_message.reply_form.factory')->create($thread);
-        $formHandler = $this->container->get('fos_message.reply_form.handler');
+        $thread         = $this->getProvider()->getThread($threadId);
+        $form           = $this->container->get('fos_message.reply_form.factory')->create($thread);
+        $formHandler    = $this->container->get('fos_message.reply_form.handler');
 
         if ($message = $formHandler->process($form)) {
             return new RedirectResponse($this->container->get('router')->generate('fos_message_thread_view_ajax', array(
@@ -42,15 +42,37 @@ class MessageController extends BaseController
             )));
         }
         
-        $lastMessage = $thread->getMessages()->last();
+        $lastMessage    = $thread->getMessages()->last();
+        $inboxThread    = $this->getProvider()->getInboxThreads();
+        $sentThread     = $this->getProvider()->getSentThreads();
 
-        $html = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:message_line.html.twig', array('message' => $lastMessage));
-        $response = new Response();
-        $response->setContent(json_encode(array("success" => true, "content" => $html)));
+        $html       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:message_line.html.twig', array('message' => $lastMessage));
+        $received   = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $inboxThread));
+        $sent       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $sentThread));
+        
+        $response   = new Response();
+        $response->setContent(json_encode(array("success" => true, "content" => $html, 'received' => $received, 'sent'=>$sent)));
         $response->headers->set('Content-Type', 'application/json');
         
         return $response;
 
+    }
+    
+    public function newThreadAction()
+    {
+        $form = $this->container->get('fos_message.new_thread_form.factory')->create();
+        $formHandler = $this->container->get('fos_message.new_thread_form.handler');
+        
+        $success = false;
+        if ($message = $formHandler->process($form)) {
+            $success = true;
+        }
+        
+        $response   = new Response();
+        $response->setContent(json_encode(array("success" => $success)));
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
     }
     
     /**
