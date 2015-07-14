@@ -16,7 +16,7 @@
         </a>
         <ul class="list-inline">
             {%if post.author is not null%}
-            <li><i class="fa fa-user"></i>{{post.author.username}}</li>
+                <a href="{{ path('tea_user_profile',{'id':post.author.id}) }}"><li><i class="fa fa-user"></i>{{post.author.username}}</li></a>
             {%endif%}
             <li><i class="fa fa-calendar"></i>{{post.publicationDateStart|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
         </ul>

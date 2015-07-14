@@ -79,18 +79,17 @@ class ProfileFOSUser1Controller extends BaseController
             throw new NotFoundHttpException('This user does not have access to this section.');
         }elseif (is_object($currentUser) && $currentUser instanceof UserInterface && $user->getId()==$currentUser->getId()) {
             return new RedirectResponse($this->container->get('router')->generate('fos_user_profile_show')); 
+        }elseif (!is_object($currentUser)){
+            return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login')); 
+        
         }
         
         $videos         = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Video")->findBy(array('author'=>$user, 'enabled'=>true),array('date' => 'DESC'));;
         $projects       = $this->getDoctrine()->getRepository("TeaCampusCommonBundle:Projet")->findBy(array('author'=>$user, 'enabled'=>true, 'private'=>false),array('date' => 'DESC'));;
         
         
-        return $this->render('SonataUserBundle:Profile:other.html.twig', array(
+        return $this->render('SonataUserBundle:Other:show.html.twig', array(
             'user'   => $user,
-            'threads' => $threads,
-            'threads_send' => $threads_send,
-            'form' => $form->createView(),
-            'data' => $form->getData(),
             'projects' => $projects,
             'videos' => $videos,
             'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')

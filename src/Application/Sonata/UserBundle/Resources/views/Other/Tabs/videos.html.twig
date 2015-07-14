@@ -1,0 +1,13 @@
+<div class ="wrap-works">
+    <div class="container col-md-12">
+        <div class="row">
+            {% for video in videos %}
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="2s"  >
+                {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
+            </div>
+           {%else%}
+                <li>{{ 'video.other.no_video_found'|trans({}, 'messages') }}</li>
+            {%endfor%}
+        </div>
+    </div>
+</div>
