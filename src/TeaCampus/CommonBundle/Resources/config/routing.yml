@@ -26,10 +26,19 @@ tea_faq:
 tea_formations:
     path:     /formations
     defaults: { _controller: TeaCampusCommonBundle:Formation:index }
-    
+        
+tea_formations_search:
+    path:     /formations/search
+    defaults: { _controller: TeaCampusCommonBundle:Formation:search }
+
 tea_formations_subject:
     path:     /formations/{subject}
     defaults: { _controller: TeaCampusCommonBundle:Formation:subject }
+    
+tea_formations_tag:
+    path:     /formations/tag/{tag}
+    defaults: { _controller: TeaCampusCommonBundle:Formation:tag }
+    
     
 tea_formations_chapter:
     path:     /formations/{subject}/{chapter}
@@ -38,14 +47,7 @@ tea_formations_chapter:
 tea_formations_show:
     path:     /formations/{subject}/{chapter}/videos/{id}
     defaults: { _controller: TeaCampusCommonBundle:Formation:video }
-    
-tea_formations_search:
-    path:     /formations/search
-    defaults: { _controller: TeaCampusCommonBundle:Formation:search }
-    
-tea_formations_tag:
-    path:     /formations/tag/{tag}
-    defaults: { _controller: TeaCampusCommonBundle:Formation:tag }
+
     
 tea_videos_delete:
     path:     /formations/videos/delete/

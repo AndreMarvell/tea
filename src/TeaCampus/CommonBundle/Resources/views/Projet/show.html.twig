@@ -5,7 +5,7 @@
 {% spaceless %}
     {% set wearesocial = true %} 
     {% block title %}
-        {{ 'menu.projects'| trans({},'messages') }} - {{ parent() }}
+        {{ 'menu.projects'| trans({},'messages') }} : {{project.title}} - {{ parent() }}
     {% endblock %}
 
     {% block main_content %}  

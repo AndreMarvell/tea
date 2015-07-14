@@ -2,7 +2,6 @@
 {% spaceless %}
 {% set wearesocial = true %}    
 {% block main_content %}
-    
         <!-- Home - Header -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
         <section class="home-header dark">
@@ -42,7 +41,7 @@
                 </div><!--row-->
                 <div class="row">
                   {% for video in lastVideos %}
-                    <div class="col-md-3" >
+                    <div class="col-md-3 col-sm-6" >
                         {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
                     </div>
                 {%endfor%}  
@@ -71,7 +70,7 @@
                 <div class="row">
                     {% for post in lastNews %}
                         <!-- Post Item -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-6">
                             {{ include( 'ApplicationSonataNewsBundle::home_item.html.twig', {'post':post}) }}
                         </div>
                     {%endfor%}
@@ -100,7 +99,7 @@
                 <div class="row">
                     {% for project in lastProjects %}
                         <a href="{{ path('tea_projects_show',{'id':project.id}) }}">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
                                 {{ include( 'TeaCampusCommonBundle:Projet:list_item.html.twig', {'project':project}) }}
                             </div>
                         </a>

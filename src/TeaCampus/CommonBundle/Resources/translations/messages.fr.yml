@@ -107,6 +107,10 @@ video:
         yes: Oui
         no: Non
         error: Désolé, une erreur s'est produite lors de la suppression
+    search:
+        title: Recherche de Vidéos
+        subhead: Résultat(s) trouvé(s)
+        no_result: Aucune vidéo trouvée
         
 project:
     home:
@@ -139,6 +143,10 @@ project:
         submit: Soumettre
     add:
         title: Ajouter un nouveau projet
+    search:
+        title: Recherche de Projet
+        subhead: Résultat(s) trouvé(s)
+        no_result: Aucun projet trouvé
     other:
         no_project_found: Aucun projet trouvé
         not_enabled: Pas activé

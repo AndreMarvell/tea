@@ -56,4 +56,26 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         
         return $query->getQuery()->getResult();
     }
+    
+    public function findByTag($tag)
+    {
+        $query = $this->createQueryBuilder('p');
+        $query->join('p.tags', 't')
+              ->where($query->expr()->in('t.id', $tag));
+ 
+        return $query->getQuery()->getResult();
+    }
+    
+    public function search($search, $limit = null)
+    {
+        $query = $this->createQueryBuilder('p');
+        $query->where($query->expr()->like('p.title', ':search'))
+              ->orWhere($query->expr()->like('p.description', ':search'))
+              ->setParameter('search', '%'.$search.'%');
+        if(!is_null($limit)){
+            $query->setMaxResults($limit);
+        }
+ 
+        return $query->getQuery()->getResult();
+    }
 }

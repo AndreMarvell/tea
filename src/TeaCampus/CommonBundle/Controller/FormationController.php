@@ -19,7 +19,7 @@ class FormationController extends Controller
         $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
         $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
         $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
-        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'video'),null,25);
         
         return $this->render('TeaCampusCommonBundle:Formation:index.html.twig', array(
             'categories' => $categories,
@@ -66,7 +66,7 @@ class FormationController extends Controller
             $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
             $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
             $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
-            $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+            $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'video'),null,25);
             
             $request            = $this->get('request');
             $paginator      = $this->get('knp_paginator');
@@ -99,7 +99,7 @@ class FormationController extends Controller
             $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
             $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
             $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
-            $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+            $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'video'),null,25);
                         
             return $this->render('TeaCampusCommonBundle:Formation:show.html.twig', array(
                 'video'  => $video,
@@ -135,6 +135,87 @@ class FormationController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
+    }
+    
+    public function tagAction($tag)
+    {
+        $em         = $this->getDoctrine()->getManager();
+        $tag = $this->get('sonata.classification.manager.tag')->findOneBy(array(
+            'slug'    => $tag,
+            'enabled' => true,
+        ));
+        if (!$tag || !$tag->getEnabled()) {
+            throw new NotFoundHttpException('Unable to find the tag');
+        }else{
+            
+            $videos             = $em->getRepository('TeaCampusCommonBundle:Video')->findByTag($tag->getId());
+            $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+            $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+            $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+            $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'video'),null,25);
+            
+            $request            = $this->get('request');
+            $paginator      = $this->get('knp_paginator');
+            $pagination     = $paginator->paginate(
+                                    $videos, $request->query->get('page', 1)/* page number */, 10/* limit per page */
+                            );
+            
+            return $this->render('TeaCampusCommonBundle:Search:search.html.twig', array(
+                'tag' => $tag,
+                'search_title'      => 'video.search.title',
+                'search_subhead'    => 'video.search.subhead',
+                'search_path'       => 'tea_formations_search',
+                'search_no_result'  => 'video.search.no_result',
+                'aside_search_title'=> 'aside.video.search',
+                'type'              => 'videos',
+                'pagination'        => $pagination,
+                'popularPosts'     => $popularPosts,
+                'popularProjects'  => $popularProjects,
+                'popularVideos'    => $popularVideos,
+                'tags'             => $tags,
+            ));
+        }
+    }
+    
+    public function searchAction(Request $request)
+    {
+        if ($request->getMethod() == "POST") {
+            $search = $request->request->get('search');
+            
+            if (!is_null($search) && !empty($search)) {
+                
+                $em         = $this->getDoctrine()->getManager();
+
+                $videos             = $em->getRepository('TeaCampusCommonBundle:Video')->search($search);
+                $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+                $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+                $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+                $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'projet'),null,25);
+
+                $request            = $this->get('request');
+                $paginator          = $this->get('knp_paginator');
+                $pagination         = $paginator->paginate(
+                                            $videos, $request->query->get('page', 1)/* page number */, 10/* limit per page */
+                                    );
+
+                return $this->render('TeaCampusCommonBundle:Search:search.html.twig', array(
+                    'search_title'      => 'video.search.title',
+                    'search_subhead'    => 'video.search.subhead',
+                    'search_path'       => 'tea_formations_search',
+                    'search_no_result'  => 'video.search.no_result',
+                    'aside_search_title'=> 'aside.video.search',
+                    'type'              => 'videos',
+                    'search'            => $search,
+                    'pagination'        => $pagination,
+                    'popularPosts'     => $popularPosts,
+                    'popularProjects'  => $popularProjects,
+                    'popularVideos'    => $popularVideos,
+                    'tags'             => $tags,
+                ));
+            }
+        }
+        return $this->redirect( $this->generateUrl('tea_formations') );
+                
     }
    
 }

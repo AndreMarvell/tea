@@ -20,7 +20,7 @@ class ProjetController extends Controller {
         $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
         $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
         $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
-        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'projet'),null,25);
         
         $selectedProjet = $projetRepo->findOneById($idselectedProjet);
         $projetofthemonth = $projetRepo->findOneById($idProjectOfTheMonth);
@@ -115,7 +115,7 @@ class ProjetController extends Controller {
         $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
         $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
         $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
-        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'news'),null,25);
+        $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'projet'),null,25);
         $dql = "SELECT a FROM TeaCampusCommonBundle:Projet a WHERE a.private = false AND a.enabled = true ORDER BY a.date DESC";
         $query = $em->createQuery($dql);
         $paginator = $this->get('knp_paginator');
@@ -132,9 +132,7 @@ class ProjetController extends Controller {
                     'pagination' => $pagination));
     }
 
-    public function searchAction() {
-        return $this->render('TeaCampusCommonBundle:Projet:list.html.twig');
-    }
+    
 
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
@@ -188,5 +186,88 @@ class ProjetController extends Controller {
 
         return $this->render('TeaCampusCommonBundle:Projet:edit.html.twig', array('form' => $form->createView()));
     }
+    
+    public function tagAction($tag)
+    {
+        $em         = $this->getDoctrine()->getManager();
+        $tag = $this->get('sonata.classification.manager.tag')->findOneBy(array(
+            'slug'    => $tag,
+            'enabled' => true,
+        ));
+        if (!$tag || !$tag->getEnabled()) {
+            throw new NotFoundHttpException('Unable to find the tag');
+        }else{
+            
+            $projects           = $em->getRepository('TeaCampusCommonBundle:Projet')->findByTag($tag->getId());
+            $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+            $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+            $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+            $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'projet'),null,25);
+
+            $request            = $this->get('request');
+            $paginator          = $this->get('knp_paginator');
+            $pagination         = $paginator->paginate(
+                                        $projects, $request->query->get('page', 1)/* page number */, 10/* limit per page */
+                                );
+            
+            return $this->render('TeaCampusCommonBundle:Search:search.html.twig', array(
+                'tag' => $tag,
+                'search_title'      => 'project.search.title',
+                'search_subhead'    => 'project.search.subhead',
+                'search_path'       => 'tea_projects_search',
+                'search_no_result'  => 'project.search.no_result',
+                'aside_search_title'=> 'aside.project.search',
+                'type'              => 'projects',
+                'pagination'        => $pagination,
+                'popularPosts'     => $popularPosts,
+                'popularProjects'  => $popularProjects,
+                'popularVideos'    => $popularVideos,
+                'tags'             => $tags,
+            ));
+        }
+    }
+    
+    public function searchAction(Request $request)
+    {
+        if ($request->getMethod() == "POST") {
+            $search = $request->request->get('search');
+            
+            if (!is_null($search) && !empty($search)) {
+                
+                $em         = $this->getDoctrine()->getManager();
+
+                $projects           = $em->getRepository('TeaCampusCommonBundle:Projet')->search($search);
+                $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
+                $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
+                $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
+                $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'projet'),null,25);
+
+                $request            = $this->get('request');
+                $paginator          = $this->get('knp_paginator');
+                $pagination         = $paginator->paginate(
+                                            $projects, $request->query->get('page', 1)/* page number */, 10/* limit per page */
+                                    );
+
+                return $this->render('TeaCampusCommonBundle:Search:search.html.twig', array(
+                    'search_title'      => 'project.search.title',
+                    'search_subhead'    => 'project.search.subhead',
+                    'search_path'       => 'tea_projects_search',
+                    'search_no_result'  => 'project.search.no_result',
+                    'aside_search_title'=> 'aside.project.search',
+                    'type'              => 'projects',
+                    'search'            => $search,
+                    'pagination'        => $pagination,
+                    'popularPosts'     => $popularPosts,
+                    'popularProjects'  => $popularProjects,
+                    'popularVideos'    => $popularVideos,
+                    'tags'             => $tags,
+                ));
+            }
+        }
+        return $this->redirect( $this->generateUrl('tea_projects') );
+                
+    }
+    
+    
 
 }

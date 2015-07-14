@@ -1,0 +1,86 @@
+
+{% extends "::base.html.twig" %}
+
+{% spaceless %}
+{% set wearesocial = true %} 
+{% block title %}
+    {{ search_title | trans }} | {{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+    <section class="wrap-blog-content blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 left-column">
+                        {%if tag is not defined%}
+                            <div class="form-group search has-feedback">
+                                <form method="POST" action="{{path(search_path)}}">
+                                    <input name="search" value="{{search}}" class="form-control " placeholder="{{'aside.video.search' | trans({},'messages')}}">
+                                    <i class="fa fa-search fa-lg form-control-feedback"></i>
+                                </form>
+                            </div>
+                        {%endif%}
+                        <header class="section-header no-home">
+                            <h2>
+                                {%if tag is defined and tag != false %}
+                                    "&nbsp;{{tag}}&nbsp;" 
+                                {%else%}
+                                    {{ search_title|trans({},'messages') }}
+                                {%endif%}
+                                
+                            </h2>
+                            <p class="subhead">{{ pagination|length }} {{ search_subhead|trans({},'messages') }}</p>
+                        </header>
+                        <div class="row tri pull-right" style="margin-left: 20px;margin-bottom: 20px">
+                            <h6><i class="fa fa-sort"></i>
+                                {{ 'project.show.sort_by'|trans({},'messages') }} :   
+                                {{ knp_pagination_sortable(pagination, '   Titre ', 'a.title') }}  | 
+                                {{ knp_pagination_sortable(pagination, '   Date de publication ', 'a.date') }}  
+                            </h6>
+                        </div>
+                        <div class="text-center col-md-12">
+                        {%if type == 'projects' %}
+                            <div class="row wrap-features" style="margin-top:50px;">
+                            {% for project in pagination %}
+                                <a href="{{ path('tea_projects_show',{'id':project.id}) }}">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+                                        {{ include( 'TeaCampusCommonBundle:Projet:list_item.html.twig', {'project':project}) }}
+                                    </div>
+                                </a>
+                            {%else%}
+                                <div class="alert alert-danger">{{ search_no_result|trans({}, 'messages') }}</div>
+                            {%endfor%}
+                            </div>
+                        {%elseif type == 'videos' %}
+                            <div class="row wrap-works" style="margin-top:50px;">
+                            {% for video in pagination %}
+                                <div class="col-md-6" >
+                                    {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
+                                </div>
+                            {%else%}
+                                <div class="alert alert-danger">{{ search_no_result|trans({}, 'messages') }}</div>
+                            {%endfor%}
+                            </div>
+                        {%endif%}
+                        </div>
+                        <div class="text-center col-md-12">
+                            <div class="quicklinks">
+                                <h5> {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }} </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 sidebar">
+                        <!-- Navbar -->
+                        {{ include( 'TeaCampusCommonBundle:Sections:SideBar/index.html.twig', {'type':type}) }}
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% endspaceless %}
+
+
+

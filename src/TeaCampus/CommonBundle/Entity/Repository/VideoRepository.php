@@ -55,4 +55,26 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
         
         return $query->getQuery()->getResult();
     }
+    
+    public function findByTag($tag)
+    {
+        $query = $this->createQueryBuilder('v');
+        $query->join('v.tags', 't')
+              ->where($query->expr()->in('t.id', $tag));
+ 
+        return $query->getQuery()->getResult();
+    }
+    
+    public function search($search, $limit = null)
+    {
+        $query = $this->createQueryBuilder('v');
+        $query->where($query->expr()->like('v.title', ':search'))
+              ->orWhere($query->expr()->like('v.description', ':search'))
+              ->setParameter('search', '%'.$search.'%');
+        if(!is_null($limit)){
+            $query->setMaxResults($limit);
+        }
+ 
+        return $query->getQuery()->getResult();
+    }
 }
