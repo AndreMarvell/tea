@@ -1,5 +1,4 @@
 {#Created By SAMIE MEHEZA#}
-<a href="#new_message" class="btn btn-primary btn-sm ajax-delete" aria-controls="new_message" role="tab" data-toggle="tab"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
 <section class="wrap-tabs" style="padding:0px">
     <div class="container">
         <div class="row" >
@@ -34,25 +33,6 @@
                                 </div><!--row same height-->
                             </div><!--row-->
                         </div><!--tabpanel-->
-
-                        <div id="new_message" class="mfp-hide mfp-small-dialog">
-                            <h1>{{ 'message.show.new'|trans({}, 'messages') }}</h1>
-                            <div class="row">
-                                <div class="row-same-height" id="message-form-container">
-                                    <form action="{{ url('fos_message_thread_new') }}" method="post" id="new-message-form">
-                                        {{ form_start(form) }}
-                                        {{ form_errors(form) }}
-                                        <div style="margin-bottom: 10px">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                                        <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.subject'|trans({},'messages'), 'type': 'text','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                                        <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                                        <input class="contact_button button btn btn-primary btn-block" style="margin-bottom: 10px" type="submit" />
-                                        {{ form_end(form) }}
-                                    </form>
-                                </div><!--row same height-->
-                            </div><!--row-->
-                            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
-                        </div>
-
                     </div><!--tab-content-->
                 </div><!--col-->			
             </div><!--row same height-->

@@ -220,7 +220,6 @@
                             .done(function (data) {
                                 if (data['success']) {
                                     $('#message-form-container').html('<div style="margin-top:30px" class="alert alert-success"> {{ 'contact.sent'| trans({},'messages') }}</div>');
-                                    $.magnificPopup.close();
                                 } else {
                                     $('#message-form-container').html('<div class="alert alert-danger"> {{ 'contact.error'| trans({},'messages') }}</div>');
                                 }
