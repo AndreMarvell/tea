@@ -200,30 +200,7 @@
             $.magnificPopup.close();
         });
 
-        $(document).ready(function () {
-            $("#new-message-form").submit(function(e){
-                        e.preventDefault();
-                        $('#message-form-container').html('<br><br><span style="color:black">{{ 'contact.loading'| trans({},'messages') }}</span><br><i style="color:white" class="fa fa-spin fa-spinner fa-2x"></i><br>');
-                        $('#new_message').find('h1').html('');
-                        $.ajax({
-                            url: $(this).attr('action'),
-                            dataType: "json",
-                            data: $(this).serialize(),
-                            type: 'POST'
-                        })
-                        .done(function (data) {
-                            if(data['success']){
-                                    $('#message-form-container').html('<div style="margin-top:30px" class="alert alert-success"> {{ 'contact.sent'| trans({},'messages') }}</div>');
-                                    $.magnificPopup.close();
-                            }else{
-                                    $('#message-form-container').html('<div class="alert alert-danger"> {{ 'contact.error'| trans({},'messages') }}</div>');
-                            }
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus, errorThrown);
-                        });
-            });
-        });
+        $(document).ready(function () {});
 
     </script>
     {% block messageScripts %}
