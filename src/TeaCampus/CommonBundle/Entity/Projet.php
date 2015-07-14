@@ -708,7 +708,7 @@ class Projet
      */
     public function setLanguage($language)
     {
-        $this->language = $language;
+        $this->locale = $language;
 
         return $this;
     }
@@ -720,7 +720,7 @@ class Projet
      */
     public function getLanguage()
     {
-        return $this->language;
+        return $this->locale;
     }
 
     /**
