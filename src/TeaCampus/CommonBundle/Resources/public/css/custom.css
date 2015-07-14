@@ -41,8 +41,8 @@ footer{
 }
 
 .footer-logo{
-    position: absolute;
-    top: 38px;
+    position: relative;
+    top: 33px;
 }
 
 #last-tweet ul  ul {
