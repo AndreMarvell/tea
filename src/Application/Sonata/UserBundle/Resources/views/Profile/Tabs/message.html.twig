@@ -21,7 +21,7 @@
 
                         <div role="tabpanel" class="tab-pane tab-pane-vertical active" id="message_received">
                             <div class="row">
-                                <div class="row-same-height">
+                                <div class="row-same-height" id="received-message">
                                     {% include 'ApplicationFOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
                                 </div><!--row same height-->
                             </div><!--row-->
@@ -29,7 +29,7 @@
 
                         <div role="tabpanel" class="tab-pane tab-pane-vertical " id="sent_message">
                             <div class="row">
-                                <div class="row-same-height">
+                                <div class="row-same-height" id="send-message">
                                     {% include 'ApplicationFOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads_send} %}
                                 </div><!--row same height-->
                             </div><!--row-->
