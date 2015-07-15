@@ -295,6 +295,11 @@ error:
         title: Oups
         subhead: Il me semble que vous vous êtes égarés
         text: Désolé, la page que vous avez demandée semble introuvable !
+    403:
+        name: Erreur 403 - Accès interdit
+        title: Oups un intru
+        subhead: Que cherchez-vous ici ?
+        text: Désolé, la page que vous demandez ne vous est pas autorisée !
     503:
         name: Erreur 503 - Service Indisponible
         title: Oups
