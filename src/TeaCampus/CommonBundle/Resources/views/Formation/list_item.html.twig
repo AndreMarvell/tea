@@ -10,7 +10,13 @@
         </div>
     </div>
     <div class="post-body">
-        <h5>{{video.title}}</h5>
+        <h5 style="min-height: 35px;">
+            {%if  video.title|length < 51%}
+                {{video.title}}
+            {%else%}
+                {{video.title|striptags|slice(0, 51) ~ '...'}}
+            {%endif%}
+        </h5>
         <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p>{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p></a>
     </div>
 </div>
