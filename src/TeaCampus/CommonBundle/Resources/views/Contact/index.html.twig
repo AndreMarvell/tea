@@ -145,7 +145,7 @@
                                     $('#contact_block').html(response['message']);
                                 }
                                 else{
-                                    $('#error_message').html({{ 'contact.error'| trans({},'messages') }});
+                                    $('#error_message').html('{{ 'contact.error'| trans({},'messages') }}');
                                     classie.removeClass( $('#error_message'), 'show' );
                                     $('#preloader').html('<button type="submit" id="submit_form" class="button success tiny radius"><i class="fa fa-envelope-o">&nbsp;</i> {{ 'contact.send'| trans({},'messages') }}</button>');
 
