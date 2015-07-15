@@ -104,6 +104,39 @@ class FOSUBUserProvider extends BaseClass
                 $user->setEnabled(true);
                 $this->userManager->updateUser($user);
                 return $user;
+            }else{
+                $service = $response->getResourceOwner()->getName();
+                $setter = 'set'.ucfirst($service);
+                $setter_id = $setter.'Id';
+                $setter_token = $setter.'AccessToken';
+                // create new user here
+                $user->$setter_id($username);
+                $user->$setter_token($response->getAccessToken());
+                
+                if(is_null($user->getFirstName())) 
+                    $user->setFirstName($response->getFirstName());
+                if(is_null($user->getLastName())) 
+                    $user->setLastName($response->getLastName());
+                
+                if($service=="google"){
+                    $user->setAvatar($this->downloader->downloadFile(
+                            $response->getProfilePicture(),
+                            $response->getRealName(),
+                            'avatar',
+                            'google_'.$username.'.jpg'
+                        ));
+                }elseif ($service=="facebook") {
+                    $user->setAvatar($this->downloader->downloadFile(
+                            'http://graph.facebook.com/'.$username.'/picture?type=large',
+                            $response->getRealName(),
+                            'avatar',
+                            'fb_'.$username.'.jpg'
+                        ));    
+                }
+
+                
+                $this->userManager->updateUser($user);
+                return $user;
             }
         }
 
