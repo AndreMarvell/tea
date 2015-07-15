@@ -32,13 +32,14 @@ class MaintenanceListener
                 '78.199.144.159',
                 '78.227.171.80',
                 '154.72.166.174',
-                '192.168.21.52'
+                '192.168.21.52',
+                '193.52.102.11'
             );
             
-            if (isset($_SERVER['HTTP_CLIENT_IP'])
+            if(isset($_SERVER['HTTP_CLIENT_IP'])
                 || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
                 || !(in_array(@$_SERVER['REMOTE_ADDR'], $iPs) || php_sapi_name() === 'cli-server')
-            ) {
+            ){
                 $engine = $this->container->get('templating');
                 $content = $engine->render('TwigBundle:Exception:error503.html.twig');
                 $event->setResponse(new Response($content, 503));
