@@ -1,6 +1,8 @@
 
 tea:
     name: Todays Entrepreneurs In Africa
+    header_description: Tea est un mouvement créé pour permettre à un public très large de s'informer et de s'autoformer sur l'entrepreuneuriat et plus particulièrement en Afrique.
+    discover_button: Découvrir
 
 menu:
     home: Accueil
