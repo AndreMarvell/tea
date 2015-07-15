@@ -44,8 +44,8 @@
                             {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
                         {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
                     {% endif %}
-                    <a class="btn btn-danger btn-xs ajax-delete" href="#delete-modal-{{thread.id}}"><i class="fa fa-trash"></i></a>
-                    <div id="delete-modal-{{thread.id}}" class="mfp-hide mfp-small-dialog">
+                    <a class="btn btn-danger btn-xs ajax-delete" href="#delete-message-modal-{{thread.id}}"><i class="fa fa-trash"></i></a>
+                    <div id="delete-message-modal-{{thread.id}}" class="mfp-hide mfp-small-dialog">
                         <h1>{{ 'message.delete.title'|trans({}, 'messages') }}</h1>
                         <p>{{ 'message.delete.sure'|trans({}, 'messages') }}</p>
                         <p>

@@ -75,6 +75,29 @@ class MessageController extends BaseController
         return $response;
     }
     
+     /**
+     * Deletes a thread
+     * 
+     * @param string $threadId the thread id
+     * 
+     * @return RedirectResponse
+     */
+    public function deleteAction($threadId)
+    {
+        $thread = $this->getProvider()->getThread($threadId);
+        $this->container->get('fos_message.deleter')->markAsDeleted($thread);
+        $this->container->get('fos_message.thread_manager')->saveThread($thread);
+
+        $received   = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $inboxThread));
+        $sent       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $sentThread));
+        
+        $response   = new Response();
+        $response->setContent(json_encode(array("success" => true, 'received' => $received, 'sent'=>$sent)));
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response; 
+    }
+    
     /**
      * Gets the provider service
      *
