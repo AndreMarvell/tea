@@ -4,6 +4,7 @@
 {% block title %}
         {{ 'error.503.name'| trans({},'messages') }} - {{ parent() }}
 {% endblock %}
+{% set error503 = true %}
 {% block main_content %}
         <!-- Home - Header -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->

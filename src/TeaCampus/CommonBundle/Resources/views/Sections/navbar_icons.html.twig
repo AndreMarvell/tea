@@ -40,7 +40,9 @@
                                     <li></li>
                                 </ul>
                             {%else%}
-                                {% render (controller('FOSUserBundle:Registration:register')) %}
+                                {%if error503 is not defined%}
+                                    {% render (controller('FOSUserBundle:Registration:register')) %} 
+                                {%endif %}
                             {%endif%}
                         </div>
                     </div>
@@ -65,7 +67,9 @@
                                     <li></li>
                                 </ul>
                             {%else%}
-                                {% render (controller('FOSUserBundle:Security:login')) %} 
+                                {%if error503 is not defined%}
+                                    {% render (controller('FOSUserBundle:Security:login')) %} 
+                                {%endif %}
                             {%endif%}
                         </div>
                     </div>
