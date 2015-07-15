@@ -40,8 +40,8 @@
                     <div class="project-metas">
                         <div class="project-edit pull-right">
                             <a class="btn btn-primary btn-xs" href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-{{video.id}}"><i class="fa fa-trash"></i></a>
-                            <div id="delete-modal-{{video.id}}" class="mfp-hide mfp-small-dialog">
+                            <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-video-{{video.id}}"><i class="fa fa-trash"></i></a>
+                            <div id="delete-modal-video-{{video.id}}" class="mfp-hide mfp-small-dialog">
                                 <h1>{{ 'video.delete.title'|trans({}, 'messages') }}</h1>
                                 <p>{{ 'video.delete.sure'|trans({}, 'messages') }}</p>
                                 <p>
