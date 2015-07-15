@@ -33,17 +33,27 @@ class MaintenanceListener
                 '78.227.171.80',
                 '154.72.166.174',
                 '193.52.102.13',
-                '193.52.102.11'
+                '193.52.102.11',
+                '83.192.149.141'
             );
             
-            if(isset($_SERVER['HTTP_CLIENT_IP'])
-                || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-                || !(in_array(@$_SERVER['REMOTE_ADDR'], $iPs) || php_sapi_name() === 'cli-server')
+            if(
+                !(in_array(@$_SERVER['REMOTE_ADDR'], $iPs) || php_sapi_name() === 'cli-server')
             ){
-                $engine = $this->container->get('templating');
-                $content = $engine->render('TwigBundle:Exception:error503.html.twig');
-                $event->setResponse(new Response($content, 503));
-                $event->stopPropagation();
+            
+                $iPsDHCP = array(
+                    '83.192.149',
+                    '193.52.102'
+                );
+                $ipParts = explode('.', @$_SERVER['REMOTE_ADDR']);
+                $ipPart  = $ipParts[0].'.'.$ipParts[1].'.'.$ipParts[2];
+                
+                if(!(in_array($ipPart, $iPs))){
+                    $engine = $this->container->get('templating');
+                    $content = $engine->render('TwigBundle:Exception:error503.html.twig');
+                    $event->setResponse(new Response($content, 503));
+                    $event->stopPropagation();
+                }
             }
             
         }
