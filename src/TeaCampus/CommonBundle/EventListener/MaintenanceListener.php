@@ -55,7 +55,7 @@ class MaintenanceListener
                 $ipParts = explode('.', @$_SERVER['REMOTE_ADDR']);
                 $ipPart  = $ipParts[0].'.'.$ipParts[1].'.'.$ipParts[2];
                 
-                if(!(in_array($ipPart, $iPs))){
+                if(!(in_array($ipPart, $iPsDHCP))){
                     $engine = $this->container->get('templating');
                     $content = $engine->render('TwigBundle:Exception:error503.html.twig');
                     $event->setResponse(new Response($content, 503));
