@@ -49,7 +49,8 @@ class MaintenanceListener
                 $iPsDHCP = array(
                     '83.192.149',
                     '193.52.102',
-                    '10.33.2'
+                    '10.33.2',
+                    '154.72.166'
                 );
                 $ipParts = explode('.', @$_SERVER['REMOTE_ADDR']);
                 $ipPart  = $ipParts[0].'.'.$ipParts[1].'.'.$ipParts[2];
