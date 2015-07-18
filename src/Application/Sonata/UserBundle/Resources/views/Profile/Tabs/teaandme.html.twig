@@ -1,0 +1,7 @@
+<ul class="content-list center-block">
+    {% for video in teaandmes %}
+        {{ include( 'TeaCampusCommonBundle:TeaAndMe:profile_list_item.html.twig', {'video':video}) }}
+    {%else%}
+        <li>{{ 'video.other.no_video_found'|trans({}, 'messages') }}</li>
+    {%endfor%}
+</ul>

@@ -64,6 +64,12 @@ class Video
     protected $video;
     
     /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     */
+    protected $media;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Application\Sonata\ClassificationBundle\Entity\Tag", cascade={"persist"})
      */
     private $tags;
@@ -418,5 +424,29 @@ class Video
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $media
+     *
+     * @return Video
+     */
+    public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

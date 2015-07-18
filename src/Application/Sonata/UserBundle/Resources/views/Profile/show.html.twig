@@ -2,6 +2,7 @@
 {% trans_default_domain "ApplicationSonataUserBundle" %}
 {% spaceless %}
     {% set wearesocial = true %} 
+    {% set activetab = app.request.query.get("tab") %}
     {% block title %}
         {{ 'profile.title'| trans({},'messages') }} - {{ parent() }}
     {% endblock %}
@@ -54,10 +55,11 @@
                 <div class="anchor-icon"><i class="fa fa-user"></i></div>
                 <!-- Nav tabs -->
                 <ul id="user-profil-tabs" class="nav  nav-tabs-alt nav-tabs-two nav-tab-inverse" role="tablist">
-                    <li role="presentation" class="active"><a href="#infos" aria-controls="infos" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;{{ 'tabs.infos.title'| trans({},'messages') }}</a></li>
-                    <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab"><i class="fa fa-play-circle"></i>&nbsp;&nbsp;{{ 'tabs.videos.title'| trans({},'messages') }}</a></li>
-                    <li role="presentation"><a href="#projets" aria-controls="projets" role="tab" data-toggle="tab"><i class="fa fa-file-o"></i>&nbsp;&nbsp;{{ 'tabs.projects.title'| trans({},'messages') }}</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;{{ 'tabs.messages.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation" class="{%if activetab == 'infos'%}active{%endif%}"><a href="#infos" aria-controls="infos" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;{{ 'tabs.infos.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation" class="{%if activetab == 'projects'%}active{%endif%}"><a href="#projets" aria-controls="projets" role="tab" data-toggle="tab"><i class="fa fa-file-o"></i>&nbsp;&nbsp;{{ 'tabs.projects.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation" class="{%if activetab == 'teaAndMe'%}active{%endif%}"><a href="#teaandme" aria-controls="teaandme" role="tab" data-toggle="tab"><i class="fa fa-play-circle-o"></i>&nbsp;&nbsp;{{ 'tabs.teaandme.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation" class="{%if activetab == 'messages'%}active{%endif%}"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;{{ 'tabs.messages.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation" class="{%if activetab == 'formations'%}active{%endif%}"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;{{ 'tabs.videos.title'| trans({},'messages') }}</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -65,7 +67,7 @@
 
                     <!--  Info -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-                    <div role="tabpanel" class="tab-pane active" id="infos">
+                    <div role="tabpanel" class="tab-pane {%if activetab == 'infos'%}active{%endif%}" id="infos">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
@@ -78,24 +80,11 @@
                         </div>
                     </div><!--tabpanel-->
 
-                    <!-- Mes videos -->
-                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-                    <div role="tabpanel" class="tab-pane" id="videos">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="footer-header">	
-                                    <h2>{{ 'tabs.videos.title'| trans({},'messages') }}</h2>
-                                </div>	
-                            </div>				
-                        </div><!--row-->
-                        <div class="row tabpanel-content">
-                        {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/videos.html.twig') }}
-                        </div>
-                    </div><!--tabpanel-->
+                    
 
                     <!-- Mes projets -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-                    <div role="tabpanel" class="tab-pane" id="projets">
+                    <div role="tabpanel" class="tab-pane {%if activetab == 'projects'%}active{%endif%}" id="projets">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
@@ -110,10 +99,28 @@
                             {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/projects.html.twig') }}
                         </div>
                     </div><!--tabpanel-->
-
+                    <!-- Mes projets -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane {%if activetab == 'teaAndMe'%}active{%endif%}" id="teaandme">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <header class="section-header" style="margin:0;">
+                                    <p class="subhead">{{ 'teaandme_profile.subhead'| trans({},'messages') }}</p>
+                                    <h4 class="text-center">{{ 'teaandme_profile.title'| trans({},'messages') }}</h4>
+                                    <p class="text-center">{{ 'teaandme_profile.text'| trans({},'messages') }}</p>
+                                </header>
+                                <div class="col-md-12 align-center">
+                                    <a class="btn btn-primary btn-xs ajax-popup-link" href="{{path('tea_teaandme_add')}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{ 'teaandme_profile.button'| trans({},'messages') }}</a>
+                                </div>
+                            </div>				
+                        </div><!--row-->
+                        <div class="row tabpanel-content" id="project-list">
+                            {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/teaandme.html.twig') }}
+                        </div>
+                    </div><!--tabpanel-->
                     <!-- Messages -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-                    <div role="tabpanel" class="tab-pane" id="messages">
+                    <div role="tabpanel" class="tab-pane {%if activetab == 'messages'%}active{%endif%}" id="messages">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
@@ -122,7 +129,26 @@
                             </div>				
                         </div><!--row-->
                         {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/message.html.twig') }}
-                </div><!--tabpanel-->
+                    </div><!--tabpanel-->
+                    
+                    <!-- Mes videos de formation -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane {%if activetab == 'formations'%}active{%endif%}" id="videos">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="footer-header">	
+                                    <h2>{{ 'tabs.videos.title'| trans({},'messages') }}</h2>
+                                </div>	
+                            </div>				
+                        </div><!--row-->
+                        <div class="row tabpanel-content">
+                            {%if app.user.teacher%}
+                                {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/videos.html.twig') }}
+                            {%else%}
+                                {{ include( 'ApplicationSonataUserBundle:Profile:Tabs/tutoring.html.twig') }}
+                            {%endif%}
+                        </div>
+                    </div><!--tabpanel-->
 
             </div><!--tab-content-->
 
@@ -170,30 +196,6 @@
                         console.log(textStatus, errorThrown);
                     });
         });
-        $(document).on('click', 'a.delete-button', function (e) {
-            e.preventDefault();
-            var li = $(this).attr('data-li');
-            $.ajax({
-                url: $(this).attr('href'),
-                dataType: "json",
-                data: {id: $(this).attr('data-id')},
-                type: 'POST'
-            })
-                    .done(function (data) {
-                        $.magnificPopup.close();
-                        if (data['success']) {
-                            $("#" + li).fadeOut(700, function () {
-                                $(this).remove();
-                            });
-                        } else {
-                            alert("{{ 'projet.delete.error'| trans({},'messages') }}");
-                        }
-
-                    })
-                    .fail(function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    });
-        });
         
         $(document).on('click', '.popup-modal-dismiss', function (e) {
             e.preventDefault();
@@ -201,11 +203,47 @@
         });
 
         $(document).ready(function () {});
+        
+        {% if not tutoringRequestExist %}
+                $(document).on('click', '#tutoring-request-button', function (e) {
+                    e.preventDefault();
+                    $("#tutoringFormContainer").show();
+                });
+
+                $('#tutoringRequestForm').on('submit', function(e) {
+                    e.preventDefault();
+                    $('#tutoringLoader').fadeIn(500);
+                    $.ajax({
+                        url: $(this).attr('action'),
+                        dataType: "json",
+                        data: $(this).serialize(),
+                        type: 'POST'
+                    })
+                    .done(function (data) {
+                        if (data['success']) {
+                            $('#requestNotSent').hide();
+                            $('#requestNotAccepted').show();
+                        } else {
+                            alert("{{ 'message.error'| trans({},'messages') }}");
+                        }
+                        $('#tutoringLoader').hide();
+
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        alert("{{ 'message.error'| trans({},'messages') }}");
+                        console.log(textStatus, errorThrown);
+                    });
+
+                });
+
+        {% endif %}
 
     </script>
+
     {% block messageScripts %}
     {% endblock %}
     {% block newMessageScripts %}
     {% endblock %}
+    
 {% endblock %}
 {% endspaceless %}

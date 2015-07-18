@@ -44,6 +44,17 @@ sonata_media:
                 big:   { width: 500 , quality: 90}
                 wide:   { width: 600 , quality: 90}
                 square: { width: 100, height: 100 , quality: 80}
+                
+        teaandme:
+            providers:
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 150 , quality: 95}
+                big:   { width: 500 , quality: 90}
+                wide:   { width: 600 , quality: 90}
+                square: { width: 100, height: 100 , quality: 80}
         
         file:
             providers:

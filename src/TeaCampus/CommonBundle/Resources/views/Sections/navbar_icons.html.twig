@@ -32,10 +32,11 @@
                         <div class="signup-content">
                             {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <ul class="inside-nav-list">
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.account'|trans({}, 'messages') }}"><i class="fa fa-user-md"></i>&nbsp;{{ 'menu.profil.account'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.videos'|trans({}, 'messages') }}"><i class="fa fa-play-circle-o"></i>&nbsp;{{ 'menu.profil.videos'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.projects'|trans({}, 'messages') }}"><i class="fa fa-file"></i>&nbsp;{{ 'menu.profil.projects'|trans({}, 'messages') }}</a></li>
-                                    <li><a href="{{path('fos_user_profile_show')}}" title="{{ 'menu.profil.messages'|trans({}, 'messages') }}"><i class="fa fa-envelope-o"></i>&nbsp;{{ 'menu.profil.messages'|trans({}, 'messages') }}</a></li>
+                                    <li><a href="{{path('fos_user_profile_show')}}?tab=infos" title="{{ 'menu.profil.account'|trans({}, 'messages') }}"><i class="fa fa-user-md"></i>&nbsp;{{ 'menu.profil.account'|trans({}, 'messages') }}</a></li>
+                                    <li><a href="{{path('fos_user_profile_show')}}?tab=formations" title="{{ 'menu.profil.videos'|trans({}, 'messages') }}"><i class="fa fa-play-circle-o"></i>&nbsp;{{ 'menu.profil.videos'|trans({}, 'messages') }}</a></li>
+                                    <li><a href="{{path('fos_user_profile_show')}}?tab=projects" title="{{ 'menu.profil.projects'|trans({}, 'messages') }}"><i class="fa fa-file"></i>&nbsp;{{ 'menu.profil.projects'|trans({}, 'messages') }}</a></li>
+                                    <li><a href="{{path('fos_user_profile_show')}}?tab=teaAndMe" title="{{ 'menu.profil.teaandme'|trans({}, 'messages') }}"><i class="fa fa-coffee"></i>&nbsp;{{ 'menu.profil.teaandme'|trans({}, 'messages') }}</a></li>
+                                    <li><a href="{{path('fos_user_profile_show')}}?tab=messages" title="{{ 'menu.profil.messages'|trans({}, 'messages') }}"><i class="fa fa-envelope-o"></i>&nbsp;{{ 'menu.profil.messages'|trans({}, 'messages') }}</a></li>
                                     <li><a href="{{path('fos_user_security_logout')}}" title="{{ 'menu.profil.disconnect'|trans({}, 'messages') }}"><i class="fa fa-sign-out"></i>&nbsp;{{ 'menu.profil.disconnect'|trans({}, 'messages') }}</a></li>
                                     <li></li>
                                 </ul>

@@ -66,5 +66,40 @@ class DefaultController extends Controller
        
     }
     
+    public function teaAndMeAction()
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $locale         = $this->get('request')->getLocale();
+        $videos         = $em->getRepository('TeaCampusCommonBundle:TeaAndMe')->findBy(array('locale'=>$locale,'enabled'=>true),array('date'=>'DESC'));
+        
+        
+        $request        = $this->get('request');
+        $paginator      = $this->get('knp_paginator');
+        $pagination     = $paginator->paginate(
+                                $videos, $request->query->get('page', 1)/* page number */, 20/* limit per page */
+                        );
+        
+        return $this->render('TeaCampusCommonBundle:TeaAndMe:andMe.html.twig', array(
+            'pagination'     => $pagination,
+        ));
+    }
+    
+    public function teaAndMeShowAction($id)
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $locale         = $this->get('request')->getLocale();
+        $video         = $em->getRepository('TeaCampusCommonBundle:TeaAndMe')->findOneBy(array('locale'=>$locale,'id'=>$id));
+        
+        if(is_null($video)){
+            throw new NotFoundHttpException("Désolé, la page que vous avez demandée semble introuvable !");
+        }else{
+            
+            return $this->render('TeaCampusCommonBundle:TeaAndMe:show.html.twig', array(
+                   'video'     => $video,
+               ));
+        
+        }
+    }
+    
     
 }

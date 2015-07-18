@@ -51,17 +51,36 @@ sonata_admin:
                 label_catalogue: TeaCampusCommonBundle
                 icon:            '<i class="fa fa-keyboard-o"></i>'
                 items:
-                    - tea.admin.video
-                    - tea.admin.projet
-                    - tea.admin.cv
                     - tea.admin.concours
                     - tea.admin.advert
-                    - tea.admin.partner
-                    - tea.admin.testimony
                     - tea.admin.event
+                    - tea.admin.tea_and_me
+            
+            sonata.admin.group.tea:
+                label:           T.E.A
+                label_catalogue: TeaCampusCommonBundle
+                icon:            '<i class="fa fa-coffee"></i>'
+                items:
+                    - tea.admin.testimony
                     - tea.admin.faq
                     - tea.admin.history
                     - tea.admin.service
+                    - tea.admin.partner
+            
+            sonata.admin.group.projects:
+                label:           Projets
+                label_catalogue: TeaCampusCommonBundle
+                icon:            '<i class="fa fa-book"></i>'
+                items:
+                    - tea.admin.projet
+                    
+            sonata.admin.group.formation:
+                label:           Formation
+                label_catalogue: TeaCampusCommonBundle
+                icon:            '<i class="fa fa-graduation-cap"></i>'
+                items:
+                    - tea.admin.video
+                    - tea.admin.tutoring_request
                     
             sonata.admin.group.news:
                 label:           Actualité
@@ -98,6 +117,7 @@ sonata_admin:
                     - sonata.user.admin.user
                     - sonata.user.admin.badge
                     - sonata.user.admin.group
+                    - tea.admin.cv
                     #- sonata.page.admin.site
                     #- sonata.notification.admin.message
 

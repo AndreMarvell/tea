@@ -1,7 +1,7 @@
 
 {% set currentPath = app.request.get('_route') %}
-{%if currentPath == 'tea_projects' or currentPath == 'tea_homepage' or currentPath == 'tea_about' or currentPath == 'tea_faq' or 'profil' in currentPath or 'user' in currentPath or 'formation' in currentPath or 'tea_contact' in currentPath or 'tea_mention' in currentPath or currentPath is null%}
-    {%if 'tag' in  currentPath %}
+{%if currentPath == 'tea_projects' or currentPath == 'tea_homepage' or currentPath == 'tea_about' or currentPath == 'tea_faq'  or currentPath == 'tea_search_index' or 'profil' in currentPath or 'user' in currentPath or 'formation' in currentPath or 'tea_contact' in currentPath or 'tea_mention' in currentPath or 'tea_teaandme' in currentPath or currentPath is null%}
+    {%if ('tag' in  currentPath and currentPath != 'tea_teaandme_tag' ) or ('search' in  currentPath and currentPath != 'tea_search_index') %}
         {% set navClass = 'navbar-alt' %}
     {%else%}
         {% set navClass = 'nav_animated' %}
@@ -52,6 +52,8 @@
                     <li class="{%if 'formations' in currentPath%}active{%endif%}"><a href="{{path('tea_formations')}}" title="{{ 'menu.formations'|trans({},'messages') }}">{{ 'menu.formations'|trans({},'messages') }}</a></li>
 
                     <li class="{%if 'projects' in currentPath%}active{%endif%}"><a href="{{path('tea_projects')}}" title="{{ 'menu.projects'|trans({},'messages') }}">{{ 'menu.projects'|trans({},'messages') }}</a></li>
+                    
+                    <li class="{%if 'teaandme' in currentPath%}active{%endif%}"><a href="{{path('tea_teaandme')}}" title="{{ 'menu.teaandme'|trans({},'messages') }}">{{ 'menu.teaandme'|trans({},'messages') }}</a></li>
                     
                     <li class="{%if 'news' in currentPath%}active{%endif%}">
                         <a href="{{path('sonata_news_archive')}}" title="{{ 'menu.blog.title'|trans({},'messages') }}">{{ 'menu.blog.title'|trans({},'messages') }}</a>                      

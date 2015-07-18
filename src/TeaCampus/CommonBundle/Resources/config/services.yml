@@ -65,7 +65,7 @@ services:
         class: TeaCampus\CommonBundle\Admin\FaqAdmin
         arguments: [~, TeaCampus\CommonBundle\Entity\Faq, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Faq}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Foire Aux Questions}
 
     tea.admin.service:
         class: TeaCampus\CommonBundle\Admin\ServiceAdmin
@@ -79,3 +79,15 @@ services:
             container: "@service_container"
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    tea.admin.tea_and_me:
+        class: TeaCampus\CommonBundle\Admin\TeaAndMeAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\TeaAndMe, TeaCampusCommonBundle:TeaAndMeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: TEA & Moi}
+
+    tea.admin.tutoring_request:
+        class: TeaCampus\CommonBundle\Admin\TutoringRequestAdmin
+        arguments: [~, TeaCampus\CommonBundle\Entity\TutoringRequest, TeaCampusCommonBundle:TutoringRequestAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Tutoring Request}

@@ -1,0 +1,18 @@
+<section id="TeaAndMeShow" class="wrap-contacts">
+        <div class="row-same-height">
+            <div class="col-md-7 col-lg-8 col-sm-12 col-sm-height" style="margin-bottom: 20px;padding-right: 20px">
+                <div class="video-container">
+                    {% media video.video, 'wide'  %}
+                </div>
+                <div class="row" style="margin-top:20px;">
+                    <h5 class="text-center">{{video.title}}</h5>
+                    <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p class="subhead text-center">{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-12 col-sm-height comment-teaandme">
+                <div class="row" style="">
+                    {% include 'AndreMarvellSocialBundle:Comment:disqus.html.twig' with {'subline': 'teaandme.comment.subline'| trans({},'messages'), 'disqus_id' : 'teaandme-'~video.id, 'disqus_title' : video.title ~ "#TeaAndMe"} %}
+                </div>
+            </div>
+        </div><!--row-->
+</section> 

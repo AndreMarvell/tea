@@ -39,6 +39,16 @@ tea_formations_search:
     path:     /formations/search
     defaults: { _controller: TeaCampusCommonBundle:Formation:search }
 
+tea_formations_request:
+    path:     /formations/tutoringRequest
+    defaults: { _controller: TeaCampusCommonBundle:Formation:tutoringRequest }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_formations_add:
+    path:     /formations/add
+    defaults: { _controller: TeaCampusCommonBundle:Formation:add }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+
 tea_formations_subject:
     path:     /formations/{subject}
     defaults: { _controller: TeaCampusCommonBundle:Formation:subject }
@@ -103,7 +113,36 @@ tea_projects_tag:
 tea_projects_search:
     path: /projects/search/
     defaults: { _controller: TeaCampusCommonBundle:Projet:search }
+ 
+##############################
+######      TeaAndMe   #######
+##############################
     
+tea_teaandme:
+    path:     /TeaAndMe
+    defaults: { _controller: TeaCampusCommonBundle:TeaAndMe:index }
+    
+    
+tea_teaandme_show:
+    path:     /TeaAndMe/show/{id}
+    defaults: { _controller: TeaCampusCommonBundle:TeaAndMe:show }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_teaandme_add:
+    path:     /TeaAndMe/add
+    defaults: { _controller: TeaCampusCommonBundle:TeaAndMe:add }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_teaandme_delete:
+    path:     /TeaAndMe/delete/
+    defaults: { _controller: TeaCampusCommonBundle:TeaAndMe:delete }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+    
+tea_teaandme_tag:
+    path:     /TeaAndMe/tag/{tag}
+    defaults: { _controller: TeaCampusCommonBundle:TeaAndMe:tag }
+
+
 ##############################
 ######      Autres     #######
 ##############################
@@ -111,6 +150,7 @@ tea_projects_search:
 tea_forum:
     path:     /forum
     defaults: { _controller: TeaCampusCommonBundle:Default:forum }
+
     
 tea_contacts:
     path:     /contacts

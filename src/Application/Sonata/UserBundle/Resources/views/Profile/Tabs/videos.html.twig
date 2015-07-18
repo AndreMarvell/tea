@@ -1,3 +1,9 @@
+<div class="row text-center">
+    <p>
+        {{ 'formation.tutoring.request_accepted'| trans({},'messages') }}
+    </p>
+    <div class="text-center"><a href="{{path('tea_formations_add')}}" class="btn btn-primary btn-xs ajax-popup-link">{{ 'formation.add.title'| trans({},'messages') }}</a></div>
+</div>
 <ul class="content-list center-block">
     {% for video in videos %}
         {{ include( 'TeaCampusCommonBundle:Formation:profile_list_item.html.twig', {'video':video}) }}

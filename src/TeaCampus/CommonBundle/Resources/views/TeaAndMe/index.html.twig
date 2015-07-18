@@ -1,0 +1,96 @@
+{% extends "::base.html.twig" %}
+{% spaceless %}
+{% block title %}
+    {{ 'teaandme.title'| trans({},'messages') }} "{%if tag is defined%}{{tag.name}}{%endif%}" - {{ parent() }}
+{% endblock %}    
+{% block main_content %}
+<!-- Home - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- About - Header -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="about-header">
+            <div class="container">	
+                <div class="row">
+                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/teaandme.png'  output="images/ico/teaandme.png" %}
+                        <img src="{{ asset_url }}" alt="TeaCampus Formation"  width="312px" style="margin-bottom:30px;margin-top: -50px"/>
+                        {% endimage %}
+                        <br>
+                        <h1 class="title">{{ 'teaandme.title'| trans({},'messages') }}</h1>
+                        <div class="path">{%if tag is defined%}Tag "{{tag.name}}"{%endif%}</div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+        
+        <section class="wrap-blog-content blog wrap-contacts" style="margin-top: 0px">
+            <div class="container">
+                <div class="anchor-icon"><i class="fa fa-coffee"></i></div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        
+                        <header class="section-header no-home">
+                            <p class="subhead">{{ 'teaandme.subhead'| trans({},'messages') }}</p>
+                            <h2>{{ 'teaandme.title'| trans({},'messages') }}</h2>
+                            <p class="large">{{ 'teaandme.text1'| trans({},'messages') }}<br>{{ 'teaandme.text2'| trans({},'messages') }}</p>
+                            {%if tag is defined%}
+                                    <h5 class="text-center">"{{tag.name}}"</h5>
+                            {%endif%}
+                        </header>
+                        <div class="text-center col-md-12">
+                            <!-- Formation - Catégories -->
+                            <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                            <div class="row wrap-works" style="margin-top:50px;">
+                            {% for video in pagination %}
+                                <div class="col-lg-3 col-md-4" >
+                                    <div class="post">
+                                        <div class="post-heading">
+                                            <div class="post-image" style="height:auto">
+                                                {% thumbnail video.video, 'big' with {'width':'100%','height':'auto','alt':video.title} %}
+                                                <div class="mask">
+                                                    <div class="icons">
+                                                        <a href="{{ path('tea_teaandme_show',{'id':video.id}) }}" class="ajax-popup-link"><i class="fa fa-play-circle fa-2x"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="post-body">
+                                            <h6 style="min-height: 35px;">
+                                                {%if  video.title|length < 41%}
+                                                    {{video.title}}
+                                                {%else%}
+                                                    {{video.title|striptags|slice(0, 41) ~ '...'}}
+                                                {%endif%}
+                                            </h6>
+                                            <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p>{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%endfor%}
+                            </div>
+                        </div>
+                        <div class="text-center col-md-12">
+                            <div class="quicklinks">
+                                <h5> {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }} </h5>
+                            </div>
+                        </div>
+                                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('.ajax-popup-link').magnificPopup({
+            closeBtnInside: true,
+            midClick: true,
+            type: 'ajax'
+        });
+    </script>
+                
+{% endblock %}
+
+{% endspaceless %}

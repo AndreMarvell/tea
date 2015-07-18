@@ -10,12 +10,14 @@ menu:
     videos: Vidéos
     formations: Formations
     forum: Forum
+    teaandme: "#TEA&Moi"
     profil: 
         title: Profil
         account: Mon compte
         projects: Mes projets
         videos: Mes vidéos
         messages: Mes Messages
+        teaandme: "#TEA&Moi"
         disconnect: Se déconnecter
     notifications: 
         title: Notifications
@@ -255,6 +257,20 @@ formation:
     chapter:
         discover: Découvrir
         nb_videos: %nb% vidéo(s)
+        
+teaandme:
+    title: "#TEA&Moi"
+    subhead: Les TEA-Entrepreneurs prennent la parole
+    text1: Expériences, conseils, avis, mise en garde etc..., 
+    text2: Les entrepreneurs aguérris de la communauté TEA vous font part de tout ce qu'ils ont pu rencontrer et/ou affronter au cours de leurs aventures entrepreneuriales
+    comment:
+        subline: Que pensez-vous de cette vidéo ?
+    delete:
+        title: Supprimer la vidéo
+        sure: Êtes vous sure de vouloir supprimer cette vidéo?
+        yes: Oui
+        no: Non
+        error: Désolé, une erreur s'est produite lors de la suppression
 
 contact:
     title: Contactez-nous

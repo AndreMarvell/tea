@@ -13,9 +13,11 @@ tabs:
     messages:
         title: Mes Messages
     videos:
-        title: Mes Vidéos
+        title: Formation
     infos:
         title: Mes Infos
+    teaandme:
+        title: "#TEA&Moi"
 othertabs: 
     projects:
         title: Ses Projets
@@ -55,5 +57,28 @@ register:
     subhead: Votre compte
     title: S'inscrire
     self_register_text: Inscrivez-vous directement
+    
+teaandme_profile:
+    title: "#TEA&Moi"
+    subhead: Je prends la parole
+    text: Vous avez des conseils à prodiguer, des mises en gardes, vous voulez partager votre expérience
+    button: Partagez une expérience
+    form:
+        titre: Quel sera le titre de cette video
+        video: Uploadez votre fichier vidéo
+        
+formation:
+    tutoring:
+        subhead: Devenir Instructeur Pédagogique
+        intro: Vous êtes passionnés par l'entrepreneuriat, vous avez envie de partager vos connaissances et faire découvrir votre activité à l'ensembles des TEA-Entrepreneurs, vous avez envie d'initier nos membres à la création et la gestion d'entreprises ? Vous êtes au bon endroit !
+        be_teacher: Sur la plateforme TEACampus, seuls les instructeurs pédagogique sont en mesure de publier des vidéos de formations. Alors n’hésitez plus et rejoignez notre équipe d’Instructeurs Pédagogique TEA™!
+        button: Demander une d'adhésion au TEA-Tutoring
+        form:
+            title: Parlez nous brièvement de vos motivations
+            placeholder: Vos motivations
+        request_not_accepted: Votre demande a bien été envoyé et est en cours de traitement !
+        request_accepted: Vous êtes désormais un Intructeur Pédagoque, faites profiter vos connaissances à l'ensemble de la communauté TEA !
+    add:
+        title: Ajouter une vidéo de formation
     
     

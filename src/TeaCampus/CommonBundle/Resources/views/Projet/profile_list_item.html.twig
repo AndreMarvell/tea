@@ -5,7 +5,7 @@
                     {%if projet.media is not null%}
                         {% thumbnail projet.media, 'square' with{'alt':projet.title,'title':projet.title } %}
                     {%else%}
-                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/blurred.jpg" %}
                         <img src="{{ asset_url }}">
                         {% endimage %}
                         <span>{{ 'project.other.title'|trans({}, 'messages') }}</span>

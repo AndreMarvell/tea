@@ -38,7 +38,7 @@
                         {%if project.media is not null%}
                             {% thumbnail project.media, 'big' with{'alt':project.title,'title':project.title, 'class':"img-responsive img-thumbnail" } %}
                         {%else%}
-                            {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                            {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/blurred.jpg" %}
                             <img src="{{ asset_url }}">
                             {% endimage %}
                         {%endif%}

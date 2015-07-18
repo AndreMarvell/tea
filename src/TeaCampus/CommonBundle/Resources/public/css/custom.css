@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+.home-page-section .section-header{
+      margin: 50px 0 50px !important;
+}
+
 .media-list.notifications{
     background-color: white;
     font-size: 14px;
@@ -142,6 +146,13 @@ footer{
 
 .fos_comment_comment_metas div.comment-info.clearfix ul.list-inline.pull-right span{
     cursor: pointer;
+}
+
+/******* TEA And Me ***********/
+
+.comment-teaandme{
+   overflow-y: scroll;
+   max-height: 500px;
 }
 
 /*******  Video Player   *******/

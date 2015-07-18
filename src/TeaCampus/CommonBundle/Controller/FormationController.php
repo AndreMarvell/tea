@@ -137,6 +137,32 @@ class FormationController extends Controller
         return $response;
     }
     
+    public function tutoringRequestAction() {
+        $request        = $this->get('request');
+        $em             = $this->getDoctrine()->getManager();
+        $motivations    = $request->request->get('motivations');
+
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $success = false;
+        
+        if (!is_null($user) && !empty($motivations)) {
+        
+            $tutoringRequest = new \TeaCampus\CommonBundle\Entity\TutoringRequest();
+            $tutoringRequest ->setAuthor($user)
+                             ->setMotivations($motivations);
+            $em->persist($tutoringRequest);
+            $em->flush();
+            $success = true;
+        }
+
+        $response = new Response();
+        $response->setContent(json_encode(array("success" => $success)));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+    
     public function tagAction($tag)
     {
         $em         = $this->getDoctrine()->getManager();
@@ -216,6 +242,10 @@ class FormationController extends Controller
         }
         return $this->redirect( $this->generateUrl('tea_formations') );
                 
+    }
+    
+    public function addAction(){
+        
     }
    
 }

@@ -1,9 +1,11 @@
 
             <!-- Post Item -->
-            <li id="video-{{video.id}}">
+            <li id="teaandme-{{video.id}}">
                 <div class="project-thumbs">
                     {%if video.video is not null%}
                         {% thumbnail video.video, 'square' with{'alt':video.title,'title':video.title } %}
+                    {%elseif video.media is not null%}
+                        {% thumbnail video.media, 'square' with{'alt':video.title,'title':video.title } %}
                     {%else%}
                         {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/blurred.jpg" %}
                         <img src="{{ asset_url }}">
@@ -25,7 +27,7 @@
                         </div>
                     </div>
                     <h2 class="project-title">
-                        <a href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}">
+                        <a href="{{ path('tea_teaandme_show', { 'id': video.id} ) }}" class="ajax-popup-link">
                             {%if  video.title|length < 80%}
                                 {{video.title}}
                             {%else%}
@@ -35,25 +37,25 @@
                     </h2>
                     
                     
-                    <p class="project-description">{{ video.description|striptags|slice(0, 150) ~ '...'}}</p>
+                    <p class="project-description"></p>
                     
                     <div class="project-metas">
                         <div class="project-edit pull-right">
-                            <a class="btn btn-primary btn-xs" href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-video-{{video.id}}"><i class="fa fa-trash"></i></a>
-                            <div id="delete-modal-video-{{video.id}}" class="mfp-hide mfp-small-dialog">
-                                <h1>{{ 'video.delete.title'|trans({}, 'messages') }}</h1>
-                                <p>{{ 'video.delete.sure'|trans({}, 'messages') }}</p>
+                            <a class="btn btn-primary btn-xs ajax-popup-link" href="{{ path('tea_teaandme_show', { 'id': video.id} ) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-teaandme-{{video.id}}"><i class="fa fa-trash"></i></a>
+                            <div id="delete-modal-teaandme-{{video.id}}" class="mfp-hide mfp-small-dialog">
+                                <h1>{{ 'teaandme.delete.title'|trans({}, 'messages') }}</h1>
+                                <p>{{ 'teaandme.delete.sure'|trans({}, 'messages') }}</p>
                                 <p>
-                                    <a class="btn btn-xs btn-primary popup-modal-dismiss" href="#">{{ 'video.delete.no'|trans({}, 'messages') }}</a>
-                                    <a class="btn btn-xs btn-danger delete-button" data-li="video-{{video.id}}" data-id="{{video.id}}" href="{{ path('tea_videos_delete') }}">{{ 'video.delete.yes'|trans({}, 'messages') }}</a>&nbsp;
+                                    <a class="btn btn-xs btn-primary popup-modal-dismiss" href="#">{{ 'teaandme.delete.no'|trans({}, 'messages') }}</a>
+                                    <a class="btn btn-xs btn-danger delete-button" data-li="teaandme-{{video.id}}" data-id="{{video.id}}" href="{{ path('tea_teaandme_delete') }}">{{ 'teaandme.delete.yes'|trans({}, 'messages') }}</a>&nbsp;
                                 </p>
                                 <button title="Close (Esc)" type="button" class="mfp-close">×</button>
                             </div>
                         </div>
                         <div class="project-tags pull-left">
                             {% for tag in video.tags %}
-                                <a href="{{ path('tea_formations_tag', { 'tag': tag.slug } ) }}"><span class="label {%if loop.index is odd%}label-success{%else%}label-danger{%endif%}">{{ tag.name }}</span></a>
+                                <a href="{{ path('tea_teaandme_tag', { 'tag': tag.slug } ) }}"><span class="label {%if loop.index is odd%}label-success{%else%}label-danger{%endif%}">{{ tag.name }}</span></a>
                             {% endfor %}
                         </div>
                     </div>

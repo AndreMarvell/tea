@@ -47,7 +47,8 @@
 
 
                         <div class="text-center col-md-12">
-                            <ul class="pagination">
+                            {% if pager.page != pager.lastPage or pager.page != pager.firstPage  %}
+                             <ul class="pagination">
                                 <li{% if pager.page == pager.lastPage %} class="unavailable"{% endif %}>
                                     <a href="{{ url(route, route_parameters|merge({'page': pager.nextpage})) }}" title="{{ 'link_previous_page'|trans({}, 'SonataNewsBundle') }}">
                                         {{ 'link_previous_page'|trans({}, 'SonataNewsBundle') }}
@@ -57,7 +58,8 @@
                                         {{ 'link_next_page'|trans({}, 'SonataNewsBundle') }}
                                     </a>
                                 </li>
-                            </ul>
+                            </ul>   
+                            {%endif%}
                         </div>
                     </div>
 

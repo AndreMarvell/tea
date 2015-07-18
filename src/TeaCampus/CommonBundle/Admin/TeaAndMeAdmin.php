@@ -7,9 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Doctrine\ORM\EntityRepository;
 
-class VideoAdmin extends Admin
+class TeaAndMeAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -18,8 +17,8 @@ class VideoAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('locale')
             ->add('title')
-            ->add('description')
             ->add('date')
             ->add('enabled')
         ;
@@ -36,6 +35,13 @@ class VideoAdmin extends Admin
             ->add('locale')
             ->add('date')
             ->add('enabled')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
@@ -46,11 +52,11 @@ class VideoAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('description')
+            ->add('enabled')
             ->add('author')
             ->add('video', 'sonata_type_model_list', array('required' => false), array(
                 'link_parameters' => array(
-                    'context' => 'video',
+                    'context' => 'teaandme',
                     'hide_context' => true
                 )
             ))
@@ -60,29 +66,14 @@ class VideoAdmin extends Admin
                     'hide_context' => true
                 )
             ))
-            ->add('date', 'genemu_jquerydate', array(
+            ->add('locale')
+            ->add('date', 'date', array(
                 'widget' => 'single_text'
             ))
             ->add('tags', 'sonata_type_model_autocomplete', array(
                 'property' => 'name',
                 'multiple' => 'true'
             ))
-            ->add('category', 'entity', array(
-                'class' => 'Application\Sonata\ClassificationBundle\Entity\Category',
-                'query_builder' => function(EntityRepository $er ) {
-                    return $er->createQueryBuilder('c')
-                              ->join('c.context','co')
-                              ->leftJoin('c.children','ch')
-                              ->where('co.name  = :context')
-                              ->andWhere('ch.id IS NULL')
-                              ->setParameter('context', 'video')
-                              ->orderBy('c.name', 'ASC');
-                    },
-                'empty_value' => ''
-            ))
-            ->add('enabled')
-            ->add('locale','language')
-                
         ;
     }
 
@@ -93,9 +84,11 @@ class VideoAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('locale')
             ->add('title')
-            ->add('description')
+            ->add('media')
             ->add('date')
+            ->add('enabled')
         ;
     }
 }

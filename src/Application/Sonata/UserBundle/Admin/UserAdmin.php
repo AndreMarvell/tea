@@ -29,6 +29,9 @@ class UserAdmin extends SonataUserAdmin
                         'hide_context' => true
                     )
                 ))
+                ->add('teacher', null, array(
+                    'label'    => 'Instructeur Pédagogique'
+                ))
 //                ->with('Recompenses')
 //                    
 //                ->end()

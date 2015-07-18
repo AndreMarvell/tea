@@ -8,7 +8,7 @@
                     {%if selectionOftea.media is not null%}
                         {% thumbnail selectionOftea.media, 'big' with{'alt':selectionOftea.title,'title':selectionOftea.title, 'class':"img-responsive img-thumbnail" } %}
                     {%else%}
-                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/avatar.jpg" %}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/blurred.jpg" %}
                         <img  src="{{ asset_url }}">
                         {% endimage %}
                     {%endif%}
