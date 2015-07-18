@@ -1,0 +1,82 @@
+<section class="wrap-contacts">
+    <div class="container" id="dropzoneFormationContainer">
+        <div id="invalidFormationVideoMessage" class="alert alert-danger" style="display: none;">{{'formation.add.invalid'|trans({},'messages')}}</div>
+        <form enctype="multipart/form-data" class="dropzone" action="{{ path('tea_formations_add') }}" method="post" name="formationVideoDropzoneForm" id="formationVideoDropzoneForm" class="text-center">
+                <div class="form-group">
+                    {{ form_widget(form.title,{'attr': {'class':'form-control', 'placeholder':'formation.add.title'|trans({},'messages') } } ) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.description,{'attr': {'class':'form-control', 'placeholder':'formation.add.description'|trans({},'messages') } } ) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.category,{'attr': {'class':'form-control', 'placeholder':'formation.add.category'|trans({},'messages') } } ) }}
+                </div>
+                <div class="form-group" >
+                    {{ form_widget(form.tags,{'attr': {'class':'form-control', 'data-role': 'tagsinput', 'placeholder':'formation.add.tags'|trans({},'messages') } } ) }}
+                </div>
+                <div id="dropzoneFormationPreview" class="form-group"></div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary btn-xs" id="formationVideoSubmit" value="{{'formation.add.submit'|trans({},'messages')}}"/>
+                </div>
+        </form>
+        {% javascripts  '@TeaCampusCommonBundle/Resources/public/js/bootstrap-tagsinput.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script>
+            $(document).ready(function() {
+                $("#formationVideoDropzoneForm").dropzone({
+                    addRemoveLinks: true,
+                    autoProcessQueue: false, // this is important as you dont want form to be submitted unless you have clicked the submit button
+                    autoDiscover: false,
+                    previewsContainer: '#dropzoneFormationPreview', // we specify on which div id we must show the files
+                    clickable: true, // this tells that the dropzone will not be clickable . we have to do it because v dont want the whole form to be clickable 
+                    maxFilesize: 500,
+                    maxFiles: 1,
+                    acceptedFiles: 'video/x-flv, video/x-msvideo, video/mp4, video/quicktime',
+                    accept: function(file, done) {
+                      done();
+                    },
+                    error: function(file, msg){
+                      alert("{{'formation.add.error'|trans({},'messages')}}");
+                    },
+                    success: function(file, data) {
+                        $('#videoFormation-list ul').prepend(data['content']).fadeIn(1000);
+                        $('#dropzoneFormationContainer').html('<div class="ajax_success text-center"><div class="icon center-block"><i class="fa fa-thumbs-up"></i></div><p class="large">{{'formation.add.success'|trans({},'messages')}}</p></div>')
+                    
+                    },
+                    init: function() {
+                      var myDropzone = this;
+                      $("#formationVideoSubmit").on('click',function(e) {
+                         e.preventDefault();
+                         var formIsValide = true;
+                         
+                         if(!$("#tea_formation_title").val()){
+                             $("#tea_formation_title").addClass("has-error");
+                             formIsValide = false;
+                         }
+                         if(!$("#tea_formation_description").val()){
+                             $("#tea_formation_description").addClass("has-error");
+                             formIsValide = false;
+                         }
+                         if(!$("#tea_formation_category").val()){
+                             $("#tea_formation_category").addClass("has-error");
+                             formIsValide = false;
+                         }
+                         
+                         if(formIsValide){
+                             myDropzone.processQueue(); 
+                         }else{
+                            $("#invalidFormationVideoMessage").fadeIn(500);
+                         }
+                      });
+
+                    }
+
+                });
+
+            });
+
+
+        </script>
+    </div>
+</section>

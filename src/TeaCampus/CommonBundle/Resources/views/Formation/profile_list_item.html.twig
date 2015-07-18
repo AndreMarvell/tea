@@ -5,10 +5,9 @@
                     {%if video.video is not null%}
                         {% thumbnail video.video, 'square' with{'alt':video.title,'title':video.title } %}
                     {%else%}
-                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/blurred.jpg" %}
-                        <img src="{{ asset_url }}">
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/no-video.png'  output="images/no_video_image.png" %}
+                        <img src="{{ asset_url }}" class="center-block" style="width:70%">
                         {% endimage %}
-                        <span>{{ 'project.other.title'|trans({}, 'messages') }}</span>
                     {%endif%}
                 </div>
                 <div class="project-content">

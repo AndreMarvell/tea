@@ -166,6 +166,13 @@ footer{
   color: #fff;
 }
 
+/****** Error  Form **********/
+
+.form-control.has-error{
+    border: 1px dashed #EF4E4E;
+}
+
+
 /******* TEA And Me ***********/
 
 .comment-teaandme{

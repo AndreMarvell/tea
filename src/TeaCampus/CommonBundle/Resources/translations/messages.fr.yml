@@ -257,6 +257,14 @@ formation:
     chapter:
         discover: Découvrir
         nb_videos: %nb% vidéo(s)
+    add:
+        title: Quel est le titre de la vidéo
+        description: Quel est la description de la vidéo
+        tags: Ajoutez des tags à cette vidéo (séparés par une virgule)
+        submit: Envoyer
+        error: Désolé, une erreur s'est produite lors de l'upload de votre vidéo
+        success: Votre vidéo a bien été ajoutée, elle sera validée dans les heures qui suivent
+        invalid: Veuillez vérifier que tout les champs sont correctement remplis
         
 teaandme:
     title: "#TEA&Moi"
@@ -277,6 +285,7 @@ teaandme:
         submit: Envoyer
         error: Désolé, une erreur s'est produite lors de l'upload de votre vidéo
         success: Votre vidéo a bien été ajoutée, elle sera validée dans les heures qui suivent
+        invalid: Veuillez vérifier que tout les champs sont correctement remplis
 
 contact:
     title: Contactez-nous

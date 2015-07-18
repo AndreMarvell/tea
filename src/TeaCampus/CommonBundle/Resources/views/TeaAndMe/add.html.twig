@@ -1,5 +1,6 @@
 <section class="wrap-contacts">
     <div class="container" id="dropzoneTeaAndMeContainer">
+        <div id="invalidTeaAndMeMessage" class="alert alert-danger" style="display: none;">{{'teaandme.add.invalid'|trans({},'messages')}}</div>
         <form enctype="multipart/form-data" class="dropzone" action="{{ path('tea_teaandme_add') }}" method="post" name="teaAndMeDropzoneForm" id="teaAndMeDropzoneForm" class="text-center">
                 <div class="form-group">
                     {{ form_widget(form.title,{'attr': {'class':'form-control', 'placeholder':'teaandme.add.title'|trans({},'messages') } } ) }}
@@ -41,7 +42,18 @@
                       var myDropzone = this;
                       $("#teaAndMeSubmit").on('click',function(e) {
                          e.preventDefault();
-                         myDropzone.processQueue(); 
+                         var formIsValide = true;
+                         
+                         if(!$("#teaandme_title").val()){
+                             $("#teaandme_title").addClass("has-error");
+                             formIsValide = false;
+                         }
+                         
+                         if(formIsValide){
+                             myDropzone.processQueue(); 
+                         }else{
+                            $("#invalidTeaAndMeMessage").fadeIn(500);
+                         }
                       });
 
                     }
