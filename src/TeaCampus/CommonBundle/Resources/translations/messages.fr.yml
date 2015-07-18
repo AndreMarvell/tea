@@ -15,7 +15,7 @@ menu:
         title: Profil
         account: Mon compte
         projects: Mes projets
-        videos: Mes vidéos
+        videos: Formation
         messages: Mes Messages
         teaandme: "#TEA&Moi"
         disconnect: Se déconnecter
@@ -271,6 +271,12 @@ teaandme:
         yes: Oui
         no: Non
         error: Désolé, une erreur s'est produite lors de la suppression
+    add:
+        title: Quel est le titre de la vidéo
+        tags: Ajoutez des tags à cette vidéo (séparés par une virgule)
+        submit: Envoyer
+        error: Désolé, une erreur s'est produite lors de l'upload de votre vidéo
+        success: Votre vidéo a bien été ajoutée, elle sera validée dans les heures qui suivent
 
 contact:
     title: Contactez-nous

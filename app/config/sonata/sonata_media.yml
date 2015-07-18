@@ -49,6 +49,7 @@ sonata_media:
             providers:
                 - sonata.media.provider.youtube
                 - sonata.media.provider.image
+                - sonata.media.provider.file
 
             formats:
                 small: { width: 150 , quality: 95}
@@ -149,3 +150,6 @@ sonata_media:
             resizer: sonata.media.resizer.square
             allowed_extensions: ['jpg', 'png', 'gif', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
+        file:
+            allowed_extensions: ['mp4', 'flv', 'avi', 'mkv', 'mpv', 'm4v']
+            allowed_mime_types: ['video/x-msvideo', 'video/mp4', 'video/quicktime', 'video/x-flv']

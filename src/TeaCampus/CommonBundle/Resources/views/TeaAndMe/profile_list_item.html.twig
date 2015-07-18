@@ -4,13 +4,10 @@
                 <div class="project-thumbs">
                     {%if video.video is not null%}
                         {% thumbnail video.video, 'square' with{'alt':video.title,'title':video.title } %}
-                    {%elseif video.media is not null%}
-                        {% thumbnail video.media, 'square' with{'alt':video.title,'title':video.title } %}
                     {%else%}
-                        {% image '@TeaCampusCommonBundle/Resources/public/images/blurred.jpg'  output="images/blurred.jpg" %}
-                        <img src="{{ asset_url }}">
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/no-teaandme.png'  output="images/no_video_teaandme_image.png" %}
+                        <img src="{{ asset_url }}" class="center-block" style="width:70%">
                         {% endimage %}
-                        <span>{{ 'project.other.title'|trans({}, 'messages') }}</span>
                     {%endif%}
                 </div>
                 <div class="project-content">
@@ -27,6 +24,7 @@
                         </div>
                     </div>
                     <h2 class="project-title">
+                        {%if video.video is not null%}
                         <a href="{{ path('tea_teaandme_show', { 'id': video.id} ) }}" class="ajax-popup-link">
                             {%if  video.title|length < 80%}
                                 {{video.title}}
@@ -34,6 +32,14 @@
                                 {{ video.title|striptags|slice(0, 80) ~ '...'}}
                             {%endif%}
                         </a>
+                        {%else%}
+                            {%if  video.title|length < 80%}
+                                {{video.title}}
+                            {%else%}
+                                {{ video.title|striptags|slice(0, 80) ~ '...'}}
+                            {%endif%}
+                        {%endif%}
+                        
                     </h2>
                     
                     
@@ -41,7 +47,7 @@
                     
                     <div class="project-metas">
                         <div class="project-edit pull-right">
-                            <a class="btn btn-primary btn-xs ajax-popup-link" href="{{ path('tea_teaandme_show', { 'id': video.id} ) }}"><i class="fa fa-eye"></i></a>
+                            {%if video.video is not null%}<a class="btn btn-primary btn-xs ajax-popup-link" href="{{ path('tea_teaandme_show', { 'id': video.id} ) }}"><i class="fa fa-eye"></i></a>{%endif%}
                             <a class="btn btn-primary btn-xs ajax-delete" href="#delete-modal-teaandme-{{video.id}}"><i class="fa fa-trash"></i></a>
                             <div id="delete-modal-teaandme-{{video.id}}" class="mfp-hide mfp-small-dialog">
                                 <h1>{{ 'teaandme.delete.title'|trans({}, 'messages') }}</h1>

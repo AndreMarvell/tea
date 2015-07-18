@@ -147,6 +147,24 @@ footer{
 .fos_comment_comment_metas div.comment-info.clearfix ul.list-inline.pull-right span{
     cursor: pointer;
 }
+/****** Ajax Success **********/
+.ajax_success .icon{
+
+  width: 80px;
+  height: 80px;
+  background: #27ae60;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid #bee6cf;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.ajax_success .icon i {
+  font-size: 36px;
+  color: #fff;
+}
 
 /******* TEA And Me ***********/
 

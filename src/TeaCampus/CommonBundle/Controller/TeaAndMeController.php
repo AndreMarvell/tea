@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Application\Sonata\MediaBundle\Entity\Media;
+use TeaCampus\CommonBundle\Entity\TeaAndMe;
+use TeaCampus\CommonBundle\Form\TeaAndMeType;
 
 
 class TeaAndMeController extends Controller
@@ -101,8 +104,50 @@ class TeaAndMeController extends Controller
         }
     }
     
-    public function addAction(){
+    public function addAction(Request $request){
         
+        $em         = $this->getDoctrine()->getManager();
+        $context    = $em->getRepository('ApplicationSonataClassificationBundle:Context')->find('teaandme');
+        $form       = $this->createForm(new TeaAndMeType($em, $context), new TeaAndMe());
+
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+
+            $teaAndMe   = $form->getData();
+            // On recupere le current user
+            $usr        = $this->get('security.context')->getToken()->getUser();
+            $teaAndMe->setAuthor($usr);
+            
+            // Getting sonata media manager service
+            $mediaManager = $this->container->get('sonata.media.manager.media');
+            
+            // Getting sonata media object and saving media
+            $media = new Media;
+            $media->setBinaryContent($request->files->get('file'));
+            $media->setContext('teaandme');
+            $media->setProviderName('sonata.media.provider.file');
+            $mediaManager->save($media);
+            
+            $teaAndMe->setMedia($media);
+           
+
+            $em->persist($teaAndMe);
+            $em->flush();
+
+            $html = $this->container->get('templating')->render('TeaCampusCommonBundle:TeaAndMe:profile_list_item.html.twig', array('video' => $teaAndMe));
+            $response = new Response();
+            $response->setContent(json_encode(array("success" => true, "content" => $html)));
+            $response->headers->set('Content-Type', 'application/json');
+
+            return $response;
+ 
+            
+        }
+ 
+        return $this->render('TeaCampusCommonBundle:TeaAndMe:add.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
     
     
