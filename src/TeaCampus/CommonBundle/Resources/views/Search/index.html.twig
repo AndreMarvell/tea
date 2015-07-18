@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 {% spaceless %}
 {% block title %}
-    {{ subject.name }} - {{ parent() }}
+    {{ search_title | trans }} - {{ parent() }}
 {% endblock %}    
 {% block main_content %}
 <!-- Home - Header -->
@@ -11,50 +11,89 @@
         <section class="about-header">
             <div class="container">	
                 <div class="row">
-                    <div class="col-md-8 wow fadeInUp" data-wow-duration="2s" >
-                        <header class="section-header" style="margin:0;color: white;">
-                            <p class="subhead">{{ 'formation.subject.subhead'| trans({},'messages') }}</p>
-                            <h2 style="color: white;">{{subject.name}}</h2>
-                            <p class="large">{%if subject.description is not null%}{{subject.description}}{%else%}{{ 'formation.no_description'| trans({},'messages') }}{%endif%}</p>
-                        </header>	
-                    </div>
-                    <div class="col-md-4 wow fadeInUp" data-wow-duration="2s" >
-                        {%if subject.icon is not null%}
-                            <img src="{{ asset('bundles/teacampuscommon/images/formation/'~subject.icon~'.png') }}" alt="TeaCampus {{subject.name}}"  width="150px"/>
-                        {%endif%}
+                    <div class="col-md-12 wow fadeInUp" data-wow-duration="2s" >
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/search.png'  output="images/ico/search.png" %}
+                        <img src="{{ asset_url }}" alt="TeaCampus Search"  width="100px"/>
+                        {% endimage %}
+                        <br>
+                        <h1 class="title">{{ search_title| trans({},'messages') }}</h1>
                     </div>
                 </div><!--row-->
             </div><!--container-->
         </section>
-        <!-- Formation - Gallery -->
+        <!-- Search - Tabs -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-        <section class="gallery wrap-contacts" id="gallery" style="margin-bottom:0">
-            <div class="container">
-                <div class="anchor-icon"><i class="fa fa-graduation-cap"></i></div>
-            </div><!--container-->
+        <section  class="profil-tabs wrap-contacts">
+            <div class="container container-tabs">
+                <div class="anchor-icon"><i class="fa fa-search"></i></div>
+                <!-- Nav tabs -->
+                <ul id="user-profil-tabs" class="nav  nav-tabs-alt nav-tabs-two nav-tab-inverse" role="tablist">
+                    <li role="presentation" class="active"><a href="#users" aria-controls="users" role="tab" data-toggle="tab"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ 'search.tabs.users.title'| trans({},'messages') }}&nbsp;({{users|length}})</a></li>
+                    <li role="presentation"><a href="#projects" aria-controls="projects" role="tab" data-toggle="tab"><i class="fa fa-file-o"></i>&nbsp;&nbsp;{{ 'search.tabs.projects.title'| trans({},'messages') }}&nbsp;({{projects|length}})</a></li>
+                    <li role="presentation"><a href="#teaandme" aria-controls="teaandme" role="tab" data-toggle="tab"><i class="fa fa-play-circle-o"></i>&nbsp;&nbsp;{{ 'search.tabs.teaandme.title'| trans({},'messages') }}&nbsp;({{teaAndMe|length}})</a></li>
+                    <li role="presentation"><a href="#formations" aria-controls="formations" role="tab" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;{{ 'search.tabs.formations.title'| trans({},'messages') }}&nbsp;({{formations|length}})</a></li>
+                </ul>
 
-            <div class="gallery-controls wow fadeInUp" data-wow-duration="2s" >
-                <div id="filters" class="btn-group">
-                    <button type="button" class="btn btn-info active"  data-filter="*">{{ 'formation.subject.all'| trans({},'messages') }}</button>
-                    {%for child in subject.children%}
-                    <button type="button" class="btn btn-info"  data-filter=".{{child.slug}}">{{child.name}}</button>
-                    {%endfor%}
-                </div>
-            </div>
+                <!-- Tab panes -->
+                <div class="tab-content">
 
-            <div id="gallery-items" class="gallery-items wow fadeInUp container wrap-works" data-wow-duration="2s" >
-                {%for video in videos%}
-                <div class="col-md-3 gallery-item {{video.category.slug}}">
-                        {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
-                </div>
-                {%else%}
-                    <div class="text-center col-md-12">{{ 'video.other.no_video_found'| trans({},'messages') }}</div>
-                {%endfor%}
-            </div>
-            <div class="gallery-load">
-                {#<button type="button" class="btn btn-info">Load more</button>#}
-            </div>
-        </section>
+                    <!--  Users -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane active" id="users">
+                        
+                        <div class="row tabpanel-content">
+                            {% for user in users %}
+                                <div class="col-md-3 col-sm-6" >
+                                    <a href="{{ path('tea_user_profile',{'id':user.id}) }}"><p>{%if user.firstname is not null%}{{user.firstname ~ ' ' ~ user.lastname }}{%else%}{{user.username}}{%endif%}</p></a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                    </div><!--tabpanel-->
+                    <!--  Projets -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane" id="projects">
+                        
+                        <div class="row tabpanel-content wrap-features">
+                            {% for project in projects %}
+                                <div class="col-md-3 col-sm-6" >
+                                    {{ include( 'TeaCampusCommonBundle:Projet:list_item.html.twig', {'project':project}) }}
+                                </div>
+                            {%endfor%}
+                        </div>
+                    </div><!--tabpanel-->
+                    <!--  Tea&Moi -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane" id="teaandme">
+                        
+                        <div class="row tabpanel-content wrap-blog-content blog  ">
+                            {% for video in teaAndMe %}
+                                <div class="col-md-3 col-sm-6" >
+                                    {{ include( 'TeaCampusCommonBundle:TeaAndMe:list_item.html.twig', {'video':video}) }}
+                                </div>
+                            {%endfor%}
+                        </div>
+                    </div><!--tabpanel-->
+                    <!--  Formations -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+                    <div role="tabpanel" class="tab-pane" id="formations">
+                        
+                        <div class="row tabpanel-content wrap-works ">
+                            {% for video in formations %}
+                                <div class="col-md-3 col-sm-6" >
+                                    {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
+                                </div>
+                            {%endfor%}
+                        </div>
+                    </div><!--tabpanel-->
+
+            </div><!--tab-content-->
+
+        </div><!--container-->
+
+
+
+    </section>
+        
         
 {% endblock %}
 

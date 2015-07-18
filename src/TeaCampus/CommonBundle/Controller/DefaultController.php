@@ -3,6 +3,7 @@
 namespace TeaCampus\CommonBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -99,6 +100,38 @@ class DefaultController extends Controller
                ));
         
         }
+    }
+    
+    public function searchAction(Request $request)
+    {
+        if ($request->getMethod() == "POST") {
+            
+            $search = $request->request->get('search');
+            
+            if (!is_null($search) && !empty($search)) {
+                
+                $em             = $this->getDoctrine()->getManager();
+
+                $formations     = $em->getRepository('TeaCampusCommonBundle:Video')->search($search,20);
+                $projects       = $em->getRepository('TeaCampusCommonBundle:Projet')->search($search,20);
+                $teaAndMe       = $em->getRepository('TeaCampusCommonBundle:TeaAndMe')->search($search,40);
+                $users          = $em->getRepository('ApplicationSonataUserBundle:User')->search($search,50);
+                
+                
+                
+                
+                return $this->render('TeaCampusCommonBundle:Search:index.html.twig', array(
+                    'search_title'      => 'search.title',
+                    'search'            => $search,
+                    'formations'        => $formations,
+                    'projects'          => $projects,
+                    'teaAndMe'          => $teaAndMe,
+                    'users'             => $users,
+                ));
+            }
+        }
+        return $this->redirect( $this->generateUrl('tea_homepage') );
+                
     }
     
     

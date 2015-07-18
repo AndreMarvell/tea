@@ -37,7 +37,7 @@
                     </div>
                 </div><!--row-->
                 <div class="row">
-                  {% for video in lastVideos %}
+                {% for video in lastVideos %}
                     <div class="col-md-3 col-sm-6" >
                         {{ include( 'TeaCampusCommonBundle:Formation:list_item.html.twig', {'video':video}) }}
                     </div>

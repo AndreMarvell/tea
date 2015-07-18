@@ -317,6 +317,19 @@ contact:
             error: Erreur d'envoi du message. Vérifiez que tous les champs sont correctement remplis
     map:
         title: Carte
+        
+search:
+    title: Recherche
+    tabs:
+        users:
+            title: Utilisateurs
+        projects:
+            title: Projets
+        teaandme:
+            title: "#Tea&Moi"
+        formations:
+            title: Formations
+        
  
 mentions:
     title: Mentions légales

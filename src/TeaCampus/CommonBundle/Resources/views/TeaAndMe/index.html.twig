@@ -43,28 +43,7 @@
                             <div class="row wrap-works" style="margin-top:50px;">
                             {% for video in pagination %}
                                 <div class="col-lg-3 col-md-4" >
-                                    <div class="post">
-                                        <div class="post-heading">
-                                            <div class="post-image" style="height:auto">
-                                                {% thumbnail video.video, 'big' with {'width':'100%','height':'auto','alt':video.title} %}
-                                                <div class="mask">
-                                                    <div class="icons">
-                                                        <a href="{{ path('tea_teaandme_show',{'id':video.id}) }}" class="ajax-popup-link"><i class="fa fa-play-circle fa-2x"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-body">
-                                            <h6 style="min-height: 35px;">
-                                                {%if  video.title|length < 31%}
-                                                    {{video.title}}
-                                                {%else%}
-                                                    {{video.title|striptags|slice(0, 31) ~ '...'}}
-                                                {%endif%}
-                                            </h6>
-                                            <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p>{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p></a>
-                                        </div>
-                                    </div>
+                                    {{ include( 'TeaCampusCommonBundle:TeaAndMe:list_item.html.twig', {'video':video}) }}
                                 </div>
                             {%endfor%}
                             </div>
