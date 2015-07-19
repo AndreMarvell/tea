@@ -43,8 +43,23 @@
                         
                         <div class="row tabpanel-content">
                             {% for user in users %}
-                                <div class="col-md-3 col-sm-6" >
-                                    <a href="{{ path('tea_user_profile',{'id':user.id}) }}"><p>{%if user.firstname is not null%}{{user.firstname ~ ' ' ~ user.lastname }}{%else%}{{user.username}}{%endif%}</p></a>
+                                <div class="col-md-3 col-sm-6 client" >
+                                    <div class="media">
+                                        <div class="media-left col-middle">
+                                            <a href="{{ path('tea_user_profile',{'id':user.id}) }}">
+                                                {% if user.avatar is not null %}
+                                                    {% thumbnail user.avatar, 'square' with{'class':'avatar media-object ', 'alt':user.username} %}
+                                                {% else %}
+                                                    {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                                    <img class="avatar media-object " src="{{ asset_url }}">
+                                                    {% endimage %}
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                        <div class="media-body col-middle">
+                                            <a href="{{ path('tea_user_profile',{'id':user.id}) }}"><h6>{%if user.firstname is not null%}{{user.firstname ~ ' ' ~ user.lastname }}{%else%}{{user.username}}{%endif%}</h6></a>
+                                        </div>
+                                    </div>
                                 </div>
                             {%endfor%}
                         </div>
@@ -60,6 +75,7 @@
                                 </div>
                             {%endfor%}
                         </div>
+                        {{ include( 'TeaCampusCommonBundle:Search:hidden.html.twig', {'search':search,'search_link':'tea_projects_search','search_button':'search.hidden'}) }}
                     </div><!--tabpanel-->
                     <!--  Tea&Moi -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
@@ -84,6 +100,7 @@
                                 </div>
                             {%endfor%}
                         </div>
+                        {{ include( 'TeaCampusCommonBundle:Search:hidden.html.twig', {'search':search,'search_link':'tea_formations_search','search_button':'search.hidden'}) }}
                     </div><!--tabpanel-->
 
             </div><!--tab-content-->

@@ -1,0 +1,6 @@
+<div class="row text-center">
+    <form method="POST" action="{{path(search_link)}}">
+        <input type="hidden" name="search" class="form-control " value="{{search}}"/>
+        <input type="submit" class="btn btn-info" value="{{ search_button| trans({},'messages') }}"/>
+    </form>
+</div>

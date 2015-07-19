@@ -12,7 +12,7 @@
 
 <header class="header">
     <nav id="nav" class="navbar navbar-default navbar-fixed-top {{navClass}}" role="navigation">
-        <div class="container relative-nav-container">
+        <div class="container relative-nav-container  {%if currentPath == 'tea_search_index' %}open-search{%endif%}">
             <a class="toggle-button visible-xs-block" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-navicon"></i>
             </a>
@@ -61,12 +61,12 @@
                 </ul>
             </div>
         </div>
-
-        <div class="navbar-search">
+        
+        <div class="navbar-search {%if currentPath == 'tea_search_index' %}open{%endif%}">
             <div class="container">
                 <form role="search" action="{{path('tea_search_index')}}" method="POST">
                     <div class="input-group">
-                        <input type="text" name="search" placeholder="{{ 'menu.search'|trans({},'messages') }}" class="form-control" autocomplete="off">
+                        <input type="text" pattern=".{4,}"   required title="4 caractères minimum" name="search" placeholder="{{ 'menu.search'|trans({},'messages') }}" {%if currentPath == 'tea_search_index' and search is defined%}value="{{search}}"{%endif%} class="form-control" autocomplete="off">
                         <span class="input-group-btn">
                             <button type="reset" class="btn search-close" id="search-close">
                                 <i class="fa fa-close"></i>
