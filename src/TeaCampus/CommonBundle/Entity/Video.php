@@ -65,7 +65,7 @@ class Video
     
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"}, fetch="LAZY")
      */
     protected $media;
     
