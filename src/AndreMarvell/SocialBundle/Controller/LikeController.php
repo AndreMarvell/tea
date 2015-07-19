@@ -47,7 +47,7 @@ class LikeController extends Controller
         
         if(is_null($like)){
             if(is_null($user) || !($user instanceof Application\Sonata\UserBundle\Entity\User)){
-                throw new NotFoundHttpException("Must login to like!");
+                throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException("Must login to like!");
             }else{
                 $like = new Like($em->getRepository('AndreMarvellSocialBundle:LikeThread')->find($thread_id),$user);
                 $em->persist($like);

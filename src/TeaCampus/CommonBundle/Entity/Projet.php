@@ -163,31 +163,6 @@ class Projet
      */
     private $tags;
     
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $like;
-    
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $view;
-    
-    
-    
-    /**
-     * Creer les thread
-     *
-     * @return void 
-     */
-    public function createThread(){
-        $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("projet".$this->id);
-        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("projet".$this->id);
-    }
     
     /**
      * Get id
@@ -425,53 +400,7 @@ class Projet
         return $this->date;
     }
 
-    /**
-     * Set like
-     *
-     * @param \AndreMarvell\SocialBundle\Entity\LikeThread $like
-     *
-     * @return Projet
-     */
-    public function setLike(\AndreMarvell\SocialBundle\Entity\LikeThread $like = null)
-    {
-        $this->like = $like;
-
-        return $this;
-    }
-
-    /**
-     * Get like
-     *
-     * @return \AndreMarvell\SocialBundle\Entity\LikeThread
-     */
-    public function getLike()
-    {
-        return $this->like;
-    }
-
-    /**
-     * Set view
-     *
-     * @param \AndreMarvell\SocialBundle\Entity\ViewThread $view
-     *
-     * @return Projet
-     */
-    public function setView(\AndreMarvell\SocialBundle\Entity\ViewThread $view = null)
-    {
-        $this->view = $view;
-
-        return $this;
-    }
-
-    /**
-     * Get view
-     *
-     * @return \AndreMarvell\SocialBundle\Entity\ViewThread
-     */
-    public function getView()
-    {
-        return $this->view;
-    }
+    
 
     /**
      * Add tag

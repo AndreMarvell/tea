@@ -64,11 +64,6 @@ class ProjetController extends Controller {
             $em->persist($projet);
             $em->flush();
 
-            $projet->createThread();
-
-            $em->persist($projet);
-            $em->flush();
-
 //            \Doctrine\Common\Util\Debug::dump($projet->getMedia());
 //            exit;
 

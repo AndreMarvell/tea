@@ -277,27 +277,5 @@ class Concours
         return $this->getTitle();
     }
 
-    /**
-     * Set like
-     *
-     * @param \AndreMarvell\SocialBundle\Entity\LikeThread $like
-     *
-     * @return Concours
-     */
-    public function setLike(\AndreMarvell\SocialBundle\Entity\LikeThread $like = null)
-    {
-        $this->like = $like;
-
-        return $this;
-    }
-
-    /**
-     * Get like
-     *
-     * @return \AndreMarvell\SocialBundle\Entity\LikeThread
-     */
-    public function getLike()
-    {
-        return $this->like;
-    }
+    
 }

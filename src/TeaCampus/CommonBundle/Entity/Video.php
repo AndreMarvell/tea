@@ -85,30 +85,7 @@ class Video
      * @ORM\ManyToOne(targetEntity="Application\Sonata\ClassificationBundle\Entity\Category", cascade={"persist"}, fetch="LAZY")
      */
     protected $category;
-    
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\LikeThread", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $like;
-    
-    /** 
-     *
-     * @ORM\OneToOne(targetEntity="AndreMarvell\SocialBundle\Entity\ViewThread", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $view;
-    
-    /**
-     * Creer les thread
-     *
-     * @return void 
-     */
-    public function createThread(){
-        $this->view = new \AndreMarvell\SocialBundle\Entity\ViewThread("video".$this->id);
-        $this->like = new \AndreMarvell\SocialBundle\Entity\LikeThread("video".$this->id);
-    }
+
     
     function __construct() {
         $this->date = new \DateTime();
@@ -246,54 +223,6 @@ class Video
     
     public function __toString() {
         return $this->getTitle();
-    }
-
-    /**
-     * Set like
-     *
-     * @param \AndreMarvell\SocialBundle\Entity\LikeThread $like
-     *
-     * @return Video
-     */
-    public function setLike(\AndreMarvell\SocialBundle\Entity\LikeThread $like = null)
-    {
-        $this->like = $like;
-
-        return $this;
-    }
-
-    /**
-     * Get like
-     *
-     * @return \AndreMarvell\SocialBundle\Entity\LikeThread
-     */
-    public function getLike()
-    {
-        return $this->like;
-    }
-
-    /**
-     * Set view
-     *
-     * @param \AndreMarvell\SocialBundle\Entity\ViewThread $view
-     *
-     * @return Video
-     */
-    public function setView(\AndreMarvell\SocialBundle\Entity\ViewThread $view = null)
-    {
-        $this->view = $view;
-
-        return $this;
-    }
-
-    /**
-     * Get view
-     *
-     * @return \AndreMarvell\SocialBundle\Entity\ViewThread
-     */
-    public function getView()
-    {
-        return $this->view;
     }
 
     /**
