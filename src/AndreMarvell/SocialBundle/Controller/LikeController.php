@@ -4,18 +4,23 @@ namespace AndreMarvell\SocialBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use FOS\UserBundle\Model\UserInterface;
 use AndreMarvell\SocialBundle\Entity\Like;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use AndreMarvell\SocialBundle\Entity\LikeThread;
 
 class LikeController extends Controller
 {
     public function indexAction($id)
     {
-        $em     = $this->getDoctrine()->getManager();
-        $Thread = $em->getRepository('AndreMarvellSocialBundle:LikeThread')->findOneById($id);
+        $em         = $this->getDoctrine()->getManager();
+        $Thread     = $em->getRepository('AndreMarvellSocialBundle:LikeThread')->findOneById($id);
+        $isLiker    = false;
         
-        if(is_null($Thread) || $Thread->getNumLikes()==0){
-            $isLiker= false;
+        if(is_null($Thread)){
+            $Thread = new LikeThread($id);
+            $em->persist($Thread);
+            $em->flush($Thread);
+            
         }else{
             
             $user   = $this->get('security.context')->getToken()->getUser();
@@ -23,8 +28,7 @@ class LikeController extends Controller
                          ->findOneBy(array('thread' => $Thread, 'liker'=>  $user));
         
             $isLiker = (!is_null($like))?true:false;
-
-            
+ 
         }
         
         return $this->render('AndreMarvellSocialBundle:Like:like.html.twig', 
@@ -45,9 +49,12 @@ class LikeController extends Controller
         $like       = $em->getRepository('AndreMarvellSocialBundle:Like')
                          ->findOneBy(array('thread' => $thread_id, 'liker'=>  $user));
         
+        $success    = true;
+        $message    = "error";
         if(is_null($like)){
-            if(is_null($user) || !($user instanceof Application\Sonata\UserBundle\Entity\User)){
-                throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException("Must login to like!");
+            if(!is_object($user) || !$user instanceof UserInterface){
+                $success = false;
+                $message = "not_connected";
             }else{
                 $like = new Like($em->getRepository('AndreMarvellSocialBundle:LikeThread')->find($thread_id),$user);
                 $em->persist($like);
@@ -60,11 +67,16 @@ class LikeController extends Controller
             $em->flush($like);
         }
         
-        $thread = $like->getThread();
-        $em->flush($thread);
-        
         $response = new Response();
-        $response ->setContent(json_encode($thread->getNumLikes()));
+        
+        if(!is_null($like)){
+            $thread = $like->getThread();
+            $em->flush($thread);
+            $response ->setContent(json_encode(array("success" => $success,'likes'=>$thread->getNumLikes(),'message'=>$message)));
+        }else{
+            $response ->setContent(json_encode(array("success" => $success,'message'=>$message)));
+        }
+        
         $response ->headers->set('Content-Type', 'application/json');
         
         return $response;

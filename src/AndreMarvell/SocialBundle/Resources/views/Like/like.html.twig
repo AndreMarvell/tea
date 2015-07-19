@@ -1,14 +1,25 @@
-<i id="like" class="fa fa-thumbs-up pointer{% if isLiker %} color is-liker {% endif %}"></i> <span id="nb-likes">{{ Thread.numLikes}}</span>
+
 <script type="text/javascript">
-        $(document).ready(function() {
-            $('#like').on('click', function(e){
-                e.preventDefault();
-                $.post('{{path('andre_marvell_social_like_action')}}',               
-                {id: '{{ Thread.id}}'}, 
-                function(response){
-                    $('#nb-likes').html(response);
-                    $( "#like" ).toggleClass( "color is-liker" );
-                }, "json");
-            });
-         });
+    $(document).ready(function() {
+        
+        $('#like_thread').html('<div class="thread_icon center-block pointer {% if isLiker %} is-liker {% endif %}"><i id="like" style="margin-right:auto" class="fa fa-thumbs-up"></i></div> <span id="nb-likes" class="center-block thread_num">{{ Thread.numLikes}}</span>');
+        
+        $('#like').on('click', function(e){
+            e.preventDefault();
+            $.post('{{path('andre_marvell_social_like_action')}}',               
+            {id: '{{ Thread.id}}'}, 
+            function(response){
+                if(response['success']){
+                    $('#nb-likes').html(response['likes']);
+                    $( "#like_thread .thread_icon" ).toggleClass( "is-liker" );
+                }else{
+                    var translations = {
+                        'not_connected' :  '{{ 'social.like.mustlogin' | trans }}',
+                        'error' : '{{ 'social.like.error' | trans }}',
+                     };
+                    alert(translations[response['message']]);
+                }    
+            }, "json");
+        });
+     });
 </script>

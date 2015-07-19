@@ -147,6 +147,53 @@ footer{
 .fos_comment_comment_metas div.comment-info.clearfix ul.list-inline.pull-right span{
     cursor: pointer;
 }
+
+/****** View & Like  **********/
+
+#like_thread .thread_icon.is-liker{
+  background-color: teal;
+}
+
+
+.social_thread .thread_icon{
+  width: 76px;
+  height: 76px;
+  background: #27ae60;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 4px solid #bee6cf;
+  text-align: center;
+  padding-top: 16px;
+}
+
+#like_thread .thread_icon{
+    cursor: pointer;
+} 
+
+
+.social_thread .thread_num{
+  display: block;
+  width: 70px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 3px;
+  color: #27AE60;
+  margin-top: -12px;
+  background: #FFFFFF;
+  border: 1px solid #27AE60;
+}
+
+#like_thread .thread_icon.is-liker i{
+/*    font-size: 30px;
+    color: #fff;*/
+}
+#like_thread .thread_icon i, #view_thread .thread_icon i{
+    font-size: 30px;
+/*    color: #27ae60;*/
+    color: #fff;
+}
+
 /****** Ajax Success **********/
 .ajax_success .icon{
 

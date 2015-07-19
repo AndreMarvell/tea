@@ -7,7 +7,7 @@ andre_marvell_social_like_index:
     path:     /like
     defaults: { _controller: AndreMarvellSocialBundle:Like:index }
     
-andre_marvell_social_like_action:
+andre_marvell_social_view_action:
     path:     /asynchrone/view/
     defaults: { _controller: AndreMarvellSocialBundle:View:view }
     condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"

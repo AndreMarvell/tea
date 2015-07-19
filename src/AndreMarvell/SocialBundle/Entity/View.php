@@ -29,6 +29,7 @@ class View
     /**
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="viewer_id", referencedColumnName="id", nullable=true)
      * @var User
      */
     protected $viewer;

@@ -1,0 +1,4 @@
+social:
+    like:
+        mustlogin: Vous devez être connecté pour aimer cette page
+        error: Désolé, une erreur est survenue lors de la tentative de Like
