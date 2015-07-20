@@ -42,6 +42,7 @@
                             <img src="{{ asset_url }}">
                             {% endimage %}
                         {%endif%}
+                        {% include 'TeaCampusCommonBundle:Sections:page_social_meta.html.twig' with{'author': project.author,'date' : project.createdAt} %} 
                         <div style="margin-top:20px">
                             <div class="wrap-decription" >
                                 <h5>{{ 'project.show.description'|trans({}, 'messages') }}</h5>
@@ -158,14 +159,6 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="row" style="margin-top:20px">
-                                            <div class="col-md-6 col-sm-6 text-center">
-                                                <div id="like_thread" class="social_thread"></div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 text-center">
-                                                <div id="view_thread" class="social_thread"></div>
-                                            </div>
-                                        </div>
                                         <div class="col-md-12 col-share" style="margin-top:20px">
                                             <div class="type-info pull-left">
                                                 <h5>{{ 'project.show.share'|trans({}, 'messages') }}</h5>

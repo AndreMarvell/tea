@@ -42,6 +42,7 @@
                         <div class=" post-content">
                             <p>{{post.abstract|raw}}</p>
                             {% thumbnail post.image, 'wide' with{'class':'img-responsive',  'alt':post.title,   'title':post.title } %}
+                            {% include 'TeaCampusCommonBundle:Sections:page_social_meta.html.twig' with{'author': post.author,'date' : post.createdAt} %} 
                             {{ post.content | raw }}
                         </div>
 
@@ -90,12 +91,12 @@
 
 
 {% block scripts %}
-    <script>
-        $(document).ready(function() {
-            
-        });
-            
-    </script>
+    {% block LikeScripts %}
+        {{ render(controller('AndreMarvellSocialBundle:Like:index', { 'id': 'news'~post.id})) }}
+    {% endblock %}
+    {% block ViewScripts %}
+        {{ render(controller('AndreMarvellSocialBundle:View:index', { 'id': 'news'~post.id})) }}
+    {% endblock %}
 {% endblock %}
 
 {% endspaceless %}

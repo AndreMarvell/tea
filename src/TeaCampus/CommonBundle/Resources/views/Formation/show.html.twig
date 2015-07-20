@@ -34,6 +34,7 @@
                                 </header>
                             </div>
                         </div>
+                        {% include 'TeaCampusCommonBundle:Sections:page_social_meta.html.twig' with{'author': video.author,'date' : video.date} %} 
                         <div class="text-center col-md-12">
                             <!-- Formation - Catégories -->
                             <!-- ++++++++++++++++++++++++++++++++++++++++ -->
@@ -56,7 +57,12 @@
 {% endblock %}
 
 {% block scripts %}
-                
+    {% block LikeScripts %}
+        {{ render(controller('AndreMarvellSocialBundle:Like:index', { 'id': 'formations'~video.id})) }}
+    {% endblock %}
+    {% block ViewScripts %}
+        {{ render(controller('AndreMarvellSocialBundle:View:index', { 'id': 'formations'~video.id})) }}
+    {% endblock %}
 {% endblock %}
 
 {% endspaceless %}

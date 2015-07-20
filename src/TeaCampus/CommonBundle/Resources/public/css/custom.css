@@ -148,51 +148,31 @@ footer{
     cursor: pointer;
 }
 
-/****** View & Like  **********/
+/****** View & Like & Page Meta  **********/
 
-#like_thread .thread_icon.is-liker{
-  background-color: teal;
-}
+.page-social-meta{margin:15px auto;}
+.page-social-meta .social-meta span { border-width: 1px; border-style: solid; border-color: #D3DAD6; height: 27px; line-height: 27px; display: inline-block; vertical-align: middle; font-size: 12px; margin-right: 7px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; overflow: hidden; padding: 0 7px; }
+.page-social-meta .social-meta span span { border: 0; height: auto; margin: 0; padding: 0; }
+.page-social-meta .social-meta span.author { padding-left: 0 }
+.page-social-meta .social-meta span.author img { margin-top: -3px; margin-bottom: auto !important; }
+.page-social-meta .social-meta span a:hover { text-decoration: none; color: #3fc380; padding: 0 5px; }
+.page-social-meta .social-meta span.meta-icon { border-color: #3fc380 }
+/* Post meta */
+.page-social-meta .social-meta { margin-top: 10px; font-size: 12px; color: #a9adb2; }
+.page-social-meta .social-meta a { color: #a9adb2 }
+.page-social-meta .social-meta i,
+.page-social-meta .social-meta img { margin-right: 5px }
+.page-social-meta .social-meta span { margin-right: 8px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+/* Meta category */
+.page-social-meta .meta-category {margin-top: 10px;height: 27px; line-height: 27px; font-size: 12px; padding: 0 7px; border-width: 1px; border-color: #D3DAD6; border-style: solid; position: relative; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.page-social-meta .meta-category em { padding-left: 27px; display: inline-block; }
+.page-social-meta .meta-category a:hover { text-decoration: none; padding: 0 5px; }
+.page-social-meta .meta-category i { color: #e74c3c; font-size: 17px; position: absolute; left: 0; top: 0; bottom: 0; width: 27px; line-height: 27px; text-align: center; background-color: whitesmoke; }
 
-.social_thread .thread_icon{
-  width: 76px;
-  height: 76px;
-  background: #27ae60;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  border: 4px solid #bee6cf;
-  text-align: center;
-  padding-top: 16px;
-}
-
-#like_thread .thread_icon{
-    cursor: pointer;
-} 
-
-
-.social_thread .thread_num{
-  display: block;
-  width: 70px;
-  font-size: 10px;
-  font-weight: 700;
-  border-radius: 3px;
-  color: #27AE60;
-  margin-top: -12px;
-  background: #FFFFFF;
-  border: 1px solid #27AE60;
-}
-
-#like_thread .thread_icon.is-liker i{
-/*    font-size: 30px;
-    color: #fff;*/
-}
-#like_thread .thread_icon i, #view_thread .thread_icon i{
-    font-size: 30px;
-/*    color: #27ae60;*/
-    color: #fff;
-}
+.page-social-meta #like_thread.meta-category.is-liker{border-color:#e74c3c;}
+.page-social-meta #like_thread.meta-category.is-liker i{background-color:#e74c3c;color:#fff;}
+.page-social-meta #like_thread.meta-category.is-liker a{color:#e74c3c;}
 
 /****** Ajax Success **********/
 .ajax_success .icon{

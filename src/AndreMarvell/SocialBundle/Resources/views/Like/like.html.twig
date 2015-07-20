@@ -2,16 +2,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
         
-        $('#like_thread').html('<div class="thread_icon center-block pointer {% if isLiker %} is-liker {% endif %}"><i id="like" style="margin-right:auto" class="fa fa-thumbs-up"></i></div> <span id="nb-likes" class="center-block thread_num">{{ Thread.numLikes}}</span>');
+        {% if isLiker %} $('#like_thread').addClass("is-liker");{% endif %}
+        $('#like_thread_count').html('{{ Thread.numLikes}}');
         
-        $('#like').on('click', function(e){
+        $('#like_thread a').on('click', function(e){
             e.preventDefault();
             $.post('{{path('andre_marvell_social_like_action')}}',               
             {id: '{{ Thread.id}}'}, 
             function(response){
                 if(response['success']){
-                    $('#nb-likes').html(response['likes']);
-                    $( "#like_thread .thread_icon" ).toggleClass( "is-liker" );
+                    $('#like_thread_count').html(response['likes']);
+                    $( "#like_thread" ).toggleClass( "is-liker" );
                 }else{
                     var translations = {
                         'not_connected' :  '{{ 'social.like.mustlogin' | trans }}',
