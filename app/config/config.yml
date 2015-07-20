@@ -180,41 +180,6 @@ parameters:
     sonata.news.admin.post.class: Application\Sonata\NewsBundle\Admin\PostAdmin
     sonata.classification.admin.category.class: Application\Sonata\ClassificationBundle\Admin\CategoryAdmin
 
-
-nomaya_social:
-    buttons:
-        facebook:
-            url:            null
-            locale:         "fr_FR"
-            send:           false
-            width:          300
-            showFaces:      false
-            layout:         "button"
-        twitter:
-            url:            null
-            locale:         "fr"
-            message:        "Je veux partager ça avec vous"
-            text:           "Tweet"
-            via:            "TEAfrica2015"
-            tag:            "teacampus"
-        googleplus:
-            url:            null
-            locale :        "fr"
-            size :          "medium"
-            annotation :    "bubble"
-            width :         300
-        linkedin:            
-            url:            null
-            locale:         "fr_FR"
-            counter:        "right"
-        pinterest:
-            url:            null
-    links: 
-        facebook:           "https://www.facebook.com/pages/Todays-Entrepreneurs-in-Africa/986084074734919"
-        #googleplus:         "https://plus.google.com/105931415830389032796"
-        twitter:            "https://twitter.com/TEAfrica2015"
-    theme:                  'default' # optional
-
 fos_message:
     db_driver: orm
     thread_class:         Application\FOS\MessageBundle\Entity\Thread

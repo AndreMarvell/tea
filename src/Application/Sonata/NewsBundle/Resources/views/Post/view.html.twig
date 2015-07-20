@@ -51,13 +51,7 @@
                             <div class="col-md-6">
                                 <div class="share" >
                                     {{'share.title'|trans({},'messages')}}:
-                                    
-                                    <ul class="copyright-links">
-                                        <li style="margin-top: -10px">{{ facebookButton() }}</li>
-                                        <li style="margin-top: 2px">{{ googleplusButton() }}</li>
-                                        <li style="margin-top: -10px">{{ twitterButton() }}</li>
-                                        <li style="margin-top: -10px">{{ linkedinButton() }}</li>
-                                    </ul>
+                                    {% include 'AndreMarvellSocialBundle:Share:share.html.twig' with{'title': post.title} %} 
                                 </div>
                             </div>
                             <div class="col-md-6">

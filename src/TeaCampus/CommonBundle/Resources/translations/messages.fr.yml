@@ -265,6 +265,7 @@ formation:
         error: Désolé, une erreur s'est produite lors de l'upload de votre vidéo
         success: Votre vidéo a bien été ajoutée, elle sera validée dans les heures qui suivent
         invalid: Veuillez vérifier que tout les champs sont correctement remplis
+    share: Partager cette vidéo de formation via
         
 teaandme:
     title: "#TEA&Moi"

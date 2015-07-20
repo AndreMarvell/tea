@@ -1,0 +1,6 @@
+{% set current_full_url = app.request.schemeAndHttpHost~app.request.requestUri  %}
+<ul class="copyright-links list-inline  {%if classes is defined%}{{classes}}{%endif%}">
+    <li><a target="_blank" href="http://www.facebook.com/share.php?u={{current_full_url|url_encode}}&title={{title}}"><i class="fa fa-facebook fa-lg"></i></a></li>
+    <li><a target="_blank" href="http://twitter.com/intent/tweet?status={{title}}+{{current_full_url|url_encode}}"><i class="fa fa-twitter fa-lg"></i></a></li>
+    <li><a target="_blank" href="https://plus.google.com/share?url={{current_full_url|url_encode}}"><i class="fa fa-google-plus fa-lg"></i></a></li>
+</ul>

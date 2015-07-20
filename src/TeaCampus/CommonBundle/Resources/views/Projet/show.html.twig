@@ -163,11 +163,7 @@
                                             <div class="type-info pull-left">
                                                 <h5>{{ 'project.show.share'|trans({}, 'messages') }}</h5>
                                             </div>
-                                            <ul class="copyright-links pull-right list-inline">
-                                                <li><a href="#fakelink"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                                <li><a href="#fakelink"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                                <li><a href="#fakelink"><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                            </ul>
+                                            {% include 'AndreMarvellSocialBundle:Share:share.html.twig' with{'title': project.title,'classes':'pull-right'} %} 
                                         </div>
                                             
                                             

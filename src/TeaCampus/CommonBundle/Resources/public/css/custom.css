@@ -150,6 +150,8 @@ footer{
 
 /****** View & Like & Page Meta  **********/
 
+.formation-share.copyright-links li i {font-size: 20px !important;}
+
 .page-social-meta{margin:15px auto;}
 .page-social-meta .social-meta span { border-width: 1px; border-style: solid; border-color: #D3DAD6; height: 27px; line-height: 27px; display: inline-block; vertical-align: middle; font-size: 12px; margin-right: 7px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; overflow: hidden; padding: 0 7px; }
 .page-social-meta .social-meta span span { border: 0; height: auto; margin: 0; padding: 0; }
