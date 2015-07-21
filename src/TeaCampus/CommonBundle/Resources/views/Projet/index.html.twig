@@ -47,7 +47,9 @@
                                 </div>
                             </div>
                         </div>
-                        {{ include( 'TeaCampusCommonBundle:Projet:Parts/latestproject.html.twig') }}  
+                       {%if latestproject is not null%}
+                            {{ include( 'TeaCampusCommonBundle:Projet:Parts/latestproject.html.twig') }} 
+                        {%endif%}
                         <header class="section-header no-home">
                             <h4 class="text-center">
                                 {{ 'project.show.show_all_title'|trans({},'messages') }}                    
