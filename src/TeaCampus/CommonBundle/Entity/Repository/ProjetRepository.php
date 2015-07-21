@@ -23,14 +23,25 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
     }
     
-    public function findHomeLast($limit=4) {
+    public function findHomeLast($projectsIds = null, $limit=4) {
  
         $query = $this->createQueryBuilder('p');
         $query->where('p.enabled = true ');
         $query->andWhere('p.private = false ');
-        $query->andWhere('p.selectionOfTea = false ');
-        $query->andWhere('p.projectOfTheMonth = false ');
-        $query->andWhere('p.projectOfTheWeek = false ');
+        
+        if(isset($projectsIds['selectionOfTea'])){
+            $query->andWhere('p.id != :selectionOfTea ');
+            $query->setParameter('selectionOfTea', $projectsIds['selectionOfTea']);
+        }
+        if(isset($projectsIds['projectOfTheMonth'])){
+            $query->andWhere('p.id != :projectOfTheMonth ');
+            $query->setParameter('projectOfTheMonth', $projectsIds['projectOfTheMonth']);
+        }
+        if(isset($projectsIds['projectOfTheWeek'])){
+            $query->andWhere('p.id != :projectOfTheWeek ');
+            $query->setParameter('projectOfTheWeek', $projectsIds['projectOfTheWeek']);
+        }
+        
         $query->orderBy('p.date','DESC');
         $query->setMaxResults($limit);
         

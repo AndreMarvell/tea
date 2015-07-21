@@ -23,7 +23,11 @@ class ProjetController extends Controller {
         $projetofthemonth   = $projetRepo->findOneBy(array("projectOfTheMonth"=>true));
         $projetoftheweek    = $projetRepo->findOneBy(array("projectOfTheWeek"=>true));
 
-        $latestProject = $em->getRepository('TeaCampusCommonBundle:Projet')->findHomeLast();
+        $latestProject = $em->getRepository('TeaCampusCommonBundle:Projet')->findHomeLast(array(
+            'selectionOfTea' => $selectedProjet->getId(),
+            'projectOfTheMonth' => $projetofthemonth->getId(),
+            'projectOfTheWeek' => $projetoftheweek->getId()
+        ));
 
 
 

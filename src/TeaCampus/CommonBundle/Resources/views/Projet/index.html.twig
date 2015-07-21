@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                       {%if latestproject is not null%}
+                        {%if latestproject is not null and latestproject|length >0%}
                             {{ include( 'TeaCampusCommonBundle:Projet:Parts/latestproject.html.twig') }} 
                         {%endif%}
                         <header class="section-header no-home">
