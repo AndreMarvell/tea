@@ -14,26 +14,16 @@ class ProjetController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
         $projetRepo = $em->getRepository('TeaCampusCommonBundle:Projet');
-        $idselectedProjet = $projetRepo->getSelectedProjet();
-        $idProjectOfTheMonth = $projetRepo->getProjectOfTheMonth();
-        $idProjectOfTheWeek = $projetRepo->getProjectOfTheWeek();
         $popularPosts       = $em->getRepository('ApplicationSonataNewsBundle:Post')->findPopular();
         $popularProjects    = $em->getRepository('TeaCampusCommonBundle:Projet')->findPopular();
         $popularVideos      = $em->getRepository('TeaCampusCommonBundle:Video')->findPopular();
         $tags               = $em->getRepository('ApplicationSonataClassificationBundle:Tag')->findBy(array('context'=>'projet'),null,25);
         
-        $selectedProjet = $projetRepo->findOneById($idselectedProjet);
-        $projetofthemonth = $projetRepo->findOneById($idProjectOfTheMonth);
-        $projetoftheweek = $projetRepo->findOneById($idProjectOfTheWeek);
+        $selectedProjet     = $projetRepo->findOneBy(array("selectionOfTea"=>true));
+        $projetofthemonth   = $projetRepo->findOneBy(array("projectOfTheMonth"=>true));
+        $projetoftheweek    = $projetRepo->findOneBy(array("projectOfTheWeek"=>true));
 
-        $query = $em->createQuery(
-                'SELECT p FROM TeaCampusCommonBundle:Projet p
-                                    WHERE p.private = false
-                                    AND p.enabled = true
-                                    ORDER BY p.date DESC'
-        );
-        $query->setMaxResults(4);
-        $latestProject = $query->getResult();
+        $latestProject = $em->getRepository('TeaCampusCommonBundle:Projet')->findHomeLast();
 
 
 

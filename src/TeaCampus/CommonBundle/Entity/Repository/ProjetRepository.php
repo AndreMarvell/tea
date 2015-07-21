@@ -11,29 +11,6 @@ namespace TeaCampus\CommonBundle\Entity\Repository;
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
     
-    public function getSelectedProjet() {
-        $query = $this->createQueryBuilder('a');
-        $query->where('a.selectionOfTea =  true ');       
-        $query->andWhere('a.enabled = true');
-        $query->andWhere('a.private = false');
-        return $query->getQuery()->getResult();
-    }
-    
-    public function getProjectOfTheMonth() {
-        $query = $this->createQueryBuilder('a');
-        $query->where('a.projectOfTheMonth =  true ');
-        $query->andWhere('a.enabled = true');
-        $query->andWhere('a.private = false');
-        return $query->getQuery()->getResult();
-    }
-    
-    public function getProjectOfTheWeek() {
-        $query = $this->createQueryBuilder('a');
-        $query->where('a.projectOfTheWeek =  true ');
-        $query->andWhere('a.enabled = true');
-        $query->andWhere('a.private = false');
-        return $query->getQuery()->getResult();
-    }
     
     public function findPopular() {
  
@@ -46,11 +23,25 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
     }
     
+    public function findHomeLast($limit=4) {
+ 
+        $query = $this->createQueryBuilder('p');
+        $query->where('p.enabled = true ');
+        $query->andWhere('p.private = false ');
+        $query->andWhere('p.selectionOfTea = false ');
+        $query->andWhere('p.projectOfTheMonth = false ');
+        $query->andWhere('p.projectOfTheWeek = false ');
+        $query->orderBy('p.date','DESC');
+        $query->setMaxResults($limit);
+        
+        return $query->getQuery()->getResult();
+    }
+    
     public function findLast($limit=5) {
  
         $query = $this->createQueryBuilder('p');
         $query->where('p.enabled = true ');
-        $query->where('p.private = false ');
+        $query->andWhere('p.private = false ');
         $query->orderBy('p.date','DESC');
         $query->setMaxResults($limit);
         
