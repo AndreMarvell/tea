@@ -43,7 +43,7 @@
                                 <img src="{{ asset_url }}">
                                 {% endimage %}
                             {% endif %}
-                            <a class="ajax-popup-link" style="position: absolute; right: 21px; padding: 6px 5px 5px 9px; top: 8px; border-radius: 5px; display: none; background-color: white;" href="{{path('tea_user_avatar')}}" title="Changez votre photo de profil"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                            <a class="ajax-popup-link" style="padding: 6px;border-radius: 50%; display: none; background-color: #3498db;border:2px solid white;color:white;" href="{{path('tea_user_avatar')}}" title="{{ 'avatar.title'|trans({},'messages') }}"><i class="fa fa-picture-o"></i></a>
                         </div>
                     </div>
                 </div><!--row-->
