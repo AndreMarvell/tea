@@ -1,0 +1,39 @@
+<section class="wrap-contacts">
+    <div class="container" id="dropzoneAvatarContainer">
+        <h4 class="text-center">{{ 'avatar.title'|trans({},'messages') }}</h4>
+        <div id="invalidAvatarMessage" class="alert alert-danger" style="display: none;">{{'avatar.error'|trans({},'messages')}}</div>
+        <form enctype="multipart/form-data" class="dropzone" action="{{ path('tea_user_avatar') }}" method="post" name="avatarDropzoneForm" id="avatarDropzoneForm" class="text-center">
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+                <input type="submit"/>
+            </div>    
+            <div id="dropzoneAvatarPreview" class="form-group"></div>
+        </form>
+        
+        <script>
+            $(document).ready(function() {
+                $("#avatarDropzoneForm").dropzone({
+                    addRemoveLinks: true,
+                    autoProcessQueue: true, // this is important as you dont want form to be submitted unless you have clicked the submit button
+                    autoDiscover: false,
+                    previewsContainer: '#dropzoneAvatarPreview', // we specify on which div id we must show the files
+                    clickable: true, // this tells that the dropzone will not be clickable . we have to do it because v dont want the whole form to be clickable 
+                    maxFilesize: 2,
+                    maxFiles: 1,
+                    acceptedFiles: 'image/jpeg, image/png, image/x-png, image/gif',
+                    accept: function(file, done) {
+                      done();
+                    },
+                    error: function(file, msg){
+                      $("#invalidAvatarMessage").fadeIn(500);
+                    },
+                    success: function(file, data) {
+                        window.location.replace("{{path('fos_user_profile_show')}}");
+                    }
+                });
+            });
+
+
+        </script>
+    </div>
+</section>

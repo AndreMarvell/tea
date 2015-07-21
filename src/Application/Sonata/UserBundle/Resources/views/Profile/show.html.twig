@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
-                        <div class="avatar">
+                        <div id="profile-picture" class="avatar">
                             {% if app.user.avatar is not null %}
                                 {% thumbnail app.user.avatar, 'square' with{} %}
                             {% else %}
@@ -43,6 +43,7 @@
                                 <img src="{{ asset_url }}">
                                 {% endimage %}
                             {% endif %}
+                            <a class="ajax-popup-link" style="position: absolute; right: 21px; padding: 6px 5px 5px 9px; top: 8px; border-radius: 5px; display: none; background-color: white;" href="{{path('tea_user_avatar')}}" title="Changez votre photo de profil"><i class="fa fa-pencil-square-o fa-2x"></i></a>
                         </div>
                     </div>
                 </div><!--row-->
@@ -55,7 +56,7 @@
                 <div class="anchor-icon"><i class="fa fa-user"></i></div>
                 <!-- Nav tabs -->
                 <ul id="user-profil-tabs" class="nav  nav-tabs-alt nav-tabs-two nav-tab-inverse" role="tablist">
-                    <li role="presentation" class="{%if activetab == 'infos'%}active{%endif%}"><a href="#infos" aria-controls="infos" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;{{ 'tabs.infos.title'| trans({},'messages') }}</a></li>
+                    <li role="presentation" class="{%if activetab == 'infos' or activetab is null%}active{%endif%}"><a href="#infos" aria-controls="infos" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;{{ 'tabs.infos.title'| trans({},'messages') }}</a></li>
                     <li role="presentation" class="{%if activetab == 'projects'%}active{%endif%}"><a href="#projets" aria-controls="projets" role="tab" data-toggle="tab"><i class="fa fa-file-o"></i>&nbsp;&nbsp;{{ 'tabs.projects.title'| trans({},'messages') }}</a></li>
                     <li role="presentation" class="{%if activetab == 'teaAndMe'%}active{%endif%}"><a href="#teaandme" aria-controls="teaandme" role="tab" data-toggle="tab"><i class="fa fa-play-circle-o"></i>&nbsp;&nbsp;{{ 'tabs.teaandme.title'| trans({},'messages') }}</a></li>
                     <li role="presentation" class="{%if activetab == 'messages'%}active{%endif%}"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;{{ 'tabs.messages.title'| trans({},'messages') }}</a></li>
@@ -67,7 +68,7 @@
 
                     <!--  Info -->
                     <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-                    <div role="tabpanel" class="tab-pane {%if activetab == 'infos'%}active{%endif%}" id="infos">
+                    <div role="tabpanel" class="tab-pane {%if activetab == 'infos' or activetab is null%}active{%endif%}" id="infos">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
@@ -172,6 +173,15 @@
             type: 'inline',
             modal: true
         });
+        $('#profile-picture').hover(
+            function () {
+              $('.ajax-popup-link').show();
+            }, 
+            function () {
+              $('.ajax-popup-link').hide();
+            }
+          );
+    
         $(document).on('click', 'a.delete-button', function (e) {
             e.preventDefault();
             var li = $(this).attr('data-li');

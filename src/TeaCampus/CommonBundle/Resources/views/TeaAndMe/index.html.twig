@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 {% spaceless %}
 {% block title %}
-    {{ 'teaandme.title'| trans({},'messages') }} "{%if tag is defined%}{{tag.name}}{%endif%}" - {{ parent() }}
+    {{ 'teaandme.title'| trans({},'messages') }} {%if tag is defined%}"{{tag.name}}"{%endif%} - {{ parent() }}
 {% endblock %}    
 {% block main_content %}
 <!-- Home - Header -->

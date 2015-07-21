@@ -19,6 +19,8 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\MessageBundle\Provider\ProviderInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Request;
+use Application\Sonata\MediaBundle\Entity\Media;
 
 /**
  * This class is inspired from the FOS Profile Controller, except :
@@ -89,11 +91,56 @@ class ProfileFOSUser1Controller extends BaseController
         return $this->render('SonataUserBundle:Other:show.html.twig', array(
             'user'   => $user,
             'form' => $form->createView(),
-+           'data' => $form->getData(),
+            'data' => $form->getData(),
             'projects' => $projects,
             'videos' => $videos,
             'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
         ));
+    }
+    
+    /**
+     * @return Response
+     *
+     * @throws AccessDeniedException
+     */
+    public function avatarAction(Request $request){
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $user= $this->get('security.context')->getToken()->getUser();
+        
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }else{
+            
+            if (!is_null($request->files->get('file'))) {
+                // Getting sonata media manager service
+                $mediaManager = $this->container->get('sonata.media.manager.media');
+
+                // Getting sonata media object and saving media
+                $media = new Media;
+                $media->setBinaryContent($request->files->get('file'));
+                $media->setContext('avatar');
+                $media->setName($user->getFullname());
+                $media->setProviderName('sonata.media.provider.image');
+                $mediaManager->save($media);
+                
+                $previousAvatar = $user->getAvatar();
+                $user->setAvatar($media);
+                $em->persist($user);
+                $em->remove($previousAvatar);
+                $em->flush();  
+                
+                $response = new Response();
+                $response->setContent(json_encode(array("success" => true)));
+                $response->headers->set('Content-Type', 'application/json');
+
+                return $response;
+            }
+            return $this->render('ApplicationSonataUserBundle:Profile:avatar.html.twig');
+        }
+        
+        
+        
     }
     
     

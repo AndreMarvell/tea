@@ -80,5 +80,10 @@ formation:
         request_accepted: Vous êtes désormais un Intructeur Pédagoque, faites profiter vos connaissances à l'ensemble de la communauté TEA !
     add:
         title: Ajouter une vidéo de formation
+        
+avatar:
+    title: Changez votre photo de profil
+    submit: Envoyer
+    error: Désolé, une erreur est survenue lors de l'upload de l'image. Vérifez que le fichier envoyé est correct et recommencez!
     
     
