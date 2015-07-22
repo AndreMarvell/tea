@@ -18,11 +18,7 @@
                 <div class="row">
                     <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
                         <h1 class="title">
-                            {%if app.user.firstname is not null and app.user.lastname is not null%}
-                                {{app.user.firstname ~ ' ' ~ app.user.lastname}}
-                            {%else%}
-                                {{app.user.username}}
-                            {%endif%}
+                            {{app.user.fullname}}
                         </h1>
                         <div class="path pull-right">
                             {%if app.user.biography is not null%}

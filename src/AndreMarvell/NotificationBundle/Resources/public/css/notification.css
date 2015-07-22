@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 juil. 2015, 15:47:17
+    Author     : Marvell
+*/
+
+.notifications {
+  background: #fff;
+  border-left: 5px solid rgb(236, 236, 236);
+  border-right: 5px solid rgb(236, 236, 236);
+  border-bottom: 10px solid rgb(236, 236, 236);
+}
+.notifications li {
+  border-bottom: 1px solid #f3f3f3;
+  width: 100%;
+}
+.notifications li.no-notification {
+    color: rgb(127, 123, 123);
+  font-weight: 500;
+}
+.notifications li a {
+  color: #bababa;
+  font-size: 12px;
+  text-decoration: none;
+  display: block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+}
+
+.notifications .notif-content {
+  display: inline-block;
+  width: 80%;
+  vertical-align: top;
+}
+.notifications li a .notif-img {
+  width: 15%;
+  position: relative;
+  display: inline-block;
+  
+}
+.notifications li a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.notifications li a .notif-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.notifications li a .notif-icon i.success {
+    color: rgb(78, 160, 113) !important;
+}
+.notifications li a .notif-icon i.fail {
+    color: rgb(219, 75, 75) !important;
+}
+.notifications li a .notif-content .notif-name {
+  display: block;
+  font-size: 12px;
+  color: #707070;
+  padding: 0 0 0 10px;
+  margin: 0;
+}
+.notifications li.opened .notif-content .notif-name, .notifications li.opened a .notif-content .notif-text {
+  color: #bababa !important;
+}
+.notifications li a .notif-img .online {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #FFF;
+  background: #44AEA1;
+}
+.nav-online {
+  position: absolute;
+  top: 30%;
+  right: -2px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #FFF;
+  background: #44AEA1;
+}
+
+
+.notifications li a .notif-content .notif-text {
+  display: block;
+  color: #a0a0a0;
+  margin: 0;
+  padding: 0 0 0 10px;
+  font-size: 11px;
+  text-align: left;
+  line-height: 14px;
+}
+
+.notifications li a .notif-content .notif-time {
+  font-size: 10px;
+  display: block;
+  padding: 0 10px 0 8px;
+  margin: 1px 0 0 0;
+}

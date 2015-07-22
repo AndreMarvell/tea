@@ -43,6 +43,32 @@ class MessageController extends BaseController
         }
         
         $lastMessage    = $thread->getMessages()->last();
+        
+        /*************** Notification *********************/
+        // On notifie le destinataire
+        $notify     = $this->container->get('andremarvell.notify');
+        $translator = $this->container->get('translator');
+
+        $receiver = null;
+        foreach ($lastMessage->getThread()->getParticipants() as $participant) {
+            if($participant->getId() != $lastMessage->getSender()->getId()){
+                $receiver = $participant;
+                break;
+            }
+        }
+        if(!is_null($receiver)){
+            $notify->notify(
+                $receiver,
+                $translator->trans('notification.message.answer.title', array(), 'messages'),
+                $translator->trans('notification.message.answer.message', array('%user%'=>$lastMessage->getSender()->getFullname()), 'messages'),     
+                $this->container->get('router')->generate('fos_user_profile_show').'?tab=messages',     
+                'message',     
+                $translator->trans('notification.message.answer.icon', array(), 'messages')     
+
+             );
+        }
+        /*************** Fin Notification *********************/  
+        
         $inboxThread    = $this->getProvider()->getInboxThreads();
         $sentThread     = $this->getProvider()->getSentThreads();
 
@@ -66,6 +92,30 @@ class MessageController extends BaseController
         $success = false;
         if ($message = $formHandler->process($form)) {
             $success = true;
+            
+            // On notifie l'utilisateur
+            $notify     = $this->container->get('andremarvell.notify');
+            $translator = $this->container->get('translator');
+            
+            $receiver = null;
+            foreach ($message->getThread()->getParticipants() as $participant) {
+                if($participant->getId() != $message->getSender()->getId()){
+                    $receiver = $participant;
+                    break;
+                }
+            }
+            
+            if(!is_null($receiver)){
+                $notify->notify(
+                    $receiver,
+                    $translator->trans('notification.message.sent.title', array(), 'messages'),
+                    $translator->trans('notification.message.sent.message', array('%user%'=>$message->getSender()->getFullname()), 'messages'),     
+                    $this->container->get('router')->generate('fos_user_profile_show').'?tab=messages',     
+                    'message',     
+                    $translator->trans('notification.message.sent.icon', array(), 'messages')     
+
+                 );
+            }
         }
         
         $response   = new Response();

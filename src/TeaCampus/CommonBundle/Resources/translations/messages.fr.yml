@@ -358,5 +358,69 @@ error:
         text1: S'il vous plaît vérifiez que l'URL saisie correspond bien à une page valide.
         text2: Sinon n'hésitez pas à nous faire savoir ce que vous faisiez lorsque cette erreur est arrivée. 
         text3: Nous allons y remédier dès que possible . Désolé pour la gêne occasionnée . 
+        
+notification:
+    no_notifications: Aucune notification disponible
+    message:
+        answer:
+            title: Message reçu
+            message: %user% a répondu a votre message
+            icon: fa fa-envelope success
+        sent:
+            title: Message reçu
+            message: %user% vous a envoyé un message
+            icon: fa fa-envelope success
+    project:
+        activated:
+            title: Projet activé
+            message: Votre projet %title% a été activé
+            icon: fa fa-file-o success
+        refused: 
+            title: Projet rejeté
+            message: Votre projet %title% a été rejeté
+            icon: fa fa-file-o fail
+        share: 
+            title: Projet partagé
+            message: %user% vient de vous partager son projet %title%
+            icon: fa fa-file-o success
+        like: 
+            title: Projet aimé
+            message: %user% a aimé votre projet %title%
+            icon: fa fa-file-o success
+    formation:
+        activated: 
+            title: Vidéo activé
+            message: Votre vidéo de formation %title% a été activée
+            icon: fa fa-graduation-cap success
+        refused:
+            title: Vidéo rejeté
+            message: Votre vidéo de formation %title% a été rejetée
+            icon: fa fa-graduation-cap fail
+        like:
+            title: Vidéo de formation aimé
+            message: %user% a aimé votre vidéo de formation %title%
+            icon: fa fa-graduation-cap success
+        tutor_accepted:
+            title: Requête activé
+            message: Votre requête pour devenir instructeur pédagogique a été acceptée
+            icon: fa fa-graduation-cap success
+        tutor_refused:
+            title: Requête rejeté
+            message: Votre requête pour devenir instructeur pédagogique a été refusée
+            icon: fa fa-graduation-cap fail
+    teaandme:
+        activated:
+            title: Vidéo activé
+            message: Votre video %title% a été activée
+            icon: fa fa-play-circle-o success
+        refused:
+            title: Vidéo rejeté
+            message: Votre video %title% a été rejetée
+            icon: fa fa-play-circle-o fail
+        like:
+            title: Vidéo aime
+            message: %user% a aimé votre video %title%
+            icon: fa fa-play-circle-o success
+        
     
         

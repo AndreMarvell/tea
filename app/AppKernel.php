@@ -60,6 +60,7 @@ class AppKernel extends Kernel
             new Application\FOS\MessageBundle\ApplicationFOSMessageBundle(),
             
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new AndreMarvell\NotificationBundle\AndreMarvellNotificationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

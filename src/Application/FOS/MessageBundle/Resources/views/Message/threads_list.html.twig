@@ -12,11 +12,7 @@
                     <td style="text-align: justify">
                         <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" class="ajax-popup-link">
                             ({{ thread.messages|length }})
-                            {%if thread.lastMessage.sender.firstname is not null and thread.lastMessage.sender.lastname is not null%}
-                                {{thread.lastMessage.sender.firstname ~ ' ' ~ thread.lastMessage.sender.lastname}}
-                            {%else%}
-                                {{thread.lastMessage.sender.username}}
-                            {%endif%}                    
+                            {{thread.lastMessage.sender.fullname}}                   
                         </a>
                     </td>
 

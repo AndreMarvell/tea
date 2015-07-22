@@ -1,3 +1,7 @@
+andre_marvell_notification:
+    resource: "@AndreMarvellNotificationBundle/Resources/config/routing.yml"
+    prefix:   /notifications
+
 andre_marvell_social:
     resource: "@AndreMarvellSocialBundle/Resources/config/routing.yml"
     prefix:   /social

@@ -284,4 +284,11 @@ class User extends BaseUser implements ParticipantInterface
     {
         return $this->teacher;
     }
+    
+    public function getFullname() {
+        if(is_null($this->getFirstname()) || is_null($this->getLastname()) )
+            return $this->getUsername ();
+        else
+            return sprintf('%s %s', $this->getFirstname(), $this->getLastname());
+    }
 }

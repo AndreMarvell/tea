@@ -44,11 +44,7 @@
                    <div class="col-md-10" style="background-color: rgba(232, 143, 65, 0.2);">
                     <div class="comment-info clearfix">
                         <h5 class="pull-right">
-                            {%if message.sender.firstname is not null and message.sender.lastname is not null%}
-                                {{message.sender.firstname ~ ' ' ~ message.sender.lastname}}
-                            {%else%}
-                                {{message.sender.username}}
-                            {%endif%}
+                            {{message.sender.fullname}}
                         </h5>
                         <ul class="list-inline pull-left">
                             <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>

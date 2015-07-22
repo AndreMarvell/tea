@@ -1,0 +1,11 @@
+andre_marvell_notification_index:
+    path:     /all
+    defaults: { _controller: AndreMarvellNotificationBundle:Notification:index }
+    
+andre_marvell_notification_add:
+    path:     /add
+    defaults: { _controller: AndreMarvellNotificationBundle:Notification:add }
+    
+andre_marvell_notification_show:
+    path:     /show/{id}
+    defaults: { _controller: AndreMarvellNotificationBundle:Notification:show }

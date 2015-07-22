@@ -3,11 +3,7 @@
 {% spaceless %}
     {% set wearesocial = true %} 
     {% block title %}
-        {%if user.firstname is not null and user.lastname is not null%}
-            {{user.firstname ~ ' ' ~ user.lastname}}
-        {%else%}
-            {{user.username}}
-        {%endif%} - {{ parent() }}
+        {{user.fullname}} - {{ parent() }}
     {% endblock %}
 
     {% block stylesheets %} 
@@ -22,11 +18,7 @@
                 <div class="row">
                     <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
                         <h1 class="title">
-                            {%if user.firstname is not null and user.lastname is not null%}
-                                {{user.firstname ~ ' ' ~ user.lastname}}
-                            {%else%}
-                                {{user.username}}
-                            {%endif%}
+                            {{user.fullname}}
                         </h1>
                         <div class="path pull-right">
                             {%if user.biography is not null%}

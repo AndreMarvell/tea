@@ -1,0 +1,38 @@
+<div class="slimscroll notifications">
+    <ul class="list-unstyled">
+        {% for notification in notifications %}
+            <li class="{%if notification.open%}opened{%endif%}">
+                <a href="{{path('andre_marvell_notification_show',{'id': notification.id})}}">
+                    <div class="notif-img">
+                        {%if not notification.open%}<div class="online on"></div>{%endif%}
+                        {%if notification.type=='message'%}
+                            {% if notification.sender.avatar is not null %}
+                                {% thumbnail notification.sender.avatar, 'square' with{'class':'img-circle'} %}
+                            {% else %}
+                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                                <img src="{{ asset_url }}" class='img-circle'>
+                                {% endimage %}
+                            {% endif %}
+                        {%else%}
+                            <div class="notif-icon"><i class="{{notification.icon}}"></i></div>
+                        {%endif%}                        
+                    </div>
+                    <div class="notif-content">
+                        <div class="clearfix">
+                            <div class="pull-left"><span class="notif-name pull-left">{{notification.title}}</span></div>
+                            <div class="pull-right"><span class="notif-time pull-right">{{notification.since(app.request.locale)}}</span></div>
+                        </div>
+                        <p class="notif-text">{{notification.description}}</p>
+                    </div>
+                </a>
+            </li>
+        {%else%}
+            <li class="no-notification">
+                {{ 'notification.no_notifications'|trans({}, 'messages') }}
+            </li>
+        {%endfor%}
+        
+        
+        <li style="border:none"></li>
+    </ul>
+</div>

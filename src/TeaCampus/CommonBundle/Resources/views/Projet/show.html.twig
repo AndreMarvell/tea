@@ -134,11 +134,7 @@
                                             </div>
                                             <div class="info pull-right text-right">
                                                 <p class="no-margin">
-                                                    {%if project.author.firstname is not null and project.author.lastname is not null%}
-                                                        {{project.author.firstname ~ ' ' ~ project.author.lastname}}
-                                                    {%else%}
-                                                        {{project.author.username}}
-                                                    {%endif%}
+                                                    {{project.author.fullname}}
                                                 </p>
                                             </div>
                                         </div>
