@@ -6,6 +6,11 @@ edit:
     title: Modifier votre profil
     authentification:
         title: Modifiers les infos de connexions
+    password:
+        nocreated1: Vous vous connectez sur TeaCampus par le biais des réseaux sociaux.
+        nocreated2: Vous ne disposez donc pas de mot de passe.
+        nocreated3: Vous devez faire une demande de réinitialisation du mot de passe
+        request: Je veux réinitialiser mon mot de passe
     
 tabs: 
     projects:
