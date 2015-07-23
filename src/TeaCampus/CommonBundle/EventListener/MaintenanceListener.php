@@ -49,6 +49,7 @@ class MaintenanceListener
             
                 $iPsDHCP = array(
                     '83.192.149',
+                    '83.192.145',
                     '193.52.102',
                     '10.33.2',
                     '154.72.166',
