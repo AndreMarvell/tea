@@ -40,7 +40,8 @@ class MaintenanceListener
                 '82.246.179.247',
                 '82.243.157.115',
                 '154.72.166.4',
-                '193.52.200.72'
+                '193.52.200.72',
+                '172.16.92.243'
             );
             
             if(
@@ -54,7 +55,8 @@ class MaintenanceListener
                     '10.33.2',
                     '154.72.166',
                     '154.72.135',
-                    '193.52.200'
+                    '193.52.200',
+                    '172.16.92'
                 );
                 $ipParts = explode('.', @$_SERVER['REMOTE_ADDR']);
                 $ipPart  = $ipParts[0].'.'.$ipParts[1].'.'.$ipParts[2];
