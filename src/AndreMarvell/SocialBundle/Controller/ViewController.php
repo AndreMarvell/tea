@@ -18,7 +18,7 @@ class ViewController extends Controller
         $request    = $this->get('request');
         $user       = $this->get('security.context')->getToken()->getUser();
         $em         = $this->getDoctrine()->getEntityManager();
-        $ip         = $request->getClientIp();
+        $ip         = @$_SERVER['REMOTE_ADDR'];
         
         $thread     = $em->getRepository('AndreMarvellSocialBundle:ViewThread')->findOneById($id);
         
