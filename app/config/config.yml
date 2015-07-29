@@ -100,7 +100,15 @@ doctrine:
                     SonataClassificationBundle: ~
                     AndreMarvellSocialBundle: ~
                     AndreMarvellNotificationBundle: ~
-
+  
+swiftmailer:
+    transport:  "%mailer_transport%"
+    encryption: null
+    auth_mode:  login
+    host:       "%mailer_host%"
+    username:   "%mailer_user%"
+    password:   "%mailer_password%"
+    
 genemu_form:
     autocomplete: ~
     date: ~
@@ -128,8 +136,13 @@ fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main
     user_class:     Application\Sonata\UserBundle\Entity\User #Sonata\UserBundle\Entity\BaseUser 
-
-
+    from_email:
+        address:        no-reply@teacampus.com
+        sender_name:    TeaCampus.com
+    registration:
+        confirmation:
+            enabled:    true 
+            template:   FOSUserBundle:Registration:email.txt.twig
     group:
         group_class:   Application\Sonata\UserBundle\Entity\Group #Sonata\UserBundle\Entity\BaseGroup 
         group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
