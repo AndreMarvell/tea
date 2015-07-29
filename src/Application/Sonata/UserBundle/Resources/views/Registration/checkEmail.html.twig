@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% spaceless %}
+    {% block title %}
+        {{ 'register.activation'| trans({},'messages') }} - {{ parent() }}
+    {% endblock %}
+
+    {% block main_content %}
+        <section class="home-header login-register" style="min-height: 450px;padding-top: 175px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 standalone-login">
+                        <header class="section-header">
+                            <p class="subhead">{{ 'register.subhead'| trans({},'messages') }}</p>
+                            <h5 style="color:white">{{ 'register.activation'| trans({},'messages') }}</h5>
+                        </header>
+                        <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>                   
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+{% endspaceless %}

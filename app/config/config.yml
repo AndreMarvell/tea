@@ -103,11 +103,6 @@ doctrine:
   
 swiftmailer:
     transport:  mail
-    #encryption: null
-    #auth_mode:  null
-    #host:       "%mailer_host%"
-    #username:   "%mailer_user%"
-    #password:   "%mailer_password%"
     
 genemu_form:
     autocomplete: ~
@@ -142,14 +137,18 @@ fos_user:
     registration:
         confirmation:
             enabled:    true 
-            template:   FOSUserBundle:Registration:email.txt.twig
+            template:   ApplicationSonataUserBundle:Registration:email.html.twig
     group:
         group_class:   Application\Sonata\UserBundle\Entity\Group #Sonata\UserBundle\Entity\BaseGroup 
         group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
-
+    
+    resetting:
+        email:
+            template:   ApplicationSonataUserBundle:Resetting:email.html.twig
     service:
         user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
-
+        mailer: fos_user.mailer.twig_swift
+        
 ivory_ck_editor:
     default_config: my_config
     configs:

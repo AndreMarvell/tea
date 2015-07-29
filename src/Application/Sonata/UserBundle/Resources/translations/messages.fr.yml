@@ -62,6 +62,7 @@ register:
     subhead: Votre compte
     title: S'inscrire
     self_register_text: Inscrivez-vous directement
+    activation: Activation de votre compte
     
 teaandme_profile:
     title: "#TEA&Moi"
