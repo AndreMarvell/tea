@@ -167,7 +167,7 @@ class ProjetController extends Controller {
 
             $html = $this->container->get('templating')->render('TeaCampusCommonBundle:Projet:profile_list_item.html.twig', array('projet' => $projet));
             $response = new Response();
-            $response->setContent(json_encode(array("success" => true, "content" => $html)));
+            $response->setContent(json_encode(array("success" => true,"project-id"=>$projet->getId(), "content" => $html)));
             $response->headers->set('Content-Type', 'application/json');
 
             return $response;

@@ -124,7 +124,7 @@
                             })
                             .done(function (data) {
                                 $.magnificPopup.close();
-                                $('#project-list ul').prepend(data['content']).fadeIn(1000);
+                                $('#projet-'+data['project-id']).replaceWith(data['content']);
                             })
                             .fail(function (jqXHR, textStatus, errorThrown) {
                                 if (typeof jqXHR.responseJSON !== 'undefined') {
