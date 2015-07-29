@@ -102,12 +102,12 @@ doctrine:
                     AndreMarvellNotificationBundle: ~
   
 swiftmailer:
-    transport:  "%mailer_transport%"
-    encryption: null
-    auth_mode:  login
-    host:       "%mailer_host%"
-    username:   "%mailer_user%"
-    password:   "%mailer_password%"
+    transport:  mail
+    #encryption: null
+    #auth_mode:  null
+    #host:       "%mailer_host%"
+    #username:   "%mailer_user%"
+    #password:   "%mailer_password%"
     
 genemu_form:
     autocomplete: ~
