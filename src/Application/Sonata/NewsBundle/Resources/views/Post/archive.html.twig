@@ -35,7 +35,7 @@
                         </header>
                         {% for post in pager.getResults() %}
                             <!-- Post Item -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-6">
                                 {{ include( 'ApplicationSonataNewsBundle::item.html.twig', {'post':post}) }}
                             </div>
                             {%if loop.index is even%}
