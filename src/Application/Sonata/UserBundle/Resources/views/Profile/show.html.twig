@@ -159,24 +159,15 @@
 {% block scripts %}
 
     <script>
-        $('.ajax-popup-link').magnificPopup({
-            closeBtnInside: true,
-            midClick: true,
-            type: 'ajax'
+
+        $(document).ready(function() {
+            magnificPopupInit();
         });
 
-        $('.ajax-delete').magnificPopup({
-            type: 'inline',
-            modal: true
-        });
         $('#profile-picture').hover(
-            function () {
-              $('#profile-picture .ajax-popup-link').show();
-            }, 
-            function () {
-              $('#profile-picture .ajax-popup-link').hide();
-            }
-          );
+            function () { $('#profile-picture .ajax-popup-link').show(); },
+            function () { $('#profile-picture .ajax-popup-link').hide(); }
+        );
     
         $(document).on('click', 'a.delete-button', function (e) {
             e.preventDefault();
@@ -186,21 +177,19 @@
                 dataType: "json",
                 data: {id: $(this).attr('data-id')},
                 type: 'POST'
-            })
-                    .done(function (data) {
-                        $.magnificPopup.close();
-                        if (data['success']) {
-                            $("#" + li).fadeOut(700, function () {
-                                $(this).remove();
-                            });
-                        } else {
-                            alert("{{ 'projet.delete.error'| trans({},'messages') }}");
-                        }
-
-                    })
-                    .fail(function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
+            }).done(function (data) {
+                $.magnificPopup.close();
+                if (data['success']) {
+                    $("#" + li).fadeOut(700, function () {
+                        $(this).remove();
                     });
+                } else {
+                    alert("{{ 'projet.delete.error'| trans({},'messages') }}");
+                }
+
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            });
         });
         
         $(document).on('click', '.popup-modal-dismiss', function (e) {
@@ -208,40 +197,50 @@
             $.magnificPopup.close();
         });
 
-        $(document).ready(function () {});
-        
+        function magnificPopupInit(){
+
+            $('.ajax-popup-link').magnificPopup({
+                closeBtnInside: true,
+                midClick: true,
+                type: 'ajax'
+            });
+
+            $('.ajax-delete').magnificPopup({
+                type: 'inline',
+                modal: true
+            });
+        }
+
         {% if not tutoringRequestExist %}
-                $(document).on('click', '#tutoring-request-button', function (e) {
-                    e.preventDefault();
-                    $("#tutoringFormContainer").show();
-                });
+            $(document).on('click', '#tutoring-request-button', function (e) {
+                e.preventDefault();
+                $("#tutoringFormContainer").show();
+            });
 
-                $('#tutoringRequestForm').on('submit', function(e) {
-                    e.preventDefault();
-                    $('#tutoringLoader').fadeIn(500);
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        dataType: "json",
-                        data: $(this).serialize(),
-                        type: 'POST'
-                    })
-                    .done(function (data) {
-                        if (data['success']) {
-                            $('#requestNotSent').hide();
-                            $('#requestNotAccepted').show();
-                        } else {
-                            alert("{{ 'message.error'| trans({},'messages') }}");
-                        }
-                        $('#tutoringLoader').hide();
-
-                    })
-                    .fail(function (jqXHR, textStatus, errorThrown) {
+            $('#tutoringRequestForm').on('submit', function(e) {
+                e.preventDefault();
+                $('#tutoringLoader').fadeIn(500);
+                $.ajax({
+                    url: $(this).attr('action'),
+                    dataType: "json",
+                    data: $(this).serialize(),
+                    type: 'POST'
+                })
+                .done(function (data) {
+                    if (data['success']) {
+                        $('#requestNotSent').hide();
+                        $('#requestNotAccepted').show();
+                    } else {
                         alert("{{ 'message.error'| trans({},'messages') }}");
-                        console.log(textStatus, errorThrown);
-                    });
+                    }
+                    $('#tutoringLoader').hide();
 
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    alert("{{ 'message.error'| trans({},'messages') }}");
+                    console.log(textStatus, errorThrown);
                 });
-
+            });
         {% endif %}
 
     </script>

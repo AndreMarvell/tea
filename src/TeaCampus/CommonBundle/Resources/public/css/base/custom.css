@@ -25,7 +25,7 @@
     padding: 0px;
     display: block;
     color: #7e848e !important;
-    background: url(../images/nav-arrow.png) 90% center no-repeat;
+    background: url(../../images/nav-arrow.png) 90% center no-repeat;
 }
 
 .menu-block nav ul li a:hover{
@@ -275,7 +275,7 @@ footer{
 /**********************************************/
 
 .home-header.login-register{
-  background-image: url('../images/blurred.jpg');    
+  background-image: url('../../images/blurred.jpg');
 }
 .standalone-login{
     padding: 20px 50px;
@@ -445,7 +445,7 @@ ul.content-list .project-content h2 a {
 
 
 @media screen and (max-width: 990px) {
-    about-me-header{
+    .about-me-header{
 
         padding-top: 105px;
         padding-bottom: 30px;

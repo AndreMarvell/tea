@@ -1059,7 +1059,7 @@ label {
 }
 .light-map::after {
     content: "";
-    background: url(../images/map.png) center no-repeat;
+    background: url(../../images/map.png) center no-repeat;
     opacity: 0.02;
     top: 0;
     left: 0;
@@ -1076,11 +1076,11 @@ label {
     background-color: #2b2e33;
 }
 .blurred-map {
-    background: url('../images/blurred.jpg') center no-repeat ;
+    background: url('../../images/blurred.jpg') center no-repeat ;
 }
 .dark-map::after {
     content: "";
-    background: url('../images/map.png') center no-repeat ;
+    background: url('../../images/map.png') center no-repeat ;
     opacity: 0.1;
     top: 0;
     left: 0;
@@ -1243,7 +1243,7 @@ label {
     margin-left: 0;
 }
 .elements-header {
-    background-image: url('../images/placehold/1920x700.gif');
+    background-image: url('../../images/placehold/1920x700.gif');
     background-position: center bottom, center top;
     background-repeat: no-repeat;
     background-size: auto, cover;
@@ -1310,7 +1310,7 @@ section.divider.striped-icon {
     z-index: 1;
 }
 .home-header {
-    background-image: url('../images/graph-home.svg'), url('../images/blurred.jpg');
+    background-image: url('../../images/graph-home.svg'), url('../../images/blurred.jpg');
     background-position: center top, center top;
     background-repeat: no-repeat;
     background-size: cover, cover;
@@ -1340,22 +1340,22 @@ section.divider.striped-icon {
     }
 }
 .about-product [class^="col-"]:nth-of-type(1) article::before {
-    background: url('../images/hl-1.png') no-repeat left top;
+    background: url('../../images/hl-1.png') no-repeat left top;
     width: 11px;
     height: 352px;
 }
 .about-product [class^="col-"]:nth-of-type(2) article::before {
-    background: url('../images/hl-2.png') no-repeat left top;
+    background: url('../../images/hl-2.png') no-repeat left top;
     width: 11px;
     height: 221px;
 }
 .about-product [class^="col-"]:nth-of-type(3) article::before {
-    background: url('../images/hl-3.png') no-repeat left top;
+    background: url('../../images/hl-3.png') no-repeat left top;
     width: 111px;
     height: 302px;
 }
 .features {
-    background-image: url('../images/placehold/1920x1080.gif');
+    background-image: url('../../images/placehold/1920x1080.gif');
     padding: 40px 0 120px;
     position: relative;
     z-index: 1;
@@ -1396,7 +1396,7 @@ section.divider.striped-icon {
     right: -180px;
     width: 100%;
     height: 100%;
-    background: url('../images/arrow.png') no-repeat center center;
+    background: url('../../images/arrow.png') no-repeat center center;
 }
 @media (max-width: 1199px) {
     .steps article:after {
@@ -1795,7 +1795,7 @@ section.divider.striped-icon {
 .price {
     border-top: 1px solid #e8e9ed;
     margin-bottom: 100px;
-    background: url('../images/placehold/1920x1080.gif') no-repeat center center;
+    background: url('../../images/placehold/1920x1080.gif') no-repeat center center;
     position: relative;
     z-index: 1;
 }
@@ -2198,7 +2198,7 @@ section.divider.striped-icon {
     position: relative;
 }
 .testimonials .owl-carousel .owl-controls .owl-buttons .owl-prev {
-    background-image: url("../images/arrow-left.png");
+    background-image: url("../../images/arrow-left.png");
     left: -50px;
 }
 @media (max-width: 1199px) {
@@ -2207,7 +2207,7 @@ section.divider.striped-icon {
     }
 }
 .testimonials .owl-carousel .owl-controls .owl-buttons .owl-next {
-    background-image: url("../images/arrow-right.png");
+    background-image: url("../../images/arrow-right.png");
     right: -50px;
     float: right;
 }
@@ -2290,7 +2290,7 @@ section.divider.striped-icon {
     opacity: 1;
 }
 .twitter {
-    background: url('../images/placehold/1920x1080.gif') no-repeat center center;
+    background: url('../../images/placehold/1920x1080.gif') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     position: relative;
@@ -2710,7 +2710,7 @@ a h5:hover {
 .wrap-programs {
     min-height: 590px;
     padding-top: 170px;
-    background: url(../images/placehold/1920x1080.gif) center no-repeat;
+    background: url(../../images/placehold/1920x1080.gif) center no-repeat;
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
@@ -3120,7 +3120,7 @@ section.team .team-description p {
 
 .about-me-header {
     min-height: 450px;
-    background: url(../images/blurred.jpg) top center no-repeat;
+    background: url(../../images/blurred.jpg) top center no-repeat;
     background-size: cover;
     text-align: right;
     padding-top: 170px;
@@ -3376,7 +3376,7 @@ section.team .team-description p {
 .wrap-counters {
     min-height: 540px;
     padding: 170px 0 120px;
-    background: url(../images/placehold/1920x1080.gif) center no-repeat;
+    background: url(../../images/placehold/1920x1080.gif) center no-repeat;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3446,7 +3446,7 @@ body {
 
 .price-header {
     height: 700px;
-    background: url(../images/placehold/1920x700.gif) top center no-repeat;
+    background: url(../../images/placehold/1920x700.gif) top center no-repeat;
     background-size: cover;
     text-align: center;
     position: relative;
@@ -3514,7 +3514,7 @@ body {
 
 .wrap-rates {
     padding: 100px 0 80px;
-    background: url(../images/placehold/1920x1080.gif) center no-repeat;
+    background: url(../../images/placehold/1920x1080.gif) center no-repeat;
     background-attachment: fixed;
     background-size: cover;
     position: relative;
@@ -3560,7 +3560,7 @@ body {
     display: block;
     height: 40px;
     width: 30px;
-    background: url(../images/icons/download-icon.png) center no-repeat;
+    background: url(../../images/icons/download-icon.png) center no-repeat;
 }
 .wrap-downloads .download-item .title {
     color: #2a2d32;
@@ -3616,7 +3616,7 @@ body {
 
 .gallery-header {
     height: 700px;
-    background: url(../images/placehold/1920x700.gif) top center no-repeat;
+    background: url(../../images/placehold/1920x700.gif) top center no-repeat;
     background-size: cover;
     text-align: center;
     position: relative;
@@ -3856,7 +3856,7 @@ body {
 .about-header {
     padding-top: 200px;
     height: 500px;
-    background: url(../images/blurred.jpg) center no-repeat;
+    background: url(../../images/blurred.jpg) center no-repeat;
     background-size: cover;
     text-align: center;
     position: relative;
@@ -3923,7 +3923,7 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    background: url(../images/placehold/1920x1080.gif) center no-repeat;
+    background: url(../../images/placehold/1920x1080.gif) center no-repeat;
     background-attachment: fixed;
 }
 
@@ -4254,13 +4254,13 @@ body {
 .blog-header {
     padding-top: 300px;
     height: 700px;
-    background: url(../images/placehold/1920x700.gif) center no-repeat;
+    background: url(../../images/placehold/1920x700.gif) center no-repeat;
     background-size: cover;
     text-align: center;
     position: relative;
 }
 .blog-header.blog-post-header {
-    background-image: url(../images/placehold/1920x700.gif);
+    background-image: url(../../images/placehold/1920x700.gif);
 }
 .blog-header h1 {
     color: #ffffff;
@@ -4550,7 +4550,7 @@ body {
 }
 .wrap-blog-content .sidebar .calendar #my-calendar .ui-datepicker-header .ui-datepicker-prev span {
     margin-top: 7px;
-    background: url(../images/calendar-left.png) left center no-repeat;
+    background: url(../../images/calendar-left.png) left center no-repeat;
     cursor: pointer;
 }
 .wrap-blog-content .sidebar .calendar #my-calendar .ui-datepicker-header .ui-datepicker-next {
@@ -4558,7 +4558,7 @@ body {
 }
 .wrap-blog-content .sidebar .calendar #my-calendar .ui-datepicker-header .ui-datepicker-next span {
     margin-top: 7px;
-    background: url(../images/calendar-right.png) left center no-repeat;
+    background: url(../../images/calendar-right.png) left center no-repeat;
     cursor: pointer;
 }
 .wrap-blog-content .sidebar .calendar #my-calendar .ui-datepicker-calendar {
@@ -4750,7 +4750,7 @@ body {
 }
 .wrap-controls .dropdown-calendar #my-calendar .ui-datepicker-header .ui-datepicker-prev span {
     margin-top: 7px;
-    background: url(../images/calendar-left.png) left center no-repeat;
+    background: url(../../images/calendar-left.png) left center no-repeat;
     cursor: pointer;
 }
 .wrap-controls .dropdown-calendar #my-calendar .ui-datepicker-header .ui-datepicker-next {
@@ -4758,7 +4758,7 @@ body {
 }
 .wrap-controls .dropdown-calendar #my-calendar .ui-datepicker-header .ui-datepicker-next span {
     margin-top: 7px;
-    background: url(../images/calendar-right.png) left center no-repeat;
+    background: url(../../images/calendar-right.png) left center no-repeat;
     cursor: pointer;
 }
 .wrap-controls .dropdown-calendar #my-calendar .ui-datepicker-calendar {
@@ -5327,7 +5327,7 @@ body {
 .service-header {
     padding-top: 300px;
     height: 700px;
-    background: url(../images/placehold/1920x700.gif) center no-repeat;
+    background: url(../../images/placehold/1920x700.gif) center no-repeat;
     background-size: cover;
     text-align: center;
     position: relative;
@@ -5549,12 +5549,12 @@ body {
     padding-left: 30px;
     display: block;
     color: #7e848e !important;
-    background: url(../images/nav-arrow.png) 90% center no-repeat;
+    background: url(../../images/nav-arrow.png) 90% center no-repeat;
 }
 .navbar-nav.nav-icons ul.inside-nav-list li a:hover, .wrap-inside-nav .inside-col .inside-nav li a:hover, .wrap-inside-nav .inside-col .inside-nav li a:active:hover, .wrap-inside-nav .inside-col .inside-nav li a:visited:hover, .wrap-inside-nav .inside-col .inside-nav li a:focus:hover {
     color: #27ae60 !important;
     background-color: #26282d;
-    background-image: url(../images/nav-arrow-hover.png);
+    background-image: url(../../images/nav-arrow-hover.png);
 }
 
 .wrap-user-control {
@@ -6126,7 +6126,7 @@ text[text-anchor="end"] {
     height: 350px;
     right: 0;
     bottom: 0;
-    background: url(../images/graph-home2.svg) top center no-repeat;
+    background: url(../../images/graph-home2.svg) top center no-repeat;
     background-size: cover;
 }
 

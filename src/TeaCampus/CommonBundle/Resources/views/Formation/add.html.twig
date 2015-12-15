@@ -41,6 +41,7 @@
                     },
                     success: function(file, data) {
                         $('#videoFormation-list ul').prepend(data['content']).fadeIn(1000);
+                        magnificPopupInit();
                         $('#dropzoneFormationContainer').html('<div class="ajax_success text-center"><div class="icon center-block"><i class="fa fa-thumbs-up"></i></div><p class="large">{{'formation.add.success'|trans({},'messages')}}</p></div>')
                     
                     },

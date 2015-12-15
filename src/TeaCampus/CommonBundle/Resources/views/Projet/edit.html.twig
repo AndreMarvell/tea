@@ -104,44 +104,45 @@
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
-            var theForm = document.getElementById( 'project-form' );
-            var stpfrm  = new stepsForm( theForm, {
-                    onSubmit : function( form ) {
-                        
-                            // hide form
-                            classie.addClass( form.querySelector( '.simform-inner' ), 'hide' );
-                            var messageEl = form.querySelector( '.final-message' );
-                            messageEl.innerHTML = 'Votre projet est en cours de traitement.<br><i class="fa fa-spin fa-spinner fa-2x"></i><br>';
-                            classie.addClass( messageEl, 'show' );
-                            
-                            $.ajax({
-                                type: 'POST',
-                                url: '{{path('tea_projects_edit', { 'id': form.vars.value.id } )}}',
-                                data: new FormData(form),
-                                enctype: 'multipart/form-data',
-                                processData: false,  // tell jQuery not to process the data
-                                contentType: false   // tell jQuery not to set contentType
-                            })
-                            .done(function (data) {
-                                $.magnificPopup.close();
-                                $('#projet-'+data['project-id']).replaceWith(data['content']);
-                            })
-                            .fail(function (jqXHR, textStatus, errorThrown) {
-                                if (typeof jqXHR.responseJSON !== 'undefined') {
-                                    console.log(jqXHR.responseJSON.message);
-                                } else {
-                                    console.log(errorThrown);
-                                }
-                                
-                                classie.removeClass( messageEl, 'show' );
-                                messageEl.innerHTML = 'Désolé, une erreur s\'est produite lors de l\'ajout du projet.<br><i class="fa fa-spin fa-exclamation-triangle fa-2x" style="color:rgb(174,25,25)"></i><br> Veuillez recommencer ultérieurement';
-                                classie.addClass( messageEl, 'show' );
+        var theForm = document.getElementById( 'project-form' );
+        var stpfrm  = new stepsForm( theForm, {
+            onSubmit : function( form ) {
 
-                            });
-                            
-                            
+                // hide form
+                classie.addClass( form.querySelector( '.simform-inner' ), 'hide' );
+                var messageEl = form.querySelector( '.final-message' );
+                messageEl.innerHTML = 'Votre projet est en cours de traitement.<br><i class="fa fa-spin fa-spinner fa-2x"></i><br>';
+                classie.addClass( messageEl, 'show' );
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{path('tea_projects_edit', { 'id': form.vars.value.id } )}}',
+                    data: new FormData(form),
+                    enctype: 'multipart/form-data',
+                    processData: false,  // tell jQuery not to process the data
+                    contentType: false   // tell jQuery not to set contentType
+                })
+                .done(function (data) {
+                    $.magnificPopup.close();
+                    $('#projet-'+data['project-id']).replaceWith(data['content']);
+                    magnificPopupInit();
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    if (typeof jqXHR.responseJSON !== 'undefined') {
+                        console.log(jqXHR.responseJSON.message);
+                    } else {
+                        console.log(errorThrown);
                     }
-            });
+
+                    classie.removeClass( messageEl, 'show' );
+                    messageEl.innerHTML = 'Désolé, une erreur s\'est produite lors de l\'ajout du projet.<br><i class="fa fa-spin fa-exclamation-triangle fa-2x" style="color:rgb(174,25,25)"></i><br> Veuillez recommencer ultérieurement';
+                    classie.addClass( messageEl, 'show' );
+
+                });
+
+
+            }
+        });
         document.getElementById("tea_projet_media_binaryContent").onchange = function () {
             document.getElementById("uploadFile").value = this.value;
         };

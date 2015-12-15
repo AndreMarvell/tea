@@ -1,10 +1,7 @@
 
 
 
-/*------------------------------------------------------------------
-[Master Stylesheet]
-
--------------------------------------------------------------------*/
+/*--------------------------- [Master Stylesheet] -----------------------------------*/
 
 /* Fonts css */
 
@@ -14,8 +11,10 @@
 /* Basic css */
 
 @import "bootstrap.css";
-@import "maincss.css";
-@import "custom.css";
+@import "base/desktop.css";
+@import "base/mobile.css";
+@import "base/tablette.css";
+@import "base/custom.css";
 @import "magnific-popup.css";
 @import "stepsForm.css";
 @import "dropzone.css";

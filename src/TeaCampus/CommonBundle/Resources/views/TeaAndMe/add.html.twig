@@ -35,6 +35,7 @@
                     },
                     success: function(file, data) {
                         $('#teaandme-list ul').prepend(data['content']).fadeIn(1000);
+                        magnificPopupInit();
                         $('#dropzoneTeaAndMeContainer').html('<div class="ajax_success text-center"><div class="icon center-block"><i class="fa fa-thumbs-up"></i></div><p class="large">{{'teaandme.add.success'|trans({},'messages')}}</p></div>')
                     
                     },
