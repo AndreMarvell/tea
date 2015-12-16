@@ -37,7 +37,7 @@
         "sonata-project/datagrid-bundle" : "~2.2@dev",
         "sonata-project/formatter-bundle": "dev-master",
         "sonata-project/classification-bundle": "dev-master",
-        "sonata-project/media-bundle": "dev-master",
+        "sonata-project/media-bundle": "2.3.3",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/news-bundle": "dev-master",
         "suncat/mobile-detect-bundle": "0.10.*",
