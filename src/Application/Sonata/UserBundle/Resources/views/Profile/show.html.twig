@@ -163,6 +163,7 @@
         $(document).ready(function() {
             magnificPopupInit();
             initMessageListHover();
+            slimScrollInit("600px");
         });
 
         $('#profile-picture').hover(
@@ -216,6 +217,12 @@
             $(container).animate({
                 scrollTop: 10000
             }, 0);
+        }
+
+        function slimScrollInit(height){
+            $('.slimscroll.messages').slimScroll({
+                height: height
+            });
         }
 
         function initMessageListHover(){
