@@ -6440,7 +6440,6 @@ text[text-anchor="end"] {
 }
 .chat .chat-history .my-message {
     background: #86BB71;
-    word-wrap: break-word;
 }
 .chat .chat-history .other-message {
     background: #94C2ED;
