@@ -6,7 +6,7 @@
 
         </div>
         <div class="message other-message float-right">
-            {{ message.body }}
+            {{ message.body|nl2br }}
         </div>
     </li>
 {%else%}
@@ -16,7 +16,7 @@
             <span class="message-data-time">{{utils.sinceOrDateTime(message.createdAt,app.request.locale)}}</span>
         </div>
         <div class="message my-message">
-            {{ message.body }}
+            {{ message.body|nl2br }}
         </div>
     </li>
 {%endif%}

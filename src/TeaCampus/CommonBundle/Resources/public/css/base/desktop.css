@@ -6365,10 +6365,10 @@ text[text-anchor="end"] {
     background: #F2F5F8;
     border-radius: 10px;
     color: #434651;
+    border-top-right-radius: 0 !important;
 }
 .chat .chat-header {
     padding: 10px 20px;
-    border-bottom: 2px solid white;
 }
 .chat .chat-header img {
     float: left;
@@ -6413,6 +6413,7 @@ text[text-anchor="end"] {
     margin-bottom: 25px;
     width: 90%;
     position: relative;
+    font-weight: 600;
 }
 .chat .chat-history .message:after {
     bottom: 100%;

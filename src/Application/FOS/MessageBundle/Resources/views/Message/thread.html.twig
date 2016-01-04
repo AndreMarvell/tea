@@ -2,24 +2,30 @@
 {% for correspondant in thread.participants if correspondant.id != app.user.id %}
     {% set currentCorrespondant = correspondant %}
 {%endfor%}
-<div class="chat-container" style="max-width: 500px;margin-left: auto;margin-right: auto;">
+<div class="chat-container" style="max-width: 500px;margin-left: auto;margin-right: auto;position: relative;">
     <div class="chat">
         <div class="chat-header clearfix">
-            {% if currentCorrespondant is not null and currentCorrespondant.avatar is not null %}
-                {% thumbnail currentCorrespondant.avatar, 'square' with{'class':'img-circle'} %}
-            {% else %}
-                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                <img src="{{ asset_url }}" class='img-circle'>
-                {% endimage %}
+            {% if currentCorrespondant is not null %}
+                <a href="{{ path('tea_user_profile',{'id':currentCorrespondant.id}) }}">
+                    {% if currentCorrespondant.avatar is not null %}
+                        {% thumbnail currentCorrespondant.avatar, 'square' with{'class':'img-circle'} %}
+                    {% else %}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                        <img src="{{ asset_url }}" class='img-circle'>
+                        {% endimage %}
+                    {% endif %}
+                </a>
             {% endif %}
 
             <div class="chat-about">
                 <div class="chat-with">
                     {% if currentCorrespondant is not null  %}
-                        {{currentCorrespondant.fullnameForMessage}}
+                        <a href="{{ path('tea_user_profile',{'id':currentCorrespondant.id}) }}">
+                            {{currentCorrespondant.fullnameForMessage}}
+                        </a>
                     {% endif %}
                 </div>
-                <div class="chat-num-messages">{{ thread.subject }} <i>({{ thread.messages | length }}</i> messages)</div>
+                <div class="chat-num-messages">{{ thread.subject }} (<i id="chat-messages-number">{{ thread.messages | length }}</i> messages)</div>
             </div>
         </div> <!-- end chat-header -->
 
@@ -63,6 +69,8 @@
                     $('#send-message').html(data['sent']);
                     $('.chat-history ul').append(data['content']).fadeIn(500);
                     $("textarea#message_body").val('').focus();
+                    var messagesNumber = parseInt($("#chat-messages-number").text());
+                    $("#chat-messages-number").html(messagesNumber+1);
                     magnificPopupInit();
                     initMessageListHover();
                     scrollToBottomOfList(".chat-history");

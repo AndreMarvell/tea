@@ -36,8 +36,8 @@ form:
     message:
       recipe: Destinataire
       subject: Sujet
-      placeholder: Message
-      body: Saisissez votre message
+      placeholder: Saisissez votre message
+      body: Message
 label:
     username: Nom d'utilisateur
     email: Adresse e-mail

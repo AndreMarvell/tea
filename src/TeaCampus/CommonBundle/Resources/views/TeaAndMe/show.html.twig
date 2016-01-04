@@ -6,7 +6,7 @@
                 </div>
                 <div class="row" style="margin-top:20px;">
                     <h5 class="text-center">{{video.title}}</h5>
-                    <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p class="subhead text-center">{%if video.author.firstname is not null%}{{video.author.firstname ~ ' ' ~ video.author.lastname }}{%else%}{{video.author.username}}{%endif%}</p></a>
+                    <a href="{{ path('tea_user_profile',{'id':video.author.id}) }}"><p class="subhead text-center">{{video.author.fullname }}</p></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-5 col-sm-12 col-sm-height comment-teaandme">
