@@ -1,7 +1,7 @@
 {% set currentCorrespondant = null %}
 {% for correspondant in thread.participants if correspondant.id != app.user.id %}
     {% set currentCorrespondant = correspondant %}
-{%endfor%}
+{% endfor %}
 <div class="chat-container" style="max-width: 470px;margin-left: auto;margin-right: auto;position: relative;">
     <div class="chat">
         <div class="chat-header clearfix">

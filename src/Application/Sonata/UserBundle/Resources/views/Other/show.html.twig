@@ -6,14 +6,8 @@
         {{user.fullname}} - {{ parent() }}
     {% endblock %}
 
-    {% block stylesheets %} 
-        {% stylesheets 'bundles/teacampuscommon/css/bootstrap-tagsinput.css' filter='cssrewrite'%}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {% endblock %}
-
     {% block main_content %}
-        <section class="about-me-header">
+        <section class="about-me-header profil">
             <div class="container">	
                 <div class="row">
                     <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
@@ -28,6 +22,7 @@
                                 {{user.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}
                             {%endif%}
                         </div>
+                        <br><a href="#new_message" class="btn btn-warning btn-xs popup-link" aria-controls="new_message" role="tab" data-toggle="tab"><i class="fa fa-paper-plane"></i>&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
                     </div>
                     <div class="col-md-6 wow fadeInUp" data-wow-duration="2s" >
                         <div class="avatar">
@@ -38,25 +33,10 @@
                                 <img src="{{ asset_url }}">
                                 {% endimage %}
                             {% endif %}
-                            &nbsp;<a href="#new_message" class="btn btn-warning btn-short ajax-delete" aria-controls="new_message" role="tab" data-toggle="tab"><i class="fa fa-paper-plane"></i>&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
-
                         </div>
                     </div>
-                    <div id="new_message" class="mfp-hide mfp-small-dialog">
-                        <h1>{{ 'message.show.new'|trans({}, 'messages') }}</h1>
-                        <div class="row">
-                            <div class="row-same-height" id="message-form-container">
-                                <form action="{{ url('fos_message_thread_new') }}" method="post" id="new-message-form">
-                                    {{ form_start(form) }}
-                                    {{ form_errors(form) }}
-                                    <div style="margin-bottom: 10px;display: none">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','value' : user.username,'class':'form-control','style':'background-color:#fff'} }) }}</div>
-                                    <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.subject'|trans({},'messages'),'class':'form-control','style':'background-color:#fff'} }) }}</div>
-                                    <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control','style':'background-color:#fff'} }) }}</div>
-                                    <input class="contact_button button btn btn-primary btn-block" style="margin-bottom: 10px" type="submit" />
-                                    {{ form_end(form) }}
-                                </form>
-                            </div><!--row same height-->
-                        </div><!--row-->
+                    <div id="new_message" class="mfp-hide mfp-centered-dialog mfp-size-470">
+                        {{ include( 'ApplicationFOSMessageBundle:Message:new_message_dialog.html.twig') }}
                         <button title="Close (Esc)" type="button" class="mfp-close">×</button>
                     </div>
                 </div><!--row-->
@@ -139,58 +119,9 @@
                 midClick: true,
                 type: 'ajax'
             });
-
-            $('.ajax-delete').magnificPopup({
+            $('.popup-link').magnificPopup({
                 type: 'inline',
                 modal: true
-            });
-            $(document).on('click', 'a.delete-button', function (e) {
-                e.preventDefault();
-                var li = $(this).attr('data-li');
-                $.ajax({
-                    url: $(this).attr('href'),
-                    dataType: "json",
-                    data: {id: $(this).attr('data-id')},
-                    type: 'POST'
-                })
-                        .done(function (data) {
-                            $.magnificPopup.close();
-                            if (data['success']) {
-                                $("#" + li).fadeOut(700, function () {
-                                    $(this).remove();
-                                });
-                            } else {
-                                alert("{{ 'projet.delete.error'| trans({},'messages') }}");
-                            }
-
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus, errorThrown);
-                        });
-            });
-            $(document).on('click', 'a.delete-button', function (e) {
-                e.preventDefault();
-                var li = $(this).attr('data-li');
-                $.ajax({
-                    url: $(this).attr('href'),
-                    dataType: "json",
-                    data: {id: $(this).attr('data-id')},
-                    type: 'POST'
-                })
-                        .done(function (data) {
-                            $.magnificPopup.close();
-                            if (data['success']) {
-                                $("#" + li).fadeOut(700, function () {
-                                    $(this).remove();
-                                });
-                            } else {
-                                alert("{{ 'projet.delete.error'| trans({},'messages') }}");
-                            }
-
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus, errorThrown);
-                        });
             });
 
             $(document).on('click', '.popup-modal-dismiss', function (e) {
@@ -201,8 +132,7 @@
             $(document).ready(function () {
                 $("#new-message-form").submit(function (e) {
                     e.preventDefault();
-                    $('#message-form-container').html('<br><br><span style="color:black">{{ 'contact.loading'| trans({},'messages') }}</span><br><i style="color:white" class="fa fa-spin fa-spinner fa-2x"></i><br>');
-                    $('#new_message').find('h1').html('');
+                    $('#messageLoader').show();
                     $.ajax({
                         url: $(this).attr('action'),
                         dataType: "json",
@@ -211,9 +141,9 @@
                     })
                             .done(function (data) {
                                 if (data['success']) {
-                                    $('#message-form-container').html('<div style="margin-top:30px" class="alert alert-success"> {{ 'contact.sent'| trans({},'messages') }}</div>');
+                                    $('#new_message .chat-message').html('<div class="alert alert-success"> {{ 'contact.sent'| trans({},'messages') }}</div>');
                                 } else {
-                                    $('#message-form-container').html('<div class="alert alert-danger"> {{ 'contact.error'| trans({},'messages') }}</div>');
+                                    $('#new_message .chat-message').html('<div class="alert alert-danger"> {{ 'contact.error'| trans({},'messages') }}</div>');
                                 }
                             })
                             .fail(function (jqXHR, textStatus, errorThrown) {

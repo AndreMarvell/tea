@@ -1,0 +1,43 @@
+{% set currentCorrespondant = user %}
+<div class="new-message-container">
+    <div class="chat">
+        <div class="chat-header clearfix">
+            {% if currentCorrespondant is not null %}
+                <a href="{{ path('tea_user_profile',{'id':currentCorrespondant.id}) }}">
+                    {% if currentCorrespondant.avatar is not null %}
+                        {% thumbnail currentCorrespondant.avatar, 'square' with{'class':'img-circle'} %}
+                    {% else %}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                        <img src="{{ asset_url }}" class='img-circle'>
+                        {% endimage %}
+                    {% endif %}
+                </a>
+            {% endif %}
+
+            <div class="chat-about">
+                <div class="chat-with">
+                    {% if currentCorrespondant is not null  %}
+                        <a href="{{ path('tea_user_profile',{'id':currentCorrespondant.id}) }}">
+                            {{currentCorrespondant.fullnameForMessage}}
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="chat-num-messages">{{ 'message.show.new'|trans({}, 'messages') }}</div>
+            </div>
+        </div> <!-- end chat-header -->
+
+        <div class="chat-message clearfix">
+            <form action="{{ url('fos_message_thread_new') }}" method="post" id="new-message-form">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <div style="display: none">{{ form_widget(form.recipient, { 'attr': {'placeholder': 'form.recipe'|trans({},'messages'), 'type': 'text','value' : user.username} }) }}</div>
+                <div style="margin-bottom: 10px">{{ form_widget(form.subject, { 'attr': {'placeholder': 'form.message.subject'|trans({},'messages'),'class':'form-control','style':'background-color:#fff'} }) }}</div>
+                <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.message.placeholder'|trans({},'messages'), 'type': 'textarea','class':'form-control','style':'background-color:#fff', 'rows':'4'} }) }}</div>
+                <input class="btn btn-primary btn-xs pull-right" style="margin-bottom: 10px" type="submit"/>
+                <i style="display: none;top: -5px;left: 5px;position: relative;" id="messageLoader" class="fa fa-spin fa-spinner"></i>&nbsp;
+                {{ form_end(form) }}
+            </form>
+        </div> <!-- end chat-message -->
+    </div> <!-- end chat -->
+    <div class="clearfix"></div>
+</div>

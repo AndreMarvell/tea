@@ -3146,6 +3146,15 @@ section.team .team-description p {
     text-transform: capitalize;
     font-family: "Raleway",sans-serif;
 }
+
+.about-me-header.profil h1 {
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 300;
+    text-transform: capitalize;
+    font-family: "Raleway",sans-serif;
+    margin-bottom: 9px;
+}
 .about-me-header .avatar {
     margin-bottom: 25px;
     text-align: left;
