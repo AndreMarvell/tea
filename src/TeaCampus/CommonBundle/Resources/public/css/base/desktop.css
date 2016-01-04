@@ -6423,6 +6423,7 @@ text[text-anchor="end"] {
     width: 90%;
     position: relative;
     font-weight: 600;
+    word-wrap: break-word;
 }
 .chat .chat-history .message:after {
     bottom: 100%;
@@ -6439,6 +6440,7 @@ text[text-anchor="end"] {
 }
 .chat .chat-history .my-message {
     background: #86BB71;
+    word-wrap: break-word;
 }
 .chat .chat-history .other-message {
     background: #94C2ED;
