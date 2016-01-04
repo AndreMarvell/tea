@@ -33,9 +33,11 @@ othertabs:
     infos:
         title: Ses Infos      
 form:
-    recipe: Destinataire
-    subject: Sujet
-    body: Message
+    message:
+      recipe: Destinataire
+      subject: Sujet
+      placeholder: Message
+      body: Saisissez votre message
 label:
     username: Nom d'utilisateur
     email: Adresse e-mail

@@ -73,8 +73,8 @@ class MessageController extends BaseController
         $sentThread     = $this->getProvider()->getSentThreads();
 
         $html       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:message_line.html.twig', array('message' => $lastMessage));
-        $received   = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $inboxThread));
-        $sent       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $sentThread));
+        $received   = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $inboxThread, 'sent'=> false));
+        $sent       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $sentThread, 'sent'=> true));
         
         $response   = new Response();
         $response->setContent(json_encode(array("success" => true, "content" => $html, 'received' => $received, 'sent'=>$sent)));
@@ -138,14 +138,11 @@ class MessageController extends BaseController
         $this->container->get('fos_message.deleter')->markAsDeleted($thread);
         $this->container->get('fos_message.thread_manager')->saveThread($thread);
 
-        $received   = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $inboxThread));
-        $sent       = $this->container->get('templating')->render('ApplicationFOSMessageBundle:Message:threads_list.html.twig', array('threads' => $sentThread));
-        
-        $response   = new Response();
-        $response->setContent(json_encode(array("success" => true, 'received' => $received, 'sent'=>$sent)));
+        $response = new Response();
+        $response->setContent(json_encode(array("success" => true)));
         $response->headers->set('Content-Type', 'application/json');
-        
-        return $response; 
+
+        return $response;
     }
     
     /**

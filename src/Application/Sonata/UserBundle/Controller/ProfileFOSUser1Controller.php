@@ -48,15 +48,11 @@ class ProfileFOSUser1Controller extends BaseController
         $threads                = $provider->getInboxThreads();
         $threads_send           = $provider->getSentThreads();
         $tutoringRequestExist   = (is_null($this->getDoctrine()->getRepository("TeaCampusCommonBundle:TutoringRequest")->findOneByAuthor($user)))? false : true;
-        
-        $form                   = $this->container->get('fos_message.new_thread_form.factory')->create();
-        
+
         return $this->render('SonataUserBundle:Profile:show.html.twig', array(
             'user'                  => $user,
             'threads'               => $threads,
             'threads_send'          => $threads_send,
-            'form'                  => $form->createView(),
-            'data'                  => $form->getData(),
             'projects'              => $projects,
             'teaandmes'             => $teaandmes,
             'tutoringRequestExist'  => $tutoringRequestExist,

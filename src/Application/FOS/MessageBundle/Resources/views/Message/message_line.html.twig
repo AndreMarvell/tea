@@ -1,60 +1,26 @@
-<div class="list-comments col-md-offset-1 col-md-9 col-sm-12 col-xs-12" >
-    <ul class="row">
-        <li style="visibility: visible">
-            {% if app.user.username == message.sender %}
-                <div class="col-md-1" style="margin-left: -15;margin-right: 15px">
-                    <div class="avatar">
-                        <a href="{{path('fos_user_profile_show')}}">
-                            {% if message.sender.avatar is not null %}
-                                {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
-                            {% else %}
-                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                                <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
-                                {% endimage %}
-                            {% endif %}
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-10" style="background-color: rgba(40, 173, 98, 0.2);">
-                    <div class="comment-info clearfix">
-                        <h5 class="pull-left">
-                            {{ 'message.show.you'| trans({},'messages') }}
-                    </h5>
-                    <ul class="list-inline pull-right">
-                        <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
+{%if message.sender.id == app.user.id %}
+    <li class="clearfix">
+        <div class="message-data align-right">
+            <span class="message-data-time" >{{utils.sinceOrDateTime(message.createdAt,app.request.locale)}}</span> &nbsp; &nbsp;
+            <span class="message-data-name" >{{ message.sender.firstnameForMessage }}</span> <i class="fa fa-circle me"></i>
 
-                    </ul>
-                </div>
-                <p>{{ message.body }} </p>
-            </div>
-            {% else%}
-                <div class="col-md-2 pull-right">
-                    <div class="avatar">
-                        <a href="{{path('fos_user_profile_show')}}">
-                            {% if message.sender.avatar is not null %}
-                                {% thumbnail message.sender.avatar, 'square' with{'width':'62px','height':'62px','style':'border-radius:50%;border:1px solid white'} %}
-                            {% else %}
-                                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                                <img src="{{ asset_url }}" width='62px' height='62px' style="border-radius:50%;border:1px solid white">
-                                {% endimage %}
-                            {% endif %}
-                        </a>
-                    </div>
-                </div>
-                   <div class="col-md-10" style="background-color: rgba(232, 143, 65, 0.2);">
-                    <div class="comment-info clearfix">
-                        <h5 class="pull-right">
-                            {{message.sender.fullname}}
-                        </h5>
-                        <ul class="list-inline pull-left">
-                            <li><i class="fa fa-calendar"></i>{{message.createdAt|date("d F Y")}}</li>
-
-                        </ul>
-                    </div>
-                    <p>{{ message.body }} </p>
-                </div>
-                {% endif %}
-                </li>
-
-            </ul>
         </div>
+        <div class="message other-message float-right">
+            {{ message.body }}
+        </div>
+    </li>
+{%else%}
+    <li>
+        <div class="message-data">
+            <span class="message-data-name"><i class="fa fa-circle online"></i> {{ message.sender.firstnameForMessage }}</span>
+            <span class="message-data-time">{{utils.sinceOrDateTime(message.createdAt,app.request.locale)}}</span>
+        </div>
+        <div class="message my-message">
+            {{ message.body }}
+        </div>
+    </li>
+{%endif%}
+
+
+
+

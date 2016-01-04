@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         
         "bmatzner/fontawesome-bundle": "~4.0",
-        "bmatzner/modernizr-bundle": "~2.7","genemu/form-bundle": "2.2.*",
+        "bmatzner/modernizr-bundle": "~2.7",
+        "genemu/form-bundle": "2.2.*",
         "components/jqueryui": "dev-master",
         
         "knplabs/knp-paginator-bundle": "~2.4",

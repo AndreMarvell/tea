@@ -291,4 +291,18 @@ class User extends BaseUser implements ParticipantInterface
         else
             return sprintf('%s %s', $this->getFirstname(), $this->getLastname());
     }
+
+    public function getFullnameForMessage() {
+        if(is_null($this->getFirstname()) || is_null($this->getLastname()) )
+            return "@".$this->getUsername ();
+        else
+            return sprintf('%s %s', $this->getFirstname(), $this->getLastname());
+    }
+
+    public function getFirstnameForMessage() {
+        if(is_null($this->getFirstname()) )
+            return "@".$this->getUsername ();
+        else
+            return sprintf('%s', $this->getFirstname());
+    }
 }

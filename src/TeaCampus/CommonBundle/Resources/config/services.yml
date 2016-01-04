@@ -55,6 +55,11 @@ services:
         arguments:
             container: "@service_container"
 
+    tea.utils:
+        class: TeaCampus\CommonBundle\Services\TeaUtils
+        arguments:
+            container: "@service_container"
+
     tea.admin.history:
         class: TeaCampus\CommonBundle\Admin\HistoryAdmin
         arguments: [~, TeaCampus\CommonBundle\Entity\History, SonataAdminBundle:CRUD]

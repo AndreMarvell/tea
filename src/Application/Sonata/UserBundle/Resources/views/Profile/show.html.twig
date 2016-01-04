@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
-                                    <h2>{{ 'tabs.infos.title'| trans({},'messages') }}</h2>
+                                    <h3>{{ 'tabs.infos.title'| trans({},'messages') }}</h3>
                                 </div>
                             </div>				
                         </div><!--row-->
@@ -85,7 +85,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
-                                    <h2>{{ 'tabs.projects.title'| trans({},'messages') }}</h2>
+                                    <h3>{{ 'tabs.projects.title'| trans({},'messages') }}</h3>
                                 </div>
                                 <div class="col-md-12 align-center">
                                     <a class="btn btn-primary btn-xs ajax-popup-link" href="{{path('tea_projects_add')}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{ 'project.add.title'|trans({},'messages') }}</a>
@@ -121,7 +121,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
-                                    <h2>{{ 'tabs.messages.title'| trans({},'messages') }}</h2>
+                                    <h3>{{ 'tabs.messages.title'| trans({},'messages') }}</h3>
                                 </div>	
                             </div>				
                         </div><!--row-->
@@ -134,7 +134,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="footer-header">	
-                                    <h2>{{ 'tabs.videos.title'| trans({},'messages') }}</h2>
+                                    <h3>{{ 'tabs.videos.title'| trans({},'messages') }}</h3>
                                 </div>	
                             </div>				
                         </div><!--row-->
@@ -162,6 +162,7 @@
 
         $(document).ready(function() {
             magnificPopupInit();
+            initMessageListHover();
         });
 
         $('#profile-picture').hover(
@@ -209,6 +210,22 @@
                 type: 'inline',
                 modal: true
             });
+        }
+
+        function scrollToBottomOfList(container){
+            $(container).animate({
+                scrollTop: 10000
+            }, 0);
+        }
+
+        function initMessageListHover(){
+            $( ".messages ul li" ).hover(
+                function() {
+                    $(this).find( ".btn.ajax-delete" ).show();
+                }, function() {
+                    $(this).find( ".btn.ajax-delete" ).hide();
+                }
+            );
         }
 
         {% if not tutoringRequestExist %}

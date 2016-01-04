@@ -45,6 +45,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         notifications: "@andremarvell.notify"
+        utils: "@tea.utils"
 
 # Assetic Configuration
 assetic:

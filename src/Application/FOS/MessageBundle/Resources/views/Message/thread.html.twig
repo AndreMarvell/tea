@@ -1,34 +1,53 @@
-<section class="wrap-questions" style="max-width: 80%;margin-left: auto;margin-right: auto;">
-    <div class="container" >
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
-                <h3>{{ 'message.show.subject'| trans({},'messages') }} : {{ thread.subject }}</h3>
-            </div>
-        </div>
-            <div class="row" id="messageContainer" style="max-height: 300px;overflow: auto">
-            {% for message in thread.messages %}
-                {{ include( 'ApplicationFOSMessageBundle:Message:message_line.html.twig', {'message':message}) }}
-            {% endfor %}
-        </div> <!--row-->
-        
-        <div class="row text-center">
-            <div class="col-md-offset-1 col-md-9 col-sm-12 col-xs-12">
-                <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %} &nbsp; <i style="display: none;" id="messageLoader" class="fa fa-spin fa-spinner"></i></h3>
-                <form action="{{ url('fos_message_thread_view_ajax', {'threadId': thread.id}) }}" method="post" id="replyMessage">
-                    {{ form_start(form) }}
-                    {{ form_errors(form) }}
+{% set currentCorrespondant = null %}
+{% for correspondant in thread.participants if correspondant.id != app.user.id %}
+    {% set currentCorrespondant = correspondant %}
+{%endfor%}
+<div class="chat-container" style="max-width: 500px;margin-left: auto;margin-right: auto;">
+    <div class="chat">
+        <div class="chat-header clearfix">
+            {% if currentCorrespondant is not null and currentCorrespondant.avatar is not null %}
+                {% thumbnail currentCorrespondant.avatar, 'square' with{'class':'img-circle'} %}
+            {% else %}
+                {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                <img src="{{ asset_url }}" class='img-circle'>
+                {% endimage %}
+            {% endif %}
 
-                    <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.body'|trans({},'messages'), 'type': 'textarea','class':'form-control', 'style':'background-color:#fff'} }) }}</div>
-
-                    <input class ="btn btn-primary" type="submit" />
-                    {{ form_end(form) }}
-                </form>
+            <div class="chat-about">
+                <div class="chat-with">
+                    {% if currentCorrespondant is not null  %}
+                        {{currentCorrespondant.fullnameForMessage}}
+                    {% endif %}
+                </div>
+                <div class="chat-num-messages">{{ thread.subject }} <i>({{ thread.messages | length }}</i> messages)</div>
             </div>
-        </div>
-    </div>
-</section>
+        </div> <!-- end chat-header -->
+
+        <div class="chat-history">
+            <ul id="chat-message-conversation">
+                {% for message in thread.messages %}
+                    {{ include( 'ApplicationFOSMessageBundle:Message:message_line.html.twig', {'message':message}) }}
+                {% endfor %}
+            </ul>
+
+        </div> <!-- end chat-history -->
+        <div class="chat-message clearfix">
+            <form action="{{ url('fos_message_thread_view_ajax', {'threadId': thread.id}) }}" method="post" id="replyMessage">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                <div style="margin-bottom: 10px">{{ form_widget(form.body, { 'attr': {'placeholder': 'form.message.placeholder'|trans({},'messages'), 'type': 'textarea','class':'form-control', 'style':'background-color:#fff'} }) }}</div>
+
+                <input class ="btn btn-primary btn-xs pull-right" type="submit" value="{% trans from 'FOSMessageBundle' %}reply{% endtrans %}"/>
+                <i style="display: none;top: -5px;left: 5px;position: relative;" id="messageLoader" class="fa fa-spin fa-spinner"></i>&nbsp;
+                {{ form_end(form) }}
+            </form>
+        </div> <!-- end chat-message -->
+    </div> <!-- end chat -->
+</div>
 {% block messageScripts %}
     <script>
+        scrollToBottomOfList(".chat-history");
         $('#replyMessage').on('submit', function(e) {
             e.preventDefault();
             $('#messageLoader').show();
@@ -42,8 +61,11 @@
                 if (data['success']) {
                     $('#received-message').html(data['received']);
                     $('#send-message').html(data['sent']);
-                    $('#messageContainer').append(data['content']);
+                    $('.chat-history ul').append(data['content']).fadeIn(500);
                     $("textarea#message_body").val('').focus();
+                    magnificPopupInit();
+                    initMessageListHover();
+                    scrollToBottomOfList(".chat-history");
                 } else {
                     alert("{{ 'message.error'| trans({},'messages') }}");
                 }
