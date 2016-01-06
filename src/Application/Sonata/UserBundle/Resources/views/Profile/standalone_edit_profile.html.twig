@@ -16,21 +16,112 @@
                             <p class="subhead">{{ 'register.subhead'| trans({},'messages') }}</p>
                             <h2>{{ 'edit.title'|trans({}, 'messages') }}</h2>
                         </header>
-                        {{ form_errors(form) }}
-                        {% form_theme form _self %}
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h3>
+                        <form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal profile-edit-forms">
+                            <div class="span6 col-lg-6">
+                                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1  standalone-login">
+                                        <div class="align-left">{{ form_label(form.gender) }}</div>
+                                        {% if not form.gender.vars.valid %}
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                {{ form_errors(form.gender) }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="form-group">
+                                            {{ form_widget(form.gender, { 'attr': {'class':'form-control'} }) }}
+                                        </div>
+                                        <div class="align-left">{{ form_label(form.firstname) }}</div>
+                                        {% if not form.firstname.vars.valid %}
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                {{ form_errors(form.firstname) }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="form-group">
+                                            {{ form_widget(form.firstname, { 'attr': {'class':'form-control'} }) }}
+                                        </div>
+                                        <div class="align-left">{{ form_label(form.lastname) }}</div>
+                                        {% if not form.lastname.vars.valid %}
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                {{ form_errors(form.lastname) }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="form-group">
+                                            {{ form_widget(form.lastname, { 'attr': {'class':'form-control'} }) }}
+                                        </div>
+                                        <div class="align-left">{{ form_label(form.dateOfBirth) }}</div>
+                                        {% if not form.dateOfBirth.vars.valid %}
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                {{ form_errors(form.dateOfBirth) }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="form-group">
+                                            {{ form_widget(form.dateOfBirth, { 'attr': { 'class':'form-control'} }) }}
+                                        </div>
+                                        <div class="align-left">{{ form_label(form.website) }}</div>
+                                        {% if not form.website.vars.valid %}
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                {{ form_errors(form.website) }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="form-group">
+                                            {{ form_widget(form.website, { 'attr': { 'class':'form-control'} }) }}
+                                        </div>
+                                </div>
                             </div>
-                            <div class="panel-body">
-                                <form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal profile-edit-forms">
-                                    {{ form_widget(form) }}
-                                    <div class="form-actions">
-                                        <button type="submit" name="submit"  class="btn btn-primary pull-right">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
+                            <div class="span6 col-lg-6">
+                                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 standalone-login">
+                                    <div class="align-left">{{ form_label(form.biography) }}</div>
+                                    {% if not form.biography.vars.valid %}
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {{ form_errors(form.biography) }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        {{ form_widget(form.biography, { 'attr': { 'class':'form-control', "rows":"3"} }) }}
                                     </div>
-                                </form>
+                                    <div class="align-left">{{ form_label(form.locale) }}</div>
+                                    {% if not form.locale.vars.valid %}
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {{ form_errors(form.locale) }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        {{ form_widget(form.locale, { 'attr': { 'class':'form-control'} }) }}
+                                    </div>
+                                    <div class="align-left">{{ form_label(form.timezone) }}</div>
+                                    {% if not form.timezone.vars.valid %}
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {{ form_errors(form.timezone) }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        {{ form_widget(form.timezone, { 'attr': { 'class':'form-control'} }) }}
+                                    </div>
+                                    <div class="align-left">{{ form_label(form.phone) }}</div>
+                                    {% if not form.phone.vars.valid %}
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {{ form_errors(form.phone) }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        {{ form_widget(form.phone, { 'attr': {'class':'form-control'} }) }}
+                                    </div>
+                                    {{ form_widget(form) }}
+                                    <div class="form-group pull-right">
+                                        <button type="submit" name="submit" class="btn btn-primary btn-xs">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
+                                    </div>
+
+                                </div>
+
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

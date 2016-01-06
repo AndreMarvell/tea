@@ -11,6 +11,9 @@ body {
 .align-right {
     text-align: right;
 }
+.align-left {
+    text-align: left;
+}
 .float-right {
     float: right;
 }
@@ -1327,7 +1330,7 @@ section.divider.striped-icon {
     background-position: center top, center top;
     background-repeat: no-repeat;
     background-size: cover, cover;
-    padding-top: 250px;
+    padding-top: 150px;
     min-height: 1080px;
 }
 .home-header a.btn-primary {

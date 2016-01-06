@@ -267,7 +267,8 @@ footer{
 }
 
 .profile-edit-forms label{
-    width: 200px;
+    margin-left: -15px;
+    margin-bottom: 0 !important;
 }
 
 /**********************************************/
@@ -280,7 +281,7 @@ footer{
 .standalone-login{
     padding: 20px 50px;
     background-color: rgb(42, 45, 50);
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     border-radius: 10px;
     color: white;
     text-align: center;
@@ -299,6 +300,7 @@ footer{
 }
 .standalone-login .section-header h2, .standalone-profile-edit .section-header h2{
     color: white;
+    font-size: 35px;
 }
 
 .standalone-login input.submit-button{
