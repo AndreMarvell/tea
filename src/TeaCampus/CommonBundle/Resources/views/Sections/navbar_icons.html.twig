@@ -24,7 +24,7 @@
                         <li role="presentation">
                             <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
                                 {% if notifications.hasNotifications() %}
-                                    <span class="badge" style="background-color: #d9534f;">{{notifications.countUnreadNotifications()}}</span>&nbsp;
+                                    <span id="unread-notifications-nb" class="badge" style="background-color: #d9534f;">{{notifications.countUnreadNotifications()}}</span>&nbsp;
                                 {%endif%}
                                 {{ 'menu.notifications.title'|trans({}, 'messages') }}
                             </a>

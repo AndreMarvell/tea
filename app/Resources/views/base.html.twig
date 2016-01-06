@@ -141,10 +141,30 @@
                 $('#last-tweet').tweecool({
                     username : 'TEAfrica2015'
                 });
+                bindNotificationClick();
             });
+
             $('.slimscroll.notifications').slimScroll({
                 height: '400px'
             });
+
+            function bindNotificationClick(){
+                $( ".notifications ul.notifications-list li a" ).click(function() {
+                    if(!$(this).closest('li').hasClass("opened")){
+                        $(this).closest('li').addClass("opened");
+                        $("#unread-notifications-nb");
+                        var notifNumber = parseInt($("#unread-notifications-nb").text());
+
+                        if(notifNumber==1){
+                            $("#unread-notifications-nb").hide();
+                        }else{
+                            $("#unread-notifications-nb").html(notifNumber-1);
+                        }
+                        $(this).find(".online.on").hide();
+                    }
+
+                });
+            }
         </script>
         {% block scripts %}
             

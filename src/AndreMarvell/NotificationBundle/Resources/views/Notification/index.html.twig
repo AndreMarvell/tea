@@ -1,5 +1,5 @@
 <div class="slimscroll notifications">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled notifications-list">
         {% for notification in notifications %}
             <li class="{%if notification.open%}opened{%endif%}">
                 <a href="{{path('andre_marvell_notification_show',{'id': notification.id})}}">
