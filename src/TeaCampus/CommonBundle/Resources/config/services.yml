@@ -2,6 +2,10 @@ services:
 #    tea_campus_common.example:
 #        class: TeaCampus\CommonBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    kernel.listener.teacampus_listener:
+        class: TeaCampus\CommonBundle\EventListener\TeaCampusCacheListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
     tea.admin.video:
         class: TeaCampus\CommonBundle\Admin\VideoAdmin
         arguments: [~, TeaCampus\CommonBundle\Entity\Video, SonataAdminBundle:CRUD]
