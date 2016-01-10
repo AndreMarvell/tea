@@ -19,6 +19,13 @@
                     <input type="button" class="btn btn-primary btn-xs" id="formationVideoSubmit" value="{{'formation.add.submit'|trans({},'messages')}}"/>
                 </div>
         </form>
+        <ul class="available-video-formats list-inline pabs mt-40 ml5">
+            <li><span>{{ 'video.add.max_size'|trans({},'messages') }} : <b>256MB</b></span></li>
+            <li><span>{{ 'video.add.allowed_formats'|trans({},'messages') }} :</span></li>
+            <li><img src="{{ asset('bundles/teacampuscommon/images/codecs/mp4.png') }}" alt="MP4 Video Format" class="w30"/></li>
+            <li><img src="{{ asset('bundles/teacampuscommon/images/codecs/flv.png') }}" alt="FLV Video Format" class="w30"/></li>
+            <li><img src="{{ asset('bundles/teacampuscommon/images/codecs/quicktime.png') }}" alt="Quicktime Video Format" class="w30"/></li>
+        </ul>
         {% javascripts  '@TeaCampusCommonBundle/Resources/public/js/bootstrap-tagsinput.js' %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}

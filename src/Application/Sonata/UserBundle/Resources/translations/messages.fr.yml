@@ -88,7 +88,7 @@ formation:
         request_not_accepted: Votre demande a bien été envoyé et est en cours de traitement !
         request_accepted: Vous êtes désormais un Intructeur Pédagoque, faites profiter vos connaissances à l'ensemble de la communauté TEA !
     add:
-        title: Ajouter une vidéo de formation
+        button_title: Ajouter une vidéo de formation
         
 avatar:
     title: Changez votre photo de profil

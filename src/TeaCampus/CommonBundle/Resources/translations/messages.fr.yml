@@ -116,6 +116,9 @@ video:
         title: Recherche de Vidéos
         subhead: Résultat(s) trouvé(s)
         no_result: Aucune vidéo trouvée
+    add:
+        allowed_formats : Formats acceptés
+        max_size : Taille max
         
 project:
     home:

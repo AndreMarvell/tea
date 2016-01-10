@@ -521,6 +521,15 @@
 .mt-10 {
     margin-top: -10px !important;
 }
+.mt-20 {
+    margin-top: -20px !important;
+}
+.mt-30 {
+     margin-top: -30px !important;
+}
+.mt-40 {
+    margin-top: -40px !important;
+}
 .mrn {
     margin-right: 0 !important;
 }
@@ -1237,4 +1246,8 @@
 
 .text-nocapitalize{
     text-transform: none !important;
+}
+
+.pabs{
+   position: absolute !important;
 }
