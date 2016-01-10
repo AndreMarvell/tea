@@ -462,6 +462,8 @@ label {
     -webkit-box-shadow: inset 0 1px #e8e9ed;
     box-shadow: inset 0 1px #e8e9ed;
     border: 0;
+    border: 1px solid rgba(46, 136, 84, 0.54);
+    background-color: white;
 }
 .form-control-feedback {
     color: #28ad62;
@@ -6509,9 +6511,7 @@ text[text-anchor="end"] {
 
 
 /**********  Page Content Header *****************/
-.page-content-header{
 
-}
 .page-content-header h2{
     font-size: 2.5em;
     margin-bottom: 10px;
