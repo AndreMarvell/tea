@@ -1,0 +1,62 @@
+/*
+    Created on : 24 Decembre 2015, 17:16:55
+    Author     : Marvell
+*/
+
+.tea-widget{
+    position: relative;
+}
+
+.tea-widget .panel-tile {
+    padding: 0;
+}
+
+.tea-widget .panel {
+    -webkit-box-shadow: 1px 2px 0 #e5eaee;
+    box-shadow: 1px 2px 0 #e5eaee;
+    padding: 5px;
+}
+
+.tea-widget .tile-bg-purple.light {
+    background-color: #675f99 !important;
+}
+
+.tea-widget .tile-bg-purple {
+    background-color: #5a5386 !important;
+    color: #cbc8dd;
+}
+
+.tea-widget .panel {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+.tea-widget .panel-tile {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+.tea-widget .panel-tile:hover {
+    background-color: #5B5488 !important;
+}
+.tea-widget .panel-tile h5{
+    text-transform: none;
+    z-index: 2;
+}
+.tea-widget a .panel-tile h5:hover{
+    color: white !important;
+}
+.tea-widget .panel-tile p{
+    z-index: 2;
+}
+
+.tea-widget .panel-tile .icon-bg {
+    position: absolute;
+    opacity: 0.1;
+    right: 0;
+    top: 0;
+    line-height: 100px;
+    font-size: 100px;
+    z-index: 1;
+}

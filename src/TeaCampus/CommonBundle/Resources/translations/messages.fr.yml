@@ -1,6 +1,7 @@
 
 tea:
     name: Todays Entrepreneurs In Africa
+    shortname: TEA Campus
     header_description: Tea est un mouvement créé pour permettre à un public très large de s'informer et de s'autoformer sur l'entrepreuneuriat et plus particulièrement en Afrique.
     discover_button: Découvrir
 
@@ -422,5 +423,12 @@ notification:
             message: %user% a aimé votre video %title%
             icon: fa fa-play-circle-o success
         
-    
+widget:
+    push:
+        project:
+            title: Vous avez un projet ?
+            subtitle: Partagez le avec la communauté TEA en créant un nouveau projet
+        video:
+            title: Vous avez une expérience à partager ?
+            subtitle: Partagez la avec la communauté TEA en postant une vidéo
         

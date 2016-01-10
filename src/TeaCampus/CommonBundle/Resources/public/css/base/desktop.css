@@ -301,8 +301,8 @@ p.subhead {
     font-size: 35px;
     margin: auto;
     text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     position: relative;
     border-radius: 50%;
     cursor: pointer;
@@ -312,7 +312,7 @@ p.subhead {
     z-index: 2;
 }
 .striped-icon-large span {
-    line-height: 80px;
+    line-height: 70px;
 }
 .striped-icon-large:after {
     border-radius: 50%;
@@ -637,6 +637,9 @@ label {
 
 .profil-tabs .nav-tabs-two.nav-tab-inverse  >  li.active  >  a{
     background-color: rgb(39, 174, 96);
+}
+.profil-tabs .nav-tabs-two.nav-tab-inverse  >  li  >  a{
+    padding: 9px 40px;
 }
 .nav-tabs-vertical {
     display: inline-block;
@@ -2373,7 +2376,7 @@ section.divider.striped-icon {
     margin-bottom: 130px;
 }
 .blog .post {
-    padding-bottom: 70px;
+    padding-bottom: 25px;
     max-width: 370px;
     display: block;
     margin-left: auto;
@@ -2385,7 +2388,7 @@ section.divider.striped-icon {
 .blog .post .post-heading .post-image {
     display: block;
     overflow: hidden;
-    height: 230px;
+    height: 150px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 }
@@ -2397,21 +2400,39 @@ section.divider.striped-icon {
 }
 .blog .post .post-heading .post-avatar {
     position: absolute;
-    right: 25px;
-    bottom: -35px;
+    right: 20px;
+    bottom: -15px;
 }
 .blog .post .post-heading .post-avatar  >  img {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 5px solid white;
 }
+.blog .post .post-heading span.post-author, .blog .post .post-heading span.post-date{
+    color: white;
+    position: absolute;
+    top: 8px;
+    background-color: rgba(0, 0, 0, 0.64);
+    font-weight: 400;
+}
+.blog .post .post-heading span.post-author i, .blog .post .post-heading span.post-date i{
+    margin-right: 4px;
+}
+.blog .post .post-heading span.post-author{
+    left: 5px;
+}
+.blog .post .post-heading span.post-date {
+    right: 5px;
+}
+
 .blog .post .post-body {
-    padding: 10px 30px 20px;
+    padding: 15px 20px 20px;
     border: 1px solid #e8e9ed;
     border-top: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+    height: 200px;
     /*    margin-top: -30px;
         background-color: white !important;*/
 }
@@ -2420,16 +2441,7 @@ a h5:hover {
 }
 .blog .post .post-body p {
     margin-bottom: 0;
-}
-.blog .post .post-body ul li {
-    font-size: 0.928em;
-    color: #c8c9cc;
-}
-.blog .post .post-body ul li:first-of-type {
-    margin-right: 20px;
-}
-.blog .post .post-body ul i {
-    margin-right: .5em;
+    line-height: 1.5em;
 }
 .blog .subscribe {
     border: 1px solid #e8e9ed;
@@ -4648,17 +4660,24 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #2a2d32;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.1;
 }
 .wrap-blog-content .sidebar .popular-posts > ul > li .title:hover {
     text-decoration: underline;
 }
-.wrap-blog-content .sidebar .popular-posts > ul > li .list-inline li {
-    font-size: 13px;
+.wrap-blog-content .sidebar .popular-posts > ul > li span.date {
+    font-size: 12px;
 }
-.wrap-blog-content .sidebar .popular-posts > ul > li .list-inline .fa {
+.wrap-blog-content .sidebar .popular-posts > ul > li span.date .fa {
     margin-right: 4px;
+}
+
+@media (min-width: 1200px) {
+    .wrap-blog-content .sidebar{
+        padding-left: 0 !important;
+    }
 }
 
 .wrap-subscribe {
@@ -4707,19 +4726,18 @@ body {
 }
 .wrap-blog-content.blog .post .post-body .post-avatar {
     position: absolute;
-    top: -50px;
+    top: -40px;
     right: 30px;
 }
 .post-avatar img {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    border: 5px solid white;
 }
 .wrap-blog-content.blog .post .post-body h5 {
-    line-height: 1.7;
+    line-height: 1em;
 }
 .wrap-blog-content.blog .post .post-body h5:hover {
     color: #27ae60;
@@ -6243,9 +6261,7 @@ text[text-anchor="end"] {
     color: #28ad62;
 }
 
-/*
-    Message List & Message content Style
-*/
+/************* Message List & Message content Style ****************/
 
 .messages {
     border-bottom: 2px solid whitesmoke;
@@ -6489,6 +6505,15 @@ text[text-anchor="end"] {
     color: #86BB71;
 }
 
-/*
-    End of Message List & Message content Style
-*/
+/********* End of Message List & Message content Style *************/
+
+
+/**********  Page Content Header *****************/
+.page-content-header{
+
+}
+.page-content-header h2{
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+/**********  End of Page Content Header **********/

@@ -27,7 +27,7 @@
                                 </div>
                             {% endblock %}
                         </div>
-                        <header class="section-header no-home">
+                        <header class="section-header no-home page-content-header">
                             <h2>
                                 {{ 'project.show.other'|trans({},'messages') }}                    
                             </h2>
@@ -51,10 +51,10 @@
                             {{ include( 'TeaCampusCommonBundle:Projet:Parts/latestproject.html.twig') }} 
                         {%endif%}
                         <header class="section-header no-home">
-                            <h4 class="text-center">
+                            <h4 class="text-center mb0">
                                 {{ 'project.show.show_all_title'|trans({},'messages') }}                    
                             </h4>
-                            <p style="font-size: 20px">{{ 'project.show.show_all_subtitle'|trans({},'messages') }}</p>
+                            <p class="mb10" style="font-size: 18px">{{ 'project.show.show_all_subtitle'|trans({},'messages') }}</p>
                         </header>                                                      
                         <div class="col-md-12 align-center">
                             <a href="{{path('tea_projects_list')}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;{{ 'project.show.show_all'|trans({},'messages') }}</a>

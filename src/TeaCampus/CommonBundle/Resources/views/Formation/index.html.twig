@@ -42,11 +42,11 @@
                                     {%if category.icon is not null%}
                                     <div class="striped-icon-large" style="position:absolute;top:-20px;right:-10px;">
                                         <span aria-hidden="true" class="">
-                                            <img src="{{ asset('bundles/teacampuscommon/images/formation/'~category.icon~'.png') }}" alt="TeaCampus {{category.name}}"  width="45px"/>
+                                            <img src="{{ asset('bundles/teacampuscommon/images/formation/'~category.icon~'.png') }}" class="mt-10" alt="TeaCampus {{category.name}}"  width="35px"/>
                                         </span>
                                     </div>
                                     {%endif%}
-                                    <div class="box clearfix" style="padding: 22px 29px 28px 46px;text-align: left;">
+                                    <div class="box clearfix" style="padding: 20px 25px;text-align: left;">
                                         <h5 style="min-height:50px;">{{category.name}}</h5>
                                         <p>{{ 'formation.subject.nb_chapter'| trans({'%nb%':category.children|length},'messages') }}</p>
                                         <a href="#formation-modal-{{category.id}}" class="btn btn-primary btn-xs pull-left popup-reveal">{{ 'formation.subject.discover'| trans({},'messages') }}</a>

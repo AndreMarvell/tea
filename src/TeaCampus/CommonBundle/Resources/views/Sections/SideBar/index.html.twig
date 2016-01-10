@@ -23,6 +23,8 @@
 
     <!-- search -->
     {{ include( 'TeaCampusCommonBundle:Sections:SideBar/search.html.twig', {'search_placeholder':'aside.projects.search'|trans({},'messages'), 'search_link':'tea_projects_search'}) }}
+    <!-- Project Push -->
+    {{ include( 'TeaCampusCommonBundle:Widgets/Push:rect-tile.html.twig', {'icon':'fa-book', 'link':path('fos_user_profile_show') ~ '?tab=projects', 'pushtype':'project'}) }}
     <!-- tags -->
     {%if tags is defined%}
         {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'tea_projects_tag'}) }}                        
@@ -46,6 +48,8 @@
 
     <!-- search -->
     {{ include( 'TeaCampusCommonBundle:Sections:SideBar/search.html.twig', {'search_placeholder':'aside.videos.search'|trans({},'messages'), 'search_link':'tea_formations_search'}) }}
+    <!-- Video Push -->
+    {{ include( 'TeaCampusCommonBundle:Widgets/Push:rect-tile.html.twig', {'icon':'fa-play-circle', 'link':path('fos_user_profile_show') ~ '?tab=teaAndMe', 'pushtype':'video'}) }}
     <!-- tags -->
     {%if tags is defined%}
         {{ include( 'TeaCampusCommonBundle:Sections:SideBar/tags.html.twig', {'title':'aside.tags.title'|trans({},'messages'), 'tags':tags, 'path':'tea_formations_tag'}) }}                        

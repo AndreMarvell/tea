@@ -6,14 +6,12 @@
         {% for project in articles %}
         <li>
             <div class="avatar pull-left">
-                {% thumbnail project.media, 'square' with{'width':'50px', 'height':'50px', 'alt':project.title } %}
+                {% thumbnail project.media, 'square' with{'width':'45px', 'height':'45px', 'alt':project.title } %}
             </div>
-            <a href="{{ path('tea_projects_show', { 'id': project.id } ) }}" class="title">{{project.title}}</a>
-            <ul class="list-inline clearfix">
-                <li><i class="fa fa-user"></i>{%if project.founder is null%}TEA{%else%}{{project.founder}}{%endif%}</li>
-                <li><i class="fa fa-calendar"></i>{{project.createdAt|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</li>
-            
-            </ul>
+            <a href="{{ path('tea_projects_show', { 'id': project.id } ) }}" title="{{project.title}}" class="title">{{project.title}}</a>
+            <span class="date">
+                <i class="fa fa-clock-o"></i>{{utils.sinceOrDateTime(project.createdAt,app.request.locale)}}
+            </span>
         </li>
         {%else%}
             <li></li>

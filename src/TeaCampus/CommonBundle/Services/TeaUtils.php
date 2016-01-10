@@ -59,7 +59,7 @@ class TeaUtils
 
     }
 
-    public function sinceOrDateTime($date, $locale)
+    public function sinceOrDateTime($date, $locale, $withTime = false)
     {
 
         $time = time() - $date->getTimestamp();
@@ -79,7 +79,9 @@ class TeaUtils
                     'yesterday' => 'Hier',
                     'today' => 'Aujourd\'hui'
                 ),
-                'long_format' => 'd M Y, H:i'
+                'long_format' => '%d MONTH_HERE %Y',
+                'long_format_time' => '%d MONTH_HERE %Y, %H:%M',
+                'month' => array ("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre")
             ),
             'en' => array(
                 'time' => array(
@@ -95,7 +97,9 @@ class TeaUtils
                     'yesterday' => 'Yesterday',
                     'today' => 'Today'
                 ),
-                'long_format' => 'Y F d, H:i'
+                'long_format' => '%Y MONTH_HERE %d',
+                'long_format_time' => '%Y MONTH_HERE %d, %H:%M',
+                'month' => array ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
             )
         );
 
@@ -121,8 +125,17 @@ class TeaUtils
             $token_yesterday = (isset($tokens[$locale]['days']['yesterday']))? $tokens[$locale]['days']['yesterday'] : array();
             return $date->format('H:i').', '.$token_yesterday;
         }else{
-            $token_format = (isset($tokens[$locale]['long_format']))? $tokens[$locale]['long_format'] : array();
-            return date_format($date, $token_format);
+            if($withTime)
+                $token_format = (isset($tokens[$locale]['long_format_time']))? $tokens[$locale]['long_format_time'] : array();
+            else
+                $token_format = (isset($tokens[$locale]['long_format']))? $tokens[$locale]['long_format'] : array();
+
+            // On recupere le mois
+            $token_month = (isset($tokens[$locale]['month']))? $tokens[$locale]['month'] : array();
+            $month_nb = intval(date_format($date, "m"))-1;
+            $month = (isset($token_month[$month_nb]))? $token_month[$month_nb] : "";
+
+            return str_replace("MONTH_HERE", $month, strftime($token_format, $date->getTimestamp()));
         }
 
     }

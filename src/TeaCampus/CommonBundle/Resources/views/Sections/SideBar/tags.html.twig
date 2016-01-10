@@ -4,7 +4,7 @@
         {% for tag in tags %}
         <li>
             <a href="{{ url(path, { 'tag': tag.slug } ) }}">
-                <span class="label {%if loop.index is odd%}label-info{%else%}label-danger{%endif%}">{{ tag.name }}</span>
+                <span class="label {%if loop.index is odd%}label-odd{%else%}label-even{%endif%}">{{ tag.name }}</span>
             </a>
         </li>
         {%else%}

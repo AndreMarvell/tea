@@ -51,6 +51,7 @@ label:
     last_connexion: Dernière Visite
     member_since: Membre depuis
     role: Rôle
+    language: Langue
     
 project:
     add:

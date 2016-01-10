@@ -1,0 +1,14 @@
+<div class="tea-widget">
+    <a class="widget-link" href="{{ link }}">
+        <div class="panel panel-tile tile-bg-purple light">
+            <div class="panel-body p5">
+                <i class="fa {{ icon }} icon-bg"></i>
+
+                <h5 class="mt5 mb5 text-white">
+                    <b>{{ ('widget.push.' ~ pushtype ~ '.title') |trans({},'messages') }}</b>
+                </h5>
+                <p class="text-muted mbn lh1 fw600">{{ ('widget.push.' ~ pushtype ~ '.subtitle') |trans({},'messages') }}</p>
+            </div>
+        </div>
+    </a>
+</div>

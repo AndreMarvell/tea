@@ -14,7 +14,7 @@
                         {% image '@TeaCampusCommonBundle/Resources/public/images/logos/logo-sign2.png'  output="images/ico/logo-s2.jpg" %}
                             <img class="footer-logo" src="{{ asset_url }}" width="40" height="44" alt="TeaCampus logo"/>
                             {% endimage %}
-                        <h5 class="offset">{{ 'tea.name'|trans({}, 'messages') }}</h5>
+                        <h5 class="offset">{{ 'tea.shortname'|trans({}, 'messages') }}</h5>
                         <p>{{ 'footer.tea.text'|trans({}, 'messages') }}<p>
                     </article>
                 </div>
@@ -40,10 +40,10 @@
                 </div>
                 <div class="col-md-3">
                     <article class="contacts-block bottom-border">
-                        <h5 class="offset">{{ 'footer.menu.contacts'|trans({}, 'messages') }}</h5>					
+                        <h5 class="offset">{{ 'footer.menu.contacts'|trans({}, 'messages') }} <i class="fa fa-envelope-square pull-right"></i></h5>
                         <ul class="left-border offset">
-                            <li><p><i class="fa fa-link"></i><a href="{{path('tea_contacts')}}">{{ 'footer.contact.text'|trans({}, 'messages') }}</a> </p></li>
                             <li><p><i class="fa fa-map-marker"></i>Troyes, FRANCE</p></li>
+                            <li><p><i class="fa fa-link"></i><a href="{{path('tea_contacts')}}">{{ 'footer.contact.text'|trans({}, 'messages') }}</a> </p></li>
                             {#<li><p><i class="fa fa-phone"></i></p></li>#}
                         </ul>
                     </article>

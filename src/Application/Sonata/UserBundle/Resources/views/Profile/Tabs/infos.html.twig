@@ -1,4 +1,4 @@
-<div class="row col-md-10 col-md-offset-1">
+<div class="row col-md-12">
     <div class="col-md-6 panel-body">
         <div class="media">
             <div class="media-body">
@@ -7,7 +7,7 @@
                     <li><i class="fa fa-user-plus"></i><span class="infos-label">{{ 'label.name'|trans({},'messages') }}</span><span class="infos-value">{{app.user.firstname ~ ' ' ~ app.user.lastname}}</span></li>
                     <li><i class="fa fa-envelope-o"></i><span class="infos-label">{{ 'label.email'|trans({},'messages') }}</span><span class="infos-value">{{app.user.email}}</span></li>
                     <li><i class="fa fa-phone"></i><span class="infos-label">{{ 'label.phone'|trans({},'messages') }}</span><span class="infos-value">{{app.user.phone}}</span></li>
-                    <li><i class="fa fa-flag"></i><span class="infos-label">{{ 'label.country'|trans({},'messages') }}</span><span class="infos-value">{{app.user.locale}}</span></li>
+                    <li><i class="fa fa-flag"></i><span class="infos-label">{{ 'label.language'|trans({},'messages') }}</span><span class="infos-value">{{ app.user.locale | language(app.request.locale) | capitalize }}</span></li>
                     <li>
                         <i class="fa fa-venus-mars"></i>
                         <span class="infos-label">{{ 'label.sex'|trans({},'messages') }}</span>
