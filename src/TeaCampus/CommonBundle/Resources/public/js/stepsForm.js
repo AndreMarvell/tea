@@ -250,7 +250,7 @@
 				}
 				else {
 					
-                                        classie.removeClass( self.el, 'show-prev' );
+                    classie.removeClass( self.el, 'show-prev' );
 					self.currentNum.innerHTML = self.nextQuestionNum.innerHTML;
 					self.questionStatus.removeChild( self.nextQuestionNum );
 					// force the focus on the next input
@@ -276,7 +276,10 @@
 	// changes the current question number
 	stepsForm.prototype._updateQuestionNumber = function() {
 		// first, create next question number placeholder
-		//this.questionStatus.find(".number-next").remove();
+		var oldNbNext = this.questionStatus.querySelector(".number-next");
+        if(oldNbNext != null){
+            oldNbNext.remove();
+        }
 		this.nextQuestionNum = document.createElement( 'span' );
 		this.nextQuestionNum.className = 'number-next';
 		this.nextQuestionNum.innerHTML = Number( this.current + 1 );
