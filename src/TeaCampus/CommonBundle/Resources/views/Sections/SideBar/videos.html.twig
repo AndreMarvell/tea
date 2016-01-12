@@ -6,7 +6,7 @@
         {% for video in articles %}
         <li>
             <div class="avatar pull-left">
-                {% thumbnail video.video, 'small' with{'width':'45px', 'height':'45px', 'alt':video.title } %}
+                <img src="{% path video.video, 'square' %}" width="45px" height="45px" alt="{{ video.title }}"/>
             </div>
             <a href="{{ path('tea_formations_show', { 'id': video.id, 'subject':video.category.parent.slug,'chapter':video.category.slug } ) }}" title="{{video.title}}" class="title">{{video.title}}</a>
             <span class="date">

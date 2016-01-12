@@ -1,16 +1,18 @@
 <div class="page-social-meta">
     <div class="social-meta-info clearfix">
         <div class="social-meta pull-left">
-            <span class="author">
-                {% if author.avatar is not null %}
-                    {% thumbnail author.avatar, 'square' with{'width':'27px','height':'27px','title':'Profil de ' ~ author.username } %}
-                {% else %}
-                    {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
-                    <img src="{{ asset_url }}" width='27px' height='27px' title="{{author.username}}">
-                    {% endimage %}
-                {% endif %}
-                <a href="{{ path('tea_user_profile',{'id':author.id}) }}" title="Consulter le profil de {{author.fullname}}">{{author.fullname}}</a>
-            </span>
+            {% if author is not null %}
+                <span class="author">
+                    {% if author.avatar is not null %}
+                        {% thumbnail author.avatar, 'square' with{'width':'27px','height':'27px','title':'Profil de ' ~ author.username } %}
+                    {% else %}
+                        {% image '@TeaCampusCommonBundle/Resources/public/images/unknown.png'  output="images/avatar.jpg" %}
+                        <img src="{{ asset_url }}" width='27px' height='27px' title="{{author.username}}">
+                        {% endimage %}
+                    {% endif %}
+                        <a href="{{ path('tea_user_profile',{'id':author.id}) }}" title="Consulter le profil de {{author.fullname}}">{{author.fullname}}</a>
+                </span>
+            {% endif %}
             <span class="meta-date"><i class="fa-clock-o fa"></i> {{date|format_date('dd MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</span>
             <span class="views"><i class="fa fa-eye"></i>&nbsp;&nbsp;<span id="view_thread"></span></span>
         </div><!-- .entry-meta -->

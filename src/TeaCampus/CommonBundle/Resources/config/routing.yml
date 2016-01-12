@@ -31,7 +31,12 @@ tea_user_avatar:
     path:     /profile/avatar
     defaults: { _controller: ApplicationSonataUserBundle:ProfileFOSUser1:avatar }
     condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
-    
+
+tea_user_cv:
+    path:     /profile/cv
+    defaults: { _controller: ApplicationSonataUserBundle:ProfileFOSUser1:cv }
+    condition: "request.headers.get('X-Requested-With') == 'XMLHttpRequest'"
+
 tea_change_password_from_edit:
     path:     /profile/change-password-edit-authentication
     defaults: { _controller: ApplicationSonataUserBundle:ChangePasswordFOSUser1:changePasswordEditAuthentication }

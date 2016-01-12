@@ -28,6 +28,18 @@
         <div class="media">
             <div class="media-body">
                 <ul class="list-unstyled list-info">
+                    <li class="cv-infos">
+                        <i class="fa fa-linkedin-square"></i>
+                        <span class="infos-label">Linkedin</span>
+                        <span class="infos-value">
+                            {% if app.user.cv is not null%}
+                                <a class="btn-xs" href="#" title="{{ 'cv.open'|trans({},'messages') }}">{{ 'cv.open'|trans({},'messages') }}</a>
+                                <a class="ajax-popup-link btn-xs" href="{{path('tea_user_cv')}}" title="{{ 'cv.edit'|trans({},'messages') }}">{{ 'cv.edit'|trans({},'messages') }}</a>
+                            {%else%}
+                                <a class="ajax-popup-link btn-xs" href="{{path('tea_user_cv')}}" title="{{ 'cv.title'|trans({},'messages') }}">{{ 'cv.title'|trans({},'messages') }}</a>
+                            {%endif%}
+                        </span>
+                    </li>
                     <li><i class="fa fa-user-secret"></i><span class="infos-label">{{ 'label.role'|trans({},'messages') }}</span><span class="infos-value"></span></li>
                     <li><i class="fa fa-child"></i><span class="infos-label">{{ 'label.member_since'|trans({},'messages') }}</span><span class="infos-value">{{app.user.createdAt|format_date('MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</span></li>
                     <li><i class="fa fa-history"></i><span class="infos-label">{{ 'label.last_connexion'|trans({},'messages') }}</span><span class="infos-value">{{app.user.lastLogin|format_date('dd MMMM Y à H', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}} h</span></li>

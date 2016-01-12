@@ -138,8 +138,51 @@ class ProfileFOSUser1Controller extends BaseController
         
         
     }
-    
-    
+
+    /**
+     * @return Response
+     *
+     * @throws AccessDeniedException
+     */
+    public function cvAction(Request $request){
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $user= $this->get('security.context')->getToken()->getUser();
+
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }else{
+
+            if (!is_null($request->files->get('file'))) {
+                // Getting sonata media manager service
+                $mediaManager = $this->container->get('sonata.media.manager.media');
+
+                // Getting sonata media object and saving media
+                $media = new Media;
+                $media->setBinaryContent($request->files->get('file'));
+                $media->setContext('cv');
+                $media->setName($user->getFullname());
+                $media->setProviderName('sonata.media.provider.image');
+                $mediaManager->save($media);
+
+                $previousCV = $user->getCv();
+                $user->setCv($media);
+                $em->persist($user);
+                $em->remove($previousCV);
+                $em->flush();
+
+                $response = new Response();
+                $response->setContent(json_encode(array("success" => true)));
+                $response->headers->set('Content-Type', 'application/json');
+
+                return $response;
+            }
+            return $this->render('ApplicationSonataUserBundle:Profile:cv.html.twig');
+        }
+
+
+
+    }
 
 
 }

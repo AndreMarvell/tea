@@ -95,4 +95,10 @@ avatar:
     submit: Envoyer
     error: Désolé, une erreur est survenue lors de l'upload de l'image. Vérifez que le fichier envoyé est correct et recommencez!
     
-    
+cv:
+    title: Ajouter votre CV
+    edit: Modifier votre CV
+    submit: Envoyer
+    open: Voir le CV
+    error: Désolé, une erreur est survenue lors de l'upload du fichier. Vérifez que le fichier envoyé est correct et recommencez!
+

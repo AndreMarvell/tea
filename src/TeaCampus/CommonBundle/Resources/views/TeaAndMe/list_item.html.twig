@@ -1,7 +1,7 @@
 <div class="post">
     <div class="post-heading">
         <div class="post-image" style="height:auto">
-            {% thumbnail video.video, 'big' with {'width':'100%','height':'auto','alt':video.title} %}
+            <img src="{% path video.video, 'big' %}" width="100%" height="auto" alt="{{ video.title }}"/>
             <div class="mask">
                 <div class="icons">
                     <a href="{{ path('tea_teaandme_show',{'id':video.id}) }}" class="ajax-popup-link"><i class="fa fa-play-circle fa-2x"></i></a>

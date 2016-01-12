@@ -305,4 +305,33 @@ class User extends BaseUser implements ParticipantInterface
         else
             return sprintf('%s', $this->getFirstname());
     }
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $cv;
+
+
+    /**
+     * Set cv
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $cv
+     *
+     * @return User
+     */
+    public function setCv(\Application\Sonata\MediaBundle\Entity\Media $cv = null)
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    /**
+     * Get cv
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getCv()
+    {
+        return $this->cv;
+    }
 }

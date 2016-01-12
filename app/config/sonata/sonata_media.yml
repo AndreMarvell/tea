@@ -57,7 +57,16 @@ sonata_media:
                 big:   { width: 500 , quality: 90}
                 wide:   { width: 600 , quality: 90}
                 square: { width: 100, height: 100 , quality: 80}
-        
+
+        cv:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 150 , quality: 95}
+                wide:   { width: 600 , quality: 90}
+
         file:
             providers:
                 - sonata.media.provider.file
@@ -154,3 +163,18 @@ sonata_media:
         file:
             allowed_extensions: ['mp4', 'flv', 'avi', 'mkv', 'mpv', 'm4v']
             allowed_mime_types: ['video/x-msvideo', 'video/mp4', 'video/quicktime', 'video/x-flv']
+        youtube:
+            service:    sonata.media.provider.youtube
+            resizer:    sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            html5: true
+        dailymotion:
+            service:    sonata.media.provider.dailymotion
+            resizer:    sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format

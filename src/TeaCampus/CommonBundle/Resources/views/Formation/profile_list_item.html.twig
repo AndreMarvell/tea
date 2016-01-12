@@ -3,7 +3,7 @@
             <li id="video-{{video.id}}">
                 <div class="project-thumbs">
                     {%if video.video is not null%}
-                        {% thumbnail video.video, 'square' with{'alt':video.title,'title':video.title } %}
+                        <img src="{% path video.video, 'square' %}" title="{{ video.title }}" alt="{{ video.title }}"/>
                     {%else%}
                         {% image '@TeaCampusCommonBundle/Resources/public/images/no-video.png'  output="images/no_video_image.png" %}
                         <img src="{{ asset_url }}" class="center-block" style="width:70%">
