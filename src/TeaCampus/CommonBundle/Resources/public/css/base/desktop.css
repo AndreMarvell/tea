@@ -2438,6 +2438,9 @@ section.divider.striped-icon {
     /*    margin-top: -30px;
         background-color: white !important;*/
 }
+.blog .post.teaandme .post-body {
+    height: inherit !important;
+}
 a h5:hover {
     color: #27ae60;
 }

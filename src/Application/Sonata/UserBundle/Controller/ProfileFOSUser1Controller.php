@@ -123,7 +123,9 @@ class ProfileFOSUser1Controller extends BaseController
                 $previousAvatar = $user->getAvatar();
                 $user->setAvatar($media);
                 $em->persist($user);
-                $em->remove($previousAvatar);
+                if(!is_null($previousAvatar)){
+                    $em->remove($previousAvatar);
+                }
                 $em->flush();  
                 
                 $response = new Response();
@@ -162,13 +164,15 @@ class ProfileFOSUser1Controller extends BaseController
                 $media->setBinaryContent($request->files->get('file'));
                 $media->setContext('cv');
                 $media->setName($user->getFullname());
-                $media->setProviderName('sonata.media.provider.image');
+                $media->setProviderName('sonata.media.provider.file');
                 $mediaManager->save($media);
 
                 $previousCV = $user->getCv();
                 $user->setCv($media);
                 $em->persist($user);
-                $em->remove($previousCV);
+                if(!is_null($previousCV)){
+                    $em->remove($previousCV);
+                }
                 $em->flush();
 
                 $response = new Response();

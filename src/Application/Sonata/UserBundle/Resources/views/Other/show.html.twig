@@ -114,22 +114,27 @@
     {% block scripts %}
 
         <script>
-            $('.ajax-popup-link').magnificPopup({
-                closeBtnInside: true,
-                midClick: true,
-                type: 'ajax'
-            });
-            $('.popup-link').magnificPopup({
-                type: 'inline',
-                modal: true
-            });
 
             $(document).on('click', '.popup-modal-dismiss', function (e) {
                 e.preventDefault();
                 $.magnificPopup.close();
             });
 
+            function magnificPopupInit(){
+
+                $('.ajax-popup-link').magnificPopup({
+                    closeBtnInside: true,
+                    midClick: true,
+                    type: 'ajax'
+                });
+                $('.popup-link').magnificPopup({
+                    type: 'inline',
+                    modal: true
+                });
+            }
+
             $(document).ready(function () {
+                magnificPopupInit();
                 $("#new-message-form").submit(function (e) {
                     e.preventDefault();
                     $('#messageLoader').show();

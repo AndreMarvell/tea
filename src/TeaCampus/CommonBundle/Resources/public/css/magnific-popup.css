@@ -61,6 +61,19 @@
   position: relative;
 }
 
+.mfp-cv-dialog{
+    background: white;
+    padding: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    position: relative;
+}
+
+#mfp-cv-frame{
+    min-height: 500px;
+    text-align: center;
+}
+
 .mfp-small-dialog h1{
   font-size: 25px;
 }

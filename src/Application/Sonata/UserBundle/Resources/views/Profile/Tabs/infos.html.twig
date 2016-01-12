@@ -30,15 +30,19 @@
                 <ul class="list-unstyled list-info">
                     <li class="cv-infos">
                         <i class="fa fa-linkedin-square"></i>
-                        <span class="infos-label">Linkedin</span>
+                        <span class="infos-label">CV</span>
                         <span class="infos-value">
                             {% if app.user.cv is not null%}
-                                <a class="btn-xs" href="#" title="{{ 'cv.open'|trans({},'messages') }}">{{ 'cv.open'|trans({},'messages') }}</a>
-                                <a class="ajax-popup-link btn-xs" href="{{path('tea_user_cv')}}" title="{{ 'cv.edit'|trans({},'messages') }}">{{ 'cv.edit'|trans({},'messages') }}</a>
+                                <a class="btn btn-xs mfp-inline-dialog" style="border: 1px solid;" href="#show-cv-modal" title="{{ 'cv.open'|trans({},'messages') }}">{{ 'cv.open'|trans({},'messages') }}</a>
+                                <a class="ajax-popup-link btn btn-xs" href="{{path('tea_user_cv')}}" title="{{ 'cv.edit'|trans({},'messages') }}">{{ 'cv.edit'|trans({},'messages') }}</a>
                             {%else%}
                                 <a class="ajax-popup-link btn-xs" href="{{path('tea_user_cv')}}" title="{{ 'cv.title'|trans({},'messages') }}">{{ 'cv.title'|trans({},'messages') }}</a>
                             {%endif%}
                         </span>
+                        <div id="show-cv-modal" class="mfp-hide mfp-cv-dialog">
+                            <iframe id="mfp-cv-frame" src="{%  path app.user.cv, 'reference' %}" frameborder="0" width="100%" height="100%"></iframe>
+                            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                        </div>
                     </li>
                     <li><i class="fa fa-user-secret"></i><span class="infos-label">{{ 'label.role'|trans({},'messages') }}</span><span class="infos-value"></span></li>
                     <li><i class="fa fa-child"></i><span class="infos-label">{{ 'label.member_since'|trans({},'messages') }}</span><span class="infos-value">{{app.user.createdAt|format_date('MMMM Y', 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))}}</span></li>

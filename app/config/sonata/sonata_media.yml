@@ -161,8 +161,8 @@ sonata_media:
             allowed_extensions: ['jpg', 'png', 'gif', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
         file:
-            allowed_extensions: ['mp4', 'flv', 'avi', 'mkv', 'mpv', 'm4v']
-            allowed_mime_types: ['video/x-msvideo', 'video/mp4', 'video/quicktime', 'video/x-flv']
+            allowed_extensions: ['mp4', 'flv', 'avi', 'mkv', 'mpv', 'm4v', 'pdf']
+            allowed_mime_types: ['video/x-msvideo', 'video/mp4', 'video/quicktime', 'video/x-flv', 'application/pdf']
         youtube:
             service:    sonata.media.provider.youtube
             resizer:    sonata.media.resizer.square
